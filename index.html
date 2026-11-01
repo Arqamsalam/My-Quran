@@ -140,8 +140,9 @@
   let cur = P[0], pinned = false, hideT = null, activeSpot = null;
 
   // ---------- settings ----------
-  const st = JSON.parse(localStorage.getItem('baqarah-ui') || '{}');
-  const save = () => localStorage.setItem('baqarah-ui', JSON.stringify(st));
+  let st = {};
+  try { st = JSON.parse(localStorage.getItem('baqarah-ui') || '{}'); } catch (e) {}
+  const save = () => { try { localStorage.setItem('baqarah-ui', JSON.stringify(st)); } catch (e) {} };
   function applySettings(){
     const lang = st.lang || 'en';
     document.body.classList.toggle('hide-en', lang === 'ur');
