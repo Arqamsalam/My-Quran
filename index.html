@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surah Al-Baqarah · Memory Story Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Nastaliq+Urdu&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110d; --panel:#1e1913; --panel2:#262017; --line:#3a3125;
+    --parch:#f3e6c8; --ink:#2b2116; --gold:#d9a94a; --gold2:#f1cf7f;
+    --text:#ece2cf; --muted:#a99a80; --key:#d9a94a; --more:#7fa6b8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+  a{color:var(--gold2)}
+  header{padding:22px 24px 10px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#221b12,#14110d)}
+  h1{font-family:Cinzel,serif;margin:0;font-size:clamp(20px,3vw,30px);letter-spacing:.04em;color:var(--gold2)}
+  .sub{color:var(--muted);font-size:14px;margin-top:4px}
+  .tiles{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:120px}
+  .tile b{display:block;font-size:22px;color:var(--gold2)}
+  .tile span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .bar{height:6px;background:#2d261c;border-radius:4px;margin-top:6px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--gold)}
+
+  nav.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:12px 24px;border-bottom:1px solid var(--line);background:#17130e;position:sticky;top:0;z-index:20}
+  .tab{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+  .tab small{color:var(--muted)}
+  .tab.active{background:var(--gold);color:#1b140a;border-color:var(--gold)}
+  .tab.active small{color:#3b2c12}
+  .tab:disabled{opacity:.35;cursor:not-allowed}
+
+  .controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:10px 24px;font-size:13px;color:var(--muted)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{background:var(--panel);color:var(--text);border:0;padding:5px 10px;cursor:pointer;font-size:13px}
+  .seg button.on{background:var(--gold);color:#1b140a}
+  label.chk{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+
+  main{display:grid;grid-template-columns:minmax(300px,600px) minmax(320px,1fr);gap:24px;padding:10px 24px 40px;align-items:start}
+  @media (max-width:900px){main{grid-template-columns:1fr}}
+  .stage{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 10px 40px #0008}
+  .stage img{display:block;width:100%;height:auto;user-select:none}
+  .spot{position:absolute;border-radius:8px;cursor:pointer;transition:background .15s,box-shadow .15s;outline:none}
+  .spot:hover,.spot:focus-visible,.spot.active{background:rgba(241,207,127,.18);box-shadow:inset 0 0 0 2px var(--gold2)}
+  .stage.show .spot{box-shadow:inset 0 0 0 1.5px rgba(241,207,127,.75);background:rgba(241,207,127,.06)}
+  .stage.show .spot.scene{box-shadow:inset 0 0 0 1.5px rgba(127,166,184,.8)}
+  .spot.lit{background:rgba(241,207,127,.28)!important;box-shadow:inset 0 0 0 3px var(--gold2)!important}
+  .spot .badge{position:absolute;top:4px;right:4px;font-size:10px;background:#1b140acc;color:var(--gold2);padding:1px 6px;border-radius:6px;display:none;pointer-events:none}
+  .stage.show .spot .badge{display:block}
+
+  /* popup */
+  #pop{position:fixed;z-index:50;width:min(460px,calc(100vw - 20px));max-height:min(70vh,640px);overflow:auto;
+       background:var(--parch);color:var(--ink);border-radius:12px;box-shadow:0 18px 50px #000a;border:1px solid #c9b07a;display:none}
+  #pop.open{display:block}
+  #pop .ph{position:sticky;top:0;background:#e8d6ac;padding:10px 14px;border-bottom:1px solid #c9b07a;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  #pop .ph h3{margin:0;font-family:Cinzel,serif;font-size:15px}
+  #pop .ph .refs{font-size:12px;color:#6b5634}
+  #pop .pin{font-size:11px;color:#6b5634;white-space:nowrap}
+  #pop .note{margin:10px 14px 0;padding:8px 10px;background:#fff6dd;border-left:3px solid var(--gold);font-size:13px;border-radius:4px}
+  .verse{padding:12px 14px;border-bottom:1px dashed #cdb789}
+  .verse:last-child{border-bottom:0}
+  .vnum{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:10px;background:#2b2116;color:var(--gold2)}
+  .vnum.more{background:#5b7684;color:#fff}
+  .ar{font-family:"Amiri Quran","Amiri",serif;direction:rtl;text-align:right;line-height:2.1;margin:6px 0 4px;font-size:var(--arsize,24px)}
+  .tr{font-style:italic;font-size:12.5px;color:#6b5634;margin:2px 0 4px}
+  .en{font-size:14.5px;line-height:1.5;margin:4px 0}
+  .ur{font-family:"Noto Nastaliq Urdu",serif;direction:rtl;text-align:right;font-size:16px;line-height:2.3;margin:4px 0}
+  .sect{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b5634;padding:10px 14px 0}
+
+  /* side panel */
+  aside{background:var(--panel);border:1px solid var(--line);border-radius:12px;position:sticky;top:64px;max-height:calc(100vh - 80px);display:flex;flex-direction:column}
+  aside .ah{padding:12px 14px;border-bottom:1px solid var(--line)}
+  aside .ah h2{margin:0;font-family:Cinzel,serif;font-size:17px;color:var(--gold2)}
+  aside .ah p{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+  #list{overflow:auto;padding:4px 0}
+  .row{padding:10px 14px;border-bottom:1px solid #2c251b;cursor:pointer}
+  .row:hover,.row.sel{background:var(--panel2)}
+  .row .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .row .chips{display:flex;gap:4px;flex-wrap:wrap}
+  .chip{font-size:10.5px;border:1px solid var(--line);border-radius:10px;padding:1px 7px;color:var(--muted)}
+  .chip.none{opacity:.55}
+  .row .ar{font-size:20px;color:var(--text);margin:4px 0 0;line-height:1.9}
+  .row .en{color:#cbbfa8;font-size:13px}
+  .row .ur{color:#cbbfa8;font-size:14px}
+  .row .tr{color:var(--muted)}
+  .row .full{display:none}
+  .row.sel .full{display:block}
+  .row:not(.sel) .en{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .legend{display:flex;gap:12px;font-size:12px;color:var(--muted);padding:0 24px 6px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+  footer{color:var(--muted);font-size:12px;padding:16px 24px 30px;border-top:1px solid var(--line)}
+  .hide-en .en,.hide-ur .ur,.hide-tr .tr{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <h1>Surah Al-Baqarah · Memory Story</h1>
+  <div class="sub">Hover (or tap) any panel or scene in a picture to see the original Arabic verse with its translation. Click to pin the popup.</div>
+  <div class="tiles" id="tiles"></div>
+</header>
+<nav class="tabs" id="tabs"></nav>
+<div class="controls">
+  <span>Translation</span>
+  <div class="seg" id="lang">
+    <button data-v="en" class="on">English</button><button data-v="ur">اردو</button><button data-v="both">Both</button>
+  </div>
+  <label class="chk"><input type="checkbox" id="optTr"> Transliteration</label>
+  <label class="chk"><input type="checkbox" id="optShow"> Show hotspot outlines</label>
+  <label class="chk">Arabic size <input type="range" id="optSize" min="18" max="36" value="24"></label>
+</div>
+<div class="legend">
+  <span><i style="background:var(--key)"></i>Verse cited in the picture</span>
+  <span><i style="background:var(--more)"></i>Same passage, summarised but not cited</span>
+</div>
+<main>
+  <div class="stage" id="stage"><img id="img" alt=""></div>
+  <aside>
+    <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p></div>
+    <div id="list"></div>
+  </aside>
+</main>
+<div id="pop" role="dialog" aria-live="polite"></div>
+<footer>
+  Arabic: Uthmani script (QuranEnc). English: Saheeh International. Urdu: as bundled in
+  <a href="https://github.com/risan/quran-json">quran-json</a>. Transliteration: Tanzil.net.
+  Hotspot boxes and verse links are hand-mapped in <code>parts.js</code> — edit it to add Parts 5–16.
+</footer>
+
+<script src="verses.js"></script>
+<script src="parts.js"></script>
+<script>
+(() => {
+  const TOTAL_PARTS = 16, SURAH_VERSES = 286;
+  const V = window.VERSES, P = window.PARTS;
+  const $ = s => document.querySelector(s);
+  const stage = $('#stage'), img = $('#img'), pop = $('#pop'), list = $('#list');
+  let cur = P[0], pinned = false, hideT = null, activeSpot = null;
+
+  // ---------- settings ----------
+  const st = JSON.parse(localStorage.getItem('baqarah-ui') || '{}');
+  const save = () => localStorage.setItem('baqarah-ui', JSON.stringify(st));
+  function applySettings(){
+    const lang = st.lang || 'en';
+    document.body.classList.toggle('hide-en', lang === 'ur');
+    document.body.classList.toggle('hide-ur', lang === 'en');
+    document.body.classList.toggle('hide-tr', !st.tr);
+    stage.classList.toggle('show', !!st.show);
+    document.documentElement.style.setProperty('--arsize', (st.size || 24) + 'px');
+    document.querySelectorAll('#lang button').forEach(b => b.classList.toggle('on', b.dataset.v === lang));
+    $('#optTr').checked = !!st.tr; $('#optShow').checked = !!st.show; $('#optSize').value = st.size || 24;
+  }
+  $('#lang').onclick = e => { if (e.target.dataset.v) { st.lang = e.target.dataset.v; save(); applySettings(); } };
+  $('#optTr').onchange = e => { st.tr = e.target.checked; save(); applySettings(); };
+  $('#optShow').onchange = e => { st.show = e.target.checked; save(); applySettings(); };
+  $('#optSize').oninput = e => { st.size = +e.target.value; save(); applySettings(); };
+
+  // ---------- stats ----------
+  const mapped = new Set();
+  P.forEach(p => { for (let v = p.range[0]; v <= p.range[1]; v++) mapped.add(v); });
+  const cited = new Set(P.flatMap(p => p.spots.flatMap(s => s.key)));
+  $('#tiles').innerHTML = [
+    [P.length + ' / ' + TOTAL_PARTS, 'Parts mapped', P.length / TOTAL_PARTS],
+    [mapped.size + ' / ' + SURAH_VERSES, 'Verses covered', mapped.size / SURAH_VERSES],
+    [cited.size, 'Verses cited in pictures', null],
+    [P.reduce((a, p) => a + p.spots.length, 0), 'Hover hotspots', null],
+  ].map(([b, s, f]) => `<div class="tile"><b>${b}</b><span>${s}</span>${f != null ? `<div class="bar"><i style="width:${(f*100).toFixed(1)}%"></i></div>` : ''}</div>`).join('');
+
+  // ---------- tabs ----------
+  const tabs = $('#tabs');
+  for (let i = 1; i <= TOTAL_PARTS; i++) {
+    const p = P.find(x => x.id === i);
+    const b = document.createElement('button');
+    b.className = 'tab'; b.disabled = !p;
+    b.innerHTML = p ? `Part ${i} <small>${p.range[0]}–${p.range[1]}</small>` : `Part ${i}`;
+    b.title = p ? p.title : 'Coming soon — add it in parts.js';
+    if (p) b.onclick = () => { location.hash = 'part' + i; };
+    tabs.appendChild(b);
+  }
+
+  // ---------- rendering helpers ----------
+  const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const verseHTML = (n, kind) => {
+    const v = V[n]; if (!v) return '';
+    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">2:${n}</span>
+      <div class="ar">${ar(n)} ﴿${toArabicNum(n)}﴾</div>
+      <div class="tr">${esc(v.tr)}</div>
+      <div class="en">${esc(v.en)}</div>
+      <div class="ur">${esc(v.ur)}</div></div>`;
+  };
+  // QuranEnc text uses KFGQPC code points for "open tanween"; map them to standard Unicode so common Quran fonts render them.
+  const OPEN_TANWEEN = { '\u0657': '\u08F0', '\u065E': '\u08F1', '\u0656': '\u08F2' };
+  const ar = n => V[n].ar.replace(/[\u0657\u065E\u0656]/g, c => OPEN_TANWEEN[c]);
+  const toArabicNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+  const refStr = arr => compress(arr).map(([a, b]) => a === b ? a : a + '–' + b).join(', ');
+  function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
+
+  function showPop(spot, el){
+    clearTimeout(hideT);
+    if (activeSpot && activeSpot !== el) activeSpot.classList.remove('active');
+    activeSpot = el; el.classList.add('active');
+    const more = spot.more || [];
+    pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3>
+        <div class="refs">Al-Baqarah 2:${refStr(spot.key)}${more.length ? ' · also 2:' + refStr(more) : ''}</div></div>
+        <span class="pin">${pinned ? '📌 pinned · Esc to close' : 'click to pin'}</span></div>
+      ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
+      ${spot.key.map(n => verseHTML(n, 'key')).join('')}
+      ${more.length ? `<div class="sect">Rest of this passage</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
+    pop.classList.add('open'); pop.scrollTop = 0;
+    place(el);
+  }
+  function place(el){
+    const r = el.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight, m = 10;
+    let x = r.right + m, y = Math.max(m, Math.min(r.top, innerHeight - ph - m));
+    if (x + pw > innerWidth - m) x = r.left - pw - m;          // flip to left
+    if (x < m) {                                               // narrow screens: below/above
+      x = Math.max(m, Math.min(r.left, innerWidth - pw - m));
+      y = r.bottom + m + ph < innerHeight ? r.bottom + m : Math.max(m, r.top - ph - m);
+    }
+    pop.style.left = x + 'px'; pop.style.top = y + 'px';
+  }
+  function hidePop(force){
+    if (pinned && !force) return;
+    hideT = setTimeout(() => { pop.classList.remove('open'); activeSpot && activeSpot.classList.remove('active'); activeSpot = null; pinned = false; }, force ? 0 : 220);
+  }
+  pop.addEventListener('mouseenter', () => clearTimeout(hideT));
+  pop.addEventListener('mouseleave', () => hidePop());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hidePop(true); });
+  document.addEventListener('click', e => { if (pinned && !pop.contains(e.target) && !e.target.closest('.spot')) hidePop(true); });
+  addEventListener('scroll', () => { if (activeSpot && pop.classList.contains('open')) place(activeSpot); }, {passive:true});
+
+  // ---------- part render ----------
+  function render(p){
+    cur = p; hidePop(true);
+    [...tabs.children].forEach((b, i) => b.classList.toggle('active', i + 1 === p.id));
+    img.src = p.img; img.alt = `Part ${p.id}: ${p.title}`;
+    stage.querySelectorAll('.spot').forEach(s => s.remove());
+    p.spots.forEach((s, i) => {
+      const [x1, y1, x2, y2] = s.box, el = document.createElement('div');
+      el.className = 'spot' + (/scene|signposts/i.test(s.label) ? ' scene' : '');
+      el.tabIndex = 0; el.dataset.i = i;
+      Object.assign(el.style, { left: x1 / p.w * 100 + '%', top: y1 / p.h * 100 + '%', width: (x2 - x1) / p.w * 100 + '%', height: (y2 - y1) / p.h * 100 + '%' });
+      el.innerHTML = `<span class="badge">${refStr(s.key)}</span>`;
+      el.setAttribute('aria-label', `${s.label}: verses ${refStr(s.key)}`);
+      el.addEventListener('mouseenter', () => { if (!pinned) showPop(s, el); });
+      el.addEventListener('mouseleave', () => hidePop());
+      el.addEventListener('focus', () => { if (!pinned) showPop(s, el); });
+      el.addEventListener('click', e => { e.stopPropagation(); pinned = true; showPop(s, el); });
+      stage.appendChild(el);
+    });
+    $('#ptitle').textContent = `Part ${p.id} · ${p.title}`;
+    $('#pmeta').textContent = `Verses ${p.range[0]}–${p.range[1]} · ${p.spots.length} hotspots · click a verse to light up where it appears in the picture`;
+    list.innerHTML = '';
+    for (let n = p.range[0]; n <= p.range[1]; n++) {
+      const where = p.spots.filter(s => s.key.includes(n)), also = p.spots.filter(s => (s.more || []).includes(n));
+      const names = [...new Set(where.map(s => s.label.replace(/ \((scene|signposts)\)$/, '')))];
+      const row = document.createElement('div'); row.className = 'row'; row.dataset.n = n;
+      row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">2:${n}</span>
+        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${also.length ? 'summarised in picture' : 'not pictured'}</span>`}</div></div>
+        <div class="ar">${ar(n)}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
+      row.onclick = () => {
+        const was = row.classList.contains('sel');
+        list.querySelectorAll('.row.sel').forEach(r => r.classList.remove('sel'));
+        stage.querySelectorAll('.spot.lit').forEach(s => s.classList.remove('lit'));
+        if (was) return;
+        row.classList.add('sel');
+        const hits = [...where, ...also].map(s => stage.querySelector(`.spot[data-i="${p.spots.indexOf(s)}"]`));
+        hits.forEach(h => h.classList.add('lit'));
+        if (hits[0] && innerWidth <= 900) hits[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      list.appendChild(row);
+    }
+    list.scrollTop = 0;
+  }
+
+  function route(){
+    const m = location.hash.match(/part(\d+)/), p = m && P.find(x => x.id === +m[1]);
+    render(p || P[0]);
+  }
+  addEventListener('hashchange', route);
+  applySettings(); route();
+})();
+</script>
+</body>
+</html>
