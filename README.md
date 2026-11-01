@@ -13,7 +13,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 |---|---|
 | `index.html` | The dashboard (plain HTML/CSS/JS, no build step) |
 | `parts.js` | The hotspot map: a box per panel/scene + which verses it shows |
-| `verses.js` | Al-Baqarah 2:1–74: Arabic (Uthmani), English, Urdu, transliteration |
+| `verses.js` | All 286 verses of Al-Baqarah: Arabic (Uthmani), English, Urdu, transliteration |
 | `images/partN.webp` | The posters |
 
 ## Publish on GitHub Pages
@@ -26,10 +26,10 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 3. On GitHub, open **Settings → Pages**, set **Source: Deploy from a branch**, branch `main`, folder `/ (root)`, and save.
 4. After a minute the site is live at `https://<your-username>.github.io/baqarah-dashboard/`.
 
-## Adding Parts 5–16
-1. Save the poster as `images/part5.webp`.
-2. Add the verses to `verses.js`. Generate them from the same source as the existing ones
-   ([quran-json](https://www.npmjs.com/package/quran-json), `dist/chapters/en/2.json` and `ur/2.json`), so the text stays exact.
+## Adding more parts (10–16)
+1. Save the poster as `images/part10.webp`.
+2. `verses.js` already holds all 286 verses (generated from
+   [quran-json](https://www.npmjs.com/package/quran-json)), so nothing to add there.
 3. Add an entry to `PARTS` in `parts.js`. Each hotspot is
    `{ label, box: [x1, y1, x2, y2], key: [verses cited], more: [other verses in the passage], note }`,
    with the box in the image's own pixels. Tick **Show hotspot outlines** on the page to check the boxes line up.

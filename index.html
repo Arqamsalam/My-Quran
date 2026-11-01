@@ -113,7 +113,7 @@
 </div>
 <div class="legend">
   <span><i style="background:var(--key)"></i>Verse cited in the picture</span>
-  <span><i style="background:var(--more)"></i>Same passage, summarised but not cited</span>
+  <span><i style="background:var(--more)"></i>Neighbouring verse of the same passage (not cited in the picture)</span>
 </div>
 <main>
   <div class="stage" id="stage"><img id="img" alt=""></div>
@@ -126,7 +126,7 @@
 <footer>
   Arabic: Uthmani script (QuranEnc). English: Saheeh International. Urdu: as bundled in
   <a href="https://github.com/risan/quran-json">quran-json</a>. Transliteration: Tanzil.net.
-  Hotspot boxes and verse links are hand-mapped in <code>parts.js</code> — edit it to add Parts 5–16.
+  Hotspot boxes and verse links are hand-mapped in <code>parts.js</code>.
 </footer>
 
 <script src="verses.js"></script>
@@ -208,7 +208,7 @@
         <span class="pin">${pinned ? '📌 pinned · Esc to close' : 'click to pin'}</span></div>
       ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
       ${spot.key.map(n => verseHTML(n, 'key')).join('')}
-      ${more.length ? `<div class="sect">Rest of this passage</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
+      ${more.length ? `<div class="sect">Neighbouring verses (not cited in the picture)</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
     pop.classList.add('open'); pop.scrollTop = 0;
     place(el);
   }
@@ -259,7 +259,7 @@
       const names = [...new Set(where.map(s => s.label.replace(/ \((scene|signposts)\)$/, '')))];
       const row = document.createElement('div'); row.className = 'row'; row.dataset.n = n;
       row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">2:${n}</span>
-        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${also.length ? 'summarised in picture' : 'not pictured'}</span>`}</div></div>
+        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${also.length ? 'neighbouring verse' : 'not pictured'}</span>`}</div></div>
         <div class="ar">${ar(n)}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
       row.onclick = () => {
         const was = row.classList.contains('sel');
