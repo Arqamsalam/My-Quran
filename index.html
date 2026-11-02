@@ -204,11 +204,11 @@
     activeSpot = el; el.classList.add('active');
     const more = spot.more || [];
     pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3>
-        <div class="refs">Al-Baqarah 2:${refStr(spot.key)}${more.length ? ' · also 2:' + refStr(more) : ''}</div></div>
+        <div class="refs">${spot.key.length ? 'Al-Baqarah 2:' + refStr(spot.key) + (more.length ? ' · also 2:' + refStr(more) : '') : 'Recalls Al-Baqarah 2:' + refStr(more)}</div></div>
         <span class="pin">${pinned ? '📌 pinned · Esc to close' : 'click to pin'}</span></div>
       ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
       ${spot.key.map(n => verseHTML(n, 'key')).join('')}
-      ${more.length ? `<div class="sect">Neighbouring verses (not cited in the picture)</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
+      ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring verses (not cited in the picture)' : 'Verses this panel recalls (no verse number printed)'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
     pop.classList.add('open'); pop.scrollTop = 0;
     place(el);
   }
@@ -243,8 +243,8 @@
       el.className = 'spot' + (/scene|signposts/i.test(s.label) ? ' scene' : '');
       el.tabIndex = 0; el.dataset.i = i;
       Object.assign(el.style, { left: x1 / p.w * 100 + '%', top: y1 / p.h * 100 + '%', width: (x2 - x1) / p.w * 100 + '%', height: (y2 - y1) / p.h * 100 + '%' });
-      el.innerHTML = `<span class="badge">${refStr(s.key)}</span>`;
-      el.setAttribute('aria-label', `${s.label}: verses ${refStr(s.key)}`);
+      el.innerHTML = `<span class="badge">${refStr(s.key.length ? s.key : s.more)}</span>`;
+      el.setAttribute('aria-label', `${s.label}: verses ${refStr(s.key.length ? s.key : s.more)}`);
       el.addEventListener('mouseenter', () => { if (!pinned) showPop(s, el); });
       el.addEventListener('mouseleave', () => hidePop());
       el.addEventListener('focus', () => { if (!pinned) showPop(s, el); });
