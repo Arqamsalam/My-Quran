@@ -1,12 +1,15 @@
 # Quran · Memory Story Dashboard
 
 An interactive page for the illustrated "Memory Story" posters of **Surah Al-Baqarah (2)** and **Surah Aal Imran (3)**. Switch surah with the buttons above the part tabs.
-**Hover over (or tap) any panel or scene** in a poster to get a popup with the **original Arabic verse(s)**,
+The poster fills the screen. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
-- **Click** a hotspot to pin the popup (Esc or click elsewhere to close).
-- **Click a verse** in the right-hand list to light up every spot in the picture that refers to it.
-- Gold tag = the poster cites that verse. Blue-grey tag = same passage, summarised in the poster but not cited.
+- **⤢ Fit screen / Fill width:** show the whole poster at once, or fill the window width and scroll.
+- **Click** a panel to pin its popup so you can scroll it; hovering another panel moves on. Esc or × closes it.
+- **☰ Verses:** slide-out list of every verse in the part; click one to light up where it appears in the poster.
+- **⚙ Settings:** English / Urdu / both, transliteration, hotspot outlines, Arabic text size.
+- **← →** keys (or the side arrows) change part.
+- Gold tag = the panel cites or shows that verse. Blue-grey = a neighbouring verse, or one a lesson box recalls.
 
 ## Files
 | File | What it is |
@@ -28,9 +31,9 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 4. After a minute the site is live at `https://<your-username>.github.io/baqarah-dashboard/`.
 
 ## Coverage
-- **Al-Baqarah:** all 16 posters (234 hotspots). Verses 202–203 and 252–254 fall between posters; they are listed at
+- **Al-Baqarah:** all 16 posters (248 hotspots, including each poster's lesson box). Verses 202–203 and 252–254 fall between posters; they are listed at
   the end of the preceding part, marked "between posters".
-- **Aal Imran:** both posters (88 hotspots). Poster 1 prints no verse numbers, so its verses were identified from each
+- **Aal Imran:** both posters (93 hotspots). Poster 1 prints no verse numbers, so its verses were identified from each
   panel's wording; the page says so on that part.
 - Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2.
 

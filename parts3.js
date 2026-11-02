@@ -20,6 +20,8 @@ window.PARTS_3 = [
       { label: "Battlefield wounds (scene)", box: [935, 205, 1024, 470], key: [], more: [140], note: "The essence box's 'battlefield wounds' — 'If a wound should touch you…' (140)." },
       { label: "The din with Allah is Islam", box: [358, 390, 665, 458], key: [19, 31], more: [85, 32], note: "'If you love Allah, then follow me' (31) — love is proven by following the appointed Messenger." },
       { label: "First prayer of the House", box: [388, 462, 636, 526], key: [8], more: [9], note: "Rabbana la tuzigh qulubana: 'Our Lord, let not our hearts deviate after You have guided us.'" },
+      { label: "The race outlives every runner", box: [215, 118, 762, 160], key: [], more: [19, 144], note: "The baton is the din (19); the runners change (144: 'messengers have passed on before him')." },
+      { label: "One house · one din · one builder · one race", box: [0, 1504, 800, 1536], key: [], more: [19, 31, 200] },
       // ---- family tree ----
       { label: "The family tree", box: [15, 470, 325, 572], key: [33, 34], note: "'Allah chose Adam, Nuh, the family of Ibrahim and the family of Imran over the worlds — descendants, some of them from others.'" },
       { label: "Branch: Adam", box: [22, 572, 95, 680], key: [33] },
@@ -73,6 +75,9 @@ window.PARTS_3 = [
     spots: [
       { label: "Essence in one line", box: [12, 10, 207, 130], key: [], more: [103, 186, 172, 200], note: "Hold the rope (103), survive the test (186), answer the call (172), stand firm (200)." },
       { label: "We are one ummah (3:103, 3:110)", box: [828, 10, 1112, 132], key: [103, 110] },
+      { label: "One rope. One test. One final charge to stand firm.", box: [215, 104, 830, 150], key: [], more: [103, 186, 200] },
+      { label: "C) Macro-nazm", box: [737, 1110, 1112, 1332], key: [], more: [], note: "This box is about how the surah fits between Al-Baqarah and An-Nisa (the surahs' structure), so it has no single verse." },
+      { label: "One rope. Many tests. One final charge to stand firm.", box: [0, 1340, 820, 1402], key: [], more: [103, 186, 200] },
       // row 1
       { label: "① Rope of Allah", box: [10, 150, 276, 386], key: [103], more: [102], note: "'Hold firmly to the rope of Allah all together and do not become divided… you were on the edge of a pit of the Fire, and He saved you from it.'" },
       { label: "② Best community", box: [278, 150, 546, 386], key: [110], more: [104], note: "'You are the best nation produced for mankind' — because you enjoin right, forbid wrong and believe in Allah." },

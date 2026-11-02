@@ -32,6 +32,7 @@ window.PARTS = [
   {
     id: 2, title: "Adam: Knowledge, Pride, Fall and Guidance", range: [30, 39], img: "images/part2.webp", w: 941, h: 1672,
     spots: [
+      { label: "The surah's measuring line", box: [145, 1308, 792, 1392], key: [], more: [31, 32, 33, 34], note: "Adam's knowledge (31–33) led the angels to humble obedience; Iblis answered with pride (34)." },
       { label: "① The Khalifah", box: [55, 172, 402, 318], key: [30], note: "The angels ask a sincere question; Allah's answer: 'I know what you do not know.'" },
       { label: "① The Khalifah (scene)", box: [0, 318, 480, 545], key: [30] },
       { label: "② The Names", box: [552, 178, 878, 288], key: [31, 32, 33], note: "Knowledge is Adam's honour — and the angels humbly admit what they don't know." },
@@ -49,6 +50,7 @@ window.PARTS = [
   {
     id: 3, title: "Israel's Favours and First Failures", range: [40, 66], img: "images/part3.webp", w: 941, h: 1672,
     spots: [
+      { label: "The pattern", box: [560, 1262, 918, 1390], key: [], more: [49, 50, 51, 53], note: "Rescue (49–50) → revelation (53) → resistance (the calf, 51)." },
       { label: "① Remember the Favour", box: [18, 178, 392, 345], key: [40, 41, 42, 43, 44], more: [45, 46, 47, 48], note: "A two-way covenant: 'Fulfil My covenant and I will fulfil yours.'" },
       { label: "① Remember the Favour (scene)", box: [392, 150, 941, 370], key: [40, 41, 42, 43, 44], more: [45, 46, 47, 48] },
       { label: "② Rescued", box: [18, 378, 348, 525], key: [49, 50], note: "The same sea that saved them drowned their enemy." },
@@ -88,6 +90,7 @@ window.PARTS = [
   {
     id: 5, title: "Hardened Hearts and a Broken Covenant", range: [75, 123], img: "images/part5.webp", w: 941, h: 1672,
     spots: [
+      { label: "Broken trust", box: [592, 1425, 922, 1565], key: [], more: [85, 93, 101], note: "They had the Book, yet believed in part of it (85), said 'we hear and disobey' (93), and threw it behind their backs (101)." },
       { label: "① Truth Twisted", box: [25, 178, 292, 322], key: [75, 79], more: [76, 77, 78], note: "Changing the label doesn't change the source: 'from Allah' written by their own hands." },
       { label: "① Truth Twisted (scene)", box: [0, 322, 345, 545], key: [75, 79], more: [76, 77, 78] },
       { label: "② False Security", box: [345, 188, 582, 302], key: [80], more: [81, 82], note: "A self-issued pass: 'The Fire will only touch us for a few days.'" },
@@ -109,6 +112,7 @@ window.PARTS = [
   {
     id: 6, title: "Ibrahim and the Transfer of the Covenant", range: [124, 141], img: "images/part6.webp", w: 941, h: 1672,
     spots: [
+      { label: "The hinge of the surah", box: [205, 1448, 735, 1552], key: [], more: [124, 134], note: "'My covenant does not reach the wrongdoers' (124); 'it will have what it earned' (134)." },
       { label: "① Tested and Complete", box: [18, 188, 314, 318], key: [124], note: "Pass the test first, then the leadership: 'I will make you an imam for mankind.'" },
       { label: "① Tested and Complete (scene)", box: [314, 205, 540, 492], key: [124] },
       { label: "② Not by Blood", box: [542, 192, 808, 358], key: [124], note: "'My covenant does not reach the wrongdoers' — a surname is not a ticket." },
@@ -131,6 +135,7 @@ window.PARTS = [
   {
     id: 7, title: "The Qiblah: Appointment of the Middle Nation", range: [142, 152], img: "images/part7.webp", w: 941, h: 1672,
     spots: [
+      { label: "The handover", box: [485, 1418, 902, 1532], key: [], more: [143, 144], note: "The new qiblah (144) comes with a job: 'witnesses over the people' (143)." },
       { label: "① The Question", box: [18, 205, 338, 325], key: [142], note: "Directions belong to Allah; the question is whom you follow, not which way you face." },
       { label: "① The Question (scene)", box: [0, 325, 475, 482], key: [142] },
       { label: "② The Appointment", box: [512, 205, 864, 345], key: [143], note: "Verse 143 of 286 — the middle verse names the 'middle nation'." },
@@ -152,6 +157,7 @@ window.PARTS = [
   {
     id: 8, title: "Training the New Nation", range: [153, 177], img: "images/part8.webp", w: 941, h: 1672,
     spots: [
+      { label: "The job description", box: [272, 1392, 642, 1538], key: [], more: [177], note: "Verse 177 lists the whole job: faith, giving, prayer, zakat, keeping promises, patience." },
       { label: "① Two Tools", box: [148, 152, 352, 268], key: [153], note: "Patience and prayer: the two tools for everything the next verses throw at you." },
       { label: "① Two Tools (scene)", box: [270, 268, 520, 410], key: [153] },
       { label: "② Alive with Their Lord", box: [540, 168, 778, 308], key: [154] },
@@ -175,6 +181,7 @@ window.PARTS = [
   {
     id: 9, title: "Fasting, Nearness, Justice and Hajj", range: [178, 201], img: "images/part9.webp", w: 941, h: 1672,
     spots: [
+      { label: "Law with a heart", box: [20, 1455, 922, 1588], key: [], more: [178, 183, 187, 188, 196], note: "Justice (178), fasting (183), 'these are the limits of Allah' (187), wealth (188), Hajj (196)." },
       { label: "① Justice That Protects Life", box: [575, 15, 932, 162], key: [178, 179], note: "'In just recompense there is life' — the deterrent protects everyone." },
       { label: "② Prepare for Death", box: [575, 168, 932, 292], key: [180], more: [181, 182] },
       { label: "③ Fasting", box: [575, 298, 932, 452], key: [183, 184, 185], note: "The goal is stated in 183 itself: 'so that you may become mindful (taqwa).'" },
@@ -199,6 +206,7 @@ window.PARTS = [
   {
     id: 10, title: "Two Men, Complete Submission and the Coming Test", range: [204, 214], img: "images/part10.webp", w: 941, h: 1672,
     spots: [
+      { label: "Character is action", box: [537, 1343, 917, 1512], key: [], more: [204, 205, 207], note: "Fine words (204) versus what his feet do (205) — and the man who gives himself (207)." },
       { label: "① Dazzling Words (scene)", box: [0, 165, 468, 345], key: [204], note: "Judge a tree by its fruit, not its rustle: fine words in 204, ruined crops in 205." },
       { label: "① Dazzling Words", box: [0, 345, 468, 456], key: [204] },
       { label: "② What His Feet Reveal (scene)", box: [474, 165, 941, 345], key: [205] },
@@ -220,6 +228,7 @@ window.PARTS = [
   {
     id: 11, title: "Building a Just Muslim Household", range: [215, 242], img: "images/part11.webp", w: 941, h: 1672,
     spots: [
+      { label: "The home is a covenant", box: [18, 1438, 926, 1562], key: [], more: [229, 231, 238], note: "'Do not keep them intending harm' (231) — and guard the prayers right in the middle of it (238)." },
       { label: "① Spend Close to Home", box: [8, 712, 468, 852], key: [215], note: "Charity starts at home: parents and relatives are first on the list." },
       { label: "② Hard Duties", box: [472, 712, 935, 852], key: [216], more: [217, 218], note: "Like medicine: you may dislike what is good for you — Allah knows and you do not." },
       { label: "③ Intoxication and Gambling", box: [8, 856, 468, 996], key: [219], note: "An honest cost–benefit sheet: some benefit, but the harm is greater." },
@@ -235,6 +244,7 @@ window.PARTS = [
   {
     id: 12, title: "Talut, the River Test and Dawud's Victory", range: [243, 251], img: "images/part12.webp", w: 941, h: 1672,
     spots: [
+      { label: "The true army is filtered", box: [555, 1298, 920, 1442], key: [], more: [249], note: "The river filtered the army; 'how many a small group has overcome a large group by Allah's permission.'" },
       { label: "① Life After Flight", box: [0, 220, 468, 468], key: [243], more: [244], note: "Running from death doesn't save you from it; life and death are in Allah's hands." },
       { label: "② The Good Loan", box: [472, 220, 941, 468], key: [245], note: "You 'lend' to Allah and He repays many times over — the best investment there is." },
       { label: "③ Give Us a King", box: [0, 470, 468, 712], key: [246], note: "Eager to ask, slow to act: most turned away once fighting was prescribed." },
@@ -248,6 +258,7 @@ window.PARTS = [
   {
     id: 13, title: "Allah's Throne and the Proof of Resurrection", range: [255, 260], img: "images/part13.webp", w: 941, h: 1672,
     spots: [
+      { label: "Connection: why this comes before money", box: [55, 1488, 862, 1592], key: [], more: [255, 259, 260, 261], note: "Know the Owner (255), trust His power to bring back to life (259–260) — then comes the parable of spending (261)." },
       { label: "His Kursi extends… (scene)", box: [0, 190, 345, 400], key: [255], note: "Ayat al-Kursi: the greatest verse of the Qur'an (Sahih Muslim)." },
       { label: "① The Summit (scene)", box: [345, 160, 620, 395], key: [255] },
       { label: "⑤ The Silenced King (scene)", box: [0, 400, 270, 650], key: [258] },
@@ -265,6 +276,7 @@ window.PARTS = [
   {
     id: 14, title: "The Garden of Charity", range: [261, 274], img: "images/part14.webp", w: 941, h: 1672,
     spots: [
+      { label: "The money mirror", box: [28, 1448, 926, 1602], key: [], more: [17, 19, 261, 264, 266], note: "The opening parables of fire (17) and storm (19) return: charity grows like grain (261); showing off leaves bare rock (264) and ash (266)." },
       { label: "① One Grain, Seven Hundred", box: [18, 92, 337, 242], key: [261], note: "1 grain → 7 ears × 100 = 700. And Allah multiplies more for whom He wills." },
       { label: "① One Grain, Seven Hundred (scene)", box: [337, 90, 632, 425], key: [261] },
       { label: "② Do Not Poison the Gift", box: [638, 92, 930, 256], key: [262, 263, 264], more: [265], note: "Reminding someone of your favour is like dust on a rock: one rain and nothing grows." },
@@ -287,6 +299,7 @@ window.PARTS = [
   {
     id: 15, title: "Riba, Debt and the Pen of Justice", range: [275, 283], img: "images/part15.webp", w: 941, h: 1672,
     spots: [
+      { label: "Faith enters the contract", box: [20, 1463, 926, 1588], key: [], more: [280, 282], note: "Patience with someone who can't pay (280); writing down the debt (282)." },
       // numbered scenes
       { label: "① Knocked Flat (scene)", box: [0, 200, 420, 420], key: [275], note: "'Trade is just like riba,' they say. Allah's answer is short: trade is permitted, riba forbidden." },
       { label: "② Wiped Out or Grown (scene)", box: [425, 210, 640, 405], key: [276], more: [277] },
@@ -310,6 +323,7 @@ window.PARTS = [
   {
     id: 16, title: "'We Hear and We Obey'", range: [284, 286], img: "images/part16.webp", w: 941, h: 1672,
     spots: [
+      { label: "The whole surah in two answers", box: [20, 1448, 926, 1628], key: [], more: [93, 285], note: "'We hear and we disobey' (93) versus 'We hear and we obey' (285)." },
       { label: "① Nothing Is Outside His Ownership", box: [612, 18, 930, 202], key: [284], note: "Even what stays inside your heart is within His knowledge." },
       { label: "② The Messenger Believes", box: [612, 208, 930, 344], key: [285], note: "The last two verses of Al-Baqarah: whoever recites them at night, they will suffice him (Sahih al-Bukhari)." },
       { label: "③ One Unbroken Revelation", box: [612, 352, 930, 542], key: [285] },
