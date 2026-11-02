@@ -254,12 +254,14 @@
     $('#ptitle').textContent = `Part ${p.id} · ${p.title}`;
     $('#pmeta').textContent = `Verses ${p.range[0]}–${p.range[1]} · ${p.spots.length} hotspots · click a verse to light up where it appears in the picture`;
     list.innerHTML = '';
-    for (let n = p.range[0]; n <= p.range[1]; n++) {
+    // also list verses that fall between this poster and the next one, so no verse is skipped
+    const nxt = P.find(x => x.id === p.id + 1), end = nxt ? Math.max(p.range[1], nxt.range[0] - 1) : p.range[1];
+    for (let n = p.range[0]; n <= end; n++) {
       const where = p.spots.filter(s => s.key.includes(n)), also = p.spots.filter(s => (s.more || []).includes(n));
       const names = [...new Set(where.map(s => s.label.replace(/ \((scene|signposts)\)$/, '')))];
       const row = document.createElement('div'); row.className = 'row'; row.dataset.n = n;
       row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">2:${n}</span>
-        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${also.length ? 'neighbouring verse' : 'not pictured'}</span>`}</div></div>
+        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${n > p.range[1] ? 'between posters ' + p.id + ' and ' + (p.id + 1) : also.length ? 'neighbouring verse' : 'not pictured'}</span>`}</div></div>
         <div class="ar">${ar(n)}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
       row.onclick = () => {
         const was = row.classList.contains('sel');
