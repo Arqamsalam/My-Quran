@@ -1,6 +1,6 @@
-# Surah Al-Baqarah · Memory Story Dashboard
+# Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of Surah Al-Baqarah.
+An interactive page for the illustrated "Memory Story" posters of **Surah Al-Baqarah (2)** and **Surah Aal Imran (3)**. Switch surah with the buttons above the part tabs.
 **Hover over (or tap) any panel or scene** in a poster to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -14,7 +14,8 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `index.html` | The dashboard (plain HTML/CSS/JS, no build step) |
 | `parts.js` | The hotspot map: a box per panel/scene + which verses it shows |
 | `verses.js` | All 286 verses of Al-Baqarah: Arabic (Uthmani), English, Urdu, transliteration |
-| `images/partN.webp` | The posters |
+| `parts3.js`, `verses3.js` | The same for Aal Imran (3:1–200) |
+| `images/partN.webp`, `images/s3-partN.webp` | The posters |
 
 ## Publish on GitHub Pages
 1. Create a new repository on GitHub (e.g. `baqarah-dashboard`).
@@ -27,9 +28,11 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 4. After a minute the site is live at `https://<your-username>.github.io/baqarah-dashboard/`.
 
 ## Coverage
-All 16 posters are mapped (234 hotspots). Verses 202–203 and 252–254 fall between posters; they are listed at the end of
-the preceding part's verse list, marked "between posters". A panel that prints no verse number but refers back to
-earlier verses (Part 16, card 7) shows them as "verses this panel recalls".
+- **Al-Baqarah:** all 16 posters (234 hotspots). Verses 202–203 and 252–254 fall between posters; they are listed at
+  the end of the preceding part, marked "between posters".
+- **Aal Imran:** both posters (88 hotspots). Poster 1 prints no verse numbers, so its verses were identified from each
+  panel's wording; the page says so on that part.
+- Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2.
 
 ## Editing a hotspot
 Each hotspot in `parts.js` is

@@ -1,0 +1,118 @@
+// Hotspot map for Surah Aal Imran (3).
+// box: [x1, y1, x2, y2] in the image's own pixels.
+// key:  verses the panel shows (paraphrases or cites).   more: neighbouring / recalled verses.
+// Poster 1 prints no verse numbers: every key below was matched from the panel's wording to the verse text.
+
+window.PARTS_3 = [
+  {
+    id: 1, title: "The Family of Building and Flourishing", range: [1, 100], img: "images/s3-part1.webp", w: 1024, h: 1536,
+    warn: "This poster prints no verse numbers. Each panel's verses were identified from its wording; the full text is in the popup so you can check.",
+    spots: [
+      // ---- top band ----
+      { label: "Essence in one line", box: [12, 10, 205, 205], key: [], more: [19, 33, 200], note: "One din (19), passed down a chosen family line (33), held with patience (200)." },
+      { label: "The name, unlocked", box: [795, 10, 1012, 205], key: [33, 35], note: "'Aal Imran' = the family of Imran (33); the 'wife of Imran' is Maryam's mother (35). The root ʿ-m-r gives ʿimārah (building), ʿumrān (flourishing) and ʿumr (life-span)." },
+      { label: "The race of runners (scene)", box: [0, 205, 135, 330], key: [], more: [200], note: "The poster's picture of the faith being handed on, runner to runner." },
+      { label: "The House of God's Din (scene)", box: [405, 195, 618, 388], key: [19], more: [85], note: "One house, one name: 'The religion in the sight of Allah is Islam.'" },
+      { label: "Title deed: the Owner", box: [276, 218, 400, 384], key: [2, 26], more: [27], note: "Al-Hayy al-Qayyum (2) — the same names as Ayat al-Kursi (2:255). 'You give sovereignty to whom You will… in Your hand is all good' (26)." },
+      { label: "The blueprint: the Book", box: [618, 218, 742, 384], key: [7], note: "Muḥkam = the load-bearing walls ('the foundation of the Book'). Mutashābih = details whose full meaning only Allah knows." },
+      { label: "The crooked-hearted (scene)", box: [82, 300, 276, 470], key: [7], note: "'Those in whose hearts is deviation follow what is unspecific, seeking discord.'" },
+      { label: "The firm-rooted (scene)", box: [742, 250, 935, 470], key: [7], note: "'Those firm in knowledge say: We believe in it. All of it is from our Lord.'" },
+      { label: "Battlefield wounds (scene)", box: [935, 205, 1024, 470], key: [], more: [140], note: "The essence box's 'battlefield wounds' — 'If a wound should touch you…' (140)." },
+      { label: "The din with Allah is Islam", box: [358, 390, 665, 458], key: [19, 31], more: [85, 32], note: "'If you love Allah, then follow me' (31) — love is proven by following the appointed Messenger." },
+      { label: "First prayer of the House", box: [388, 462, 636, 526], key: [8], more: [9], note: "Rabbana la tuzigh qulubana: 'Our Lord, let not our hearts deviate after You have guided us.'" },
+      // ---- family tree ----
+      { label: "The family tree", box: [15, 470, 325, 572], key: [33, 34], note: "'Allah chose Adam, Nuh, the family of Ibrahim and the family of Imran over the worlds — descendants, some of them from others.'" },
+      { label: "Branch: Adam", box: [22, 572, 95, 680], key: [33] },
+      { label: "Branch: Nuh", box: [95, 572, 168, 680], key: [33] },
+      { label: "Branch: the House of Ibrahim", box: [168, 572, 240, 680], key: [33] },
+      { label: "Branch: the House of Imran", box: [240, 572, 318, 680], key: [33, 34] },
+      { label: "The family tree (scene)", box: [15, 680, 325, 845], key: [33, 34] },
+      // ---- Maryam ----
+      { label: "Imran's wife, expecting (scene)", box: [330, 528, 470, 682], key: [35] },
+      { label: "A grandmother makes a vow", box: [352, 682, 448, 776], key: [35], note: "She dedicated the unborn child to the service of Allah's House: 'so accept this from me.'" },
+      { label: "A girl is born", box: [352, 776, 448, 848], key: [36, 37], note: "'The male is not like the female' (36) — and Allah accepted her 'with good acceptance' (37)." },
+      { label: "Maryam in the mihrab (scene)", box: [470, 520, 716, 848], key: [37], note: "'Every time Zakariyya entered upon her in the prayer chamber, he found provision with her.'" },
+      { label: "1. Out-of-season fruit", box: [718, 474, 1010, 592], key: [37, 38], note: "Seeing Allah provide for Maryam, Zakariyya asked for the 'impossible' himself (38)." },
+      { label: "2. Glad tidings of Yahya", box: [718, 594, 1010, 696], key: [39], more: [40, 41], note: "Called 'while he was standing in prayer in the chamber' — the same mihrab." },
+      { label: "3. The Word – Isa", box: [718, 698, 1010, 830], key: [45, 47], more: [42, 43, 44, 46], note: "'A word from Him, whose name will be the Messiah, Isa son of Maryam' (45)." },
+      { label: "Answer: when He decrees a matter", box: [798, 830, 1008, 864], key: [47], note: "'When He decrees a matter, He only says to it Be, and it is.'" },
+      { label: "Three impossible things", box: [718, 864, 1010, 906], key: [37, 40, 47], note: "Out-of-season fruit (37) · a son for the old man and barren wife (40) · a child with no father (47)." },
+      // ---- Isa ----
+      { label: "Isa – every miracle by God's permission", box: [180, 860, 552, 890], key: [49], note: "'By permission of Allah' is said twice in this one verse." },
+      { label: "He shapes a clay bird (scene)", box: [18, 856, 232, 992], key: [49] },
+      { label: "He opens blind eyes (scene)", box: [232, 890, 372, 992], key: [49] },
+      { label: "He heals the leper (scene)", box: [372, 890, 452, 992], key: [49] },
+      { label: "He raises the dead (scene)", box: [452, 890, 552, 992], key: [49] },
+      { label: "He gathers helpers – the Hawariyyun", box: [18, 992, 552, 1068], key: [52], more: [53], note: "'Who are my helpers for Allah?' — 'We are Allah's helpers… we are Muslims.'" },
+      { label: "A plot rises to kill him", box: [562, 862, 712, 955], key: [54] },
+      { label: "Allah is the best of planners", box: [562, 955, 712, 1068], key: [54], note: "'They planned, and Allah planned. And Allah is the best of planners.'" },
+      { label: "Lifted up to Himself", box: [716, 906, 1010, 1068], key: [55], note: "'I will take you and raise you to Myself and purify you from those who disbelieve.'" },
+      // ---- Najran ----
+      { label: "The debate with Najran", box: [14, 1074, 246, 1292], key: [59], more: [60, 61], note: "Context from tafsir (e.g. Ibn Kathir): a Christian delegation from Najran debated the Prophet ﷺ about Isa; 59–61 were the reply." },
+      { label: "The master blueprint", box: [248, 1074, 428, 1292], key: [59], note: "'The example of Isa to Allah is like that of Adam: He created him from dust, then said Be, and he was.'" },
+      { label: "Ladder rung: no parents at all (Adam)", box: [430, 1098, 602, 1132], key: [59] },
+      { label: "Ladder rung: no father (Isa)", box: [430, 1132, 602, 1160], key: [47] },
+      { label: "Ladder rung: born to the aged and barren", box: [430, 1160, 602, 1196], key: [40] },
+      { label: "Climb the ladder backwards", box: [430, 1196, 602, 1292], key: [59], more: [40, 47], note: "If a birth with no parents (Adam) proves no divinity, a birth with no father cannot either." },
+      { label: "The mubahala", box: [604, 1074, 776, 1292], key: [61], more: [60], note: "'Let us call our sons and your sons, our women and your women… and invoke the curse of Allah upon the liars.'" },
+      { label: "They back away", box: [778, 1074, 1010, 1292], key: [63], more: [62], note: "'But if they turn away — Allah is Knowing of the corrupters.' (Their declining the mubahala is reported in the sirah and tafsir.)" },
+      // ---- bottom band ----
+      { label: "The race, still on", box: [14, 1296, 206, 1502], key: [144], more: [140, 146], note: "'Muhammad is not but a messenger; messengers have passed before him' — the runner changes, the race goes on." },
+      { label: "Hold the one din", box: [212, 1334, 310, 1502], key: [19, 85], note: "'Whoever desires other than Islam as religion — never will it be accepted from him' (85)." },
+      { label: "Cling to the muhkam", box: [310, 1334, 406, 1502], key: [7] },
+      { label: "Avoid the fitnah of the heart", box: [406, 1334, 504, 1502], key: [8], more: [7] },
+      { label: "Trust the Architect", box: [504, 1334, 602, 1502], key: [47, 59] },
+      { label: "Be helpers of Allah", box: [602, 1334, 700, 1502], key: [52] },
+      { label: "Pass it on", box: [700, 1334, 798, 1502], key: [200], more: [144] },
+      { label: "Grip it with unbreakable patience", box: [814, 1298, 1012, 1502], key: [200], note: "The surah's last verse: persevere, out-endure, hold your post, fear Allah — so that you may succeed." },
+    ],
+  },
+  {
+    id: 2, title: "From the Rope of Allah to the Final Commands", range: [101, 200], img: "images/s3-part2.webp", w: 1122, h: 1402,
+    warn: "Card 4 (the First House) shows 3:96–97, just before this poster's stated range of 101–200.",
+    spots: [
+      { label: "Essence in one line", box: [12, 10, 207, 130], key: [], more: [103, 186, 172, 200], note: "Hold the rope (103), survive the test (186), answer the call (172), stand firm (200)." },
+      { label: "We are one ummah (3:103, 3:110)", box: [828, 10, 1112, 132], key: [103, 110] },
+      // row 1
+      { label: "① Rope of Allah", box: [10, 150, 276, 386], key: [103], more: [102], note: "'Hold firmly to the rope of Allah all together and do not become divided… you were on the edge of a pit of the Fire, and He saved you from it.'" },
+      { label: "② Best community", box: [278, 150, 546, 386], key: [110], more: [104], note: "'You are the best nation produced for mankind' — because you enjoin right, forbid wrong and believe in Allah." },
+      { label: "③ Fairness about the People of the Book", box: [548, 150, 816, 386], key: [113], more: [114, 115, 199], note: "'They are not all the same' — a fair verdict, not a blanket one." },
+      { label: "④ The First House / Bakkah", box: [818, 150, 1112, 386], key: [96, 97], note: "The Arabic says 'Bakkah' (bi-Bakkata); Saheeh International renders it 'Makkah'." },
+      // row 2
+      { label: "⑤ Uhud setup", box: [10, 388, 276, 604], key: [121], note: "The Qur'an mentions posting the believers at their stations (121). The order to the archers not to leave the hill is from hadith (Sahih al-Bukhari)." },
+      { label: "⑥ Turning point", box: [278, 388, 546, 604], key: [152], more: [153], note: "'You lost courage, disputed about the order and disobeyed after He showed you what you love. Among you are some who desire this world.'" },
+      { label: "⑦ The rumor", box: [548, 388, 816, 604], key: [144], note: "Revealed at Uhud; recited by Abu Bakr on the day the Prophet ﷺ died (Sahih al-Bukhari)." },
+      { label: "⑧ Lessons in the aftermath", box: [818, 388, 1112, 604], key: [139, 140, 141, 154], note: "Do not weaken (139) · days alternate (140) · purifying (141) · calming drowsiness for some, anxious thoughts for others (154)." },
+      // row 3
+      { label: "⑨ Divine answer to fatalism", box: [10, 606, 276, 826], key: [154], more: [156, 168], note: "'Even if you had been inside your houses, those decreed to be killed would have come out to their death beds.'" },
+      { label: "⑩ Moral training mid-battle", box: [278, 606, 546, 826], key: [130, 133, 134, 135], more: [131, 132, 136], note: "In the middle of the Uhud passage: no riba (130), race to forgiveness (133), restrain anger and pardon (134), repent (135)." },
+      { label: "⑪ The martyrs are alive", box: [548, 606, 816, 826], key: [169], more: [170, 171], note: "'Alive with their Lord, receiving provision' — compare Maryam's provision in 37." },
+      { label: "⑫ March again", box: [818, 606, 1112, 718], key: [172, 173, 174] },
+      { label: "HasbunAllahu wa ni'mal-wakil", box: [830, 718, 1052, 790], key: [173], note: "'Sufficient for us is Allah, and He is the best Disposer of affairs.'" },
+      { label: "They return with grace and bounty", box: [818, 790, 1112, 826], key: [174] },
+      // row 4
+      { label: "⑬ Separation of pure and impure", box: [10, 830, 276, 1096], key: [179], note: "Like a filter: trials separate 'the evil from the good'." },
+      { label: "⑭ Final audit", box: [278, 830, 458, 1096], key: [180, 185, 186], note: "Hoarding (180) · every soul tastes death (185) · tested in wealth and selves (186)." },
+      { label: "Do not be deceived", box: [458, 840, 544, 1012], key: [196, 197], note: "'Be not deceived by the movement of the disbelievers through the land — a small enjoyment.'" },
+      { label: "⑮ Rooftop of the ulul albab", box: [548, 830, 708, 1096], key: [190, 191], note: "Remember Allah standing, sitting and lying on their sides — and reflect on creation." },
+      { label: "Rabbana ladder: 'You did not create this in vain'", box: [708, 858, 812, 900], key: [191] },
+      { label: "Rabbana ladder: 'Save us from the Fire'", box: [708, 900, 812, 930], key: [191, 192] },
+      { label: "Rabbana ladder: 'We heard the caller and believed'", box: [708, 930, 812, 962], key: [193] },
+      { label: "Rabbana ladder: 'Forgive us'", box: [708, 962, 812, 985], key: [193] },
+      { label: "Rabbana ladder: 'Grant what You promised'", box: [708, 985, 812, 1012], key: [194] },
+      { label: "⑯ The answer and final commands", box: [818, 830, 1112, 952], key: [195], note: "Their Lord responded: 'I will never let the work of any worker be lost, male or female.'" },
+      { label: "Isbiru · Sabiru · Rabitu · Wattaqullah", box: [832, 952, 1088, 1062], key: [200], note: "Persevere · out-endure · hold your post · fear Allah." },
+      { label: "So that you may flourish", box: [790, 1062, 1112, 1096], key: [200], note: "La'allakum tuflihun — the surah's last words." },
+      // bottom panels
+      { label: "A) Amud: the central pillar", box: [10, 1110, 358, 1255], key: [], more: [200], note: "The surah's 'pillar': steadfastness, until patience itself holds the House (200)." },
+      { label: "Verse 144 steadied the Ummah", box: [10, 1255, 358, 1330], key: [144], note: "When the Prophet ﷺ died, Abu Bakr recited 144, and people said it was as if they had never heard it before (Sahih al-Bukhari)." },
+      { label: "Micro-nazm: framed by Rabbana prayers", box: [380, 1152, 735, 1173], key: [], more: [8, 16, 147, 191, 192, 193, 194] },
+      { label: "Micro-nazm: the provision thread", box: [380, 1173, 735, 1194], key: [], more: [37, 169], note: "The same word, rizq: Maryam's provision (37) and the martyrs' provision (169)." },
+      { label: "Micro-nazm: choosing becomes refining", box: [380, 1194, 735, 1216], key: [], more: [33, 42, 141, 179], note: "Allah 'chose' (33, 42) and 'purifies' (141) and 'chooses' His messengers (179)." },
+      { label: "Micro-nazm: the marketplace theme", box: [380, 1216, 735, 1238], key: [], more: [77, 92, 187, 199], note: "Selling the covenant 'for a small price' (77, 187, 199) versus spending from what you love (92)." },
+      { label: "Micro-nazm: the permission / decree thread", box: [380, 1238, 735, 1260], key: [], more: [49, 145, 166], note: "'By permission of Allah': Isa's miracles (49), every death (145), the day of Uhud (166)." },
+      { label: "Micro-nazm: the gender bookend", box: [380, 1260, 735, 1282], key: [], more: [36, 195], note: "'The male is not like the female' (36) … 'male or female, you are of one another' (195)." },
+      { label: "Micro-nazm: night devotion echo", box: [380, 1282, 735, 1306], key: [], more: [17, 113], note: "'Those who seek forgiveness before dawn' (17) · 'reciting the verses of Allah during the night' (113)." },
+    ],
+  },
+];

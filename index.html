@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Surah Al-Baqarah · Memory Story Dashboard</title>
+<title>Quran Memory Story Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Nastaliq+Urdu&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,6 +26,11 @@
   .bar{height:6px;background:#2d261c;border-radius:4px;margin-top:6px;overflow:hidden}
   .bar i{display:block;height:100%;background:var(--gold)}
 
+  nav.surahs{display:flex;gap:8px;flex-wrap:wrap;padding:12px 24px 0;background:#17130e}
+  .sbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:Cinzel,serif}
+  .sbtn .arn{font-family:"Amiri Quran",serif;margin-left:6px}
+  .sbtn.active{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);color:var(--gold2)}
+  #pmeta .warn{display:block;margin-top:6px;color:#e4c27a}
   nav.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:12px 24px;border-bottom:1px solid var(--line);background:#17130e;position:sticky;top:0;z-index:20}
   .tab{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
   .tab small{color:var(--muted)}
@@ -97,10 +102,11 @@
 </head>
 <body>
 <header>
-  <h1>Surah Al-Baqarah · Memory Story</h1>
+  <h1 id="h1">Quran · Memory Story</h1>
   <div class="sub">Hover (or tap) any panel or scene in a picture to see the original Arabic verse with its translation. Click to pin the popup.</div>
   <div class="tiles" id="tiles"></div>
 </header>
+<nav class="surahs" id="surahs"></nav>
 <nav class="tabs" id="tabs"></nav>
 <div class="controls">
   <span>Translation</span>
@@ -112,8 +118,8 @@
   <label class="chk">Arabic size <input type="range" id="optSize" min="18" max="36" value="24"></label>
 </div>
 <div class="legend">
-  <span><i style="background:var(--key)"></i>Verse cited in the picture</span>
-  <span><i style="background:var(--more)"></i>Neighbouring verse of the same passage (not cited in the picture)</span>
+  <span><i style="background:var(--key)"></i>Verse the panel cites or shows</span>
+  <span><i style="background:var(--more)"></i>Neighbouring or recalled verse (not shown directly)</span>
 </div>
 <main>
   <div class="stage" id="stage"><img id="img" alt=""></div>
@@ -126,18 +132,24 @@
 <footer>
   Arabic: Uthmani script (QuranEnc). English: Saheeh International. Urdu: as bundled in
   <a href="https://github.com/risan/quran-json">quran-json</a>. Transliteration: Tanzil.net.
-  Hotspot boxes and verse links are hand-mapped in <code>parts.js</code>.
+  Hotspot boxes and verse links are hand-mapped in <code>parts.js</code> (Al-Baqarah) and <code>parts3.js</code> (Aal Imran).
 </footer>
 
 <script src="verses.js"></script>
 <script src="parts.js"></script>
+<script src="verses3.js"></script>
+<script src="parts3.js"></script>
 <script>
 (() => {
-  const TOTAL_PARTS = 16, SURAH_VERSES = 286;
-  const V = window.VERSES, P = window.PARTS;
+  // ---------- surahs ----------
+  const SURAHS = [
+    { id: 2, name: 'Al-Baqarah', arName: 'البقرة', total: 286, totalParts: 16, V: window.VERSES, P: window.PARTS, hash: n => 'part' + n },
+    { id: 3, name: 'Aal Imran', arName: 'آل عمران', total: 200, totalParts: 2, V: window.VERSES_3, P: window.PARTS_3, hash: n => 'aal-imran-' + n },
+  ].filter(x => x.V && x.P);
+  let S = SURAHS[0], V = S.V, P = S.P;
   const $ = s => document.querySelector(s);
-  const stage = $('#stage'), img = $('#img'), pop = $('#pop'), list = $('#list');
-  let cur = P[0], pinned = false, hideT = null, activeSpot = null;
+  const stage = $('#stage'), img = $('#img'), pop = $('#pop'), list = $('#list'), tabs = $('#tabs');
+  let pinned = false, hideT = null, activeSpot = null;
 
   // ---------- settings ----------
   let st = {};
@@ -158,57 +170,62 @@
   $('#optShow').onchange = e => { st.show = e.target.checked; save(); applySettings(); };
   $('#optSize').oninput = e => { st.size = +e.target.value; save(); applySettings(); };
 
-  // ---------- stats ----------
-  const mapped = new Set();
-  P.forEach(p => { for (let v = p.range[0]; v <= p.range[1]; v++) mapped.add(v); });
-  const cited = new Set(P.flatMap(p => p.spots.flatMap(s => s.key)));
-  $('#tiles').innerHTML = [
-    [P.length + ' / ' + TOTAL_PARTS, 'Parts mapped', P.length / TOTAL_PARTS],
-    [mapped.size + ' / ' + SURAH_VERSES, 'Verses covered', mapped.size / SURAH_VERSES],
-    [cited.size, 'Verses cited in pictures', null],
-    [P.reduce((a, p) => a + p.spots.length, 0), 'Hover hotspots', null],
-  ].map(([b, s, f]) => `<div class="tile"><b>${b}</b><span>${s}</span>${f != null ? `<div class="bar"><i style="width:${(f*100).toFixed(1)}%"></i></div>` : ''}</div>`).join('');
+  // ---------- surah switcher ----------
+  $('#surahs').innerHTML = SURAHS.map(x => `<button class="sbtn" data-s="${x.id}">${x.id} · ${x.name}<span class="arn">${x.arName}</span></button>`).join('');
+  $('#surahs').onclick = e => { const b = e.target.closest('.sbtn'); if (b) location.hash = SURAHS.find(x => x.id === +b.dataset.s).hash(1); };
 
-  // ---------- tabs ----------
-  const tabs = $('#tabs');
-  for (let i = 1; i <= TOTAL_PARTS; i++) {
-    const p = P.find(x => x.id === i);
-    const b = document.createElement('button');
-    b.className = 'tab'; b.disabled = !p;
-    b.innerHTML = p ? `Part ${i} <small>${p.range[0]}–${p.range[1]}</small>` : `Part ${i}`;
-    b.title = p ? p.title : 'Coming soon — add it in parts.js';
-    if (p) b.onclick = () => { location.hash = 'part' + i; };
-    tabs.appendChild(b);
+  function setSurah(x){
+    S = x; V = x.V; P = x.P;
+    document.querySelectorAll('.sbtn').forEach(b => b.classList.toggle('active', +b.dataset.s === x.id));
+    $('#h1').textContent = `Surah ${x.name} · Memory Story`;
+    const mapped = new Set();
+    P.forEach(p => { for (let v = p.range[0]; v <= p.range[1]; v++) mapped.add(v); });
+    const shown = new Set(P.flatMap(p => p.spots.flatMap(s => s.key)));
+    $('#tiles').innerHTML = [
+      [P.length + ' / ' + x.totalParts, 'Posters mapped', P.length / x.totalParts],
+      [mapped.size + ' / ' + x.total, 'Verses covered', mapped.size / x.total],
+      [shown.size, 'Verses shown in posters', null],
+      [P.reduce((a, p) => a + p.spots.length, 0), 'Hover hotspots', null],
+    ].map(([b, s, f]) => `<div class="tile"><b>${b}</b><span>${s}</span>${f != null ? `<div class="bar"><i style="width:${(f*100).toFixed(1)}%"></i></div>` : ''}</div>`).join('');
+    tabs.innerHTML = '';
+    for (let i = 1; i <= x.totalParts; i++) {
+      const p = P.find(q => q.id === i), b = document.createElement('button');
+      b.className = 'tab'; b.disabled = !p;
+      b.innerHTML = p ? `Part ${i} <small>${p.range[0]}–${p.range[1]}</small>` : `Part ${i}`;
+      b.title = p ? p.title : 'Coming soon';
+      if (p) b.onclick = () => { location.hash = x.hash(i); };
+      tabs.appendChild(b);
+    }
   }
 
   // ---------- rendering helpers ----------
   const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  // QuranEnc text uses KFGQPC code points for "open tanween"; map them to standard Unicode so common Quran fonts render them.
+  const OPEN_TANWEEN = { 'ٗ': 'ࣰ', 'ٞ': 'ࣱ', 'ٖ': 'ࣲ' };
+  const ar = n => V[n].ar.replace(/[ٖٗٞ]/g, c => OPEN_TANWEEN[c]);
+  const toArabicNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+  const refStr = arr => compress(arr).map(([a, b]) => a === b ? a : a + '–' + b).join(', ');
+  function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
   const verseHTML = (n, kind) => {
     const v = V[n]; if (!v) return '';
-    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">2:${n}</span>
+    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${S.id}:${n}</span>
       <div class="ar">${ar(n)} ﴿${toArabicNum(n)}﴾</div>
       <div class="tr">${esc(v.tr)}</div>
       <div class="en">${esc(v.en)}</div>
       <div class="ur">${esc(v.ur)}</div></div>`;
   };
-  // QuranEnc text uses KFGQPC code points for "open tanween"; map them to standard Unicode so common Quran fonts render them.
-  const OPEN_TANWEEN = { '\u0657': '\u08F0', '\u065E': '\u08F1', '\u0656': '\u08F2' };
-  const ar = n => V[n].ar.replace(/[\u0657\u065E\u0656]/g, c => OPEN_TANWEEN[c]);
-  const toArabicNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
-  const refStr = arr => compress(arr).map(([a, b]) => a === b ? a : a + '–' + b).join(', ');
-  function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
 
   function showPop(spot, el){
     clearTimeout(hideT);
     if (activeSpot && activeSpot !== el) activeSpot.classList.remove('active');
     activeSpot = el; el.classList.add('active');
-    const more = spot.more || [];
+    const more = spot.more || [], sid = S.id;
     pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3>
-        <div class="refs">${spot.key.length ? 'Al-Baqarah 2:' + refStr(spot.key) + (more.length ? ' · also 2:' + refStr(more) : '') : 'Recalls Al-Baqarah 2:' + refStr(more)}</div></div>
+        <div class="refs">${spot.key.length ? `${S.name} ${sid}:` + refStr(spot.key) + (more.length ? ` · also ${sid}:` + refStr(more) : '') : `Recalls ${S.name} ${sid}:` + refStr(more)}</div></div>
         <span class="pin">${pinned ? '📌 pinned · Esc to close' : 'click to pin'}</span></div>
       ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
       ${spot.key.map(n => verseHTML(n, 'key')).join('')}
-      ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring verses (not cited in the picture)' : 'Verses this panel recalls (no verse number printed)'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
+      ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring / related verses' : 'Verses this panel recalls'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
     pop.classList.add('open'); pop.scrollTop = 0;
     place(el);
   }
@@ -233,10 +250,11 @@
   addEventListener('scroll', () => { if (activeSpot && pop.classList.contains('open')) place(activeSpot); }, {passive:true});
 
   // ---------- part render ----------
+  const baseLabel = l => l.replace(/ \((scene|signposts|sky|garden)\)$/, '');
   function render(p){
-    cur = p; hidePop(true);
+    hidePop(true);
     [...tabs.children].forEach((b, i) => b.classList.toggle('active', i + 1 === p.id));
-    img.src = p.img; img.alt = `Part ${p.id}: ${p.title}`;
+    img.src = p.img; img.alt = `${S.name} part ${p.id}: ${p.title}`;
     stage.querySelectorAll('.spot').forEach(s => s.remove());
     p.spots.forEach((s, i) => {
       const [x1, y1, x2, y2] = s.box, el = document.createElement('div');
@@ -252,16 +270,19 @@
       stage.appendChild(el);
     });
     $('#ptitle').textContent = `Part ${p.id} · ${p.title}`;
-    $('#pmeta').textContent = `Verses ${p.range[0]}–${p.range[1]} · ${p.spots.length} hotspots · click a verse to light up where it appears in the picture`;
+    $('#pmeta').innerHTML = esc(`Verses ${p.range[0]}–${p.range[1]} · ${p.spots.length} hotspots · click a verse to light up where it appears in the picture`)
+      + (p.warn ? `<span class="warn">ⓘ ${esc(p.warn)}</span>` : '');
     list.innerHTML = '';
     // also list verses that fall between this poster and the next one, so no verse is skipped
     const nxt = P.find(x => x.id === p.id + 1), end = nxt ? Math.max(p.range[1], nxt.range[0] - 1) : p.range[1];
     for (let n = p.range[0]; n <= end; n++) {
       const where = p.spots.filter(s => s.key.includes(n)), also = p.spots.filter(s => (s.more || []).includes(n));
-      const names = [...new Set(where.map(s => s.label.replace(/ \((scene|signposts)\)$/, '')))];
+      const names = [...new Set(where.map(s => baseLabel(s.label)))];
+      const elsewhere = P.filter(q => q !== p && q.spots.some(s => s.key.includes(n))).map(q => q.id);
+      const chip = names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('')
+        : `<span class="chip none">${elsewhere.length ? 'shown in part ' + elsewhere.join(', ') : n > p.range[1] ? 'between posters ' + p.id + ' and ' + (p.id + 1) : also.length ? 'neighbouring / recalled' : 'not pictured'}</span>`;
       const row = document.createElement('div'); row.className = 'row'; row.dataset.n = n;
-      row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">2:${n}</span>
-        <div class="chips">${names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('') : `<span class="chip none">${n > p.range[1] ? 'between posters ' + p.id + ' and ' + (p.id + 1) : also.length ? 'neighbouring verse' : 'not pictured'}</span>`}</div></div>
+      row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">${S.id}:${n}</span><div class="chips">${chip}</div></div>
         <div class="ar">${ar(n)}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
       row.onclick = () => {
         const was = row.classList.contains('sel');
@@ -279,7 +300,12 @@
   }
 
   function route(){
-    const m = location.hash.match(/part(\d+)/), p = m && P.find(x => x.id === +m[1]);
+    const h = location.hash;
+    let x = SURAHS[0], m = h.match(/part(\d+)/);
+    const m3 = h.match(/aal-imran-(\d+)/);
+    if (m3) { x = SURAHS.find(q => q.id === 3) || x; m = m3; }
+    if (x !== S || !tabs.children.length) setSurah(x);
+    const p = m && P.find(q => q.id === +m[1]);
     render(p || P[0]);
   }
   addEventListener('hashchange', route);
