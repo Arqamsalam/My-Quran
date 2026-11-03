@@ -1,10 +1,9 @@
 # Quran · Memory Story Dashboard
 
 An interactive page for the illustrated "Memory Story" posters of **Surah Al-Baqarah (2)** and **Surah Aal Imran (3)**. Switch surah with the buttons above the part tabs.
-The poster fills the screen. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
+The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
-- **⤢ Fit screen / Fill width:** show the whole poster at once, or fill the window width and scroll.
 - **Click** a panel to pin its popup so you can scroll it; hovering another panel moves on. Esc or × closes it.
 - **☰ Verses:** slide-out list of every verse in the part; click one to light up where it appears in the poster.
 - **⚙ Settings:** English / Urdu / both, transliteration, hotspot outlines, Arabic text size.

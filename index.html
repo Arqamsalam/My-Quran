@@ -45,11 +45,13 @@
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
 
   /* ---------- poster ---------- */
-  main{padding-top:var(--barh)}
+  html,body{height:100%;overflow:hidden}
+  main{position:fixed;top:var(--barh);left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;padding:6px}
   .stage{position:relative;margin:0 auto;line-height:0}
   .stage img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
-  body.fit-width .stage{width:100%}
-  body.fit-screen .stage{width:min(100%, calc((100vh - var(--barh)) * var(--ratio)))}
+  /* largest size that fits both the width and the height of the screen (dvh = height without the phone's address bar) */
+  .stage{width:min(100%, calc((100vh - var(--barh) - 12px) * var(--ratio)))}
+  @supports (height:100dvh){ .stage{width:min(100%, calc((100dvh - var(--barh) - 12px) * var(--ratio)))} }
   .spot{position:absolute;border-radius:6px;cursor:pointer;transition:background .12s,box-shadow .12s;outline:none}
   .spot:hover,.spot:focus-visible,.spot.active{background:rgba(241,207,127,.16);box-shadow:inset 0 0 0 2px var(--gold2)}
   .stage.show .spot{box-shadow:inset 0 0 0 1.5px rgba(241,207,127,.75);background:rgba(241,207,127,.05)}
@@ -117,12 +119,11 @@
   #hint.gone{opacity:0}
 </style>
 </head>
-<body class="fit-width">
+<body>
 <div id="bar">
   <span class="brand">Memory Story</span>
   <span id="surahs" style="display:flex;gap:6px"></span>
   <div id="tabs"></div>
-  <button class="ibtn" id="btnFit" title="Switch between filling the width and fitting the whole poster on screen">⤢ <span class="hide-sm" id="fitLabel">Fit screen</span></button>
   <button class="ibtn" id="btnSet" title="Settings">⚙<span class="hide-sm">Settings</span></button>
   <button class="ibtn" id="btnList" title="Verse list for this part">☰<span class="hide-sm">Verses</span></button>
 </div>
@@ -174,9 +175,6 @@
     document.body.classList.toggle('hide-en', lang === 'ur');
     document.body.classList.toggle('hide-ur', lang === 'en');
     document.body.classList.toggle('hide-tr', !st.tr);
-    document.body.classList.toggle('fit-width', st.fit !== 'screen');
-    document.body.classList.toggle('fit-screen', st.fit === 'screen');
-    $('#fitLabel').textContent = st.fit === 'screen' ? 'Fill width' : 'Fit screen';
     stage.classList.toggle('show', !!st.show);
     document.documentElement.style.setProperty('--arsize', (st.size || 24) + 'px');
     document.querySelectorAll('#lang button').forEach(b => b.classList.toggle('on', b.dataset.v === lang));
@@ -186,7 +184,6 @@
   $('#optTr').onchange = e => { st.tr = e.target.checked; save(); applySettings(); };
   $('#optShow').onchange = e => { st.show = e.target.checked; save(); applySettings(); };
   $('#optSize').oninput = e => { st.size = +e.target.value; save(); applySettings(); };
-  $('#btnFit').onclick = () => { st.fit = st.fit === 'screen' ? 'width' : 'screen'; save(); applySettings(); hidePop(true); };
   $('#btnSet').onclick = e => { e.stopPropagation(); $('#settings').classList.toggle('open'); $('#btnSet').classList.toggle('on'); };
   $('#btnList').onclick = () => { $('#drawer').classList.toggle('open'); $('#btnList').classList.toggle('on'); };
   document.addEventListener('click', e => {
@@ -253,7 +250,7 @@
     place(el, xy);
   }
   // Dock the popup on the half of the screen away from the pointer, so it never sits in the mouse's path.
-  // (In "fit screen" mode on a wide window that puts it beside the poster, not on top of it.)
+  // (On a wide window that puts it in the empty space beside the poster.)
   let side = 'right';
   function place(el, xy){
     if (innerWidth <= 760) return;                        // bottom sheet on phones (CSS)
@@ -330,7 +327,6 @@
     });
     $('#prev').disabled = !P.find(q => q.id === p.id - 1);
     $('#next').disabled = !P.find(q => q.id === p.id + 1);
-    window.scrollTo(0, 0);
 
     // drawer: verse list
     $('#ptitle').textContent = `${S.name} · Part ${p.id} · ${p.title}`;
@@ -355,7 +351,6 @@
         row.classList.add('sel');
         const hits = [...where, ...also].map(s => stage.querySelector(`.spot[data-i="${p.spots.indexOf(s)}"]`));
         hits.forEach(h => h.classList.add('lit'));
-        if (hits[0]) hits[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
       };
       list.appendChild(row);
     }
