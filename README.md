@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Surah Al-Baqarah (2)** and **Surah Aal Imran (3)**. Switch surah with the buttons above the part tabs.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)** and **An-Naba (78) to Al-Infitar (82)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -17,7 +17,8 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts.js` | The hotspot map: a box per panel/scene + which verses it shows |
 | `verses.js` | All 286 verses of Al-Baqarah: Arabic (Uthmani), English, Urdu, transliteration |
 | `parts3.js`, `verses3.js` | The same for Aal Imran (3:1–200) |
-| `images/partN.webp`, `images/s3-partN.webp` | The posters |
+| `parts78-82.js`, `verses78-82.js` | Surahs 78–82 (one poster each) |
+| `images/partN.webp`, `images/s3-partN.webp`, `images/sNN.webp` | The posters |
 
 ## Publish on GitHub Pages
 1. Create a new repository on GitHub (e.g. `baqarah-dashboard`).
@@ -34,7 +35,9 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   the end of the preceding part, marked "between posters".
 - **Aal Imran:** both posters (93 hotspots). Poster 1 prints no verse numbers, so its verses were identified from each
   panel's wording; the page says so on that part.
-- Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2.
+- **Surahs 78–82:** one poster per surah, mapped densely (288 hotspots) — every small icon, list row and story panel
+  has its own verse. Panels that point to a neighbouring surah (e.g. "paired with An-Nazi'at") also show that verse.
+- Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa.
 
 ## Editing a hotspot
 Each hotspot in `parts.js` is

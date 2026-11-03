@@ -22,6 +22,8 @@
   #bar{position:fixed;inset:0 0 auto 0;height:var(--barh);z-index:30;display:flex;align-items:center;gap:8px;padding:0 10px;
        background:rgba(18,14,10,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
   .brand{font-family:Cinzel,serif;color:var(--gold2);font-size:15px;white-space:nowrap;margin-right:4px}
+  #surahs{flex:none;max-width:44vw;border:1px solid var(--gold);background:var(--panel);color:var(--gold2);border-radius:8px;height:34px;padding:0 8px;font-size:14px;font-family:Cinzel,serif;cursor:pointer}
+  #tabs:empty{visibility:hidden}
   .sbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;white-space:nowrap;font-family:Cinzel,serif}
   .sbtn .arn{font-family:"Amiri Quran",serif;margin-left:4px}
   .sbtn.active{border-color:var(--gold);color:var(--gold2);box-shadow:inset 0 0 0 1px var(--gold)}
@@ -122,7 +124,7 @@
 <body>
 <div id="bar">
   <span class="brand">Memory Story</span>
-  <span id="surahs" style="display:flex;gap:6px"></span>
+  <select id="surahs" title="Choose a surah"></select>
   <div id="tabs"></div>
   <button class="ibtn" id="btnSet" title="Settings">⚙<span class="hide-sm">Settings</span></button>
   <button class="ibtn" id="btnList" title="Verse list for this part">☰<span class="hide-sm">Verses</span></button>
@@ -146,7 +148,7 @@
   <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p><div class="tiles" id="tiles"></div></div>
   <div id="list"></div>
   <footer>Arabic: Uthmani (QuranEnc). English: Saheeh International. Urdu &amp; transliteration (Tanzil) via
-    <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts.js</code> / <code>parts3.js</code>.</footer>
+    <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts*.js</code>.</footer>
 </aside>
 <div id="pop" role="dialog" aria-live="polite"></div>
 <div id="hint">Hover over any panel to see its verses</div>
@@ -155,12 +157,19 @@
 <script src="parts.js"></script>
 <script src="verses3.js"></script>
 <script src="parts3.js"></script>
+<script src="verses78-82.js"></script>
+<script src="parts78-82.js"></script>
 <script>
 (() => {
+  const VB = window.VERSES_BY_SURAH || {}, PB = window.PARTS_BY_SURAH || {};
   const SURAHS = [
     { id: 2, name: 'Al-Baqarah', arName: 'البقرة', total: 286, totalParts: 16, V: window.VERSES, P: window.PARTS, hash: n => 'part' + n },
     { id: 3, name: 'Aal Imran', arName: 'آل عمران', total: 200, totalParts: 2, V: window.VERSES_3, P: window.PARTS_3, hash: n => 'aal-imran-' + n },
+    ...Object.keys(PB).map(Number).sort((a, b) => a - b).map(id => ({ ...PB[id].info, id, totalParts: PB[id].parts.length, V: VB[id], P: PB[id].parts,
+      hash: n => PB[id].parts.length > 1 ? `s${id}-${n}` : `s${id}` })),
   ].filter(x => x.V && x.P);
+  const verseOf = (sid, n) => { const x = SURAHS.find(q => q.id === sid); return x && x.V[n]; };
+  const nameOf = sid => (SURAHS.find(q => q.id === sid) || {}).name || 'Surah ' + sid;
   let S = SURAHS[0], V = S.V, P = S.P, cur = null;
   const $ = s => document.querySelector(s);
   const stage = $('#stage'), img = $('#img'), pop = $('#pop'), list = $('#list'), tabs = $('#tabs');
@@ -191,18 +200,18 @@
   });
 
   // ---------- surah + tabs ----------
-  $('#surahs').innerHTML = SURAHS.map(x => `<button class="sbtn" data-s="${x.id}" title="Surah ${x.name}">${x.id}<span class="hide-sm"> · ${x.name}</span><span class="arn">${x.arName}</span></button>`).join('');
-  $('#surahs').onclick = e => { const b = e.target.closest('.sbtn'); if (b) location.hash = SURAHS.find(x => x.id === +b.dataset.s).hash(1); };
+  $('#surahs').innerHTML = SURAHS.map(x => `<option value="${x.id}">${x.id} · ${x.name} · ${x.arName}</option>`).join('');
+  $('#surahs').onchange = e => { location.hash = SURAHS.find(x => x.id === +e.target.value).hash(1); e.target.blur(); };
   function setSurah(x){
     S = x; V = x.V; P = x.P;
-    document.querySelectorAll('.sbtn').forEach(b => b.classList.toggle('active', +b.dataset.s === x.id));
+    $('#surahs').value = String(x.id);
     document.title = `Surah ${x.name} · Memory Story`;
     const mapped = new Set(); P.forEach(p => { for (let v = p.range[0]; v <= p.range[1]; v++) mapped.add(v); });
     const shown = new Set(P.flatMap(p => p.spots.flatMap(s => s.key)));
     $('#tiles').innerHTML = [[`${P.length}/${x.totalParts}`, 'posters'], [`${mapped.size}/${x.total}`, 'verses covered'], [shown.size, 'shown in posters'], [P.reduce((a, p) => a + p.spots.length, 0), 'hotspots']]
       .map(([b, s]) => `<span class="tile"><b>${b}</b>${s}</span>`).join('');
     tabs.innerHTML = '';
-    for (let i = 1; i <= x.totalParts; i++) {
+    for (let i = 1; i <= x.totalParts && P.length > 1; i++) {
       const p = P.find(q => q.id === i); if (!p) continue;
       const b = document.createElement('button');
       b.className = 'tab'; b.dataset.i = i; b.title = p.title;
@@ -216,14 +225,15 @@
   const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   // QuranEnc text uses KFGQPC code points for "open tanween"; map them to standard Unicode so common Quran fonts render them.
   const OPEN_TANWEEN = { 'ٗ': 'ࣰ', 'ٞ': 'ࣱ', 'ٖ': 'ࣲ' };
-  const ar = n => V[n].ar.replace(/[ٖٗٞ]/g, c => OPEN_TANWEEN[c]);
+  const arText = v => v.ar.replace(/[ٖٗٞ]/g, c => OPEN_TANWEEN[c]);
+  const ar = n => arText(V[n]);
   const toArabicNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
   const refStr = arr => compress(arr).map(([a, b]) => a === b ? a : a + '–' + b).join(', ');
   function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
-  const verseHTML = (n, kind) => {
-    const v = V[n]; if (!v) return '';
-    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${S.id}:${n}</span>
-      <div class="ar">${ar(n)} ﴿${toArabicNum(n)}﴾</div>
+  const verseHTML = (n, kind, sid = S.id) => {
+    const v = verseOf(sid, n); if (!v) return '';
+    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${sid === S.id ? '' : nameOf(sid) + ' '}${sid}:${n}</span>
+      <div class="ar">${arText(v)} ﴿${toArabicNum(n)}﴾</div>
       <div class="tr">${esc(v.tr)}</div><div class="en">${esc(v.en)}</div><div class="ur">${esc(v.ur)}</div></div>`;
   };
   const spotRefs = s => s.key.length ? s.key : (s.more || []);
@@ -237,13 +247,16 @@
     if (activeEl && activeEl !== el) activeEl.classList.remove('active');
     activeEl = el; el.classList.add('active');
     const more = spot.more || [], sid = S.id, refs = spotRefs(spot);
-    const refLine = spot.key.length ? `${S.name} ${sid}:${refStr(spot.key)}${more.length ? ` · also ${sid}:${refStr(more)}` : ''}`
-                  : refs.length ? `Recalls ${S.name} ${sid}:${refStr(refs)}` : `${S.name}`;
+    const xref = (spot.xref || []).map(r => r.split(':').map(Number)).filter(([a, b]) => verseOf(a, b));
+    const xLine = xref.length ? ' · ' + xref.map(([a, b]) => `${nameOf(a)} ${a}:${b}`).join(', ') : '';
+    const refLine = (spot.key.length ? `${S.name} ${sid}:${refStr(spot.key)}${more.length ? ` · also ${sid}:${refStr(more)}` : ''}`
+                  : refs.length ? `Recalls ${S.name} ${sid}:${refStr(refs)}` : xref.length ? 'Points to a neighbouring surah' : `${S.name}`) + xLine;
     pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3><div class="refs">${refLine}</div></div>
         <span class="pin">${pinned ? '📌 pinned' : touch ? '' : 'click to pin'}<button class="x" title="Close (Esc)" aria-label="Close">×</button></span></div>
       ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
       ${spot.key.map(n => verseHTML(n, 'key')).join('')}
-      ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring / related verses' : 'Verses this panel recalls'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}`;
+      ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring / related verses' : 'Verses this panel recalls'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}
+      ${xref.length ? `<div class="sect">From the neighbouring surah</div>` + xref.map(([a, b]) => verseHTML(b, 'more', a)).join('') : ''}`;
     pop.querySelector('.x').onclick = e => { e.stopPropagation(); hidePop(true); };
     pop.classList.toggle('pinned', pinned);
     pop.classList.add('open'); pop.scrollTop = 0;
@@ -363,8 +376,9 @@
   function route(){
     const h = location.hash;
     let x = SURAHS[0], m = h.match(/part(\d+)/);
-    const m3 = h.match(/aal-imran-(\d+)/);
+    const m3 = h.match(/aal-imran-(\d+)/), mg = h.match(/^#s(\d+)(?:-(\d+))?$/);
     if (m3) { x = SURAHS.find(q => q.id === 3) || x; m = m3; }
+    if (mg && SURAHS.find(q => q.id === +mg[1])) { x = SURAHS.find(q => q.id === +mg[1]); m = [0, mg[2] || 1]; }
     if (x !== S || !tabs.children.length) setSurah(x);
     render((m && P.find(q => q.id === +m[1])) || P[0]);
   }
