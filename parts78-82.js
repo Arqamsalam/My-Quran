@@ -70,7 +70,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       // Bigger picture
       { label: 'Opening of the final group (67–114)', box: [12, 874, 342, 1012], key: [], more: [1, 2], note: "Tafsir/structure note: An-Naba opens the 7th and last group of surahs. This is about the Qur'an's arrangement, not a single verse." },
       { label: "Paired with An-Nazi'at (79)", box: [342, 874, 642, 1012], key: [2], xref: ['79:1', '79:34'], note: "78 announces the news; 79 enacts it — from the pulling of souls (79:1) to the great Catastrophe (79:34)." },
-      { label: 'Linked to Al-Mursalat (77)', box: [642, 874, 1016, 1012], key: [17], note: "Al-Mursalat (77) repeats 'the Day of Decision'; An-Naba 17 fixes it: 'an appointed time'. (Surah 77 isn't on this site yet.)" },
+      { label: 'Linked to Al-Mursalat (77)', box: [642, 874, 1016, 1012], key: [17], xref: ['77:13', '77:14', '77:38'], note: "Al-Mursalat names 'the Day of Decision' (77:13, 14, 38); An-Naba 17 fixes it: 'an appointed time'." },
       // Nazm
       { label: 'Twin destinations', box: [14, 1078, 356, 1158], key: [21, 31] },
       { label: 'Earth frame', box: [14, 1158, 356, 1240], key: [6, 40] },
@@ -78,7 +78,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: "'Day' as a rivet", box: [14, 1348, 356, 1430], key: [17, 18, 38, 39, 40], note: "Yawm ('Day') appears in 17, 18, 38, 39 and 40 — holding the Judgment scenes together." },
       { label: 'Front gate of the finale', box: [358, 1084, 702, 1152], key: [], more: [1, 2, 17] },
       { label: 'Two surahs, one argument', box: [358, 1152, 702, 1248], key: [], more: [2, 6], xref: ['79:15', '79:27'], note: "78 announces and proves; 79 enacts through history (Musa and Pharaoh, 79:15) and argues from creation (79:27)." },
-      { label: 'Connected to before', box: [358, 1248, 702, 1356], key: [17] },
+      { label: 'Connected to before', box: [358, 1248, 702, 1356], key: [17], xref: ['77:13', '77:50'] },
       { label: 'One continuous conversation', box: [358, 1356, 702, 1428], key: [], more: [17], xref: ['79:42'], note: "77 → 78 → 79: one theme — the Day and its timing ('They ask you about the Hour', 79:42)." },
       // Amud
       { label: 'Amūd: the central pillar', box: [710, 1050, 1016, 1182], key: [], more: [6, 17, 40], note: "Resurrection and Judgment are real (17), fixed and near (40), and the ordered universe proves it (6–16)." },
@@ -339,7 +339,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: '④ Key emotional pivot: Karīm (Generous)', box: [436, 700, 828, 858], key: [6] },
       { label: 'Surah 81 Al-Takwīr: the world folds up', box: [842, 726, 1004, 856], key: [], xref: ['81:1'] },
       { label: 'Surah 82 Al-Infiṭār: the world splits open for inspection', box: [1004, 726, 1222, 856], key: [1, 5] },
-      { label: 'Surah 83 Al-Mutaffifin: hidden cheating is exposed', box: [1222, 726, 1440, 856], key: [], note: "Surah 83 opens with 'Woe to those who give less than due' (cheating in weights). It isn't on this site yet." },
+      { label: 'Surah 83 Al-Mutaffifin: hidden cheating is exposed', box: [1222, 726, 1440, 856], key: [], xref: ['83:1', '83:2', '83:3'] },
       { label: '⑥ Nazm A — micro-level', box: [14, 876, 190, 1018], key: [1, 2, 3, 4, 5], note: "Four 'When…' (idhā) clauses (1–4), then the result in 5." },
       { label: '⑥ Nazm B — macro-level', box: [190, 876, 332, 1018], key: [6], xref: ['81:29'], note: "81 ends: 'you do not will except that Allah wills' (81:29); 82 asks what deceived you (82:6)." },
       { label: '⑦ Amūd: cosmic events, no public', box: [342, 886, 494, 938], key: [1, 2, 3, 4] },
@@ -352,7 +352,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: '⑧ Quick lock-in mnemonic', box: [834, 866, 1440, 916], key: [], more: [1, 6, 19], xref: ['81:1'] },
       { label: '5 splits: sky → self-deception → secret record → society → solidarity', box: [870, 916, 1440, 958], key: [1, 6, 10, 13, 19] },
       { label: "1 hub: don't let the Generous fool you", box: [870, 958, 1440, 988], key: [6] },
-      { label: '3 sisters: 81 folds, 82 splits, 83 catches the cheats', box: [870, 988, 1440, 1022], key: [1], xref: ['81:1'] },
+      { label: '3 sisters: 81 folds, 82 splits, 83 catches the cheats', box: [870, 988, 1440, 1022], key: [1], xref: ['81:1', '83:1'] },
       { label: "'What deceived you about your Generous Lord?'", box: [0, 1024, 1448, 1086], key: [6] },
     ],
   }] },

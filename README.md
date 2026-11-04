@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)** and **An-Naba (78) to Al-Infitar (82)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)** and **Al-Mursalat (77) to Al-Buruj (85)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -18,6 +18,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `verses.js` | All 286 verses of Al-Baqarah: Arabic (Uthmani), English, Urdu, transliteration |
 | `parts3.js`, `verses3.js` | The same for Aal Imran (3:1–200) |
 | `parts78-82.js`, `verses78-82.js` | Surahs 78–82 (one poster each) |
+| `parts77-85.js`, `verses77-85.js` | Surahs 77, 83, 84 and 85 (Al-Buruj has two posters) |
 | `images/partN.webp`, `images/s3-partN.webp`, `images/sNN.webp` | The posters |
 
 ## Publish on GitHub Pages
@@ -37,7 +38,10 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   panel's wording; the page says so on that part.
 - **Surahs 78–82:** one poster per surah, mapped densely (288 hotspots) — every small icon, list row and story panel
   has its own verse. Panels that point to a neighbouring surah (e.g. "paired with An-Nazi'at") also show that verse.
-- Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa.
+- **Surahs 77, 83, 84, 85:** 286 more hotspots; every verse of each surah is reachable from its poster. A few items on the
+  Al-Mursalat poster (records in the right/left hand, scorching wind, boiling water, pus, the zaqqum tree…) don't occur in
+  Surah 77 — their popups say so and point to where they do occur.
+- Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa, `#s85-2` opens Al-Buruj's second poster.
 
 ## Editing a hotspot
 Each hotspot in `parts.js` is
