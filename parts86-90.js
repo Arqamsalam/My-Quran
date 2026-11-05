@@ -335,7 +335,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: 'Place in the Quran', box: [335, 915, 892, 952], key: [], xref: ['89:15', '89:16'] },
       { label: 'Al-Fajr (89): nations are tested', box: [348, 952, 522, 1035], key: [], xref: ['89:6', '89:15'] },
       { label: 'Al-Balad (90): you are tested', box: [532, 952, 702, 1035], key: [4, 10] },
-      { label: 'Al-Shams (91): the soul is tested', box: [712, 952, 872, 1035], key: [], note: "Ash-Shams 91:9–10 ('he has succeeded who purifies it, and failed who corrupts it'). Surah 91 isn't on this site yet." },
+      { label: 'Al-Shams (91): the soul is tested', box: [712, 952, 872, 1035], key: [], xref: ['91:9', '91:10'] },
       { label: 'A 3-surah curriculum: society, self, soul', box: [348, 1035, 882, 1072], key: [10], xref: ['89:15'] },
       { label: 'Final anchor', box: [925, 905, 1150, 1080], key: [11, 13, 15, 16, 17, 20] },
       { label: 'Climbers lifting each other (scene)', box: [1150, 880, 1448, 1086], key: [11, 17] },
