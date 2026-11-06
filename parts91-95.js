@@ -268,7 +268,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       // right
       { label: 'D Nazm — two zooms', box: [1235, 110, 1430, 160], key: [], more: [1, 4, 5, 6, 7] },
       { label: 'Micro nazm: witnesses → noble origin → fall → rescue → verdict', box: [1250, 170, 1425, 300], key: [1, 4, 5, 6, 7] },
-      { label: 'Macro nazm: Ash-Sharh = comfort; At-Tin = diagnosis; Al-Alaq = cure', box: [1250, 325, 1425, 460], key: [4, 5], xref: ['94:5'], note: "Al-'Alaq (96) isn't on this site yet." },
+      { label: 'Macro nazm: Ash-Sharh = comfort; At-Tin = diagnosis; Al-Alaq = cure', box: [1250, 325, 1425, 460], key: [4, 5], xref: ['94:5', '96:1', '96:19'] },
       { label: 'E Memory anchors', box: [1235, 505, 1430, 560], key: [], more: [1, 4, 5, 6] },
       { label: 'F-O-M-S = fig, olive, mountain, secure city', box: [1240, 560, 1425, 665], key: [1, 2, 3] },
       { label: 'Hidden flower = inner fitrah', box: [1240, 665, 1425, 720], key: [4] },
