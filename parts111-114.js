@@ -1,0 +1,175 @@
+// Hotspot maps for Surahs 111-114 (one poster each).
+// box: [x1, y1, x2, y2] in the image's own pixels.  key: verses the panel shows.  more: recalled verses.
+// xref: verses in another surah, as "surah:verse".  Each key was matched from the panel's wording to the verse text.
+// Later entries sit on top of earlier ones, so detail boxes come after the panel that contains them.
+
+const SIRAH111 = "From the sirah and tafsir (e.g. Ibn Kathir); the surah itself names only Abu Lahab and his wife.";
+
+window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
+
+  111: { info: { name: 'Al-Masad', arName: 'المسد', total: 5 }, parts: [{
+    id: 1, title: 'The Palm-Fiber Rope', range: [1, 5], img: 'images/s111.webp', w: 1125, h: 844,
+    spots: [
+      { label: 'Title: Al-Masad (111) — the palm-fiber rope', box: [110, 0, 1020, 75], key: [5], note: "Masad: 'twisted palm fibre' — the last word of the surah (5)." },
+      { label: 'Theme', box: [170, 75, 930, 95], key: [1, 2] },
+      { label: "1 Abu Lahab — proud, wealthy, the Prophet's uncle", box: [0, 95, 195, 515], key: [1], note: "Abu Lahab ('father of flame') is named in verse 1. That he was the Prophet's ﷺ uncle and the meaning of the nickname are from the sirah." },
+      { label: '2 The warning is announced', box: [195, 95, 320, 515], key: [1], note: "The occasion of revelation (the Prophet ﷺ calling his tribe from Mount Safa, and Abu Lahab's reply 'tabban laka') is reported in Sahih al-Bukhari." },
+      { label: "3 He lifts his hands and curses: 'Tabban laka!'", box: [320, 95, 458, 515], key: [1], note: "Tabbat yadā — 'may the hands be ruined' (1): the surah turns his own curse back on his hands. The story is from Sahih al-Bukhari." },
+      { label: '4 He trusts in wealth; his wife becomes his partner in hostility', box: [458, 95, 610, 515], key: [2, 4] },
+      { label: "5 She carries thorns and 'fuel' — slander, rumor, harm", box: [610, 95, 730, 515], key: [4], note: "Ḥammālat al-ḥaṭab — 'the carrier of firewood' (4). Commentators give both readings: she literally laid thorns in the Prophet's ﷺ path, or she carried gossip that 'fuels' hostility." },
+      { label: '6 Every thorn, coin and act is being counted', box: [730, 95, 848, 515], key: [2] },
+      { label: '7 His wealth and earnings cannot save him; his nickname becomes his fate', box: [848, 95, 975, 515], key: [2, 3], note: "'His wealth will not avail him, nor what he earned' (2); 'a fire of flame (lahab)' (3) — the same word as his name." },
+      { label: '8 Her gold necklace becomes a rope of palm-fiber', box: [975, 95, 1125, 515], key: [5], note: "Fī jīdihā ḥablun min masad — 'around her neck a rope of palm fibre' (5). The gold necklace she vowed to spend against the Prophet ﷺ is from tafsir." },
+      // bottom left
+      { label: 'Essence in one line', box: [5, 528, 340, 625], key: [1, 2, 4] },
+      { label: 'Topic progression / verse map', box: [5, 628, 340, 652], key: [1, 2, 3, 4, 5], note: "Correct: Al-Masad has 5 verses." },
+      { label: 'Verse 1 — the hands', box: [5, 652, 72, 808], key: [1] },
+      { label: 'Verse 2 — the wealth', box: [72, 652, 140, 808], key: [2] },
+      { label: 'Verse 3 — the fire', box: [140, 652, 207, 808], key: [3] },
+      { label: 'Verse 4 — the wife', box: [207, 652, 274, 808], key: [4] },
+      { label: 'Verse 5 — the rope', box: [274, 652, 340, 808], key: [5] },
+      // middle
+      { label: 'Bigger picture in the Quran', box: [350, 533, 655, 555], key: [], xref: ['110:1', '112:1'] },
+      { label: '110 An-Nasr — truth wins', box: [365, 558, 435, 668], key: [], xref: ['110:1'] },
+      { label: '111 Al-Masad — falsehood loses', box: [462, 558, 535, 668], key: [1] },
+      { label: '112 Al-Ikhlas — truth declared in pure monotheism', box: [562, 558, 635, 668], key: [], xref: ['112:1'] },
+      { label: 'Al-Masad stands between victory and pure worship', box: [365, 672, 635, 700], key: [1], xref: ['110:1', '112:1'] },
+      // nazm
+      { label: 'Nazm — the literary and thematic pattern', box: [665, 533, 1112, 555], key: [], more: [1, 3, 4, 5] },
+      { label: 'Hands at the opening, neck at the close', box: [670, 572, 880, 607], key: [1, 5], note: "Checked: yadā (hands) in 1, jīd (neck) in 5." },
+      { label: 'Lahab (flame) pairs with hatab (firewood)', box: [670, 607, 880, 650], key: [3, 4], note: "Checked: lahab ends verse 3, al-ḥaṭab ends verse 4." },
+      { label: 'End-rhyme: tabb, kasab, lahab, hatab, masad', box: [670, 650, 880, 690], key: [1, 2, 3, 4, 5], note: "Checked: the five verses end watabb, kasab, lahab, al-ḥaṭab, masad." },
+      { label: 'Macro nazm (with surrounding surahs)', box: [880, 560, 1112, 695], key: [2], xref: ['104:1', '104:2'] },
+      // amud / reflection
+      { label: 'Amud — central pillar', box: [345, 715, 728, 840], key: [1, 2, 4] },
+      { label: "Abu Lahab's family tie to the Prophet does not save him", box: [565, 748, 728, 765], key: [1], note: SIRAH111 },
+      { label: 'His wealth does not save him', box: [565, 765, 728, 782], key: [2] },
+      { label: "His wife's tribal status does not save her", box: [565, 782, 728, 800], key: [4, 5], note: SIRAH111 },
+      { label: 'The surah destroys the myth of spiritual nepotism', box: [565, 800, 728, 818], key: [1] },
+      { label: 'Quiet reflection', box: [738, 715, 1118, 840], key: [1, 2, 5] },
+    ],
+  }] },
+
+  112: { info: { name: 'Al-Ikhlas', arName: 'الإخلاص', total: 4 }, parts: [{
+    id: 1, title: 'Sincerity', range: [1, 4], img: 'images/s112.webp', w: 796, h: 1125,
+    spots: [
+      { label: 'Title: Al-Ikhlas — crash course cheat sheet', box: [70, 0, 740, 55], key: [1], note: "Ikhlāṣ: making pure, sincerity. The name isn't a word in the surah; it describes what the surah does." },
+      { label: 'Ikhlas = purification', box: [120, 55, 680, 78], key: [1, 2, 3, 4] },
+      { label: 'He is uniquely One, the Refuge… nothing comparable to Him', box: [20, 85, 775, 118], key: [1, 2, 3, 4] },
+      { label: 'Memory story: the pure gold refinery', box: [10, 125, 790, 420], key: [1], note: "The refinery is the poster's picture for purifying belief, not words of the surah." },
+      { label: "'Qul — Say'", box: [235, 160, 310, 215], key: [1], note: "Qul — 'Say' (1)." },
+      { label: 'Flow: 2 affirmations → 2 negations', box: [555, 135, 780, 188], key: [1, 2, 3, 4] },
+      { label: 'The Ahad ring', box: [545, 345, 690, 410], key: [1, 4] },
+      { label: '1 Ahad', box: [20, 430, 190, 705], key: [1], note: "Qul huwa Allāhu aḥad — 'Say: He is Allah, One' (1)." },
+      { label: '2 As-Samad', box: [205, 430, 380, 705], key: [2], note: "Allāhu ṣ-ṣamad — 'Allah, the Eternal Refuge' (2): the One all depend on, who depends on none." },
+      { label: '3 No lineage', box: [398, 430, 570, 705], key: [3], note: "Lam yalid wa lam yūlad — 'He neither begets nor is born' (3)." },
+      { label: '4 No equal', box: [585, 430, 778, 705], key: [4], note: "Wa lam yakun lahū kufuwan aḥad — 'nor is there to Him any equivalent' (4)." },
+      // 1 verse flow
+      { label: '1 Verse flow', box: [15, 720, 250, 745], key: [1, 2, 3, 4] },
+      { label: '1. Unique One (Ahad)', box: [15, 748, 70, 845], key: [1] },
+      { label: '2. Absolute Refuge (Samad)', box: [70, 748, 130, 845], key: [2] },
+      { label: '3. No child / no parent', box: [130, 748, 190, 845], key: [3] },
+      { label: '4. No equal', box: [190, 748, 250, 845], key: [4] },
+      { label: 'Two affirmations, then two negations', box: [15, 845, 250, 885], key: [1, 2, 3, 4] },
+      // 2 place
+      { label: "2 Place in the Qur'an", box: [260, 720, 495, 885], key: [1], xref: ['109:1', '113:1', '114:1'], note: "'It equals one-third of the Qur'an' is a hadith (Sahih al-Bukhari), not words of the surah." },
+      // 3 micro-nazm
+      { label: '3 Micro-nazm (inside the surah)', box: [505, 720, 785, 750], key: [], more: [1, 2, 3, 4] },
+      { label: 'Ahad (top)', box: [600, 750, 670, 785], key: [1] },
+      { label: 'Samad (left)', box: [555, 790, 600, 830], key: [2] },
+      { label: 'No lineage (right)', box: [665, 785, 745, 830], key: [3] },
+      { label: 'No equal (bottom)', box: [600, 835, 670, 870], key: [4] },
+      { label: 'Verse 1 and verse 4 both end with Ahad', box: [510, 885, 785, 925], key: [1, 4], note: "Checked: aḥad is the last word of verses 1 and 4." },
+      { label: 'Samad sits at the center', box: [510, 925, 785, 945], key: [2] },
+      { label: 'A-B-B\'-A\' (chiasm): affirm, affirm, negate, negate', box: [510, 945, 785, 970], key: [1, 2, 3, 4] },
+      { label: 'All four verses echo the -ad sound', box: [510, 970, 785, 995], key: [1, 2, 3, 4], note: "Checked: aḥad, aṣ-ṣamad, yūlad, aḥad." },
+      // 4 macro
+      { label: '4 Macro-nazm (between surahs)', box: [15, 895, 250, 1085], key: [1], xref: ['109:1', '113:1', '114:1'] },
+      // 5 amud
+      { label: '5 The amud (central pillar): Amud = As-Samad', box: [262, 890, 495, 935], key: [2] },
+      { label: 'Ahad tells us Allah is One; Samad tells us what kind of One', box: [345, 938, 495, 970], key: [1, 2] },
+      { label: 'Because He is Samad, He needs nothing — so He has no children', box: [345, 970, 495, 1003], key: [2, 3] },
+      { label: 'Because He is Samad, He has no origin — so He is not born', box: [345, 1003, 495, 1035], key: [2, 3] },
+      { label: 'Because He is Samad, He has no equal', box: [345, 1035, 495, 1068], key: [2, 4] },
+      { label: 'Samad is the pillar holding up the whole surah', box: [265, 1065, 495, 1088], key: [2] },
+      { label: "'Sincerity purifies belief. Know Allah truly…'", box: [100, 1090, 700, 1120], key: [1] },
+    ],
+  }] },
+
+  113: { info: { name: 'Al-Falaq', arName: 'الفلق', total: 5 }, parts: [{
+    id: 1, title: 'The Daybreak', range: [1, 5], img: 'images/s113.webp', w: 796, h: 1125,
+    spots: [
+      { label: 'Title: Al-Falaq (113)', box: [60, 15, 740, 58], key: [1] },
+      { label: 'Essence in one line', box: [15, 62, 372, 165], key: [1, 2] },
+      { label: "Why 'Falaq' matters", box: [385, 62, 785, 165], key: [1], note: "Root f-l-q: to split. Rabb al-falaq — 'the Lord of daybreak' (1). The same root describes Allah splitting the seed and the dawn in 6:95–96." },
+      { label: 'The memory story', box: [200, 178, 560, 215], key: [1, 2, 3, 4, 5] },
+      { label: '1 Created harms', box: [15, 220, 170, 360], key: [2], note: "Min sharri mā khalaq — 'from the evil of that which He created' (2)." },
+      { label: 'Wild beasts (scene)', box: [15, 360, 200, 640], key: [2] },
+      { label: '2 Darkness when it settles', box: [235, 225, 360, 335], key: [3], note: "Ghāsiqin idhā waqab — 'darkness when it settles' (3)." },
+      { label: 'The traveler in the hut (scene)', box: [200, 340, 440, 640], key: [1] },
+      { label: "'I seek refuge in Allah, the Lord of the Cleaving Dawn'", box: [345, 525, 450, 590], key: [1], note: "Qul aʿūdhu bi-rabbi l-falaq (1)." },
+      { label: '3 Blowers in knots', box: [440, 225, 560, 335], key: [4], note: "An-naffāthāti fi l-ʿuqad — 'the blowers in knots' (4). Commentators explain them as those who practise sorcery; 'plotting' is the poster's wider reading." },
+      { label: 'The knot-blower (scene)', box: [440, 335, 600, 500], key: [4] },
+      { label: '4 Envier when he envies', box: [640, 222, 785, 330], key: [5], note: "Ḥāsidin idhā ḥasad — 'an envier when he envies' (5)." },
+      { label: 'The envier and the traveler at dawn (scene)', box: [580, 330, 785, 680], key: [5, 1] },
+      { label: 'A lone traveler shelters in a hut…', box: [15, 650, 295, 750], key: [1, 2, 3, 4, 5] },
+      { label: 'One night. Four shadows. One Lord who splits the dawn.', box: [325, 660, 770, 755], key: [1, 2, 3, 4, 5] },
+      // bottom
+      { label: 'Topic progression (verses 1–5)', box: [10, 770, 235, 795], key: [1, 2, 3, 4, 5], note: "Correct: Al-Falaq has 5 verses." },
+      { label: '1 Seek refuge in the Lord of daybreak', box: [10, 800, 235, 830], key: [1] },
+      { label: '2 From the evil of what He created', box: [10, 830, 235, 865], key: [2] },
+      { label: '3 From darkness when it settles', box: [10, 865, 235, 900], key: [3] },
+      { label: '4 From blowers in knots', box: [10, 900, 235, 935], key: [4] },
+      { label: '5 From the envier when he envies', box: [10, 935, 235, 970], key: [5] },
+      { label: 'Flow: general → specific, outer → inner', box: [10, 970, 235, 995], key: [2, 5] },
+      { label: 'Micro nazm (inside the surah)', box: [240, 775, 405, 830], key: [], more: [2, 3, 4, 5] },
+      { label: "Repeated phrase: min sharri ('from the evil of')", box: [245, 830, 405, 855], key: [2, 3, 4, 5], note: "Checked: min sharri opens verses 2, 3, 4 and 5." },
+      { label: 'The ladder of evil: creation → night → witchcraft → envy', box: [245, 855, 405, 890], key: [2, 3, 4, 5] },
+      { label: 'The threats become more personal', box: [245, 890, 405, 930], key: [4, 5] },
+      { label: "The little word idha ('when')", box: [245, 940, 405, 990], key: [3, 5], note: "Checked: idhā appears in verses 3 and 5." },
+      { label: 'Macro nazm (place in the Quran)', box: [410, 775, 578, 995], key: [1], xref: ['114:1'], note: "Al-Falaq and An-Nas are called al-Mu'awwidhatayn ('the two seeking refuge') in hadith." },
+      { label: 'The amud (central pillar)', box: [583, 775, 788, 995], key: [1, 2] },
+      { label: 'Big picture', box: [10, 1000, 785, 1115], key: [1] },
+    ],
+  }] },
+
+  114: { info: { name: 'An-Nas', arName: 'الناس', total: 6 }, parts: [{
+    id: 1, title: 'Mankind', range: [1, 6], img: 'images/s114.webp', w: 1125, h: 844,
+    spots: [
+      { label: 'Title: An-Nas (114) — the final prayer that protects the heart', box: [180, 0, 1040, 82], key: [1] },
+      { label: 'Essence in one line', box: [165, 82, 1040, 128], key: [1, 2, 3, 4] },
+      { label: 'Nas = mankind / the forgetful one', box: [38, 162, 150, 222], key: [1], note: "Nās means people, mankind. Linking it with nasiya ('to forget') is a word-play some scholars mention, not the agreed derivation; the corpus files insān under أ ن س." },
+      { label: 'Sudur = the chest, inner heart-space', box: [75, 315, 178, 372], key: [5], note: "Ṣudūr an-nās — 'the breasts of mankind' (5)." },
+      { label: 'The young man and his heart (scene)', box: [180, 130, 445, 430], key: [5] },
+      { label: 'Waswasah = the soft whisper', box: [415, 185, 535, 225], key: [4, 5], note: "Al-waswās (4); yuwaswisu — 'who whispers' (5)." },
+      { label: 'The whisperer (scene)', box: [440, 185, 710, 435], key: [4, 5] },
+      { label: "'You're not enough' / 'Skip the prayer' / 'Just one more scroll'", box: [590, 180, 690, 325], key: [5] },
+      { label: 'Al-Khannas = the slinker', box: [470, 350, 600, 420], key: [4], note: "Al-khannās — 'the one who withdraws' (4). This exact word appears only here in the Qur'an; the related al-khunnas (retreating stars) is in 81:15." },
+      { label: 'Forget Allah → whisper attacks; remember Allah → whisper retreats', box: [740, 140, 1110, 435], key: [4], note: "Tafsir (e.g. Ibn Kathir): the whisperer retreats when Allah is remembered — that is why he is 'al-khannās'." },
+      // keys
+      { label: 'Three keys to lock the inside door', box: [35, 432, 140, 522], key: [1, 2, 3] },
+      { label: '1 Rabb an-Nas — Lord / caretaker / nurturer', box: [150, 432, 432, 482], key: [1] },
+      { label: '2 Malik an-Nas — King / absolute authority', box: [140, 482, 440, 528], key: [2] },
+      { label: '3 Ilah an-Nas — God / the only One worshipped', box: [110, 528, 448, 575], key: [3] },
+      // two armies
+      { label: 'Final twist: two whispering armies', box: [480, 437, 1015, 462], key: [6], note: "Mina l-jinnati wa n-nās — 'from among the jinn and mankind' (6)." },
+      { label: 'From jinn', box: [480, 462, 685, 590], key: [6] },
+      { label: 'From mankind', box: [685, 462, 1015, 590], key: [6] },
+      { label: 'One forgetful human. One whispering slinker. Three keys. Two armies.', box: [160, 593, 1000, 622], key: [1, 2, 3, 4, 6] },
+      // bottom
+      { label: 'Topic progression', box: [8, 632, 200, 655], key: [1, 4, 6] },
+      { label: 'Act 1 (1–3): the three-key shield', box: [12, 655, 200, 712], key: [1, 2, 3] },
+      { label: 'Act 2 (4–5): the enemy unmasked', box: [12, 712, 200, 765], key: [4, 5] },
+      { label: 'Act 3 (6): the two armies', box: [12, 765, 200, 830], key: [6] },
+      { label: 'Nazm — micro level', box: [208, 632, 385, 655], key: [], more: [1, 2, 3, 4, 5, 6] },
+      { label: "Five-Nas heartbeat: 'nas' ends 5 of 6 verses", box: [212, 655, 385, 700], key: [1, 2, 3, 5, 6], note: "Checked: an-nās ends verses 1, 2, 3, 5 and 6; verse 4 ends al-khannās." },
+      { label: '3 vs 1: three divine names against one inner enemy', box: [212, 705, 385, 742], key: [1, 2, 3, 4] },
+      { label: 'Ascending shield / descending threat', box: [212, 742, 385, 795], key: [1, 2, 3, 4, 5, 6] },
+      { label: 'Khannas is a unique word in this surah', box: [212, 795, 385, 815], key: [4], note: "Correct: al-khannās occurs only here (114:4) in the whole Qur'an." },
+      { label: 'Nazm — macro level', box: [392, 632, 572, 830], key: [1], xref: ['113:1'], note: "'Al-Fatihah asks guide us' — 1:6; Al-Fatihah isn't on this site yet. 'Group VII (67–114)' is a scholar's grouping of surahs." },
+      { label: 'Amud — central axis', box: [580, 632, 755, 830], key: [1, 2, 3, 4, 5] },
+      { label: 'Why it closes the Quran', box: [762, 632, 935, 830], key: [1] },
+      { label: 'Read it. Feel it. Live it.', box: [942, 632, 1118, 830], key: [1, 4] },
+    ],
+  }] },
+});
