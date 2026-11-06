@@ -76,6 +76,21 @@
   #pop .ph .refs{font-size:12px;color:#6b5634}
   #pop .pin{font-size:11px;color:#6b5634;white-space:nowrap}
   #pop .x{border:0;background:none;font-size:18px;line-height:1;cursor:pointer;color:#6b5634;padding:0 0 0 6px}
+  /* word-by-word */
+  #pop .ar .w{cursor:help;border-radius:5px;padding:0 1px;transition:background .1s}
+  #pop .ar .w:hover,#pop .ar .w.on{background:rgba(217,169,74,.35)}
+  .whint{font-size:11px;color:#6b5634;margin:2px 0 0}
+  #wtip{position:fixed;z-index:70;width:min(330px,calc(100vw - 20px));background:#1b140a;color:#ece2cf;border:1px solid var(--gold);
+        border-radius:10px;padding:10px 12px;box-shadow:0 12px 30px #000b;display:none;pointer-events:none;font-size:13px;line-height:1.45}
+  #wtip.open{display:block}
+  #wtip .wa{font-family:"Amiri Quran","Amiri",serif;direction:rtl;font-size:26px;color:var(--gold2);line-height:1.9;text-align:right}
+  #wtip .wg{font-size:15px;font-weight:600}
+  #wtip .wt{font-style:italic;color:#a99a80;font-size:12px}
+  #wtip .wr{margin-top:8px;padding-top:7px;border-top:1px solid #3a3125}
+  #wtip .wr b{font-family:"Amiri Quran","Amiri",serif;font-size:20px;color:var(--gold2);letter-spacing:4px;font-weight:400}
+  #wtip .wc{margin-top:3px}
+  #wtip .wl{margin-top:5px;font-size:11.5px;color:#a99a80}
+  #wtip .wn{margin-top:6px;font-size:11.5px;color:#e4c27a}
   #pop .note{margin:10px 14px 0;padding:8px 10px;background:#fff6dd;border-left:3px solid var(--gold);font-size:13px;border-radius:4px}
   @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:62vh} }
   .verse{padding:12px 14px;border-bottom:1px dashed #cdb789}
@@ -148,9 +163,11 @@
   <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p><div class="tiles" id="tiles"></div></div>
   <div id="list"></div>
   <footer>Arabic: Uthmani (QuranEnc). English: Saheeh International. Urdu &amp; transliteration (Tanzil) via
-    <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts*.js</code>.</footer>
+    <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts*.js</code>.
+    Word-by-word: meanings from quran.com, roots from the Quranic Arabic Corpus, root meanings from classical lexicons (Lane's, via Quran-Journey/roots).</footer>
 </aside>
 <div id="pop" role="dialog" aria-live="polite"></div>
+<div id="wtip" role="tooltip"></div>
 <div id="hint">Hover over any panel to see its verses</div>
 
 <script src="verses.js"></script>
@@ -173,6 +190,8 @@
 <script src="parts101-105.js"></script>
 <script src="verses106-110.js"></script>
 <script src="parts106-110.js"></script>
+<script src="roots_core.js"></script>
+<script src="words100.js"></script>
 <script>
 (() => {
   const VB = window.VERSES_BY_SURAH || {}, PB = window.PARTS_BY_SURAH || {};
@@ -247,10 +266,46 @@
   const verseHTML = (n, kind, sid = S.id) => {
     const v = verseOf(sid, n); if (!v) return '';
     return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${sid === S.id ? '' : nameOf(sid) + ' '}${sid}:${n}</span>
-      <div class="ar">${arText(v)} ﴿${toArabicNum(n)}﴾</div>
+      <div class="ar">${arWords(sid, n, v)} ﴿${toArabicNum(n)}﴾</div>${hasWords(sid, n, v) ? '<div class="whint">Hover (or tap) any Arabic word for its meaning and root</div>' : ''}
       <div class="tr">${esc(v.tr)}</div><div class="en">${esc(v.en)}</div><div class="ur">${esc(v.ur)}</div></div>`;
   };
   const spotRefs = s => s.key.length ? s.key : (s.more || []);
+
+  // ---------- word-by-word ----------
+  const WB = window.WORDS_BY_SURAH || {}, RC = window.ROOT_CORE || {}, WN = window.WORD_NOTES || {};
+  const wordsOf = (sid, n, v) => { const w = WB[sid] && WB[sid][n], t = arText(v).split(' '); return w && w.length === t.length ? [w, t] : null; };
+  const hasWords = (sid, n, v) => !!wordsOf(sid, n, v);
+  function arWords(sid, n, v){
+    const x = wordsOf(sid, n, v); if (!x) return arText(v);
+    return x[1].map((t, i) => `<span class="w" data-k="${sid}:${n}:${i + 1}">${t}</span>`).join(' ');
+  }
+  const spaced = r => [...r].join(' ');
+  function wordTip(k){
+    const [sid, n, i] = k.split(':'), w = WB[sid][n][i - 1], v = verseOf(+sid, +n), t = arText(v).split(' ')[i - 1], note = WN[k] || {};
+    const lexSrc = note.lex || w.m, lex = lexSrc ? (lexSrc.length > 230 ? lexSrc.slice(0, 230).replace(/\s+\S*$/, '') + '…' : lexSrc) : '';
+    const root = w.r
+      ? `<div class="wr">Root <b>${spaced(w.r)}</b>${note.alt ? ` <span class="wt">(also listed under</span> <b>${spaced(note.alt)}</b><span class="wt">)</span>` : ''}
+           ${RC[w.r] ? `<div class="wc"><b style="font-size:13px;letter-spacing:0;font-family:Inter">Original meaning:</b> ${esc(RC[w.r])}</div>` : ''}
+           ${note.alt && RC[note.alt] ? `<div class="wc">${spaced(note.alt)}: ${esc(RC[note.alt])}</div>` : ''}
+           ${lex ? `<div class="wl">Lexicon${note.lex ? ' (' + spaced(note.alt) + ')' : ''}: ${esc(lex)}</div>` : ''}</div>`
+      : `<div class="wr wt">A particle or pronoun — it has no three-letter root.</div>`;
+    return `<div class="wa">${t}</div><div class="wg">${esc(w.g)}</div><div class="wt">${esc(w.t)} · ${sid}:${n}, word ${i}</div>${root}${note.note ? `<div class="wn">ⓘ ${esc(note.note)}</div>` : ''}`;
+  }
+  const wtip = document.getElementById('wtip');
+  function showWord(el){
+    pop.querySelectorAll('.w.on').forEach(x => x.classList.remove('on')); el.classList.add('on');
+    wtip.innerHTML = wordTip(el.dataset.k); wtip.classList.add('open');
+    const r = el.getBoundingClientRect(), tw = wtip.offsetWidth, th = wtip.offsetHeight, m = 8;
+    let x = Math.min(Math.max(m, r.left + r.width / 2 - tw / 2), innerWidth - tw - m);
+    let y = r.top - th - 10; if (y < m) y = r.bottom + 10;
+    if (y + th > innerHeight - m) y = Math.max(m, innerHeight - th - m);
+    wtip.style.left = x + 'px'; wtip.style.top = y + 'px';
+  }
+  function hideWord(){ wtip.classList.remove('open'); pop.querySelectorAll('.w.on').forEach(x => x.classList.remove('on')); }
+  pop.addEventListener('mouseover', e => { const w = e.target.closest('.w'); if (w) showWord(w); });
+  pop.addEventListener('mouseout', e => { if (e.target.closest('.w') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.w') === e.target.closest('.w'))) hideWord(); });
+  pop.addEventListener('click', e => { const w = e.target.closest('.w'); if (w) { e.stopPropagation(); showWord(w); } else hideWord(); });
+  pop.addEventListener('scroll', hideWord, { passive: true });
 
   // ---------- popup ----------
   // Hovering any panel always shows its verses. A pinned popup (click) stays open when the mouse leaves;
@@ -298,7 +353,7 @@
     clearTimeout(swapT);
     if (pinned && !force) return;
     clearTimeout(hideT);
-    hideT = setTimeout(() => { pop.classList.remove('open'); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = false; }, force ? 0 : 250);
+    hideT = setTimeout(() => { wtip.classList.remove('open'); pop.classList.remove('open'); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = false; }, force ? 0 : 250);
   }
   pop.addEventListener('mouseenter', () => { clearTimeout(hideT); clearTimeout(swapT); });
   pop.addEventListener('mouseleave', () => hidePop());
