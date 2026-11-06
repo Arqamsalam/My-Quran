@@ -200,7 +200,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: '6 The sky fills with birds (Ababil)', box: [1015, 100, 1290, 320], key: [3], note: "Ṭayran abābīl — 'birds in flocks' (3)." },
       { label: '7 Birds carry baked-clay pebbles', box: [1100, 320, 1290, 440], key: [4], note: "Bi-ḥijāratin min sijjīl — 'stones of hard (baked) clay' (4). 'Three each — beak and claws' is from the tafsir accounts." },
       { label: "8 The army scattered like chewed straw ('asf ma'kul)", box: [1290, 90, 1448, 330], key: [5], note: "Ka-'aṣfin ma'kūl — 'like eaten straw' (5)." },
-      { label: 'The House remains safe', box: [1275, 210, 1360, 270], key: [1], note: "The surah doesn't name the Ka'bah; its neighbour Quraysh says 'the Lord of this House' (106:3)." },
+      { label: 'The House remains safe', box: [1275, 210, 1360, 270], key: [1], xref: ['106:3'], note: "The surah doesn't name the Ka'bah; its neighbour Quraysh says 'the Lord of this House' (106:3)." },
       { label: 'The fallen army (scene)', box: [1015, 440, 1448, 550], key: [5] },
       // middle
       { label: 'Essence in one line', box: [10, 560, 270, 830], key: [3, 4, 5] },
@@ -216,7 +216,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: 'N — Nothing left', box: [500, 778, 720, 820], key: [5] },
       { label: 'Have you not SEEN?', box: [500, 820, 720, 855], key: [1] },
       { label: 'Micro-nazm', box: [735, 565, 905, 830], key: [1, 2, 3, 4, 5], note: "Checked: 'alam' opens verses 1 and 2." },
-      { label: 'Macro-nazm', box: [910, 565, 1110, 840], key: [1], note: "Paired with Quraysh (106), which isn't on this site yet. 'The Year of the Elephant was the Prophet's ﷺ birth-year' is from the sirah." },
+      { label: 'Macro-nazm', box: [910, 565, 1110, 840], key: [1], xref: ['106:3', '106:4'], note: "Paired with Quraysh (106). 'The Year of the Elephant was the Prophet's ﷺ birth-year' is from the sirah." },
       { label: 'Amud (central pillar)', box: [1120, 565, 1440, 840], key: [1, 2] },
       // bottom
       { label: 'Big picture / life lessons', box: [90, 850, 440, 895], key: [], more: [3, 4, 5] },
@@ -225,7 +225,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       { label: "Trust Allah's protection over human arrogance", box: [280, 895, 420, 1080], key: [2] },
       { label: 'Be like Mahmud: refuse to move toward what is wrong', box: [420, 895, 560, 1080], key: [], more: [2], note: SIRAH105 },
       { label: 'Final memory anchor', box: [590, 860, 1440, 1080], key: [3, 5] },
-      { label: "'The House has its own Lord.'", box: [1220, 890, 1440, 980], key: [1], note: SIRAH105 + " The wording echoes Quraysh 106:3, 'the Lord of this House'." },
+      { label: "'The House has its own Lord.'", box: [1220, 890, 1440, 980], key: [1], xref: ['106:3'], note: SIRAH105 + " The wording echoes Quraysh 106:3, 'the Lord of this House'." },
     ],
   }] },
 });

@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **Ash-Shura (42)** and **Al-Mursalat (77) to Al-Fil (105)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **Ash-Shura (42)** and **Al-Mursalat (77) to An-Nasr (110)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -24,6 +24,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts96-100.js`, `verses96-100.js` | Surahs 96–100 (one poster each) |
 | `parts101-105.js`, `verses101-105.js` | Surahs 101–105 (one poster each) |
+| `parts106-110.js`, `verses106-110.js` | Surahs 106–110 (one poster each) |
 | `images/partN.webp`, `images/s3-partN.webp`, `images/sNN.webp` | The posters |
 
 ## Publish on GitHub Pages
@@ -58,6 +59,8 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   "We follow only what we found our fathers doing" as 98:5, but that line is not in the surah (cf. 2:170).
 - **Surahs 101–105:** 181 more hotspots; every verse is shown. Noted on the page: At-Takathur's "truth of certainty"
   (ḥaqq al-yaqīn) is not in that surah (it has 'ilm and 'ayn al-yaqīn, 5 and 7); Al-Fil's story details are from the sirah.
+- **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
+  (the surah has 10).
 - Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa, `#s85-2` opens Al-Buruj's second poster, `#s42-1` opens Ash-Shura part 1.
 
 ## Editing a hotspot
