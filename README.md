@@ -61,11 +61,11 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   (ḥaqq al-yaqīn) is not in that surah (it has 'ilm and 'ayn al-yaqīn, 5 and 7); Al-Fil's story details are from the sirah.
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
-- **Word-by-word (sample: Surah 100 Al-'Adiyat):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, its root letters, the root's original meaning and the lexicon entry. Sources: word meanings from quran.com's
-  word-by-word data; roots from the Quranic Arabic Corpus morphology; root meanings from Quran-Journey/roots (summaries of
-  classical lexicons such as Lane's), plus a curated one-line "original meaning" in `roots_core.js`.
-  `tools/build_words.py` builds `wordsNNN.js` for any surah from those three sources.
+- **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 12,865 words, 924 roots.
+  Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
+  entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
+  every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
 - Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa, `#s85-2` opens Al-Buruj's second poster, `#s42-1` opens Ash-Shura part 1.
 
 ## Editing a hotspot

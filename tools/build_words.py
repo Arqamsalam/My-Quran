@@ -52,17 +52,23 @@ RMN = {}
 for k, v in RM.items():
     RMN.setdefault(norm(k), v)
 
-out, missing = {}, collections.Counter()
+# lexicon entries in the source that belong to a different root (shown nowhere; the curated meaning covers them)
+BAD_LEX = {'قهر'}
+out, missing, lex = {}, collections.Counter(), {}
 for (s, v, w), r in sorted(set(roots.items()) | {(k, roots.get(k)) for k in gloss}):
     g, t = gloss.get((s, v, w), ('', ''))
     rm = RMN.get(norm(r)) if r else None
     if r and not rm:
         missing[r] += 1
-    out.setdefault(str(s), {}).setdefault(str(v), []).append({'g': g, 't': t, 'r': r or '', 'm': rm or ''})
+    out.setdefault(str(s), {}).setdefault(str(v), []).append({'g': g, 't': t, 'r': r or ''})
+    if r and rm and r not in BAD_LEX:
+        # the source sometimes runs phrases together ("far awayRemoved"): put a separator back
+        lex[r] = re.sub(r'([a-z)\]])([A-Z])', r'\1; \2', rm).strip()
 
 js = ('// Word-by-word data. English meaning: quran.com word-by-word; root: Quranic Arabic Corpus morphology;\n'
       '// root meaning: Quran-Journey/roots (summaries from classical lexicons such as Lane\'s).\n'
-      'window.WORDS_BY_SURAH = Object.assign(window.WORDS_BY_SURAH || {}, ' + json.dumps(out, ensure_ascii=False, indent=1) + ');\n')
+      'window.WORDS_BY_SURAH = Object.assign(window.WORDS_BY_SURAH || {}, ' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ');\n'
+      'window.ROOT_LEX = Object.assign(window.ROOT_LEX || {}, ' + json.dumps(lex, ensure_ascii=False, separators=(',', ':')) + ');\n')
 open(a.out, 'w', encoding='utf-8').write(js)
 print('surahs', sorted(want), 'words', sum(len(x) for s in out.values() for x in s.values()),
       'roots without meaning:', dict(missing) or 'none')

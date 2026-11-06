@@ -191,7 +191,7 @@
 <script src="verses106-110.js"></script>
 <script src="parts106-110.js"></script>
 <script src="roots_core.js"></script>
-<script src="words100.js"></script>
+<script src="words.js"></script>
 <script>
 (() => {
   const VB = window.VERSES_BY_SURAH || {}, PB = window.PARTS_BY_SURAH || {};
@@ -272,8 +272,10 @@
   const spotRefs = s => s.key.length ? s.key : (s.more || []);
 
   // ---------- word-by-word ----------
-  const WB = window.WORDS_BY_SURAH || {}, RC = window.ROOT_CORE || {}, WN = window.WORD_NOTES || {};
-  const wordsOf = (sid, n, v) => { const w = WB[sid] && WB[sid][n], t = arText(v).split(' '); return w && w.length === t.length ? [w, t] : null; };
+  const WB = window.WORDS_BY_SURAH || {}, RC = window.ROOT_CORE || {}, WN = window.WORD_NOTES || {}, RL = window.ROOT_LEX || {};
+  const WJ = window.WORD_JOIN || {};
+  const tokens = (sid, n, v) => { const t = arText(v).split(' '), j = WJ[sid + ':' + n]; if (j) t.splice(j[0] - 1, j[1] - j[0] + 1, t.slice(j[0] - 1, j[1]).join(' ')); return t; };
+  const wordsOf = (sid, n, v) => { const w = WB[sid] && WB[sid][n], t = tokens(sid, n, v); return w && w.length === t.length ? [w, t] : null; };
   const hasWords = (sid, n, v) => !!wordsOf(sid, n, v);
   function arWords(sid, n, v){
     const x = wordsOf(sid, n, v); if (!x) return arText(v);
@@ -281,8 +283,8 @@
   }
   const spaced = r => [...r].join(' ');
   function wordTip(k){
-    const [sid, n, i] = k.split(':'), w = WB[sid][n][i - 1], v = verseOf(+sid, +n), t = arText(v).split(' ')[i - 1], note = WN[k] || {};
-    const lexSrc = note.lex || w.m, lex = lexSrc ? (lexSrc.length > 230 ? lexSrc.slice(0, 230).replace(/\s+\S*$/, '') + '…' : lexSrc) : '';
+    const [sid, n, i] = k.split(':'), w = WB[sid][n][i - 1], v = verseOf(+sid, +n), t = tokens(sid, n, v)[i - 1], note = WN[k] || {};
+    const lexSrc = note.lex || RL[w.r], lex = lexSrc ? (lexSrc.length > 230 ? lexSrc.slice(0, 230).replace(/\s+\S*$/, '') + '…' : lexSrc) : '';
     const root = w.r
       ? `<div class="wr">Root <b>${spaced(w.r)}</b>${note.alt ? ` <span class="wt">(also listed under</span> <b>${spaced(note.alt)}</b><span class="wt">)</span>` : ''}
            ${RC[w.r] ? `<div class="wc"><b style="font-size:13px;letter-spacing:0;font-family:Inter">Original meaning:</b> ${esc(RC[w.r])}</div>` : ''}
