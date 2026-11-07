@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **Ash-Shura (42)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **Al-Anfal (8)**, **Ash-Shura (42)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -22,6 +22,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts86-90.js`, `verses86-90.js` | Surahs 86–90 (one poster each) |
 | `parts91-95.js`, `verses91-95.js` | Surahs 91–95 (one poster each) |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
+| `parts8.js`, `verses8.js` | Al-Anfal (8), one poster |
 | `parts96-100.js`, `verses96-100.js` | Surahs 96–100 (one poster each) |
 | `parts101-105.js`, `verses101-105.js` | Surahs 101–105 (one poster each) |
 | `parts106-110.js`, `verses106-110.js` | Surahs 106–110 (one poster each) |
@@ -63,11 +64,13 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
 - **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 12,946 words, 934 roots.
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 14,179 words, 957 roots.
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
 - **Surahs 111–114:** 129 more hotspots and word-by-word hover; every verse is shown.
+- **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
+  '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa, `#s85-2` opens Al-Buruj's second poster, `#s42-1` opens Ash-Shura part 1.
 
 ## Editing a hotspot

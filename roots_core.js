@@ -937,6 +937,28 @@ window.ROOT_CORE = Object.assign(window.ROOT_CORE || {}, {
   "وقب": "a hollow; to enter and spread (of darkness)",
   "نفث": "to blow lightly (with a little spittle)",
   "وسوس": "a faint, repeated whispering sound",
+  "نفل": "something extra, given beyond what is due; spoils of war",
+  "وجل": "to tremble with fear",
+  "سوق": "to drive (cattle) forward; the leg, shank; a market",
+  "شوك": "a thorn; sharp weapons, armed strength",
+  "غوث": "to cry out for help; relief",
+  "عنق": "the neck",
+  "بنن": "the fingertips",
+  "زحف": "to advance slowly, crawl forward (as a massed army)",
+  "حوز": "to gather to oneself; to withdraw to (a group)",
+  "مطر": "rain",
+  "مكو": "to whistle",
+  "ركم": "to heap up, pile one on another",
+  "مضي": "to go on, pass by; to be past",
+  "غنم": "to gain without hardship; sheep; spoils",
+  "قصو": "to be far, remote",
+  "بطر": "to be insolent through ease and plenty",
+  "جور": "a neighbour; to give protection; to swerve from the right",
+  "نكص": "to draw back, retreat on one's heels",
+  "شرد": "to flee, scatter",
+  "حرض": "to urge on, rouse",
+  "فقه": "to understand deeply",
+  "ثخن": "to be thick, heavy; to subdue thoroughly",
 });
 // Notes for single words (surah:verse:word) where the root needs a comment.
 window.WORD_NOTES = Object.assign(window.WORD_NOTES || {}, {
@@ -946,4 +968,5 @@ window.WORD_NOTES = Object.assign(window.WORD_NOTES || {}, {
 // Verses where the Arabic text splits one word-by-word entry into two printed words: join them (1-based positions).
 window.WORD_JOIN = Object.assign(window.WORD_JOIN || {}, {
   '2:181': [3, 4], // بَعۡدَ مَا is one entry (baʿdamā, 'after what') in the word-by-word sources
+  '8:6': [4, 5],
 });
