@@ -70,6 +70,10 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
+- **'Why this word?' (balagha), only where applicable:** curated notes on high-yield word choices
+  (`tools/why_src.js` → `node tools/build_why.js` → `why.js`), plus grammar-based notes generated from the Quranic
+  Arabic Corpus tags for patterns with a well-known rhetorical effect: oaths, inna…la- and la-…-nna emphasis, qad + past,
+  passive voice, Forms VI and X, and the intensive faʿʿāl / faʿūl forms.
 - **Surahs 111–114:** 129 more hotspots and word-by-word hover; every verse is shown.
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.

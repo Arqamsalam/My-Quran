@@ -91,6 +91,12 @@
   #wtip .wc{margin-top:3px}
   #wtip .wl{margin-top:5px;font-size:11.5px;color:#a99a80}
   #wtip .wn{margin-top:6px;font-size:11.5px;color:#e4c27a}
+  #wtip .why{margin-top:8px;padding:7px 9px;border-radius:7px;background:#2a2012;border-left:3px solid var(--gold)}
+  #wtip .why h4{margin:0 0 3px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
+  #wtip .why p{margin:0 0 4px;font-size:12.5px;line-height:1.45}
+  #wtip .why p.g{color:#cbbfa8;font-size:12px}
+  #wtip .why p.g b{color:#e4c27a;font-weight:600}
+  #wtip{width:min(360px,calc(100vw - 20px))}
   #pop .note{margin:10px 14px 0;padding:8px 10px;background:#fff6dd;border-left:3px solid var(--gold);font-size:13px;border-radius:4px}
   @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:62vh} }
   .verse{padding:12px 14px;border-bottom:1px dashed #cdb789}
@@ -199,6 +205,7 @@
 <script src="verses43-44.js"></script>
 <script src="parts43-44.js"></script>
 <script src="roots_core.js"></script>
+<script src="why.js"></script>
 <script src="words.js"></script>
 <script>
 (() => {
@@ -290,6 +297,20 @@
     return x[1].map((t, i) => `<span class="w" data-k="${sid}:${n}:${i + 1}">${t}</span>`).join(' ');
   }
   const spaced = r => [...r].join(' ');
+  // grammar-based notes (codes come from the Quranic Arabic Corpus tags, see tools/build_words.py)
+  const GN = {
+    oath: ['Oath (qasam)', 'wa- here means “By…”: Allah swears by something He created, drawing attention to it as a sign and giving weight to what follows.'],
+    inna_la: ['Double emphasis', 'inna (“indeed”) earlier in the sentence plus la- (“surely”) on this word — two layers of certainty, used where a listener might doubt or deny.'],
+    la: ['Emphatic la-', 'the prefix la- adds “surely” — the statement is stressed.'],
+    la_nun: ['Strongest emphasis', 'la- before the verb and -nna after it (nūn of emphasis): “you will most certainly…”, with the force of an oath.'],
+    nun: ['Nūn of emphasis', 'the -nna ending stresses the verb: it will certainly happen.'],
+    qad: ['Qad + past verb', 'qad before a past-tense verb confirms it as settled fact: “indeed has…”.'],
+    pass: ['Passive voice', 'the doer is not named, keeping the focus on what happens. Common reasons: the doer is obvious (Allah), unimportant, or deliberately left unsaid.'],
+    v6: ['Form VI (tafāʿala)', 'this pattern usually means doing something with or to one another — a shared, mutual action.'],
+    v10: ['Form X (istafʿala)', 'this pattern often means seeking or considering: istaghfara “to seek forgiveness”, istakbara “to consider oneself great”.'],
+    faal: ['Intensive form (faʿʿāl)', 'the doubled middle letter and long ā describe doing something often and to a great degree (e.g. tawwāb “ever-returning”).'],
+    faul: ['Intensive form (faʿūl)', 'this pattern describes a quality held strongly or habitually (e.g. ghafūr “all-forgiving”, kanūd “utterly ungrateful”).'],
+  };
   function wordTip(k){
     const [sid, n, i] = k.split(':'), w = WB[sid][n][i - 1], v = verseOf(+sid, +n), t = tokens(sid, n, v)[i - 1], note = WN[k] || {};
     const lexSrc = note.lex || RL[w.r], lex = lexSrc ? (lexSrc.length > 230 ? lexSrc.slice(0, 230).replace(/\s+\S*$/, '') + '…' : lexSrc) : '';
@@ -299,7 +320,9 @@
            ${note.alt && RC[note.alt] ? `<div class="wc">${spaced(note.alt)}: ${esc(RC[note.alt])}</div>` : ''}
            ${lex ? `<div class="wl">Lexicon${note.lex ? ' (' + spaced(note.alt) + ')' : ''}: ${esc(lex)}</div>` : ''}</div>`
       : `<div class="wr wt">A particle or pronoun — it has no three-letter root.</div>`;
-    return `<div class="wa">${t}</div><div class="wg">${esc(w.g)}</div><div class="wt">${esc(w.t)} · ${sid}:${n}, word ${i}</div>${root}${note.note ? `<div class="wn">ⓘ ${esc(note.note)}</div>` : ''}`;
+    const curated = (window.WHY || {})[k], gram = (w.b || []).map(c => GN[c]).filter(Boolean);
+    const why = curated || gram.length ? `<div class="why"><h4>Why this word?</h4>${curated ? `<p>${esc(curated)}</p>` : ''}${gram.map(([h, x]) => `<p class="g"><b>${h}:</b> ${x}</p>`).join('')}</div>` : '';
+    return `<div class="wa">${t}</div><div class="wg">${esc(w.g)}</div><div class="wt">${esc(w.t)} · ${sid}:${n}, word ${i}</div>${root}${why}${note.note ? `<div class="wn">ⓘ ${esc(note.note)}</div>` : ''}`;
   }
   const wtip = document.getElementById('wtip');
   function showWord(el){
