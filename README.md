@@ -22,7 +22,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts86-90.js`, `verses86-90.js` | Surahs 86–90 (one poster each) |
 | `parts91-95.js`, `verses91-95.js` | Surahs 91–95 (one poster each) |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
-| `parts4.js`, `verses4.js` | An-Nisa' (4), posters 1–10 of 14 (verses 1–126) |
+| `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
 | `parts8.js`, `verses8.js` | Al-Anfal (8), one poster |
 | `parts16-18.js`, `verses16-18.js` | An-Nahl and Al-Isra (two posters each), Al-Kahf (one) |
 | `parts43-44.js`, `verses43-44.js` | Az-Zukhruf and Ad-Dukhan (two posters each) |
@@ -76,10 +76,11 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   Arabic Corpus tags for patterns with a well-known rhetorical effect: oaths, inna…la- and la-…-nna emphasis, qad + past,
   passive voice, Forms VI and X, and the intensive faʿʿāl / faʿūl forms.
 - **Surahs 111–114:** 129 more hotspots and word-by-word hover; every verse is shown.
-- **An-Nisa' (4), posters 1–10 of 14 (verses 1–126):** 193 hotspots; word-by-word hover covers all 176 verses.
+- **An-Nisa' (4), all 14 posters:** 270 hotspots and word-by-word hover on all 176 verses.
   Noted on the page: poster 2's card 6 says the mother with children receives an eighth; in 4:11 the mother's share is
   a sixth, and the eighth is the wife's share in 4:12. Every nazm link the posters cite was checked against the text
-  (e.g. naṣīban mafrūḍā occurs only in 4:7 and 4:118; al-mustaḍʿafīna min… only in 4:75, 98 and 127).
+  (e.g. naṣīban mafrūḍā occurs only in 4:7 and 4:118; kalālah only in 4:12 and 4:176; mīthāqan ghalīẓā is 4:21 and
+  4:154 within the surah, and 33:7 elsewhere).
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
