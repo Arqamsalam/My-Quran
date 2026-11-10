@@ -1287,6 +1287,13 @@ window.ROOT_CORE = Object.assign(window.ROOT_CORE || {}, {
   "شيخ": "an old man",
   "سلسل": "a chain, links joined together",
   "حوج": "need, want",
+  "صرصر": "an icy, howling wind (from ṣarra, to shriek)",
+  "نحس": "ill-omened, ill-fated; (of copper) red, smoky",
+  "وزع": "to hold back the front ranks so the rear catch up; to keep in order",
+  "هزز": "to shake, stir, quiver",
+  "كمم": "the sheath around a fruit or flower",
+  "دهر": "a long stretch of time; time that wears things away",
+  "جثو": "to kneel, sit on the knees",
 });
 // Notes for single words (surah:verse:word) where the root needs a comment.
 window.WORD_NOTES = Object.assign(window.WORD_NOTES || {}, {
@@ -1303,4 +1310,5 @@ window.WORD_JOIN = Object.assign(window.WORD_JOIN || {}, {
 window.WORD_MERGE = Object.assign(window.WORD_MERGE || {}, {
   '36:22': [1, 2],
   '37:164': [1, 2],
+  '41:47': [25, 26],
 });
