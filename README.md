@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -23,6 +23,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts91-95.js`, `verses91-95.js` | Surahs 91–95 (one poster each) |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
+| `parts5.js`, `verses5.js` | Al-Ma'idah (5), posters 1–5 of 12 (verses 1–40) |
 | `parts8.js`, `verses8.js` | Al-Anfal (8), one poster |
 | `parts16-18.js`, `verses16-18.js` | An-Nahl and Al-Isra (two posters each), Al-Kahf (one) |
 | `parts43-44.js`, `verses43-44.js` | Az-Zukhruf and Ad-Dukhan (two posters each) |
@@ -67,7 +68,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
 - **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 24,081 words, 1,170 roots.
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 26,885 words, 1,199 roots.
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
@@ -81,6 +82,9 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   a sixth, and the eighth is the wife's share in 4:12. Every nazm link the posters cite was checked against the text
   (e.g. naṣīban mafrūḍā occurs only in 4:7 and 4:118; kalālah only in 4:12 and 4:176; mīthāqan ghalīẓā is 4:21 and
   4:154 within the surah, and 33:7 elsewhere).
+- **Al-Ma'idah (5), posters 1–5 of 12 (verses 1–40):** 96 hotspots; word-by-word hover covers all 120 verses.
+  Checked links: shanaʾān ('hatred of a people') occurs only in 5:2 and 5:8; qawwāmīna only in 4:135 and 5:8 (same
+  words, swapped order); ṣaʿīdan ṭayyibā only in 4:43 and 5:6. Poster 5's 'His Israel' is a typo for 'the Children of Israel'.
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
