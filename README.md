@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Saba (34)**, **Fatir (35)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -21,6 +21,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts77-85.js`, `verses77-85.js` | Surahs 77, 83, 84 and 85 (Al-Buruj has two posters) |
 | `parts86-90.js`, `verses86-90.js` | Surahs 86–90 (one poster each) |
 | `parts91-95.js`, `verses91-95.js` | Surahs 91–95 (one poster each) |
+| `parts34-35.js`, `verses34-35.js` | Saba (34), two posters; Fatir (35), three posters |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
 | `parts5.js`, `verses5.js` | Al-Ma'idah (5), all 12 posters |
@@ -68,7 +69,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
 - **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 26,885 words, 1,199 roots.
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 28,543 words, 1,226 roots.
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
@@ -87,6 +88,10 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   words, swapped order); ṣaʿīdan ṭayyibā only in 4:43 and 5:6. Poster 5's 'His Israel' is a typo for 'the Children of Israel'.
   Also checked: 'whoever does not judge by what Allah revealed' occurs only in 44, 45, 47 (three different endings);
   lā taghlū fī dīnikum only in 4:171 and 5:77; azlām only in 5:3 and 5:90.
+- **Saba (34) and Fatir (35):** 149 hotspots and word-by-word hover. Checked links: kulla mumazzaq only in 34:7 and
+  34:19; qadhafa in 34:48 and 34:53 (and 37:8); makān qarīb 34:51 vs makān baʿīd 34:52–53; mithqāl dharrah in 34:3
+  and 34:22; yabūr (35:10) and lan tabūr (35:29); qiṭmīr and 'innamā yakhshā llāha… l-ʿulamāʾ' only in Fatir.
+  Fatir's posters label themselves 'Part 1 of 2', 'Part 2 of 2' and 'Part 3 of 3'; the set has three parts.
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
