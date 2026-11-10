@@ -23,7 +23,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts91-95.js`, `verses91-95.js` | Surahs 91–95 (one poster each) |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
-| `parts5.js`, `verses5.js` | Al-Ma'idah (5), posters 1–10 of 12 (verses 1–100) |
+| `parts5.js`, `verses5.js` | Al-Ma'idah (5), all 12 posters |
 | `parts8.js`, `verses8.js` | Al-Anfal (8), one poster |
 | `parts16-18.js`, `verses16-18.js` | An-Nahl and Al-Isra (two posters each), Al-Kahf (one) |
 | `parts43-44.js`, `verses43-44.js` | Az-Zukhruf and Ad-Dukhan (two posters each) |
@@ -82,7 +82,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   a sixth, and the eighth is the wife's share in 4:12. Every nazm link the posters cite was checked against the text
   (e.g. naṣīban mafrūḍā occurs only in 4:7 and 4:118; kalālah only in 4:12 and 4:176; mīthāqan ghalīẓā is 4:21 and
   4:154 within the surah, and 33:7 elsewhere).
-- **Al-Ma'idah (5), posters 1–10 of 12 (verses 1–100):** 189 hotspots; word-by-word hover covers all 120 verses.
+- **Al-Ma'idah (5), all 12 posters:** 227 hotspots and word-by-word hover on all 120 verses.
   Checked links: shanaʾān ('hatred of a people') occurs only in 5:2 and 5:8; qawwāmīna only in 4:135 and 5:8 (same
   words, swapped order); ṣaʿīdan ṭayyibā only in 4:43 and 5:6. Poster 5's 'His Israel' is a typo for 'the Children of Israel'.
   Also checked: 'whoever does not judge by what Allah revealed' occurs only in 44, 45, 47 (three different endings);
