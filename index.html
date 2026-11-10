@@ -297,6 +297,10 @@
   // ---------- word-by-word ----------
   const WB = window.WORDS_BY_SURAH || {}, RC = window.ROOT_CORE || {}, WN = window.WORD_NOTES || {}, RL = window.ROOT_LEX || {};
   const WJ = window.WORD_JOIN || {};
+  const WM = window.WORD_MERGE || {};
+  for (const k in WM) { const [s, n] = k.split(':'), a = WB[s] && WB[s][n], [i, j] = WM[k];
+    if (a && !a.merged) { const p = a.slice(i - 1, j);
+      a.splice(i - 1, j - i + 1, { g: p.map(x => x.g).join(' '), t: p.map(x => x.t).join(''), r: (p.find(x => x.r) || {}).r || '', b: p.flatMap(x => x.b || []) }); a.merged = 1; } }
   const tokens = (sid, n, v) => { const t = arText(v).split(' '), j = WJ[sid + ':' + n]; if (j) t.splice(j[0] - 1, j[1] - j[0] + 1, t.slice(j[0] - 1, j[1]).join(' ')); return t; };
   const wordsOf = (sid, n, v) => { const w = WB[sid] && WB[sid][n], t = tokens(sid, n, v); return w && w.length === t.length ? [w, t] : null; };
   const hasWords = (sid, n, v) => !!wordsOf(sid, n, v);
