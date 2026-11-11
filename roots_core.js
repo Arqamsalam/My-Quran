@@ -1294,6 +1294,20 @@ window.ROOT_CORE = Object.assign(window.ROOT_CORE || {}, {
   "كمم": "the sheath around a fruit or flower",
   "دهر": "a long stretch of time; time that wears things away",
   "جثو": "to kneel, sit on the knees",
+  "حقف": "a long, curving sand dune",
+  "نصت": "to fall silent and listen",
+  "عيي": "to be worn out, unable",
+  "بول": "the mind, one's state of heart",
+  "تعس": "to stumble and fall on one's face; ruin",
+  "أسن": "(water) to turn stale, foul-smelling",
+  "عسل": "honey",
+  "معي": "the intestines, bowels",
+  "شرط": "a sign, mark; a condition",
+  "قفل": "a lock; to lock up",
+  "سول": "to make something look appealing; to entice",
+  "ضغن": "buried, hidden hatred; rancour",
+  "لحن": "the tilt or tone of speech; to hint",
+  "حفو": "to press hard, insist; to go barefoot",
 });
 // Notes for single words (surah:verse:word) where the root needs a comment.
 window.WORD_NOTES = Object.assign(window.WORD_NOTES || {}, {
