@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Saba (34)**, **Fatir (35)**, **Ya-Sin (36)**, **As-Saffat (37)**, **Sad (38)**, **Az-Zumar (39)**, **Ghafir (40)**, **Fussilat (41)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)**, **Al-Jathiyah (45)**, **Al-Ahqaf (46)**, **Muhammad (47)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Saba (34)**, **Fatir (35)**, **Ya-Sin (36)**, **As-Saffat (37)**, **Sad (38)**, **Az-Zumar (39)**, **Ghafir (40)**, **Fussilat (41)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)**, **Al-Jathiyah (45)**, **Al-Ahqaf (46)**, **Muhammad (47)**, **Al-Fath (48)**, **Al-Hujurat (49)**, **Qaf (50)**, **Adh-Dhariyat (51)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -26,6 +26,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts39-40.js`, `verses39-40.js` | Az-Zumar (39) and Ghafir (40), two posters each |
 | `parts41-45.js`, `verses41-45.js` | Fussilat (41) and Al-Jathiyah (45), two posters each |
 | `parts46-47.js`, `verses46-47.js` | Al-Ahqaf (46) and Muhammad (47), two posters each |
+| `parts48-51.js`, `verses48-51.js` | Al-Fath (48), two posters; Al-Hujurat (49), Qaf (50), Adh-Dhariyat (51), one each |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
 | `parts5.js`, `verses5.js` | Al-Ma'idah (5), all 12 posters |
@@ -73,7 +74,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
 - **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 35,716 words, 1,306 roots.
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 37,356 words, 1,334 roots.
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
@@ -110,6 +111,10 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Al-Ahqaf and Muhammad (46–47):** 98 hotspots and word-by-word hover. Checked links: the ʿ-r-ḍ root (46:3, 24,
   20, 34); haste 46:22 → 24 → 35; ulu l-ʿazm only 46:35; 'thirty months' only 46:15; deeds aḍalla (47:1, 8), aḥbaṭa
   (47:9, 28, 32), lā tubṭilū (47:33); aḍghān only 47:29 and 37; verse 19 as the arithmetic centre of Muhammad.
+- **Al-Fath to Adh-Dhariyat (48–51):** 109 hotspots and word-by-word hover. Checked links: sakīnah three times in
+  Al-Fath (4, 18, 26); ẓann as-sawʾ only 48:6 and 12; the hands thread (48:10, 20, 24); 'O you who believe' five times
+  in Al-Hujurat; Qaf's ring (1/45, 3/41, 4/44) and its two mazīd (30, 35); ar-Razzāq only 51:58. The Qaf and
+  Adh-Dhariyat posters have stray template text ('Click to add text', 'Fun') printed on one card each.
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
