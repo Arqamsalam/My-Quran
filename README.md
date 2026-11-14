@@ -1,6 +1,6 @@
 # Quran · Memory Story Dashboard
 
-An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Saba (34)**, **Fatir (35)**, **Ya-Sin (36)**, **As-Saffat (37)**, **Sad (38)**, **Az-Zumar (39)**, **Ghafir (40)**, **Fussilat (41)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)**, **Al-Jathiyah (45)**, **Al-Ahqaf (46)**, **Muhammad (47)**, **Al-Fath (48)**, **Al-Hujurat (49)**, **Qaf (50)**, **Adh-Dhariyat (51)**, **At-Tur (52)**, **An-Najm (53)**, **Al-Qamar (54)**, **Ar-Rahman (55)**, **Al-Waqi'ah (56)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
+An interactive page for the illustrated "Memory Story" posters of **Al-Baqarah (2)**, **Aal Imran (3)**, **An-Nisa' (4)**, **Al-Ma'idah (5)**, **Al-Anfal (8)**, **At-Tawbah (9)**, **Yunus (10)**, **Hud (11)**, **Yusuf (12)**, **Ar-Ra'd (13)**, **An-Nahl (16)**, **Al-Isra (17)**, **Al-Kahf (18)**, **Saba (34)**, **Fatir (35)**, **Ya-Sin (36)**, **As-Saffat (37)**, **Sad (38)**, **Az-Zumar (39)**, **Ghafir (40)**, **Fussilat (41)**, **Ash-Shura (42)**, **Az-Zukhruf (43)**, **Ad-Dukhan (44)**, **Al-Jathiyah (45)**, **Al-Ahqaf (46)**, **Muhammad (47)**, **Al-Fath (48)**, **Al-Hujurat (49)**, **Qaf (50)**, **Adh-Dhariyat (51)**, **At-Tur (52)**, **An-Najm (53)**, **Al-Qamar (54)**, **Ar-Rahman (55)**, **Al-Waqi'ah (56)** and **Al-Mursalat (77) to An-Nas (114)**. Pick a surah from the dropdown in the top bar.
 The whole poster always fits the screen — no scrolling. **Hover over (or tap) any panel** to get a popup with the **original Arabic verse(s)**,
 plus English (Saheeh International) and/or Urdu translation and an optional transliteration.
 
@@ -28,6 +28,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 | `parts46-47.js`, `verses46-47.js` | Al-Ahqaf (46) and Muhammad (47), two posters each |
 | `parts48-51.js`, `verses48-51.js` | Al-Fath (48), two posters; Al-Hujurat (49), Qaf (50), Adh-Dhariyat (51), one each |
 | `parts52-56.js`, `verses52-56.js` | At-Tur (52) to Al-Waqi'ah (56), one poster each |
+| `parts9-13.js`, `verses9-13.js` | At-Tawbah (9) to Ar-Ra'd (13), one poster each |
 | `parts42.js`, `verses42.js` | Ash-Shura (42), two posters |
 | `parts4.js`, `verses4.js` | An-Nisa' (4), all 14 posters |
 | `parts5.js`, `verses5.js` | Al-Ma'idah (5), all 12 posters |
@@ -75,7 +76,7 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
 - **Surahs 106–110:** 191 more hotspots; every verse is shown. Noted on the page: Al-Kawthar's "17 Arabic words"
   (the surah has 10).
 - **Word-by-word (every surah on the site):** inside a verse popup, hover or tap any Arabic word to see its English
-  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 39,100 words, 1,380 roots.
+  meaning, transliteration, root letters, the root's original meaning and the lexicon entry. 47,978 words, 1,448 roots.
   Sources: word meanings from quran.com's word-by-word data; roots from the Quranic Arabic Corpus morphology; lexicon
   entries from Quran-Journey/roots (summaries of classical lexicons such as Lane's). The one-line "original meaning" of
   every root is curated in `roots_core.js`. `tools/build_words.py` rebuilds `words.js` for any list of surahs.
@@ -121,6 +122,12 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   Al-Qamar's refrain at 54:17, 22, 32, 40; Ar-Rahman's refrain 31 times (13–77); dhu l-jalāl at 55:27 and 78;
   a-fa-raʾaytum at 56:58, 63, 68, 71. Poster slips noted on the page: Al-Qamar's refrain verse numbers and two
   garbled captions; Al-Waqi'ah's 'Have you seen' list (58, 63, 71, 72).
+- **At-Tawbah to Ar-Ra'd (9–13):** 87 hotspots and word-by-word hover. Checked links: 'the earth, vast as it was,
+  became narrow' only 9:25 and 9:118; raʾūfun raḥīm for the Prophet only at 9:128; fa-staqim kamā umirta 11:112
+  (and 42:15); qamīṣ six times, all in Yusuf; kayd in Yusuf 5, 28, 33, 34, 50, 52, 76; the foam parable 13:17.
+  Flagged on the page: the Yunus poster's fish story is not in Surah Yunus (it is 37:139–148, 21:87, 68:48); its
+  card ranges 45–70, 71–74 and 94–97 do not match their scenes; Hud's poster has a wind for ʿAd, a thunderbolt for
+  Shuʿayb and Pharaoh's drowning, none of which Surah Hud itself mentions.
 - **Al-Anfal (8):** 50 hotspots and word-by-word hover. The poster's topic strip has numbering slips ('42–48',
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
