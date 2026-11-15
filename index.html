@@ -80,7 +80,7 @@
   @media (max-width:760px){ .nav{display:none} }
 
   /* ---------- popup ---------- */
-  #pop{position:fixed;z-index:50;width:min(560px,calc(100vw - 20px));max-height:min(80vh,720px);overflow:auto;overscroll-behavior:contain;
+  #pop{position:fixed;z-index:50;width:min(700px,calc(100vw - 20px));max-height:min(82vh,760px);overflow:auto;overscroll-behavior:contain;
        background:#fff;color:#1f2937;border-radius:16px;box-shadow:0 18px 50px #000c;border:1px solid #e5e7eb;display:none}
   #pop.open{display:block}
   #pop.pinned{box-shadow:0 0 0 3px var(--gold),0 18px 50px #000c}
@@ -112,13 +112,13 @@
   #pop .note{margin:12px 12px 0;padding:10px 12px;background:#fff8e6;border-left:3px solid var(--gold);font-size:13.5px;line-height:1.5;border-radius:8px;color:#3b3325}
   @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:62vh} }
   /* verse card (quran.com style) */
-  .verse{position:relative;margin:12px;padding:12px 18px 16px;background:#f3f4f6;border-radius:16px}
-  .verse.more{background:#f2f6f8}
+  .verse{position:relative;margin:12px;padding:12px 20px 18px;background:#f4f5f6;border-radius:16px}
+  .verse.more{background:#f4f5f6}
   .vbar{display:flex;justify-content:space-between;align-items:center;margin:0 -6px 2px}
   .vbar>div{display:flex;align-items:center;gap:2px}
-  .vb{width:34px;height:34px;border:0;background:none;border-radius:9px;color:#6b7280;cursor:pointer;display:grid;place-items:center;padding:0}
-  .vb:hover{background:#e5e7eb;color:#111827}
-  .vb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .vb{width:36px;height:36px;border:0;background:none;border-radius:9px;color:#9b9b9b;cursor:pointer;display:grid;place-items:center;padding:0}
+  .vb:hover{background:#e8eaed;color:#0b163a}
+  .vb svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
   .vb.on{color:#2e7d6e} .vb.on svg.fillon{fill:currentColor}
   .vb.ok{color:#2e7d6e}
   .vkey{font:600 12.5px Figtree,Inter,sans-serif;color:#6b7280;margin-left:6px}
@@ -130,10 +130,10 @@
   .vnote{display:none;width:100%;margin-top:10px;min-height:64px;border:1px solid #d1d5db;border-radius:10px;padding:8px 10px;font:14px/1.5 Figtree,Inter,sans-serif;color:#1f2937;background:#fff;resize:vertical}
   .vnote.open{display:block}
   .vaudio{font:13px Figtree,Inter,sans-serif;color:#6b7280;margin-top:6px}
-  .ar{font-family:"UthmanicHafs","Amiri Quran",serif;direction:rtl;text-align:right;line-height:2.15;margin:4px 0 6px;font-size:var(--arsize,30px);color:#1c2541;font-weight:400}
-  .tr{font-style:italic;font-family:Figtree,Inter,sans-serif;font-size:14px;color:#6b7280;margin:6px 0 4px;line-height:1.55}
-  .en{font-family:Figtree,Inter,sans-serif;font-size:17px;line-height:1.65;margin:8px 0 2px;color:#272b33}
-  .ur{font-family:"Noto Nastaliq Urdu",serif;direction:rtl;text-align:right;font-size:17px;line-height:2.4;margin:8px 0 0;color:#272b33}
+  .ar{font-family:"UthmanicHafs","Amiri Quran",serif;direction:rtl;text-align:right;line-height:2.15;margin:2px 0 8px;font-size:var(--arsize,24px);color:#0b163a;font-weight:400}
+  .tr{font-style:italic;font-family:Figtree,Inter,sans-serif;font-size:14px;color:#4b5470;margin:6px 0 4px;line-height:1.55}
+  .en{font-family:Figtree,Inter,sans-serif;font-size:16.5px;line-height:1.65;margin:6px 0 2px;color:#0b163a}
+  .ur{font-family:"Noto Nastaliq Urdu",serif;direction:rtl;text-align:right;font-size:17px;line-height:2.4;margin:8px 0 0;color:#0b163a}
   .sect{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b5634;padding:10px 14px 0}
 
   /* ---------- verse drawer ---------- */
@@ -278,7 +278,7 @@
     <div class="seg" id="lang"><button data-v="en" class="on">English</button><button data-v="ur">اردو</button><button data-v="both">Both</button></div></div>
   <div class="rowc"><label><input type="checkbox" id="optTr"> Transliteration</label></div>
   <div class="rowc"><label><input type="checkbox" id="optShow"> Show hotspot outlines</label></div>
-  <div class="rowc"><span>Arabic size</span><input type="range" id="optSize" min="20" max="44" value="30"></div>
+  <div class="rowc"><span>Arabic size</span><input type="range" id="optSize" min="18" max="40" value="24"></div>
   <div class="legend">
     <div><i style="background:var(--gold)"></i>Verse the panel cites or shows</div>
     <div><i style="background:var(--more)"></i>Neighbouring or recalled verse</div>
@@ -383,9 +383,9 @@
     document.body.classList.toggle('hide-ur', lang === 'en');
     document.body.classList.toggle('hide-tr', !st.tr);
     stage.classList.toggle('show', !!st.show);
-    document.documentElement.style.setProperty('--arsize', (st.size || 30) + 'px');
+    document.documentElement.style.setProperty('--arsize', (st.size || 24) + 'px');
     document.querySelectorAll('#lang button').forEach(b => b.classList.toggle('on', b.dataset.v === lang));
-    $('#optTr').checked = !!st.tr; $('#optShow').checked = !!st.show; $('#optSize').value = st.size || 30;
+    $('#optTr').checked = !!st.tr; $('#optShow').checked = !!st.show; $('#optSize').value = st.size || 24;
   }
   $('#lang').onclick = e => { if (e.target.dataset.v) { st.lang = e.target.dataset.v; save(); applySettings(); } };
   $('#optTr').onchange = e => { st.tr = e.target.checked; save(); applySettings(); };
@@ -449,13 +449,13 @@
     return `<div class="verse ${kind === 'more' ? 'more' : ''}" data-k="${k}">
       <div class="vbar"><div><button class="vb" data-a="play" title="Play recitation (Mishary Alafasy)" aria-label="Play">${svg('play')}</button>
           <button class="vb ${bm ? 'on' : ''}" data-a="bm" title="${bm ? 'Remove bookmark' : 'Bookmark this verse'}" aria-label="Bookmark">${svg('bm')}</button>
-          <span class="vkey">${sid === S.id ? '' : nameOf(sid) + ' '}${k}${kind === 'more' ? '<em>related</em>' : ''}</span></div>
+</div>
         <div><button class="vb" data-a="copy" title="Copy verse and translation" aria-label="Copy">${svg('copy')}</button>
           <button class="vb" data-a="share" title="Share a link to this verse" aria-label="Share">${svg('share')}</button>
           <button class="vb ${note ? 'on' : ''}" data-a="note" title="My note on this verse" aria-label="Note">${svg('note')}</button>
           <button class="vb" data-a="more" title="More" aria-label="More">${svg('more')}</button></div></div>
       <div class="vmenu"><a href="https://quran.com/${sid}/${n}" target="_blank" rel="noopener">Open on quran.com ↗</a><a href="https://quran.com/${k}/tafsirs" target="_blank" rel="noopener">Read the tafsir on quran.com ↗</a></div>
-      <div class="ar">${arWords(sid, n, v)} <span class="vno">${toArabicNum(n)}</span></div>
+      <div class="ar">${arWords(sid, n, v)} <span class="vno" title="${nameOf(sid)} ${k}">${toArabicNum(n)}</span></div>
       <div class="tr">${esc(v.tr)}</div><div class="en">${enText(v.en)}</div><div class="ur">${esc(v.ur)}</div>
       <textarea class="vnote ${note ? 'open' : ''}" placeholder="Write a note — it is saved in this browser">${esc(note)}</textarea></div>`;
   };
