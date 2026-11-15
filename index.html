@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quran Memory Story Dashboard</title>
+<title>Qur'an Memory Stories</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Nastaliq+Urdu&family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -151,15 +151,112 @@
   #hint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:25;background:rgba(18,14,10,.9);border:1px solid var(--line);color:var(--text);
         font-size:13px;padding:8px 14px;border-radius:20px;transition:opacity .6s;pointer-events:none}
   #hint.gone{opacity:0}
+
+  /* ---------- bar extras ---------- */
+  .brand{cursor:pointer;text-decoration:none}
+  .ibtn .cnt{font-style:normal;font-size:11px;min-width:17px;height:17px;line-height:17px;text-align:center;border-radius:9px;background:var(--panel2);color:var(--muted);padding:0 4px}
+  .ibtn .cnt.warn{background:#7a3b22;color:#ffd9c2}
+  #btnDone.on{background:#22402b;border-color:#5fae76;color:#bdf0c9}
+  .tab.done::after{content:' ✓';color:#7fd093}
+  .tab.active.done::after{color:#1d4a29}
+  @media (max-width:760px){ #bar{gap:5px} #surahs{flex:1;min-width:0;max-width:none} .ibtn{padding:0 8px;min-width:32px} #btnHome{display:inline-flex!important} }
+  #btnHome{display:none}
+  @media (max-width:760px){ body.home{--barh:52px} }
+
+  /* ---------- home / library ---------- */
+  #home{position:fixed;top:var(--barh);left:0;right:0;bottom:0;overflow:auto;display:none;padding:0 16px 60px}
+  body.home #home{display:block}
+  body.home main, body.home .nav, body.home #zoom, body.home #tabs, body.home #hint, body.home .only-poster{display:none!important}
+  body.home #bar{flex-wrap:nowrap} body.home #surahs{margin-right:auto}
+  .hwrap{max-width:1180px;margin:0 auto}
+  .hero{padding:34px 0 8px;text-align:center}
+  .hero h1{font-family:Cinzel,serif;color:var(--gold2);font-size:clamp(26px,4.4vw,42px);margin:0 0 4px;letter-spacing:.02em}
+  .hero .bis{font-family:"Amiri Quran",serif;font-size:26px;color:var(--gold);margin:0 0 6px}
+  .hero p.lead{max-width:680px;margin:6px auto 0;color:#cbbfa8;font-size:15.5px;line-height:1.6}
+  .stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:9px 16px;min-width:118px}
+  .stat b{display:block;font-family:Cinzel,serif;font-size:22px;color:var(--gold2)}
+  .stat span{font-size:12px;color:var(--muted)}
+  .how{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 4px}
+  .how div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;color:#cbbfa8}
+  .how b{display:block;color:var(--gold2);font-size:13.5px;margin-bottom:3px}
+  @media (max-width:900px){ .how{grid-template-columns:repeat(2,1fr)} }
+  .tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:22px 0 10px}
+  #q{flex:1;min-width:220px;height:44px;border-radius:12px;border:1px solid var(--gold);background:var(--panel);color:var(--text);padding:0 14px;font-size:15px;font-family:inherit;outline:none}
+  #q::placeholder{color:var(--muted)}
+  .cont{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:12px;background:var(--gold);color:#1b140a;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+  .prog{flex-basis:100%;display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}
+  .prog .pbar{flex:1;height:7px;border-radius:4px;background:var(--panel2);overflow:hidden}
+  .prog .pbar i{display:block;height:100%;background:linear-gradient(90deg,#5fae76,#9fe0ae);border-radius:4px}
+  #results{margin:4px 0 14px}
+  #results h3{font-family:Cinzel,serif;font-size:14px;color:var(--gold2);margin:10px 0 6px}
+  .res{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);margin-bottom:6px;cursor:pointer;color:var(--text);text-decoration:none}
+  .res:hover{border-color:var(--gold)}
+  .res b{color:var(--gold2);font-size:13px;margin-right:8px;white-space:nowrap}
+  .res .ar{font-size:19px;line-height:1.9;margin:2px 0 0;color:var(--text)}
+  .res .en{font-size:13.5px;color:#cbbfa8;margin:2px 0 0}
+  .res mark{background:rgba(241,207,127,.28);color:inherit;border-radius:3px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;margin-top:8px}
+  @media (max-width:520px){ .grid{grid-template-columns:repeat(2,1fr);gap:10px} }
+  .card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--text);transition:transform .15s,border-color .15s,box-shadow .15s}
+  .card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 10px 26px #0009;outline:none}
+  .card .th{position:relative;aspect-ratio:4/3;background:#17120c;overflow:hidden}
+  .card .th img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .card .no{position:absolute;left:8px;top:8px;background:#120e0ae0;color:var(--gold2);font-family:Cinzel,serif;font-size:12.5px;border-radius:8px;padding:2px 8px;border:1px solid var(--line)}
+  .card .tick{position:absolute;right:8px;top:8px;background:#2c6b3d;color:#fff;font-size:12px;border-radius:50%;width:22px;height:22px;display:grid;place-items:center}
+  .card .cb{padding:9px 11px 11px}
+  .card .cb b{font-family:Cinzel,serif;font-size:14.5px;color:var(--gold2)}
+  .card .arn{float:right;font-family:"Amiri Quran",serif;font-size:18px;line-height:1.2;color:var(--text)}
+  .card small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px;clear:both}
+  .card .pb{height:4px;border-radius:2px;background:var(--panel2);margin-top:8px;overflow:hidden}
+  .card .pb i{display:block;height:100%;background:#6fc086}
+  .gsec{font-family:Cinzel,serif;color:var(--gold2);font-size:15px;margin:22px 0 2px;display:flex;justify-content:space-between;align-items:baseline}
+  .gsec small{font-family:Inter,sans-serif;color:var(--muted);font-size:12px}
+  .hfoot{margin:34px auto 0;max-width:760px;text-align:center;font-size:12px;color:var(--muted);line-height:1.7}
+
+  /* ---------- tour + self-test ---------- */
+  .spot.tour{box-shadow:0 0 0 3px var(--gold2),0 0 0 9999px rgba(8,6,4,.62)!important;background:none!important;z-index:5}
+  body.touring .spot:not(.tour){cursor:pointer}
+  #pop .tf{position:sticky;bottom:0;display:flex;align-items:center;gap:8px;padding:9px 12px;background:#e8d6ac;border-top:1px solid #c9b07a;z-index:1;flex-wrap:wrap}
+  #pop .tf button, .tbtn{border:1px solid #b99a57;background:#f6ecd2;color:#3b2c12;border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;font-weight:500;text-decoration:none;display:inline-block}
+  #pop .tf button:disabled{opacity:.35;cursor:default}
+  #pop .tf button.gold, .tbtn.gold{background:#2b2116;color:var(--gold2);border-color:#2b2116}
+  #pop .tf .tp{flex:1;min-width:40px;height:6px;border-radius:3px;background:#d8c392;overflow:hidden}
+  #pop .tf .tp i{display:block;height:100%;background:#8a5a12}
+  #pop .tf label{font-size:12px;color:#5b4720;display:inline-flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap}
+  #pop .quiz{padding:18px 16px 20px;font-size:14.5px;line-height:1.55}
+  #pop .quiz p{margin:0 0 14px}
+  #pop .quiz .row2{display:flex;gap:8px;flex-wrap:wrap}
+  .qc{font-size:11px;color:#6b5634;margin-left:6px;text-decoration:none;border-bottom:1px dotted #a58b55}
+  .qc:hover{color:#2b2116}
+
+  /* ---------- drawer tabs + fact-check ---------- */
+  .dtabs{display:flex;border-bottom:1px solid var(--line)}
+  .dtabs button{flex:1;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 8px;font-size:13px;cursor:pointer}
+  .dtabs button.on{color:var(--gold2);border-bottom-color:var(--gold)}
+  #facts{overflow:auto;flex:1;display:none;padding:4px 14px 20px}
+  #drawer.facts #facts{display:block} #drawer.facts #list{display:none}
+  .fsec h4{margin:16px 0 2px;font-size:13.5px;color:var(--text);display:flex;align-items:center;gap:6px}
+  .fsec h4 span{font-weight:500;font-size:11px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:0 7px;color:var(--muted)}
+  .fsec .fb{margin:0 0 8px;font-size:12px;color:var(--muted);line-height:1.5}
+  .fitem{font-size:13px;line-height:1.5;color:#ddd2bd;background:var(--panel2);border:1px solid var(--line);border-left-width:3px;border-radius:8px;padding:8px 10px;margin-bottom:6px}
+  .fitem[data-i]{cursor:pointer} .fitem[data-i]:hover{border-color:var(--gold)}
+  .fitem small{display:block;color:var(--muted);font-size:11.5px;margin-top:3px}
+  .fix .fitem{border-left-color:#d9773f} .ok .fitem{border-left-color:#6fc086} .art .fitem{border-left-color:#7fa6b8}
+  .fempty{color:var(--muted);font-size:13px;padding:16px 0}
 </style>
 </head>
 <body>
 <div id="bar">
-  <span class="brand">Memory Story</span>
+  <a class="brand" href="#home" title="Library of all surahs">Memory Stories</a>
+  <a class="ibtn" id="btnHome" href="#home" title="Library of all surahs" style="text-decoration:none">⌂</a>
   <select id="surahs" title="Choose a surah"></select>
   <div id="tabs"></div>
+  <button class="ibtn only-poster" id="btnTour" title="Guided tour: walk through this poster panel by panel (T)">▶<span class="hide-sm">Tour</span></button>
+  <button class="ibtn only-poster" id="btnDone" title="Mark this poster as studied">✓<span class="hide-sm">Studied</span></button>
+  <button class="ibtn only-poster" id="btnFacts" title="Fact-check: corrections and verified patterns for this poster">🔎<span class="hide-sm">Fact-check</span><i class="cnt" id="fcN"></i></button>
   <button class="ibtn" id="btnSet" title="Settings">⚙<span class="hide-sm">Settings</span></button>
-  <button class="ibtn" id="btnList" title="Verse list for this part">☰<span class="hide-sm">Verses</span></button>
+  <button class="ibtn only-poster" id="btnList" title="Verse list for this poster">☰<span class="hide-sm">Verses</span></button>
 </div>
 <div id="settings">
   <div class="rowc"><span>Translation</span>
@@ -170,16 +267,19 @@
   <div class="legend">
     <div><i style="background:var(--gold)"></i>Verse the panel cites or shows</div>
     <div><i style="background:var(--more)"></i>Neighbouring or recalled verse</div>
-    <div style="margin-top:4px">Hover a panel to read its verses · click to pin · Esc to close · ← → change part · + − 0 or Ctrl + scroll to zoom</div>
+    <div style="margin-top:4px">Hover a panel to read its verses · click to pin · Esc to close · ← → change poster · T starts a guided tour · + − 0 or Ctrl + scroll to zoom</div>
   </div>
 </div>
+<section id="home" aria-label="Library"><div class="hwrap" id="homeIn"></div></section>
 <main><div class="stage" id="stage"><img id="img" alt=""></div></main>
-<button class="nav" id="prev" title="Previous part (←)">‹</button>
-<button class="nav" id="next" title="Next part (→)">›</button>
+<button class="nav" id="prev" title="Previous poster (←)">‹</button>
+<button class="nav" id="next" title="Next poster (→)">›</button>
 <div id="zoom" role="group" aria-label="Zoom"><button id="zOut" title="Zoom out (−)" aria-label="Zoom out">−</button><button id="zLvl" title="Fit to screen (0)">Fit</button><button id="zIn" title="Zoom in (+)" aria-label="Zoom in">+</button></div>
 <aside id="drawer">
   <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p><div class="tiles" id="tiles"></div></div>
+  <div class="dtabs"><button data-d="list" class="on">Verses</button><button data-d="facts">Fact-check</button></div>
   <div id="list"></div>
+  <div id="facts"></div>
   <footer>Arabic: Uthmani (QuranEnc). English: Saheeh International. Urdu &amp; transliteration (Tanzil) via
     <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts*.js</code>.
     Word-by-word: meanings from quran.com, roots from the Quranic Arabic Corpus, root meanings from classical lexicons (Lane's, via Quran-Journey/roots).</footer>
@@ -236,6 +336,7 @@
 <script src="parts52-56.js"></script>
 <script src="verses9-13.js"></script>
 <script src="parts9-13.js"></script>
+<script src="factcheck.js"></script>
 <script src="roots_core.js"></script>
 <script src="why.js"></script>
 <script src="words.js"></script>
@@ -259,6 +360,8 @@
   let st = {};
   try { st = JSON.parse(localStorage.getItem('baqarah-ui') || '{}'); } catch (e) {}
   const save = () => { try { localStorage.setItem('baqarah-ui', JSON.stringify(st)); } catch (e) {} };
+  if (!st.done || typeof st.done !== 'object') st.done = {};
+  const isDone = (x, p) => !!st.done[x.hash(p.id)];
   function applySettings(){
     const lang = st.lang || 'en';
     document.body.classList.toggle('hide-en', lang === 'ur');
@@ -274,14 +377,23 @@
   $('#optShow').onchange = e => { st.show = e.target.checked; save(); applySettings(); };
   $('#optSize').oninput = e => { st.size = +e.target.value; save(); applySettings(); };
   $('#btnSet').onclick = e => { e.stopPropagation(); $('#settings').classList.toggle('open'); $('#btnSet').classList.toggle('on'); };
-  $('#btnList').onclick = () => { $('#drawer').classList.toggle('open'); $('#btnList').classList.toggle('on'); };
+  // drawer with two panes: the verse list and the fact-check notes
+  function openDrawer(tab){
+    const d = $('#drawer'), same = d.classList.contains('open') && d.classList.contains('facts') === (tab === 'facts');
+    d.classList.toggle('open', !same); d.classList.toggle('facts', tab === 'facts');
+    document.querySelectorAll('.dtabs button').forEach(b => b.classList.toggle('on', b.dataset.d === tab));
+    $('#btnList').classList.toggle('on', !same && tab === 'list'); $('#btnFacts').classList.toggle('on', !same && tab === 'facts');
+  }
+  $('#btnList').onclick = () => openDrawer('list');
+  $('#btnFacts').onclick = () => openDrawer('facts');
+  document.querySelector('.dtabs').onclick = e => { const t = e.target.closest('button'); if (t) { $('#drawer').classList.remove('open'); openDrawer(t.dataset.d); } };
   document.addEventListener('click', e => {
     if (!e.target.closest('#settings') && !e.target.closest('#btnSet')) { $('#settings').classList.remove('open'); $('#btnSet').classList.remove('on'); }
   });
 
   // ---------- surah + tabs ----------
-  $('#surahs').innerHTML = SURAHS.map(x => `<option value="${x.id}">${x.id} · ${x.name} · ${x.arName}</option>`).join('');
-  $('#surahs').onchange = e => { location.hash = SURAHS.find(x => x.id === +e.target.value).hash(1); e.target.blur(); };
+  $('#surahs').innerHTML = '<option value="">Choose a surah…</option>' + SURAHS.map(x => `<option value="${x.id}">${x.id} · ${x.name} · ${x.arName}</option>`).join('');
+  $('#surahs').onchange = e => { const x = SURAHS.find(x => x.id === +e.target.value); location.hash = x ? x.hash(1) : 'home'; e.target.blur(); };
   function setSurah(x){
     S = x; V = x.V; P = x.P;
     $('#surahs').value = String(x.id);
@@ -312,7 +424,7 @@
   function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
   const verseHTML = (n, kind, sid = S.id) => {
     const v = verseOf(sid, n); if (!v) return '';
-    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${sid === S.id ? '' : nameOf(sid) + ' '}${sid}:${n}</span>
+    return `<div class="verse"><span class="vnum ${kind === 'more' ? 'more' : ''}">${sid === S.id ? '' : nameOf(sid) + ' '}${sid}:${n}</span><a class="qc" href="https://quran.com/${sid}/${n}" target="_blank" rel="noopener" title="Open ${sid}:${n} on quran.com (recitation and tafsir)">quran.com ↗</a>
       <div class="ar">${arWords(sid, n, v)} ﴿${toArabicNum(n)}﴾</div>${hasWords(sid, n, v) ? '<div class="whint">Hover (or tap) any Arabic word for its meaning and root</div>' : ''}
       <div class="tr">${esc(v.tr)}</div><div class="en">${esc(v.en)}</div><div class="ur">${esc(v.ur)}</div></div>`;
   };
@@ -389,13 +501,24 @@
     const xLine = xref.length ? ' · ' + xref.map(([a, b]) => `${nameOf(a)} ${a}:${b}`).join(', ') : '';
     const refLine = (spot.key.length ? `${S.name} ${sid}:${refStr(spot.key)}${more.length ? ` · also ${sid}:${refStr(more)}` : ''}`
                   : refs.length ? `Recalls ${S.name} ${sid}:${refStr(refs)}` : xref.length ? 'Points to a neighbouring surah' : `${S.name}`) + xLine;
-    pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3><div class="refs">${refLine}</div></div>
-        <span class="pin">${pinned ? '📌 pinned' : touch ? '' : 'click to pin'}<button class="x" title="Close (Esc)" aria-label="Close">×</button></span></div>
-      ${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
+    const T = tour && cur.spots[tour.order[tour.i]] === spot, hidden = T && !tour.shown;
+    const body = hidden
+      ? `<div class="quiz"><p>🧠 <b>Self-test.</b> Look at the highlighted panel. Which verses does it show? Recall the verse numbers, the meaning or the Arabic, then check yourself.</p>
+           <button class="tbtn gold" data-t="reveal">Reveal the verses</button></div>`
+      : `${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
       ${spot.key.map(n => verseHTML(n, 'key')).join('')}
       ${more.length ? `<div class="sect">${spot.key.length ? 'Neighbouring / related verses' : 'Verses this panel recalls'}</div>` + more.map(n => verseHTML(n, 'more')).join('') : ''}
       ${xref.length ? `<div class="sect">From the neighbouring surah</div>` + xref.map(([a, b]) => verseHTML(b, 'more', a)).join('') : ''}`;
-    pop.querySelector('.x').onclick = e => { e.stopPropagation(); hidePop(true); };
+    const last = T && tour.i === tour.order.length - 1;
+    const foot = !T ? '' : `<div class="tf"><button data-t="prev" ${tour.i ? '' : 'disabled'} title="Previous panel (←)">‹ Back</button>
+        <div class="tp" title="Panel ${tour.i + 1} of ${tour.order.length}"><i style="width:${(tour.i + 1) / tour.order.length * 100}%"></i></div>
+        <label title="Hide the verses until you ask for them"><input type="checkbox" data-t="test" ${st.test ? 'checked' : ''}> Self-test</label>
+        ${st.test && !hidden ? `<button data-t="again" title="Show this panel again at the end">↻ Again later</button><button class="gold" data-t="knew">✓ Knew it</button>`
+          : `<button class="gold" data-t="next" title="Next panel (→)">${hidden ? 'Skip ›' : last ? 'Finish ✓' : 'Next ›'}</button>`}</div>`;
+    pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3><div class="refs">${hidden ? 'Verses hidden — recall them first' : refLine}</div></div>
+        <span class="pin">${T ? `Panel ${tour.i + 1} of ${tour.order.length}` : pinned ? '📌 pinned' : touch ? '' : 'click to pin'}<button class="x" title="${T ? 'End tour' : 'Close'} (Esc)" aria-label="Close">×</button></span></div>
+      ${body}${foot}`;
+    pop.querySelector('.x').onclick = e => { e.stopPropagation(); tour ? endTour() : hidePop(true); };
     pop.classList.toggle('pinned', pinned);
     pop.classList.add('open'); pop.scrollTop = 0;
     place(el, xy);
@@ -427,15 +550,24 @@
   pop.addEventListener('mouseenter', () => { clearTimeout(hideT); clearTimeout(swapT); });
   pop.addEventListener('mouseleave', () => hidePop());
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') hidePop(true);
-    if (e.key === 'ArrowLeft') go(-1);
-    if (e.key === 'ArrowRight') go(1);
+    const typing = e.target.closest && e.target.closest('input, select, textarea');
+    if (document.body.classList.contains('home')) { if (e.key === '/' && !typing) { e.preventDefault(); $('#q') && $('#q').focus(); } return; }
+    if (tour) {
+      if (e.key === 'Escape') return endTour();
+      if (e.key === 'ArrowLeft') return tourGo(-1);
+      if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); return tour.shown ? tourGo(1) : tourReveal(); }
+    } else {
+      if (e.key === 'Escape') hidePop(true);
+      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'ArrowRight') go(1);
+      if ((e.key === 't' || e.key === 'T') && !typing && !e.ctrlKey && !e.metaKey) startTour();
+    }
     if (e.target.closest && e.target.closest('input, select, textarea') || e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key === '+' || e.key === '=') zoomBy(1.25);
     if (e.key === '-' || e.key === '_') zoomBy(1 / 1.25);
     if (e.key === '0') setZoom(1);
   });
-  document.addEventListener('click', e => { if (!pop.contains(e.target) && !e.target.closest('.spot')) hidePop(true); });
+  document.addEventListener('click', e => { if (tour) return; if (!pop.contains(e.target) && !e.target.closest('.spot')) hidePop(true); });
   // After scrolling, the panel under a still mouse changes without a new hover event: re-sync to whatever is under the pointer.
   let ptr = null, syncQ = false;
   document.addEventListener('mousemove', e => { ptr = [e.clientX, e.clientY]; }, { passive: true });
@@ -511,15 +643,172 @@
   }, { passive: false });
   mainEl.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; }, { passive: true });
 
+  // ---------- progress ----------
+  function syncDone(){
+    const d = cur && isDone(S, cur);
+    $('#btnDone').classList.toggle('on', !!d);
+    $('#btnDone').title = d ? 'Studied ✓ — click to unmark' : 'Mark this poster as studied';
+    [...tabs.children].forEach(b => b.classList.toggle('done', !!st.done[S.hash(+b.dataset.i)]));
+  }
+  function setDone(v){ if (!cur) return; const k = S.hash(cur.id); if (v) st.done[k] = 1; else delete st.done[k]; save(); syncDone(); }
+  $('#btnDone').onclick = () => setDone(!isDone(S, cur));
+
+  // ---------- guided tour + self-test ----------
+  // Walks through the poster's panels in order, spotlighting each one with its verses pinned beside it.
+  // With "Self-test" on, the verses stay hidden until you ask, and you grade yourself.
+  let tour = null, tourNext = false;
+  const isScene = l => /\((scene|signposts|sky|garden)\)$/i.test(l);
+  function tourOrder(p){
+    const all = p.spots.map((s, i) => i), main = all.filter(i => !isScene(p.spots[i].label) && (p.spots[i].key.length || (p.spots[i].more || []).length));
+    return main.length >= 3 ? main : all;
+  }
+  function startTour(){
+    if (!cur || document.body.classList.contains('home')) return;
+    const order = tourOrder(cur);
+    tour = { order, n: order.length, i: 0, knew: 0, shown: !st.test, again: new Set() };
+    document.body.classList.add('touring'); $('#btnTour').classList.add('on'); $('#btnTour').firstChild.textContent = '■';
+    $('#drawer').classList.remove('open'); $('#btnList').classList.remove('on'); $('#btnFacts').classList.remove('on');
+    $('#hint').classList.add('gone'); tourStep();
+  }
+  function endTour(){
+    if (!tour) return; tour = null;
+    document.body.classList.remove('touring'); $('#btnTour').classList.remove('on'); $('#btnTour').firstChild.textContent = '▶';
+    stage.querySelectorAll('.spot.tour').forEach(s => s.classList.remove('tour')); hidePop(true);
+  }
+  function tourStep(){
+    stage.querySelectorAll('.spot.tour').forEach(s => s.classList.remove('tour'));
+    if (tour.i >= tour.order.length) return tourDone();
+    const i = tour.order[tour.i], el = stage.querySelector(`.spot[data-i="${i}"]`);
+    el.classList.add('tour'); if (z > 1) el.scrollIntoView({ block: 'center', inline: 'center' });
+    tour.shown = !st.test; pinned = true; showPop(cur.spots[i], el);
+  }
+  function tourGo(d){ if (!tour) return; tour.i = Math.max(0, tour.i + d); tourStep(); }
+  function tourReveal(){ if (!tour) return; tour.shown = true; const i = tour.order[tour.i]; pinned = true; showPop(cur.spots[i], stage.querySelector(`.spot[data-i="${i}"]`)); }
+  function tourDone(){
+    const n = tour.n, knew = tour.knew, tested = st.test, nxt = P.find(q => q.id === cur.id + 1);
+    setDone(true); clearTimeout(hideT); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = true;
+    pop.innerHTML = `<div class="ph"><div><h3>🎉 Poster complete</h3><div class="refs">${esc(S.name)} · ${esc(cur.title)}</div></div>
+        <span class="pin"><button class="x" title="Close (Esc)" aria-label="Close">×</button></span></div>
+      <div class="quiz"><p>You walked through all <b>${n}</b> panels${tested ? ` and knew <b>${knew}</b> of them on the first try` : ''}. This poster is now marked as studied ✓.</p>
+        <div class="row2">${nxt ? '<button class="tbtn gold" data-t="nextposter">Next poster ›</button>' : ''}<button class="tbtn" data-t="restart">↻ Tour again</button><a class="tbtn" href="#home">⌂ Library</a></div></div>`;
+    pop.querySelector('.x').onclick = e => { e.stopPropagation(); endTour(); };
+    pop.classList.remove('pinned'); pop.classList.add('open'); pop.scrollTop = 0;
+    if (innerWidth > 760) { pop.style.left = (innerWidth - pop.offsetWidth) / 2 + 'px'; pop.style.top = Math.max(70, (innerHeight - pop.offsetHeight) / 2) + 'px'; }
+  }
+  pop.addEventListener('click', e => {
+    const t = e.target.closest('[data-t]'); if (!t || !tour) return;
+    const a = t.dataset.t; if (a !== 'test') e.preventDefault(); e.stopPropagation();
+    if (a === 'prev') tourGo(-1);
+    else if (a === 'next') tourGo(1);
+    else if (a === 'reveal') tourReveal();
+    else if (a === 'knew') { if (!tour.again.has(tour.order[tour.i])) tour.knew++; tourGo(1); }
+    else if (a === 'again') { const i = tour.order[tour.i]; if (!tour.again.has(i)) { tour.again.add(i); tour.order.push(i); } tourGo(1); }
+    else if (a === 'test') { st.test = t.checked; save(); tour.shown = !st.test; setTimeout(() => tour && (st.test ? tourStep() : tourReveal()), 0); }
+    else if (a === 'restart') startTour();
+    else if (a === 'nextposter') { tourNext = true; go(1); }
+  });
+  $('#btnTour').onclick = e => { e.stopPropagation(); tour ? endTour() : startTour(); };
+
+  // open one panel's verses and light it up (used by search, the fact-check list and deep links)
+  function focusSpot(i){
+    const el = stage.querySelector(`.spot[data-i="${i}"]`); if (!el) return;
+    stage.querySelectorAll('.spot.lit').forEach(s => s.classList.remove('lit')); el.classList.add('lit');
+    if (z > 1) el.scrollIntoView({ block: 'center', inline: 'center' });
+    pinned = true; showPop(cur.spots[i], el);
+    if (innerWidth <= 760) { $('#drawer').classList.remove('open'); $('#btnList').classList.remove('on'); $('#btnFacts').classList.remove('on'); }
+  }
+
+  // ---------- fact-check pane ----------
+  const FC = window.FACTCHECK || {}, facts = $('#facts');
+  function renderFacts(p){
+    const g = FC[`${S.id}-${p.id}`] || {}, at = l => p.spots.findIndex(s => s.label === l);
+    const fix = [...(p.warn ? [[null, p.warn]] : []), ...(g.fix || [])], ok = g.ok || [], art = g.art || [];
+    const sec = (cls, icon, title, blurb, items) => !items.length ? '' : `<div class="fsec ${cls}"><h4>${icon} ${title} <span>${items.length}</span></h4><p class="fb">${blurb}</p>` +
+      items.map(([l, t]) => { const i = l == null ? -1 : at(l); return `<div class="fitem"${i >= 0 ? ` data-i="${i}" title="Show this panel"` : ''}>${esc(t)}${i >= 0 ? `<small>↳ ${esc(baseLabel(l))}</small>` : ''}</div>`; }).join('') + '</div>';
+    facts.innerHTML = (sec('fix', '⚠️', 'Corrections to this poster', 'Places where the poster’s wording, numbering or picture differs from the Qur’an’s text. The popups show the correct verses.', fix)
+      + sec('ok', '✅', 'Checked against the whole Qur’an', 'Word patterns and links that were searched for across all 114 surahs.', ok)
+      + sec('art', '🎨', 'The poster’s own imagery', 'Story details and pictures that are memory aids, not words of the verses.', art))
+      || '<p class="fempty">Nothing has been flagged for this poster: no corrections were needed, and it has no cross-checked word patterns yet.</p>';
+    const n = $('#fcN'); n.textContent = fix.length || ok.length || ''; n.classList.toggle('warn', !!fix.length); n.style.display = fix.length || ok.length ? '' : 'none';
+    $('#btnFacts').title = fix.length ? `Fact-check: ${fix.length} correction${fix.length > 1 ? 's' : ''} to this poster, ${ok.length} verified pattern${ok.length === 1 ? '' : 's'}` : `Fact-check: ${ok.length} verified pattern${ok.length === 1 ? '' : 's'}, no corrections`;
+    document.querySelector('.dtabs [data-d="facts"]').textContent = `Fact-check${fix.length + ok.length + art.length ? ' (' + (fix.length + ok.length + art.length) + ')' : ''}`;
+  }
+  facts.onclick = e => { const t = e.target.closest('.fitem[data-i]'); if (t) { e.stopPropagation(); focusSpot(+t.dataset.i); } };
+
+  // ---------- home: library, search, progress ----------
+  const homeIn = $('#homeIn'), norm = t => t.toLowerCase().replace(/[^a-z0-9ء-ي]/g, '');
+  const bare = t => t.replace(/[ً-ٰٟۖ-ۭـࣰ-ࣲ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه');
+  const thumb = p => 'images/thumbs/' + p.img.split('/').pop();
+  let pendingVerse = null;
+  function gotoVerse(x, n){
+    const p = x.P.find(q => q.spots.some(s => s.key.includes(n))) || x.P.find(q => q.spots.some(s => (s.more || []).includes(n))) || x.P.find(q => n >= q.range[0] && n <= q.range[1]) || x.P[0];
+    pendingVerse = n; const h = '#' + x.hash(p.id);
+    if (location.hash === h) route(); else location.hash = h;
+  }
+  function searchVerses(q){
+    q = q.trim(); const out = [], m = q.match(/^(\d{1,3})\s*[:.\s]\s*(\d{1,3})$/);
+    if (m) { const x = SURAHS.find(s => s.id === +m[1]); if (x && x.V[+m[2]]) out.push([x, +m[2]]); return out; }
+    if (q.length < 3 || /^\d+$/.test(q)) return out;
+    const arq = /[ء-ي]/.test(q) ? bare(q) : null, lq = q.toLowerCase();
+    for (const x of SURAHS) for (const n in x.V) {
+      if (arq ? bare(x.V[n].ar).includes(arq) : x.V[n].en.toLowerCase().includes(lq)) { out.push([x, +n]); if (out.length >= 30) return out; }
+    }
+    return out;
+  }
+  function renderHome(){
+    const all = SURAHS.flatMap(x => x.P.map(p => [x, p])), done = all.filter(([x, p]) => isDone(x, p)).length;
+    const hot = all.reduce((a, [, p]) => a + p.spots.length, 0), verses = SURAHS.reduce((a, x) => a + Object.keys(x.V).length, 0);
+    const words = Object.values(window.WORDS_BY_SURAH || {}).reduce((a, s) => a + Object.values(s).reduce((b, v) => b + v.length, 0), 0);
+    const lastX = st.last && SURAHS.find(x => x.P.some(p => '#' + x.hash(p.id) === st.last)), lastP = lastX && lastX.P.find(p => '#' + lastX.hash(p.id) === st.last);
+    const card = x => { const n = x.P.length, d = x.P.filter(p => isDone(x, p)).length, nx = x.P.find(p => !isDone(x, p)) || x.P[0];
+      return `<a class="card" href="#${x.hash(nx.id)}" data-q="${x.id} ${norm(x.name)} ${x.arName}" title="${esc(x.name)} — ${n > 1 ? `${d} of ${n} posters studied` : d ? 'studied' : 'not studied yet'}">
+        <div class="th"><img loading="lazy" src="${thumb(x.P[0])}" alt=""><span class="no">${x.id}</span>${d === n ? '<span class="tick">✓</span>' : ''}</div>
+        <div class="cb"><span class="arn">${x.arName}</span><b>${esc(x.name)}</b><small>${x.total} verses · ${n} poster${n > 1 ? 's' : ''}${d && d < n ? ` · ${d}/${n} studied` : ''}</small><div class="pb"><i style="width:${d / n * 100}%"></i></div></div></a>`; };
+    homeIn.innerHTML = `<div class="hero"><p class="bis">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p><h1>Qur'an Memory Stories</h1>
+        <p class="lead">Each surah is drawn as a story you can walk through. Point at any part of a poster and the exact verses appear in Arabic, English and Urdu, with every word explained down to its root.</p>
+        <div class="stats"><div class="stat"><b>${SURAHS.length}</b><span>surahs</span></div><div class="stat"><b>${all.length}</b><span>illustrated posters</span></div><div class="stat"><b>${hot.toLocaleString()}</b><span>verse hotspots</span></div><div class="stat"><b>${verses.toLocaleString()}</b><span>verses</span></div><div class="stat"><b>${words.toLocaleString()}</b><span>words explained</span></div></div></div>
+      <div class="how"><div><b>1 · Read the picture</b>Hover or tap any panel to see the verses it shows. Click to pin them.</div>
+        <div><b>2 · Go word by word</b>Hover an Arabic word for its meaning, root, and why that word was chosen.</div>
+        <div><b>3 · Take the tour</b>▶ Tour walks you through a poster panel by panel. Switch on Self-test to recall the verses first.</div>
+        <div><b>4 · Trust, but check</b>🔎 Fact-check lists where a poster differs from the text, and the patterns verified across the whole Qur'an.</div></div>
+      <div class="tools"><input id="q" type="search" placeholder="Search a surah, a verse like 4:11, or words such as “patience”…" autocomplete="off" aria-label="Search">
+        ${lastP ? `<a class="cont" href="${st.last}">Continue: ${esc(lastX.name)}${lastX.P.length > 1 ? ' · poster ' + lastP.id : ''} ›</a>` : ''}
+        <div class="prog"><span>${done} of ${all.length} posters studied</span><div class="pbar"><i style="width:${done / all.length * 100}%"></i></div></div></div>
+      <div id="results"></div>
+      <div class="gsec"><span>Library</span><small id="gcount"></small></div>
+      <div class="grid" id="grid">${SURAHS.map(card).join('')}</div>
+      <p class="hfoot">Arabic text: Uthmani script (QuranEnc). English: Saheeh International. Urdu and transliteration: Tanzil. Word meanings: quran.com; roots: Quranic Arabic Corpus; lexicon summaries after Lane.<br>
+        The posters are memory aids. Where one differs from the Qur'an's wording, the popup shows the verse itself and Fact-check says so.</p>`;
+    const q = $('#q'), grid = $('#grid'), results = $('#results');
+    const run = () => {
+      const v = q.value, nq = norm(v); let shown = 0;
+      grid.querySelectorAll('.card').forEach(c => { const id = c.dataset.q.split(' ')[0], hit = !nq || (/^\d+$/.test(nq) ? id.startsWith(nq) : c.dataset.q.includes(nq)); c.style.display = hit ? '' : 'none'; shown += hit; });
+      $('#gcount').textContent = nq ? `${shown} of ${SURAHS.length} surahs match` : `${SURAHS.length} surahs`;
+      const res = searchVerses(v), lq = v.trim().toLowerCase(), mark = t => { const i = t.toLowerCase().indexOf(lq); if (i < 0 || lq.length < 3) return esc(t.length > 220 ? t.slice(0, 220) + '…' : t);
+        const a = Math.max(0, i - 80), b = Math.min(t.length, i + lq.length + 120); return (a ? '…' : '') + esc(t.slice(a, i)) + '<mark>' + esc(t.slice(i, i + lq.length)) + '</mark>' + esc(t.slice(i + lq.length, b)) + (b < t.length ? '…' : ''); };
+      results.innerHTML = res.length ? `<h3>${res.length >= 30 ? 'First 30 verses' : res.length + (res.length === 1 ? ' verse' : ' verses')} — click one to open its panel</h3>` +
+        res.map(([x, n]) => `<a class="res" data-s="${x.id}" data-n="${n}" href="#"><b>${esc(x.name)} ${x.id}:${n}</b><div class="ar" dir="rtl">${arText(x.V[n])}</div><div class="en">${mark(x.V[n].en)}</div></a>`).join('') : '';
+    };
+    q.oninput = run; run();
+    results.onclick = e => { const a = e.target.closest('.res'); if (a) { e.preventDefault(); gotoVerse(SURAHS.find(x => x.id === +a.dataset.s), +a.dataset.n); } };
+    q.onkeydown = e => { if (e.key === 'Enter') { const a = results.querySelector('.res') || [...grid.querySelectorAll('.card')].find(c => c.style.display !== 'none'); if (a) a.click(); } };
+  }
+  function showHome(){
+    endTour(); hidePop(true); cur = null;
+    document.body.classList.add('home'); $('#drawer').classList.remove('open'); $('#btnList').classList.remove('on'); $('#btnFacts').classList.remove('on');
+    document.title = "Qur'an Memory Stories"; $('#surahs').value = '';
+    renderHome(); $('#home').scrollTop = 0;
+  }
+
   // ---------- render a part ----------
   const baseLabel = l => l.replace(/ \((scene|signposts|sky|garden)\)$/, '');
   function render(p){
-    cur = p; hidePop(true);
+    endTour(); cur = p; hidePop(true);
     [...tabs.children].forEach(b => b.classList.toggle('active', +b.dataset.i === p.id));
     const act = tabs.querySelector('.active'); act && act.scrollIntoView({ block: 'nearest', inline: 'center' });
     document.documentElement.style.setProperty('--ratio', p.w / p.h);
     { mainEl.scrollTop = 0; mainEl.scrollLeft = (mainEl.scrollWidth - mainEl.clientWidth) / 2; }
-    img.src = p.img; img.alt = `${S.name} part ${p.id}: ${p.title}`;
+    img.src = p.img; img.alt = `${S.name} poster ${p.id}: ${p.title}`;
     stage.querySelectorAll('.spot').forEach(s => s.remove());
     p.spots.forEach((s, i) => {
       const [x1, y1, x2, y2] = s.box, el = document.createElement('div');
@@ -531,21 +820,24 @@
       el.setAttribute('aria-label', `${s.label}${refs.length ? ': verses ' + refStr(refs) : ''}`);
       el.addEventListener('mouseenter', e => {
         lastXY = [e.clientX, e.clientY];
+        if (tour) return;
         if (activeEl === el) { clearTimeout(hideT); return; }
         if (pinned) { clearTimeout(swapT); swapT = setTimeout(() => { pinned = false; showPop(s, el, lastXY); }, 350); }
         else showPop(s, el, lastXY);
       });
       el.addEventListener('mousemove', e => { lastXY = [e.clientX, e.clientY]; });
       el.addEventListener('mouseleave', () => { clearTimeout(swapT); hidePop(); });
-      el.addEventListener('focus', () => { if (!pinned && activeEl !== el) showPop(s, el); });
-      el.addEventListener('click', e => { e.stopPropagation(); pinned = true; showPop(s, el, [e.clientX, e.clientY]); });
+      el.addEventListener('focus', () => { if (!tour && !pinned && activeEl !== el) showPop(s, el); });
+      el.addEventListener('click', e => { e.stopPropagation();
+        if (tour) { const k = tour.order.indexOf(i); if (k >= 0) { tour.i = k; tourStep(); } return; }
+        pinned = true; showPop(s, el, [e.clientX, e.clientY]); });
       stage.appendChild(el);
     });
     $('#prev').disabled = !P.find(q => q.id === p.id - 1);
     $('#next').disabled = !P.find(q => q.id === p.id + 1);
 
     // drawer: verse list
-    $('#ptitle').textContent = `${S.name} · Part ${p.id} · ${p.title}`;
+    $('#ptitle').textContent = P.length > 1 ? `${S.name} · Poster ${p.id} of ${S.totalParts} · ${p.title}` : `${S.name} · ${p.title}`;
     $('#pmeta').innerHTML = esc(`Verses ${p.range[0]}–${p.range[1]} · ${p.spots.length} hotspots · click a verse to light it up in the poster`)
       + (p.warn ? `<span class="warn">ⓘ ${esc(p.warn)}</span>` : '');
     list.innerHTML = '';
@@ -571,6 +863,16 @@
       list.appendChild(row);
     }
     list.scrollTop = 0;
+    renderFacts(p); syncDone();
+    st.last = '#' + S.hash(p.id); save();
+    if (pendingVerse != null) {
+      const n = pendingVerse; pendingVerse = null;
+      const hits = p.spots.map((s, i) => [s, i]).filter(([s]) => s.key.includes(n)), near = p.spots.map((s, i) => [s, i]).filter(([s]) => (s.more || []).includes(n));
+      const use = hits.length ? hits : near;
+      if (use.length) { focusSpot((use.find(([s]) => !isScene(s.label)) || use[0])[1]); use.forEach(([, i]) => stage.querySelector(`.spot[data-i="${i}"]`).classList.add('lit')); }
+      else openDrawer('list');
+    }
+    if (tourNext) { tourNext = false; startTour(); }
   }
   function go(d){ const q = cur && P.find(x => x.id === cur.id + d); if (q) location.hash = S.hash(q.id); }
   $('#prev').onclick = () => go(-1);
@@ -578,6 +880,8 @@
 
   function route(){
     const h = location.hash;
+    if (!h || h === '#' || h === '#home') return showHome();
+    document.body.classList.remove('home');
     let x = SURAHS[0], m = h.match(/part(\d+)/);
     const m3 = h.match(/aal-imran-(\d+)/), mg = h.match(/^#s(\d+)(?:-(\d+))?$/);
     if (m3) { x = SURAHS.find(q => q.id === 3) || x; m = m3; }

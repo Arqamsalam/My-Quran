@@ -551,9 +551,6 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
        29,
        35
       ],
-      "more": [
-       45
-      ],
       "note": "Al-Ahqaf is the seventh and last of the Ḥā-Mīm surahs (40–46). Checked: 45:37 ends al-ʿazīz al-ḥakīm and 46:2 opens tanzīlu l-kitābi mina llāhi l-ʿazīzi l-ḥakīm (also 45:2, 39:1). Checked: ulu l-ʿazmi mina r-rusul — 'the messengers of firm resolve' — occurs only in 46:35. Commentators most often name Noah, Abraham, Moses, Jesus and Muhammad (cf. 33:7 and 42:13). Fussilat's deniers said lā tasmaʿū, 'do not listen' (41:26); the jinn say anṣitū, 'listen in silence' (46:29)."
      },
      {
