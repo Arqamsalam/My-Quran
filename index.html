@@ -52,8 +52,19 @@
   .stage{position:relative;margin:0 auto;line-height:0}
   .stage img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
   /* largest size that fits both the width and the height of the screen (dvh = height without the phone's address bar) */
-  .stage{width:min(100%, calc((100vh - var(--barh) - 12px) * var(--ratio)))}
-  @supports (height:100dvh){ .stage{width:min(100%, calc((100dvh - var(--barh) - 12px) * var(--ratio)))} }
+  .stage{width:calc(min(100%, calc((100vh - var(--barh) - 12px) * var(--ratio))) * var(--z,1))}
+  @supports (height:100dvh){ .stage{width:calc(min(100%, calc((100dvh - var(--barh) - 12px) * var(--ratio))) * var(--z,1))} }
+  /* zoomed in: the poster area scrolls; drag with the mouse or swipe to move around */
+  main{touch-action:pan-x pan-y}
+  main.zoomed{display:block;overflow:auto;overscroll-behavior:contain;cursor:grab}
+  main.zoomed .stage{margin:0 auto;max-width:none}
+  main.panning{cursor:grabbing} main.panning .spot{pointer-events:none}
+  #zoom{position:fixed;right:12px;bottom:14px;z-index:24;display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(18,14,10,.88);box-shadow:0 6px 18px #0008}
+  #zoom button{border:0;background:none;color:var(--gold2);font-size:20px;line-height:1;width:40px;height:38px;cursor:pointer}
+  #zoom button:hover{background:var(--panel2)}
+  #zoom button:disabled{opacity:.3;cursor:default}
+  #zoom #zLvl{font-size:12.5px;width:56px;color:var(--text);border-left:1px solid var(--line);border-right:1px solid var(--line);font-variant-numeric:tabular-nums}
+  @media (max-width:760px){ #zoom{right:8px;bottom:8px} body:has(#pop.open) #zoom{display:none} #hint{bottom:60px} }
   .spot{position:absolute;border-radius:6px;cursor:pointer;transition:background .12s,box-shadow .12s;outline:none}
   .spot:hover,.spot:focus-visible,.spot.active{background:rgba(241,207,127,.16);box-shadow:inset 0 0 0 2px var(--gold2)}
   .stage.show .spot{box-shadow:inset 0 0 0 1.5px rgba(241,207,127,.75);background:rgba(241,207,127,.05)}
@@ -159,12 +170,13 @@
   <div class="legend">
     <div><i style="background:var(--gold)"></i>Verse the panel cites or shows</div>
     <div><i style="background:var(--more)"></i>Neighbouring or recalled verse</div>
-    <div style="margin-top:4px">Hover a panel to read its verses · click to pin · Esc to close · ← → change part</div>
+    <div style="margin-top:4px">Hover a panel to read its verses · click to pin · Esc to close · ← → change part · + − 0 or Ctrl + scroll to zoom</div>
   </div>
 </div>
 <main><div class="stage" id="stage"><img id="img" alt=""></div></main>
 <button class="nav" id="prev" title="Previous part (←)">‹</button>
 <button class="nav" id="next" title="Next part (→)">›</button>
+<div id="zoom" role="group" aria-label="Zoom"><button id="zOut" title="Zoom out (−)" aria-label="Zoom out">−</button><button id="zLvl" title="Fit to screen (0)">Fit</button><button id="zIn" title="Zoom in (+)" aria-label="Zoom in">+</button></div>
 <aside id="drawer">
   <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p><div class="tiles" id="tiles"></div></div>
   <div id="list"></div>
@@ -418,12 +430,16 @@
     if (e.key === 'Escape') hidePop(true);
     if (e.key === 'ArrowLeft') go(-1);
     if (e.key === 'ArrowRight') go(1);
+    if (e.target.closest && e.target.closest('input, select, textarea') || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === '+' || e.key === '=') zoomBy(1.25);
+    if (e.key === '-' || e.key === '_') zoomBy(1 / 1.25);
+    if (e.key === '0') setZoom(1);
   });
   document.addEventListener('click', e => { if (!pop.contains(e.target) && !e.target.closest('.spot')) hidePop(true); });
   // After scrolling, the panel under a still mouse changes without a new hover event: re-sync to whatever is under the pointer.
   let ptr = null, syncQ = false;
   document.addEventListener('mousemove', e => { ptr = [e.clientX, e.clientY]; }, { passive: true });
-  addEventListener('scroll', () => {
+  const onScroll = () => {
     if (syncQ || !ptr || touch) return; syncQ = true;
     requestAnimationFrame(() => {
       syncQ = false;
@@ -433,7 +449,67 @@
       if (el && el !== activeEl && !pinned) showPop(cur.spots[+el.dataset.i], el, ptr);
       else if (!el && !pinned && pop.classList.contains('open')) hidePop();
     });
-  }, { passive: true });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  $('main').addEventListener('scroll', onScroll, { passive: true });
+
+  // ---------- zoom ----------
+  // z = 1 is "fit to screen"; above that the poster grows and the poster area scrolls.
+  const mainEl = $('main'), ZMAX = 5;
+  let z = 1;
+  function setZoom(nz, cx, cy){
+    nz = Math.min(ZMAX, Math.max(1, Math.round(nz * 100) / 100));
+    if (Math.abs(nz - 1) < 0.04) nz = 1;
+    if (nz === z) return;
+    const m = mainEl.getBoundingClientRect(), r = stage.getBoundingClientRect();
+    if (cx == null) { cx = m.left + m.width / 2; cy = m.top + m.height / 2; }
+    const fx = (cx - r.left) / r.width, fy = (cy - r.top) / r.height;   // keep this point of the poster under the cursor
+    z = nz;
+    document.documentElement.style.setProperty('--z', z);
+    mainEl.classList.toggle('zoomed', z > 1);
+    const r2 = stage.getBoundingClientRect();
+    mainEl.scrollLeft += r2.left + fx * r2.width - cx;
+    mainEl.scrollTop += r2.top + fy * r2.height - cy;
+    $('#zLvl').textContent = z === 1 ? 'Fit' : Math.round(z * 100) + '%';
+    $('#zOut').disabled = z === 1; $('#zIn').disabled = z === ZMAX;
+    if (!pinned) hidePop(true);
+  }
+  const zoomBy = (f, cx, cy) => setZoom(z * f, cx, cy);
+  $('#zIn').addEventListener('click', e => { e.stopPropagation(); zoomBy(1.25); });
+  $('#zOut').addEventListener('click', e => { e.stopPropagation(); zoomBy(1 / 1.25); });
+  $('#zLvl').addEventListener('click', e => { e.stopPropagation(); setZoom(1); });
+  $('#zOut').disabled = true;
+  // Ctrl/⌘ + scroll wheel, and trackpad pinch (which browsers send as Ctrl + wheel)
+  mainEl.addEventListener('wheel', e => {
+    if (!e.ctrlKey && !e.metaKey) return;
+    e.preventDefault(); zoomBy(Math.exp(-e.deltaY * 0.0025), e.clientX, e.clientY);
+  }, { passive: false });
+  // drag with the mouse to move around a zoomed poster (a drag never counts as a click)
+  let drag = null, dragged = false;
+  mainEl.addEventListener('pointerdown', e => {
+    if (z === 1 || e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, y: e.clientY, l: mainEl.scrollLeft, t: mainEl.scrollTop }; dragged = false;
+  });
+  addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!dragged && Math.hypot(dx, dy) < 5) return;
+    if (!dragged) { dragged = true; mainEl.classList.add('panning'); if (!pinned) hidePop(true); }
+    mainEl.scrollLeft = drag.l - dx; mainEl.scrollTop = drag.t - dy;
+  });
+  addEventListener('pointerup', () => { if (drag) { drag = null; mainEl.classList.remove('panning'); } });
+  mainEl.addEventListener('click', e => { if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; } }, true);
+  // two-finger pinch on phones and tablets
+  let pinch = null;
+  const tdist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  mainEl.addEventListener('touchstart', e => { if (e.touches.length === 2) pinch = { d: tdist(e.touches), z }; }, { passive: true });
+  mainEl.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    const [a, b] = e.touches;
+    setZoom(pinch.z * tdist(e.touches) / pinch.d, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+  }, { passive: false });
+  mainEl.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; }, { passive: true });
 
   // ---------- render a part ----------
   const baseLabel = l => l.replace(/ \((scene|signposts|sky|garden)\)$/, '');
@@ -442,6 +518,7 @@
     [...tabs.children].forEach(b => b.classList.toggle('active', +b.dataset.i === p.id));
     const act = tabs.querySelector('.active'); act && act.scrollIntoView({ block: 'nearest', inline: 'center' });
     document.documentElement.style.setProperty('--ratio', p.w / p.h);
+    { mainEl.scrollTop = 0; mainEl.scrollLeft = (mainEl.scrollWidth - mainEl.clientWidth) / 2; }
     img.src = p.img; img.alt = `${S.name} part ${p.id}: ${p.title}`;
     stage.querySelectorAll('.spot').forEach(s => s.remove());
     p.spots.forEach((s, i) => {

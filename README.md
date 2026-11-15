@@ -132,6 +132,8 @@ plus English (Saheeh International) and/or Urdu translation and an optional tran
   '55–63', '59–63', '64–66'); each card's popup shows the verses its words actually describe.
 - **An-Nahl, Al-Isra, Al-Kahf (16–18):** 177 hotspots and word-by-word hover. Noted on the page: Al-Kahf's closing
   quote is labelled 18:13 but is Yusuf 12:3; An-Nahl card 9's 'fly' is 22:73 and card 16's sea storm is 17:67.
+- Zoom: the − / Fit / + buttons (bottom right), the + − 0 keys, Ctrl/⌘ + scroll or trackpad pinch, and two-finger
+  pinch on phones. When zoomed in, drag with the mouse or swipe to move around; hotspots and popups keep working.
 - Links: `#part5` opens Al-Baqarah part 5, `#aal-imran-2` opens Aal Imran part 2, `#s80` opens 'Abasa, `#s85-2` opens Al-Buruj's second poster, `#s42-1` opens Ash-Shura part 1.
 
 ## Editing a hotspot
