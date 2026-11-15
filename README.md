@@ -14,6 +14,7 @@ explained down to its root.
 |---|---|
 | **Pick a surah** | The home screen is a library of every surah, with search. Type a name, a verse such as `4:11`, an English word such as `patience`, or Arabic text. Clicking a verse opens the poster panel that shows it. |
 | **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. |
+| **Verse cards** | Each verse appears as a quran.com-style card: play the recitation, bookmark it, copy, share, add your own note, or open the tafsir. |
 | **Go word by word** | Inside a popup, hover any Arabic word for its meaning, transliteration, root, the root's original meaning and a lexicon summary. Where a word choice carries a rhetorical point, a "Why this word?" note explains it. |
 | **Take the tour** | **▶ Tour** (or the `T` key) walks through a poster panel by panel, spotlighting each one. Use `←` `→` to move. |
 | **Test yourself** | Switch on **Self-test** during a tour: the verses stay hidden until you ask for them, and you mark each panel "Knew it" or "Again later". |
@@ -56,6 +57,7 @@ If you find a mistake, the hotspot data is plain text and easy to correct (see "
 | `why.js` | Curated "Why this word?" notes (built from `tools/why_src.js` by `tools/build_why.js`) |
 | `factcheck.js` | Per-poster corrections, verified patterns and imagery notes (built by `tools/build_factcheck.js` from the hotspot notes) |
 | `images/` | The posters (`.webp`); `images/thumbs/` holds the small library thumbnails |
+| `fonts/UthmanicHafs1Ver18.woff2` | KFGQPC Uthmanic Script Hafs (King Fahd Complex), the Qur'an font quran.com uses; it matches the Uthmani text exactly |
 
 `parts.js` / `verses.js` hold Al-Baqarah and `parts3.js` / `verses3.js` Aal Imran; the other files are named by
 surah number, for example `parts34-35.js`.
@@ -87,7 +89,8 @@ To publish with GitHub Pages: in the repository's **Settings → Pages**, choose
 
 ## Sources
 
-- **Arabic:** Uthmani text from QuranEnc (its open-tanween marks are mapped to standard Unicode when shown).
+- **Arabic:** Uthmani text from QuranEnc, shown in the King Fahd Complex's Uthmanic Hafs font (from quran.com's open-source
+  front end), so it renders exactly as in the printed Madinah Mushaf and on quran.com.
 - **English:** Saheeh International. **Urdu and transliteration:** Tanzil. All three as bundled in
   [quran-json](https://github.com/risan/quran-json) v3.1.2.
 - **Word meanings:** quran.com word-by-word data. **Roots and grammar tags:** the Quranic Arabic Corpus.

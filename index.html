@@ -80,7 +80,7 @@
   @media (max-width:760px){ .nav{display:none} }
 
   /* ---------- popup ---------- */
-  #pop{position:fixed;z-index:50;width:min(700px,calc(100vw - 20px));max-height:min(82vh,760px);overflow:auto;overscroll-behavior:contain;
+  #pop{position:fixed;z-index:50;width:min(460px,calc(100vw - 20px));max-height:min(82vh,760px);overflow:auto;overscroll-behavior:contain;
        background:#fff;color:#1f2937;border-radius:16px;box-shadow:0 18px 50px #000c;border:1px solid #e5e7eb;display:none}
   #pop.open{display:block}
   #pop.pinned{box-shadow:0 0 0 3px var(--gold),0 18px 50px #000c}
@@ -110,7 +110,7 @@
   #wtip .why p.g b{color:#e4c27a;font-weight:600}
   #wtip{width:min(360px,calc(100vw - 20px))}
   #pop .note{margin:12px 12px 0;padding:10px 12px;background:#fff8e6;border-left:3px solid var(--gold);font-size:13.5px;line-height:1.5;border-radius:8px;color:#3b3325}
-  @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:62vh} }
+  @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto!important;max-height:62vh} }
   /* verse card (quran.com style) */
   .verse{position:relative;margin:12px;padding:12px 20px 18px;background:#f4f5f6;border-radius:16px}
   .verse.more{background:#f4f5f6}
@@ -134,7 +134,7 @@
   .tr{font-style:italic;font-family:Figtree,Inter,sans-serif;font-size:14px;color:#4b5470;margin:6px 0 4px;line-height:1.55}
   .en{font-family:Figtree,Inter,sans-serif;font-size:16.5px;line-height:1.65;margin:6px 0 2px;color:#0b163a}
   .ur{font-family:"Noto Nastaliq Urdu",serif;direction:rtl;text-align:right;font-size:17px;line-height:2.4;margin:8px 0 0;color:#0b163a}
-  .sect{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b5634;padding:10px 14px 0}
+  .sect{font:600 11.5px Figtree,Inter,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;padding:14px 18px 0}
 
   /* ---------- verse drawer ---------- */
   #drawer{position:fixed;top:var(--barh);right:0;bottom:0;z-index:35;width:min(460px,100vw);background:var(--panel);border-left:1px solid var(--line);
@@ -233,14 +233,14 @@
   /* ---------- tour + self-test ---------- */
   .spot.tour{box-shadow:0 0 0 3px var(--gold2),0 0 0 9999px rgba(8,6,4,.62)!important;background:none!important;z-index:5}
   body.touring .spot:not(.tour){cursor:pointer}
-  #pop .tf{position:sticky;bottom:0;display:flex;align-items:center;gap:8px;padding:9px 12px;background:#e8d6ac;border-top:1px solid #c9b07a;z-index:1;flex-wrap:wrap}
-  #pop .tf button, .tbtn{border:1px solid #b99a57;background:#f6ecd2;color:#3b2c12;border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;font-weight:500;text-decoration:none;display:inline-block}
+  #pop .tf{position:sticky;bottom:0;display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border-top:1px solid #eceef1;z-index:1;flex-wrap:wrap}
+  #pop .tf button, .tbtn{border:1px solid #d1d5db;background:#f4f5f6;color:#0b163a;border-radius:9px;padding:7px 13px;font:500 13.5px Figtree,Inter,sans-serif;cursor:pointer;font-weight:500;text-decoration:none;display:inline-block}
   #pop .tf button:disabled{opacity:.35;cursor:default}
-  #pop .tf button.gold, .tbtn.gold{background:#2b2116;color:var(--gold2);border-color:#2b2116}
-  #pop .tf .tp{flex:1;min-width:40px;height:6px;border-radius:3px;background:#d8c392;overflow:hidden}
-  #pop .tf .tp i{display:block;height:100%;background:#8a5a12}
-  #pop .tf label{font-size:12px;color:#5b4720;display:inline-flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap}
-  #pop .quiz{padding:18px 16px 20px;font-size:14.5px;line-height:1.55}
+  #pop .tf button.gold, .tbtn.gold{background:#0b163a;color:#fff;border-color:#0b163a}
+  #pop .tf .tp{flex:1;min-width:40px;height:6px;border-radius:3px;background:#e5e7eb;overflow:hidden}
+  #pop .tf .tp i{display:block;height:100%;background:#2e7d6e}
+  #pop .tf label{font:500 12.5px Figtree,Inter,sans-serif;color:#4b5563;display:inline-flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap}
+  #pop .quiz{padding:18px 18px 20px;font:15.5px/1.6 Figtree,Inter,sans-serif;color:#0b163a}
   #pop .quiz p{margin:0 0 14px}
   #pop .quiz .row2{display:flex;gap:8px;flex-wrap:wrap}
   
@@ -551,7 +551,7 @@
   }
   function hideWord(){ wtip.classList.remove('open'); pop.querySelectorAll('.w.on').forEach(x => x.classList.remove('on')); }
   pop.addEventListener('mouseover', e => { const w = e.target.closest('.w'); if (w) showWord(w); });
-  pop.addEventListener('mouseout', e => { if (e.target.closest('.w') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.w') === e.target.closest('.w'))) hideWord(); });
+  pop.addEventListener('mouseout', e => { if (ptrType !== 'mouse') return; if (e.target.closest('.w') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.w') === e.target.closest('.w'))) hideWord(); });
   pop.addEventListener('click', e => { const w = e.target.closest('.w'); if (w) { e.stopPropagation(); showWord(w); } else hideWord(); });
   pop.addEventListener('scroll', hideWord, { passive: true });
 
@@ -595,10 +595,14 @@
   let side = 'right';
   function place(el, xy){
     if (innerWidth <= 760) return;                        // bottom sheet on phones (CSS)
-    const r = el.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight, m = 12;
+    const r = el.getBoundingClientRect(), m = 12;
     const top = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--barh')) + m;
     const [cx, cy] = xy || [r.left + r.width / 2, r.top + r.height / 2];
     side = cx < innerWidth / 2 ? 'right' : 'left';
+    // as wide as quran.com's verse column (700px) when the space beside the poster allows, never narrower than 460px
+    const sr = stage.getBoundingClientRect(), free = side === 'right' ? innerWidth - Math.min(sr.right, innerWidth) : Math.max(sr.left, 0);
+    pop.style.width = Math.min(700, innerWidth - 2 * m, Math.max(460, free - 2 * m)) + 'px';
+    const pw = pop.offsetWidth, ph = pop.offsetHeight;
     pop.style.left = (side === 'right' ? innerWidth - pw - m : m) + 'px';
     pop.style.top = Math.max(top, Math.min(cy - 60, innerHeight - ph - m)) + 'px';
   }
@@ -614,8 +618,15 @@
     clearTimeout(hideT);
     hideT = setTimeout(() => { wtip.classList.remove('open'); pop.classList.remove('open'); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = false; }, force ? 0 : 250);
   }
+  // Touch screens send fake mouse-hover events with every tap. Hover behaviour is for real mice only;
+  // on a finger tap the panel's click handler opens (and pins) the popup instead.
+  let ptrType = touch ? 'touch' : 'mouse';
+  let ptrDownAt = 0;
+  document.addEventListener('pointerdown', e => { ptrType = e.pointerType; ptrDownAt = performance.now(); }, true);
+  document.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') ptrType = 'mouse'; }, true);
+  const realMouse = () => ptrType === 'mouse';
   pop.addEventListener('mouseenter', () => { clearTimeout(hideT); clearTimeout(swapT); });
-  pop.addEventListener('mouseleave', () => hidePop());
+  pop.addEventListener('mouseleave', () => { if (realMouse()) hidePop(); });
   document.addEventListener('keydown', e => {
     const typing = e.target.closest && e.target.closest('input, select, textarea');
     if (document.body.classList.contains('home')) { if (e.key === '/' && !typing) { e.preventDefault(); $('#q') && $('#q').focus(); } return; }
@@ -887,14 +898,15 @@
       el.setAttribute('aria-label', `${s.label}${refs.length ? ': verses ' + refStr(refs) : ''}`);
       el.addEventListener('mouseenter', e => {
         lastXY = [e.clientX, e.clientY];
-        if (tour) return;
+        if (tour || !realMouse()) return;
         if (activeEl === el) { clearTimeout(hideT); return; }
         if (pinned) { clearTimeout(swapT); swapT = setTimeout(() => { pinned = false; showPop(s, el, lastXY); }, 350); }
         else showPop(s, el, lastXY);
       });
       el.addEventListener('mousemove', e => { lastXY = [e.clientX, e.clientY]; });
-      el.addEventListener('mouseleave', () => { clearTimeout(swapT); hidePop(); });
-      el.addEventListener('focus', () => { if (!tour && !pinned && activeEl !== el) showPop(s, el); });
+      el.addEventListener('mouseleave', () => { if (!realMouse()) return; clearTimeout(swapT); hidePop(); });
+      el.addEventListener('focus', () => { if (performance.now() - ptrDownAt < 600) return;   // keyboard focus only; a tap or click is handled below
+        if (!tour && !pinned && activeEl !== el) showPop(s, el); });
       el.addEventListener('click', e => { e.stopPropagation();
         if (tour) { const k = tour.order.indexOf(i); if (k >= 0) { tour.i = k; tourStep(); } return; }
         pinned = true; showPop(s, el, [e.clientX, e.clientY]); });
