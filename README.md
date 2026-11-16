@@ -13,7 +13,7 @@ explained down to its root.
 | Step | What to do |
 |---|---|
 | **Pick a surah** | The home screen is a library of every surah, with search. Type a name, a verse such as `4:11`, an English word such as `patience`, or Arabic text. Clicking a verse opens the poster panel that shows it. |
-| **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. |
+| **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. Summary panels (titles, essence, nazm, amūd, takeaways, lessons, memory aids) show their explanation instead, with the verses they mention one tap away. |
 | **Verse cards** | Each verse appears as a quran.com-style card: play the Arabic recitation (Mishary Alafasy), listen to the English translation, bookmark it, copy, share, add your own note, or open the tafsir. |
 | **Listen in English** | The 🔊 EN button plays Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the device's best natural voice reads it instead, highlighting each sentence. ⚙ Settings lets you choose Human or Device voice, the device voice and the speed. |
 | **Go word by word** | Inside a popup, hover any Arabic word for its meaning, transliteration, root, the root's original meaning and a lexicon summary. Where a word choice carries a rhetorical point, a "Why this word?" note explains it. |
@@ -56,6 +56,7 @@ If you find a mistake, the hotspot data is plain text and easy to correct (see "
 | `words.js` | Word-by-word data for every verse (built by `tools/build_words.py`) |
 | `roots_core.js` | One-line "original meaning" for each of the 1,448 roots, plus per-word notes and spelling alignments |
 | `why.js` | Curated "Why this word?" notes (built from `tools/why_src.js` by `tools/build_why.js`) |
+| `meta.js` | Which hotspots are summary panels rather than verse pictures (built by `tools/build_meta.js`: word rules, position inside a summary panel, and an explicit per-poster list) |
 | `factcheck.js` | Per-poster corrections, verified patterns and imagery notes (built by `tools/build_factcheck.js` from the hotspot notes) |
 | `images/` | The posters (`.webp`); `images/thumbs/` holds the small library thumbnails |
 | `fonts/UthmanicHafs1Ver18.woff2` | KFGQPC Uthmanic Script Hafs (King Fahd Complex), the Qur'an font quran.com uses; it matches the Uthmani text exactly |
@@ -72,7 +73,7 @@ Each hotspot is
 ```
 
 with the box in the image's own pixels. Tick **Show hotspot outlines** in Settings to check that boxes line up.
-After changing notes, run `node tools/build_factcheck.js` to refresh the Fact-check lists.
+After changing notes or labels, run `node tools/build_factcheck.js` and `node tools/build_meta.js` to refresh the Fact-check lists and the summary-panel list.
 
 To add a surah: add its `verses*.js` and `parts*.js` (and two `<script>` tags in `index.html`), then rebuild
 `words.js` with `tools/build_words.py` for the full list of surahs.

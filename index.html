@@ -130,6 +130,14 @@
   .vnote{display:none;width:100%;margin-top:10px;min-height:64px;border:1px solid #d1d5db;border-radius:10px;padding:8px 10px;font:14px/1.5 Figtree,Inter,sans-serif;color:#1f2937;background:#fff;resize:vertical}
   .vnote.open{display:block}
   .vaudio{font:13px Figtree,Inter,sans-serif;color:#6b7280;margin-top:6px}
+  /* summary panels (essence, nazm, amūd, takeaway…): explanation first, verses only on request */
+  .mlead{margin:12px 12px 0;padding:12px 14px;background:#f4f5f6;border-radius:12px;font:15px/1.6 Figtree,Inter,sans-serif;color:#0b163a}
+  .mlead.empty{color:#6b7280;font-size:14px}
+  .mchips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px 4px}
+  .vchip{border:1px solid #d1d5db;background:#fff;color:#0b163a;border-radius:16px;padding:4px 11px;font:500 13px Figtree,Inter,sans-serif;cursor:pointer}
+  .vchip:hover{border-color:#0b163a}
+  .vchip.on{background:#0b163a;color:#fff;border-color:#0b163a}
+  .stage.show .spot.meta{box-shadow:none;outline:1.5px dashed rgba(241,207,127,.75);outline-offset:-2px}
   .vb .lbl{font:700 9px Figtree,Inter,sans-serif;letter-spacing:.04em;position:absolute;right:2px;bottom:3px;color:inherit}
   .vb{position:relative}
   .en.speaking{background:linear-gradient(90deg,rgba(46,125,110,.10),rgba(46,125,110,.03));border-radius:8px;box-shadow:-10px 0 0 rgba(46,125,110,.10),10px 0 0 rgba(46,125,110,.03)}
@@ -363,6 +371,7 @@
 <script src="verses9-13.js"></script>
 <script src="parts9-13.js"></script>
 <script src="factcheck.js"></script>
+<script src="meta.js"></script>
 <script src="roots_core.js"></script>
 <script src="why.js"></script>
 <script src="words.js"></script>
@@ -425,7 +434,7 @@
     $('#surahs').value = String(x.id);
     document.title = `Surah ${x.name} · Memory Story`;
     const mapped = new Set(); P.forEach(p => { for (let v = p.range[0]; v <= p.range[1]; v++) mapped.add(v); });
-    const shown = new Set(P.flatMap(p => p.spots.flatMap(s => s.key)));
+    const shown = new Set(P.flatMap(p => { const m = metaSet(x.id, p); return p.spots.filter(s => !m.has(s.label)).flatMap(s => s.key); }));
     $('#tiles').innerHTML = [[`${P.length}/${x.totalParts}`, 'posters'], [`${mapped.size}/${x.total}`, 'verses covered'], [shown.size, 'shown in posters'], [P.reduce((a, p) => a + p.spots.length, 0), 'hotspots']]
       .map(([b, s]) => `<span class="tile"><b>${b}</b>${s}</span>`).join('');
     tabs.innerHTML = '';
@@ -553,6 +562,19 @@
   $('#optRate').oninput = e => { st.rate = +e.target.value; save(); if (audio && playing && playing.kind === 'en') audio.playbackRate = st.rate / 0.95; };
   applyVoiceUI();
 
+  // summary panels: a chip opens (or closes) the verses it names, right below the chips
+  pop.addEventListener('click', e => {
+    const c = e.target.closest('.vchip'); if (!c) return; e.stopPropagation();
+    const box = pop.querySelector('.mverses'), id = c.dataset.r || c.dataset.x;
+    const old = box.querySelector(`[data-from="${id}"]`);
+    if (old) { old.remove(); c.classList.remove('on'); return; }
+    let html = '';
+    if (c.dataset.x) { const [a, b] = c.dataset.x.split(':').map(Number); html = verseHTML(b, 'more', a); }
+    else { const [a, b] = c.dataset.r.split('-').map(Number); for (let n = a; n <= b; n++) html += verseHTML(n, 'key'); }
+    const wrap = document.createElement('div'); wrap.dataset.from = id; wrap.innerHTML = html; box.appendChild(wrap); c.classList.add('on');
+    wrap.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+
   // card actions
   const flash = (b, ok = true) => { const old = b.innerHTML; b.innerHTML = svg(ok ? 'check' : 'more'); b.classList.add('ok'); setTimeout(() => { b.innerHTML = old; b.classList.remove('ok'); }, 1200); };
   const copyText = t => navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject();
@@ -584,6 +606,12 @@
     card.querySelector('[data-a="note"]').classList.toggle('on', !!st.notes[k]);
   });
   const spotRefs = s => s.key.length ? s.key : (s.more || []);
+  // Summary panels (essence, nazm, amūd, takeaway, titles, memory aids…) don't picture a verse:
+  // their popup shows the explanation, with the verses they mention one tap away. List: meta.js (tools/build_meta.js).
+  const MP = window.META_PANELS || {};
+  const metaSet = (sid, p) => new Set(MP[`${sid}-${p.id}`] || []);
+  let curMeta = new Set();
+  const isMetaSpot = s => curMeta.has(s.label);
 
   // ---------- word-by-word ----------
   const WB = window.WORDS_BY_SURAH || {}, RC = window.ROOT_CORE || {}, WN = window.WORD_NOTES || {}, RL = window.ROOT_LEX || {};
@@ -655,10 +683,15 @@
     const more = spot.more || [], sid = S.id, refs = spotRefs(spot);
     const xref = (spot.xref || []).map(r => r.split(':').map(Number)).filter(([a, b]) => verseOf(a, b));
     const xLine = xref.length ? ' · ' + xref.map(([a, b]) => `${nameOf(a)} ${a}:${b}`).join(', ') : '';
-    const refLine = (spot.key.length ? `${S.name} ${sid}:${refStr(spot.key)}${more.length ? ` · also ${sid}:${refStr(more)}` : ''}`
+    const refLine = isMetaSpot(spot) ? `Summary panel · ${S.name}` : (spot.key.length ? `${S.name} ${sid}:${refStr(spot.key)}${more.length ? ` · also ${sid}:${refStr(more)}` : ''}`
                   : refs.length ? `Recalls ${S.name} ${sid}:${refStr(refs)}` : xref.length ? 'Points to a neighbouring surah' : `${S.name}`) + xLine;
-    const T = tour && cur.spots[tour.order[tour.i]] === spot, hidden = T && !tour.shown;
-    const body = hidden
+    const meta = isMetaSpot(spot), T = tour && cur.spots[tour.order[tour.i]] === spot, hidden = T && !tour.shown && !meta;
+    const mentioned = [...new Set([...spot.key, ...more])].sort((a, b) => a - b);
+    const chipList = mentioned.length <= 24 ? mentioned.map(n => [n, n]) : compress(mentioned);
+    const body = meta
+      ? `<div class="mlead${spot.note ? '' : ' empty'}">${spot.note ? esc(spot.note) : 'This part of the poster sums up the surah. It doesn’t picture a particular verse.'}</div>
+        ${chipList.length || xref.length ? `<div class="sect">Verses it mentions — tap one to read it</div><div class="mchips">${chipList.map(([a, b]) => `<button class="vchip" data-r="${a}-${b}">${sid}:${a === b ? a : a + '–' + b}</button>`).join('')}${xref.map(([a, b]) => `<button class="vchip" data-x="${a}:${b}">${nameOf(a)} ${a}:${b}</button>`).join('')}</div><div class="mverses"></div>` : ''}`
+      : hidden
       ? `<div class="quiz"><p>🧠 <b>Self-test.</b> Look at the highlighted panel. Which verses does it show? Recall the verse numbers, the meaning or the Arabic, then check yourself.</p>
            <button class="tbtn gold" data-t="reveal">Reveal the verses</button></div>`
       : `${spot.note ? `<div class="note">💡 ${esc(spot.note)}</div>` : ''}
@@ -669,7 +702,7 @@
     const foot = !T ? '' : `<div class="tf"><button data-t="prev" ${tour.i ? '' : 'disabled'} title="Previous panel (←)">‹ Back</button>
         <div class="tp" title="Panel ${tour.i + 1} of ${tour.order.length}"><i style="width:${(tour.i + 1) / tour.order.length * 100}%"></i></div>
         <label title="Hide the verses until you ask for them"><input type="checkbox" data-t="test" ${st.test ? 'checked' : ''}> Self-test</label>
-        ${st.test && !hidden ? `<button data-t="again" title="Show this panel again at the end">↻ Again later</button><button class="gold" data-t="knew">✓ Knew it</button>`
+        ${st.test && !hidden && !meta ? `<button data-t="again" title="Show this panel again at the end">↻ Again later</button><button class="gold" data-t="knew">✓ Knew it</button>`
           : `<button class="gold" data-t="next" title="Next panel (→)">${hidden ? 'Skip ›' : last ? 'Finish ✓' : 'Next ›'}</button>`}</div>`;
     pop.innerHTML = `<div class="ph"><div><h3>${esc(spot.label)}</h3><div class="refs">${hidden ? 'Verses hidden — recall them first' : refLine}</div></div>
         <span class="pin">${T ? `Panel ${tour.i + 1} of ${tour.order.length}` : pinned ? '📌 pinned' : touch ? '' : 'click to pin'}<button class="x" title="${T ? 'End tour' : 'Close'} (Esc)" aria-label="Close">×</button></span></div>
@@ -832,7 +865,7 @@
   function startTour(){
     if (!cur || document.body.classList.contains('home')) return;
     const order = tourOrder(cur);
-    tour = { order, n: order.length, i: 0, knew: 0, shown: !st.test, again: new Set() };
+    tour = { order, n: order.length, nv: order.filter(i => !isMetaSpot(cur.spots[i])).length, i: 0, knew: 0, shown: !st.test, again: new Set() };
     document.body.classList.add('touring'); $('#btnTour').classList.add('on'); $('#btnTour').firstChild.textContent = '■';
     $('#drawer').classList.remove('open'); $('#btnList').classList.remove('on'); $('#btnFacts').classList.remove('on');
     $('#hint').classList.add('gone'); tourStep();
@@ -847,7 +880,7 @@
     if (tour.i >= tour.order.length) return tourDone();
     const i = tour.order[tour.i], el = stage.querySelector(`.spot[data-i="${i}"]`);
     el.classList.add('tour'); if (z > 1) el.scrollIntoView({ block: 'center', inline: 'center' });
-    tour.shown = !st.test; pinned = true; showPop(cur.spots[i], el);
+    tour.shown = !st.test || isMetaSpot(cur.spots[i]); pinned = true; showPop(cur.spots[i], el);
   }
   function tourGo(d){ if (!tour) return; tour.i = Math.max(0, tour.i + d); tourStep(); }
   function tourReveal(){ if (!tour) return; tour.shown = true; const i = tour.order[tour.i]; pinned = true; showPop(cur.spots[i], stage.querySelector(`.spot[data-i="${i}"]`)); }
@@ -856,7 +889,7 @@
     setDone(true); clearTimeout(hideT); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = true;
     pop.innerHTML = `<div class="ph"><div><h3>🎉 Poster complete</h3><div class="refs">${esc(S.name)} · ${esc(cur.title)}</div></div>
         <span class="pin"><button class="x" title="Close (Esc)" aria-label="Close">×</button></span></div>
-      <div class="quiz"><p>You walked through all <b>${n}</b> panels${tested ? ` and knew <b>${knew}</b> of them on the first try` : ''}. This poster is now marked as studied ✓.</p>
+      <div class="quiz"><p>You walked through all <b>${n}</b> panels${tested ? ` and knew <b>${knew}</b> of the <b>${tour.nv}</b> verse panels on the first try` : ''}. This poster is now marked as studied ✓.</p>
         <div class="row2">${nxt ? '<button class="tbtn gold" data-t="nextposter">Next poster ›</button>' : ''}<button class="tbtn" data-t="restart">↻ Tour again</button><a class="tbtn" href="#home">⌂ Library</a></div></div>`;
     pop.querySelector('.x').onclick = e => { e.stopPropagation(); endTour(); };
     pop.classList.remove('pinned'); pop.classList.add('open'); pop.scrollTop = 0;
@@ -908,7 +941,7 @@
   const thumb = p => 'images/thumbs/' + p.img.split('/').pop();
   let pendingVerse = null;
   function gotoVerse(x, n){
-    const p = x.P.find(q => q.spots.some(s => s.key.includes(n))) || x.P.find(q => q.spots.some(s => (s.more || []).includes(n))) || x.P.find(q => n >= q.range[0] && n <= q.range[1]) || x.P[0];
+    const p = x.P.find(q => { const m = metaSet(x.id, q); return q.spots.some(s => !m.has(s.label) && s.key.includes(n)); }) || x.P.find(q => q.spots.some(s => (s.more || []).includes(n))) || x.P.find(q => n >= q.range[0] && n <= q.range[1]) || x.P[0];
     pendingVerse = n; const h = '#' + x.hash(p.id);
     if (location.hash === h) route(); else location.hash = h;
   }
@@ -970,7 +1003,7 @@
   // ---------- render a part ----------
   const baseLabel = l => l.replace(/ \((scene|signposts|sky|garden)\)$/, '');
   function render(p){
-    endTour(); stopAll(); cur = p; hidePop(true);
+    endTour(); stopAll(); cur = p; curMeta = metaSet(S.id, p); hidePop(true);
     [...tabs.children].forEach(b => b.classList.toggle('active', +b.dataset.i === p.id));
     const act = tabs.querySelector('.active'); act && act.scrollIntoView({ block: 'nearest', inline: 'center' });
     document.documentElement.style.setProperty('--ratio', p.w / p.h);
@@ -979,11 +1012,11 @@
     stage.querySelectorAll('.spot').forEach(s => s.remove());
     p.spots.forEach((s, i) => {
       const [x1, y1, x2, y2] = s.box, el = document.createElement('div');
-      el.className = 'spot' + (/scene|signposts/i.test(s.label) ? ' scene' : '');
+      el.className = 'spot' + (/scene|signposts/i.test(s.label) ? ' scene' : '') + (isMetaSpot(s) ? ' meta' : '');
       el.tabIndex = 0; el.dataset.i = i;
       Object.assign(el.style, { left: x1 / p.w * 100 + '%', top: y1 / p.h * 100 + '%', width: (x2 - x1) / p.w * 100 + '%', height: (y2 - y1) / p.h * 100 + '%' });
       const refs = spotRefs(s);
-      el.innerHTML = refs.length ? `<span class="badge">${refStr(refs)}</span>` : '';
+      el.innerHTML = isMetaSpot(s) ? '<span class="badge">summary</span>' : refs.length ? `<span class="badge">${refStr(refs)}</span>` : '';
       el.setAttribute('aria-label', `${s.label}${refs.length ? ': verses ' + refStr(refs) : ''}`);
       el.addEventListener('mouseenter', e => {
         lastXY = [e.clientX, e.clientY];
@@ -1011,11 +1044,11 @@
     list.innerHTML = '';
     const nxt = P.find(x => x.id === p.id + 1), end = nxt ? Math.max(p.range[1], nxt.range[0] - 1) : p.range[1];
     for (let n = p.range[0]; n <= end; n++) {
-      const where = p.spots.filter(s => s.key.includes(n)), also = p.spots.filter(s => (s.more || []).includes(n));
+      const where = p.spots.filter(s => !isMetaSpot(s) && s.key.includes(n)), also = p.spots.filter(s => (s.more || []).includes(n) || (isMetaSpot(s) && s.key.includes(n)));
       const names = [...new Set(where.map(s => baseLabel(s.label)))];
-      const elsewhere = P.filter(q => q !== p && q.spots.some(s => s.key.includes(n))).map(q => q.id);
+      const elsewhere = P.filter(q => { const m = metaSet(S.id, q); return q !== p && q.spots.some(s => !m.has(s.label) && s.key.includes(n)); }).map(q => q.id);
       const chip = names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('')
-        : `<span class="chip none">${elsewhere.length ? 'shown in part ' + elsewhere.join(', ') : n > p.range[1] ? 'between posters ' + p.id + ' and ' + (p.id + 1) : also.length ? 'neighbouring / recalled' : 'not pictured'}</span>`;
+        : `<span class="chip none">${elsewhere.length ? 'shown in part ' + elsewhere.join(', ') : n > p.range[1] ? 'between posters ' + p.id + ' and ' + (p.id + 1) : also.length ? 'recalled or summarised' : 'not pictured'}</span>`;
       const row = document.createElement('div'); row.className = 'row';
       row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">${S.id}:${n}</span><div class="chips">${chip}</div></div>
         <div class="ar">${ar(n)}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
@@ -1035,7 +1068,7 @@
     st.last = '#' + S.hash(p.id); save();
     if (pendingVerse != null) {
       const n = pendingVerse; pendingVerse = null;
-      const hits = p.spots.map((s, i) => [s, i]).filter(([s]) => s.key.includes(n)), near = p.spots.map((s, i) => [s, i]).filter(([s]) => (s.more || []).includes(n));
+      const hits = p.spots.map((s, i) => [s, i]).filter(([s]) => !isMetaSpot(s) && s.key.includes(n)), near = p.spots.map((s, i) => [s, i]).filter(([s]) => (s.more || []).includes(n) || s.key.includes(n));
       const use = hits.length ? hits : near;
       if (use.length) { focusSpot((use.find(([s]) => !isScene(s.label)) || use[0])[1]); use.forEach(([, i]) => stage.querySelector(`.spot[data-i="${i}"]`).classList.add('lit')); }
       else openDrawer('list');
