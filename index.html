@@ -39,7 +39,7 @@
   @media (max-width:760px){ .brand,.hide-sm{display:none} :root{--barh:96px} #bar{flex-wrap:wrap;align-content:center;padding:6px 8px} #tabs{order:5;flex-basis:100%} }
 
   /* settings popover */
-  #settings{position:fixed;top:calc(var(--barh) + 6px);right:10px;z-index:40;width:290px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:none;box-shadow:0 16px 40px #000a;font-size:13px;color:var(--muted)}
+  #settings{position:fixed;top:calc(var(--barh) + 6px);right:10px;z-index:60;width:290px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:none;box-shadow:0 16px 40px #000a;font-size:13px;color:var(--muted)}
   #settings.open{display:block}
   #settings .rowc{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0}
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
@@ -130,6 +130,12 @@
   .vnote{display:none;width:100%;margin-top:10px;min-height:64px;border:1px solid #d1d5db;border-radius:10px;padding:8px 10px;font:14px/1.5 Figtree,Inter,sans-serif;color:#1f2937;background:#fff;resize:vertical}
   .vnote.open{display:block}
   .vaudio{font:13px Figtree,Inter,sans-serif;color:#6b7280;margin-top:6px}
+  .vb .lbl{font:700 9px Figtree,Inter,sans-serif;letter-spacing:.04em;position:absolute;right:2px;bottom:3px;color:inherit}
+  .vb{position:relative}
+  .en.speaking{background:linear-gradient(90deg,rgba(46,125,110,.10),rgba(46,125,110,.03));border-radius:8px;box-shadow:-10px 0 0 rgba(46,125,110,.10),10px 0 0 rgba(46,125,110,.03)}
+  .en .said{background:rgba(46,125,110,.16);border-radius:4px}
+  #settings select{max-width:170px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:4px 6px;font-size:12px}
+  #settings .sub{font-size:11.5px;color:var(--muted);margin:-4px 0 6px;line-height:1.45}
   .ar{font-family:"UthmanicHafs","Amiri Quran",serif;direction:rtl;text-align:right;line-height:2.15;margin:2px 0 8px;font-size:var(--arsize,24px);color:#0b163a;font-weight:400}
   .tr{font-style:italic;font-family:Figtree,Inter,sans-serif;font-size:14px;color:#4b5470;margin:6px 0 4px;line-height:1.55}
   .en{font-family:Figtree,Inter,sans-serif;font-size:16.5px;line-height:1.65;margin:6px 0 2px;color:#0b163a}
@@ -279,6 +285,11 @@
   <div class="rowc"><label><input type="checkbox" id="optTr"> Transliteration</label></div>
   <div class="rowc"><label><input type="checkbox" id="optShow"> Show hotspot outlines</label></div>
   <div class="rowc"><span>Arabic size</span><input type="range" id="optSize" min="18" max="40" value="24"></div>
+  <div class="rowc"><span>English voice</span>
+    <div class="seg" id="voiceMode"><button data-v="human" class="on">Human</button><button data-v="device">Device</button></div></div>
+  <div class="sub" id="voiceSub">Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the best voice on this device is used.</div>
+  <div class="rowc" id="voiceRow"><span>Device voice</span><select id="optVoice" aria-label="Device voice"></select></div>
+  <div class="rowc"><span>Reading speed</span><input type="range" id="optRate" min="0.75" max="1.25" step="0.05" value="0.95"></div>
   <div class="legend">
     <div><i style="background:var(--gold)"></i>Verse the panel cites or shows</div>
     <div><i style="background:var(--more)"></i>Neighbouring or recalled verse</div>
@@ -437,7 +448,7 @@
   const refStr = arr => compress(arr).map(([a, b]) => a === b ? a : a + '–' + b).join(', ');
   function compress(arr){ const s=[...arr].sort((a,b)=>a-b), out=[]; for (const n of s){ const l=out[out.length-1]; if(l && n===l[1]+1) l[1]=n; else out.push([n,n]); } return out; }
   // ---------- verse card (quran.com style) ----------
-  const ICON = {"play": "<polygon points=\"7 4.5 19 12 7 19.5 7 4.5\"/>", "pause": "<line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"19\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"19\"/>", "bm": "<path class=\"bmf\" d=\"M18 21l-6-4.5L6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"/><path class=\"bmp\" d=\"M12 7.5v6M9 10.5h6\"/>", "copy": "<rect x=\"8.5\" y=\"8.5\" width=\"12\" height=\"12\" rx=\"2\"/><path d=\"M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3\"/>", "share": "<circle cx=\"18\" cy=\"5.5\" r=\"2.5\"/><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"18.5\" r=\"2.5\"/><path d=\"M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1\"/>", "note": "<path d=\"M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5\"/><path d=\"M17.6 3.4a2 2 0 0 1 2.9 2.9L12 14.8l-3.6.8.8-3.6z\"/>", "more": "<circle cx=\"5\" cy=\"12\" r=\"1.1\"/><circle cx=\"12\" cy=\"12\" r=\"1.1\"/><circle cx=\"19\" cy=\"12\" r=\"1.1\"/>", "check": "<path d=\"M5 12.5l4.5 4.5L19 7.5\"/>"};
+  const ICON = {"speak": "<path d=\"M4 9.5h3.5L12 5.5v13l-4.5-4H4z\"/><path d=\"M15.5 9a4 4 0 0 1 0 6\"/><path d=\"M18 6.5a7.5 7.5 0 0 1 0 11\"/>", "stop": "<rect x=\"6.5\" y=\"6.5\" width=\"11\" height=\"11\" rx=\"1.5\"/>", "play": "<polygon points=\"7 4.5 19 12 7 19.5 7 4.5\"/>", "pause": "<line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"19\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"19\"/>", "bm": "<path class=\"bmf\" d=\"M18 21l-6-4.5L6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"/><path class=\"bmp\" d=\"M12 7.5v6M9 10.5h6\"/>", "copy": "<rect x=\"8.5\" y=\"8.5\" width=\"12\" height=\"12\" rx=\"2\"/><path d=\"M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3\"/>", "share": "<circle cx=\"18\" cy=\"5.5\" r=\"2.5\"/><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"18.5\" r=\"2.5\"/><path d=\"M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1\"/>", "note": "<path d=\"M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5\"/><path d=\"M17.6 3.4a2 2 0 0 1 2.9 2.9L12 14.8l-3.6.8.8-3.6z\"/>", "more": "<circle cx=\"5\" cy=\"12\" r=\"1.1\"/><circle cx=\"12\" cy=\"12\" r=\"1.1\"/><circle cx=\"19\" cy=\"12\" r=\"1.1\"/>", "check": "<path d=\"M5 12.5l4.5 4.5L19 7.5\"/>"};
   const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
   if (!st.bm || typeof st.bm !== 'object') st.bm = {};
   if (!st.notes || typeof st.notes !== 'object') st.notes = {};
@@ -447,7 +458,8 @@
     const v = verseOf(sid, n); if (!v) return '';
     const k = `${sid}:${n}`, bm = !!st.bm[k], note = st.notes[k] || '';
     return `<div class="verse ${kind === 'more' ? 'more' : ''}" data-k="${k}">
-      <div class="vbar"><div><button class="vb" data-a="play" title="Play recitation (Mishary Alafasy)" aria-label="Play">${svg('play')}</button>
+      <div class="vbar"><div><button class="vb" data-a="play" title="Play the Arabic recitation (Mishary Alafasy)" aria-label="Play the Arabic recitation">${svg('play')}</button>
+          <button class="vb" data-a="en" title="Listen to the English translation" aria-label="Listen to the English translation">${svg('speak')}<span class="lbl">EN</span></button>
           <button class="vb ${bm ? 'on' : ''}" data-a="bm" title="${bm ? 'Remove bookmark' : 'Bookmark this verse'}" aria-label="Bookmark">${svg('bm')}</button>
 </div>
         <div><button class="vb" data-a="copy" title="Copy verse and translation" aria-label="Copy">${svg('copy')}</button>
@@ -459,23 +471,99 @@
       <div class="tr">${esc(v.tr)}</div><div class="en">${enText(v.en)}</div><div class="ur">${esc(v.ur)}</div>
       <textarea class="vnote ${note ? 'open' : ''}" placeholder="Write a note — it is saved in this browser">${esc(note)}</textarea></div>`;
   };
-  // card actions
+  // ---------- audio: Arabic recitation and English reading ----------
   let audio = null, playing = null;
+  const pad3 = x => String(x).padStart(3, '0');
+  const setBtn = (b, on, kind) => { if (!b || !b.isConnected) return; b.innerHTML = on ? svg(kind === 'play' ? 'pause' : 'stop') : svg(kind === 'play' ? 'play' : 'speak') + (kind === 'en' ? '<span class="lbl">EN</span>' : ''); b.classList.toggle('on', on); };
+  function stopAll(){
+    if (audio) { const a = audio; audio = null; a.onpause = a.onended = a.onerror = null; a.pause(); }
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    if (playing) { setBtn(playing.b, false, playing.kind); const en = playing.card.querySelector('.en'); if (en) { en.classList.remove('speaking'); if (en.dataset.plain) { en.innerHTML = en.dataset.plain; delete en.dataset.plain; } } }
+    playing = null;
+  }
+  const note = (card, html) => { const old = card.querySelector('.vaudio'); if (old) old.remove(); card.querySelector('.vbar').insertAdjacentHTML('afterend', `<div class="vaudio">${html}</div>`); };
+  function playFile(card, b, kind, url, onFail){
+    const a = new Audio(url); audio = a; playing = { card, b, kind }; setBtn(b, true, kind);
+    if (kind === 'en') card.querySelector('.en').classList.add('speaking');
+    a.playbackRate = kind === 'en' ? (st.rate || 0.95) / 0.95 : 1;
+    a.onended = a.onpause = () => { if (audio === a) stopAll(); };
+    let failed = false; const fail = () => { if (failed || audio !== a) return; failed = true; stopAll(); onFail(); };
+    a.onerror = fail; a.play().catch(fail);
+  }
+  function playArabic(card, b, sid, n){
+    playFile(card, b, 'play', `https://everyayah.com/data/Alafasy_128kbps/${pad3(sid)}${pad3(n)}.mp3`,
+      () => note(card, `The recitation could not load here — <a href="https://quran.com/${sid}/${n}" target="_blank" rel="noopener">listen on quran.com ↗</a>`));
+  }
+  function readEnglish(card, b, sid, n, v){
+    if ((st.voice || 'human') === 'human')
+      playFile(card, b, 'en', `https://everyayah.com/data/English/Sahih_Intnl_Ibrahim_Walk_192kbps/${pad3(sid)}${pad3(n)}.mp3`, () => {
+        if (!speakDevice(card, b, v)) note(card, 'The English recording could not load, and this browser has no built-in voice.');
+        else note(card, 'The human recording could not load here, so your device’s best voice is reading instead. You can choose the voice in ⚙ Settings.');
+      });
+    else if (!speakDevice(card, b, v)) note(card, 'This browser has no built-in voice. Switch “English voice” to Human in ⚙ Settings.');
+  }
+
+  // device voices: rank by quality so the natural/neural voices win over the robotic ones
+  const NOVELTY = /albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|organ|superstar|trinoids|whisper|wobble|zarvox|pipe organ|fred|junior|ralph|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley/i;
+  const voiceScore = vc => {
+    const nm = vc.name; let sc = 0;
+    if (!/^en/i.test(vc.lang) || NOVELTY.test(nm)) return -1;
+    if (/natural|neural/i.test(nm)) sc += 60;
+    if (/premium/i.test(nm)) sc += 55;
+    if (/enhanced/i.test(nm)) sc += 45;
+    if (/^google/i.test(nm)) sc += 35;
+    if (/aria|guy|jenny|ryan|sonia|libby|andrew|emma|brian|ava|christopher|eric|michelle|steffan|daniel|samantha|serena|arthur|oliver|martha|karen|moira|tessa|alex/i.test(nm)) sc += 20;
+    if (/en[-_](gb|us)/i.test(vc.lang)) sc += 10;
+    if (!vc.localService) sc += 5;
+    return sc;
+  };
+  const goodVoices = () => ('speechSynthesis' in window ? speechSynthesis.getVoices() : []).filter(vc => voiceScore(vc) >= 0).sort((a, b) => voiceScore(b) - voiceScore(a));
+  const pickVoice = () => { const all = goodVoices(); return all.find(vc => vc.name === st.vname) || all[0] || null; };
+  // read the translation aloud: brackets dropped, sentences queued one by one (long utterances get cut off in Chrome)
+  function speakDevice(card, b, v){
+    if (!('speechSynthesis' in window)) return false;
+    const text = v.en.replace(/[\[\]]/g, '').replace(/\s+/g, ' ').trim();
+    const parts = text.match(/[^.!?;:]+[.!?;:]*["”’']?\s*/g) || [text];
+    const chunks = []; parts.forEach(pt => { while (pt.length > 220) { let k = pt.lastIndexOf(', ', 220); if (k < 60) k = pt.lastIndexOf(' ', 220); chunks.push(pt.slice(0, k + 1)); pt = pt.slice(k + 1); } if (pt.trim()) chunks.push(pt); });
+    const en = card.querySelector('.en'); en.dataset.plain = en.innerHTML; en.classList.add('speaking');
+    const vc = pickVoice(); playing = { card, b, kind: 'en' }; setBtn(b, true, 'en');
+    let done = 0;
+    chunks.forEach((c, i) => {
+      const u = new SpeechSynthesisUtterance(c); if (vc) { u.voice = vc; u.lang = vc.lang; } else u.lang = 'en-GB';
+      u.rate = st.rate || 0.95; u.pitch = 1;
+      u.onstart = () => { if (playing && playing.card === card) { const before = chunks.slice(0, i).join(''); en.innerHTML = esc(before) + '<span class="said">' + esc(c) + '</span>' + esc(chunks.slice(i + 1).join('')); } };
+      u.onend = u.onerror = () => { if (++done === chunks.length && playing && playing.card === card && playing.kind === 'en') stopAll(); };
+      speechSynthesis.speak(u);
+    });
+    return true;
+  }
+  function fillVoices(){
+    const sel = $('#optVoice'); if (!sel) return; const all = goodVoices(), cur = pickVoice();
+    sel.innerHTML = all.length ? all.map(vc => `<option value="${esc(vc.name)}"${cur && vc.name === cur.name ? ' selected' : ''}>${esc(vc.name.replace(/^Microsoft /, '').replace(/ - English.*| Online.*/i, m => /Natural/i.test(m) ? ' (natural)' : ''))} · ${vc.lang}</option>`).join('') : '<option>No English voice on this device</option>';
+  }
+  if ('speechSynthesis' in window) { speechSynthesis.onvoiceschanged = fillVoices; fillVoices(); }
+  function applyVoiceUI(){
+    const mode = st.voice || 'human';
+    document.querySelectorAll('#voiceMode button').forEach(x => x.classList.toggle('on', x.dataset.v === mode));
+    $('#voiceSub').textContent = mode === 'human' ? 'Ibrahim Walk’s recorded reading of Saheeh International. If it can’t load, the best voice on this device is used.' : 'Reads the translation with your device’s built-in voice. “Natural”, “Premium” or “Enhanced” voices sound best.';
+    $('#optRate').value = st.rate || 0.95;
+  }
+  $('#voiceMode').onclick = e => { const v = e.target.dataset.v; if (v) { st.voice = v; save(); applyVoiceUI(); } };
+  $('#optVoice').onchange = e => { st.vname = e.target.value; save(); };
+  $('#optRate').oninput = e => { st.rate = +e.target.value; save(); if (audio && playing && playing.kind === 'en') audio.playbackRate = st.rate / 0.95; };
+  applyVoiceUI();
+
+  // card actions
   const flash = (b, ok = true) => { const old = b.innerHTML; b.innerHTML = svg(ok ? 'check' : 'more'); b.classList.add('ok'); setTimeout(() => { b.innerHTML = old; b.classList.remove('ok'); }, 1200); };
   const copyText = t => navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject();
   pop.addEventListener('click', e => {
     const b = e.target.closest('.vb'); if (!b) { if (!e.target.closest('.vmenu')) pop.querySelectorAll('.vmenu.open').forEach(m => m.classList.remove('open')); return; }
     e.stopPropagation();
     const card = b.closest('.verse'), k = card.dataset.k, [sid, n] = k.split(':').map(Number), v = verseOf(sid, n), a = b.dataset.a;
-    if (a === 'play') {
-      if (playing === card) { audio.pause(); return; }
-      if (audio) audio.pause();
-      const pad = x => String(x).padStart(3, '0');
-      audio = new Audio(`https://everyayah.com/data/Alafasy_128kbps/${pad(sid)}${pad(n)}.mp3`);
-      const reset = () => { const pb = card.querySelector('[data-a="play"]'); if (pb) pb.innerHTML = svg('play'); if (playing === card) playing = null; };
-      audio.onpause = reset; audio.onended = reset;
-      audio.onerror = () => { reset(); if (!card.querySelector('.vaudio')) card.querySelector('.vbar').insertAdjacentHTML('afterend', `<div class="vaudio">The recitation could not load here — <a href="https://quran.com/${sid}/${n}" target="_blank" rel="noopener">listen on quran.com ↗</a></div>`); };
-      playing = card; b.innerHTML = svg('pause'); audio.play().catch(() => audio.onerror());
+    if (a === 'play' || a === 'en') {
+      if (playing && playing.card === card && playing.kind === a) { stopAll(); return; }
+      stopAll();
+      if (a === 'play') playArabic(card, b, sid, n); else readEnglish(card, b, sid, n, v);
     } else if (a === 'bm') {
       if (st.bm[k]) delete st.bm[k]; else st.bm[k] = 1; save();
       b.classList.toggle('on', !!st.bm[k]); b.title = st.bm[k] ? 'Remove bookmark' : 'Bookmark this verse';
@@ -560,6 +648,7 @@
   // hovering another panel replaces it after a short pause, so you can still move the mouse into the popup to scroll.
   let pinned = false, hideT = null, swapT = null, activeEl = null, lastXY = [0, 0];
   function showPop(spot, el, xy){
+    if (playing) stopAll();                                  // the cards are about to be replaced
     clearTimeout(hideT); clearTimeout(swapT);
     if (activeEl && activeEl !== el) activeEl.classList.remove('active');
     activeEl = el; el.classList.add('active');
@@ -616,7 +705,7 @@
     clearTimeout(swapT);
     if (pinned && !force) return;
     clearTimeout(hideT);
-    hideT = setTimeout(() => { wtip.classList.remove('open'); pop.classList.remove('open'); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = false; }, force ? 0 : 250);
+    hideT = setTimeout(() => { if (playing && !pinned) stopAll(); wtip.classList.remove('open'); pop.classList.remove('open'); activeEl && activeEl.classList.remove('active'); activeEl = null; pinned = false; }, force ? 0 : 250);
   }
   // Touch screens send fake mouse-hover events with every tap. Hover behaviour is for real mice only;
   // on a finger tap the panel's click handler opens (and pins) the popup instead.
@@ -881,7 +970,7 @@
   // ---------- render a part ----------
   const baseLabel = l => l.replace(/ \((scene|signposts|sky|garden)\)$/, '');
   function render(p){
-    endTour(); cur = p; hidePop(true);
+    endTour(); stopAll(); cur = p; hidePop(true);
     [...tabs.children].forEach(b => b.classList.toggle('active', +b.dataset.i === p.id));
     const act = tabs.querySelector('.active'); act && act.scrollIntoView({ block: 'nearest', inline: 'center' });
     document.documentElement.style.setProperty('--ratio', p.w / p.h);

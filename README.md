@@ -14,7 +14,8 @@ explained down to its root.
 |---|---|
 | **Pick a surah** | The home screen is a library of every surah, with search. Type a name, a verse such as `4:11`, an English word such as `patience`, or Arabic text. Clicking a verse opens the poster panel that shows it. |
 | **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. |
-| **Verse cards** | Each verse appears as a quran.com-style card: play the recitation, bookmark it, copy, share, add your own note, or open the tafsir. |
+| **Verse cards** | Each verse appears as a quran.com-style card: play the Arabic recitation (Mishary Alafasy), listen to the English translation, bookmark it, copy, share, add your own note, or open the tafsir. |
+| **Listen in English** | The 🔊 EN button plays Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the device's best natural voice reads it instead, highlighting each sentence. ⚙ Settings lets you choose Human or Device voice, the device voice and the speed. |
 | **Go word by word** | Inside a popup, hover any Arabic word for its meaning, transliteration, root, the root's original meaning and a lexicon summary. Where a word choice carries a rhetorical point, a "Why this word?" note explains it. |
 | **Take the tour** | **▶ Tour** (or the `T` key) walks through a poster panel by panel, spotlighting each one. Use `←` `→` to move. |
 | **Test yourself** | Switch on **Self-test** during a tour: the verses stay hidden until you ask for them, and you mark each panel "Knew it" or "Again later". |
