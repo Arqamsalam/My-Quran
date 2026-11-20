@@ -32,7 +32,8 @@ const STORY = /^(\d+[).]?\s|[①-⑳]|card \d|scene \d|split \d|act \d|step \d|m
 // Labels that the words above catch but that picture verses (story cards), and summary labels they miss.
 const NOT_META = [/^\d+\)? .*\b(ring|frame|context)\b/i, /^Thamud\b./i, /Thamud (and|shows|as)\b/i, /^Title deed/i, /^Act \d/i, /^[ⒶⒷ]/, /^11 Final lesson/];
 // a sub-item that names its own verse range ("M — Messengers gallop (1–7)") still shows those verses
-const RANGE_END = /\(\d+\s*[–-]\s*\d+\)$/;
+// …and so does a numbered topic row that ends with its one verse ("3 The thesis verse (7)")
+const RANGE_END = /\(\d+\s*[–-]\s*\d+\)$|^\d+ .*\(\d+\)$/;
 // Summary panels the word rules miss, by poster ('2-*' = every poster of surah 2). An entry is the start of a
 // label; a single word must match the whole label.
 const ADD = {
@@ -113,6 +114,9 @@ const ADD = {
   "Chain reaction:",
   "Read it. Reflect on it."
  ],
+ "15-1": ["Numerical anchors", "Bottom line:"],
+ "19-1": ["From whisper, to sanctuary", "Arc: mercy given"],
+ "20-1": ["Numerical anchors", "Compressed one-liners"],
  "16-1": [
   "An-Nahl — the bee (centre)",
   "Why the bee?",

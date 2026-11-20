@@ -1465,6 +1465,7 @@ window.WORD_JOIN = Object.assign(window.WORD_JOIN || {}, {
 });
 // Verses where the Mushaf writes two words as one (e.g. wa-mā-liya): merge the word entries [first, last] into one.
 window.WORD_MERGE = Object.assign(window.WORD_MERGE || {}, {
+  '15:7': [1, 2], // لَّوۡمَا — law-mā, 'why not', written as one word
   '36:22': [1, 2],
   '37:164': [1, 2],
   '41:47': [25, 26],
