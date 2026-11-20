@@ -117,6 +117,10 @@ const ADD = {
  "15-1": ["Numerical anchors", "Bottom line:"],
  "19-1": ["From whisper, to sanctuary", "Arc: mercy given"],
  "20-1": ["Numerical anchors", "Compressed one-liners"],
+ "21-1": ["One message. Many messengers."],
+ "21-2": ["One message. Many messengers.", "The gallery's secret rhythm"],
+ "22-1": ["The six movements", "The nine memory stations", "Why the surah is named"],
+ "22-2": ["1 The surah of hearts", "2 Three levels of prostration", "3 Two declarations", "4 Knowledge versus argument", "5 Outer sacred signs", "6 Allah's help forms a chain", "7 The earthquake and the fly", "The four-letter 'HAJJ'", "The deepest message", "'Gather before Allah"],
  "16-1": [
   "An-Nahl — the bee (centre)",
   "Why the bee?",
@@ -467,7 +471,7 @@ const ADD = {
 
 // A summary panel's own sub-items (boxes lying inside it) are summary text too — except inside the big
 // "memory story" / "topic progression" frames, whose rows picture or name specific verses.
-const NOT_PARENT = /memory story|topic (flow|progression|map)|progression|flow|^title|story map|five stations|at a glance/i;
+const NOT_PARENT = /memory story|topic (flow|progression|map)|progression|flow|^title|story map|five stations|at a glance|^one message\. many messengers/i;
 const inside = (a, b) => { const w = Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])), h = Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1]));
   return w * h >= 0.75 * (a[2] - a[0]) * (a[3] - a[1]) && (b[2] - b[0]) * (b[3] - b[1]) > (a[2] - a[0]) * (a[3] - a[1]) * 1.2; };
 const out = {}; let n = 0, total = 0; const v = process.argv.includes('-v');
