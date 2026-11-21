@@ -124,6 +124,10 @@ const ADD = {
  "59-1": ["A) How the topics connect", "E) Core message"],
  "60-1": ["One sentence to keep"],
  "61-1": ["2 Flow of the surah", "The whole universe is already"],
+ "62-1": ["6 Zoomed all the way out"],
+ "63-1": ["A nafaq — burrow", "Hidden rear door"],
+ "64-1": ["Contract offer"],
+ "65-1": ["2 The shape"],
  "22-2": ["1 The surah of hearts", "2 Three levels of prostration", "3 Two declarations", "4 Knowledge versus argument", "5 Outer sacred signs", "6 Allah's help forms a chain", "7 The earthquake and the fly", "The four-letter 'HAJJ'", "The deepest message", "'Gather before Allah"],
  "16-1": [
   "An-Nahl — the bee (centre)",
