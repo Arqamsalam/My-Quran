@@ -125,45 +125,46 @@
   /* word-by-word */
   .ar .w{cursor:pointer;border-radius:6px;padding:0 1px;transition:background .1s}
   .ar .w:hover,.ar .w.on{background:rgba(46,125,110,.18)}
+  /* ---------- word card (opens on click) — light and calm in day mode, soft slate at night ---------- */
+  #wtip{--wbg:#262a36;--wink:#eceef6;--wmut:#8d93aa;--wline:#3a3f50;--wpill:#323747;--wacc:#a7b0f2;--wroot:#e0b45c;--wnote:#2d3242;
+        position:fixed;z-index:70;width:min(400px,calc(100vw - 20px));max-height:min(78vh,640px);overflow:auto;overscroll-behavior:contain;
+        background:var(--wbg);color:var(--wink);border-radius:16px;padding:18px 20px 16px;box-shadow:0 18px 44px rgba(0,0,0,.35);
+        display:none;font:15px/1.5 Figtree,Inter,sans-serif}
+  html[data-look="day"] #wtip{--wbg:#eef0fb;--wink:#1b1f3a;--wmut:#9aa0b8;--wline:#d6d9ec;--wpill:#fff;--wacc:#4c56a8;--wroot:#9a6b1f;--wnote:#e3e6f7;box-shadow:0 18px 44px rgba(27,31,58,.18)}
+  #wtip.open{display:block}
+  #wtip .wx{position:absolute;top:10px;right:12px;border:0;background:none;color:var(--wmut);font-size:22px;line-height:1;cursor:pointer;padding:2px 4px}
+  #wtip .whead{display:flex;align-items:center;gap:16px;padding-right:18px}
+  #wtip .wa{font-family:"UthmanicHafs","Amiri Quran",serif;font-size:44px;line-height:1.6;color:var(--wink);direction:rtl;flex:none}
+  #wtip .wt{font:italic 19px Georgia,"Times New Roman",serif;color:var(--wacc)}
+  #wtip .wg{font:700 18px/1.3 Georgia,"Times New Roman",serif;color:var(--wink);margin-top:2px}
+  #wtip .wref{font-size:12px;color:var(--wmut);margin-top:4px}
+  #wtip hr{border:0;border-top:1px solid var(--wline);margin:12px 0 14px}
+  #wtip .wrow{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:baseline;margin:0 0 12px}
+  #wtip .wlab{font:700 12px Figtree,Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--wmut)}
+  #wtip .wroot{font-family:"UthmanicHafs","Amiri Quran",serif;font-size:26px;color:var(--wroot);letter-spacing:4px;margin-right:6px}
+  #wtip .wsub{color:var(--wmut);font-size:13.5px;white-space:nowrap}
+  #wtip .wrm{display:block;color:var(--wmut);font-size:13.5px;margin-top:2px}
+  #wtip .wlem{font-family:"UthmanicHafs","Amiri Quran",serif;font-size:26px;color:var(--wink)}
+  #wtip .wmain{font-size:17px;font-weight:500;color:var(--wink)}
+  #wtip .wpills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  #wtip .wpill{background:var(--wpill);color:var(--wink);border-radius:999px;padding:4px 12px;font:600 13px Figtree,Inter,sans-serif;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  #wtip .wpill.att{background:none;box-shadow:none;border:1px dashed var(--wline);font-weight:500}
+  #wtip .wnote{font-size:14px;line-height:1.5;color:var(--wink)}
+  #wtip .wnote small{display:block;color:var(--wmut);font-size:12px;margin-top:2px}
+  #wtip .wnote p{margin:0 0 4px}
+  #wtip .wact{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--wline);padding-top:12px;margin-top:4px}
+  #wtip .wb{border:1px solid var(--wline);background:var(--wpill);color:var(--wink);border-radius:999px;padding:6px 14px;font:600 13px Figtree,Inter,sans-serif;cursor:pointer}
+  #wtip .wb.on{background:#d9a94a;border-color:#d9a94a;color:#1b140a}
+  #wtip .hl{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:12.5px;color:var(--wmut)}
+  #wtip .sw{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
+  #wtip .sw.on{box-shadow:0 0 0 2px var(--wbg),0 0 0 4px var(--wink)}
+  #wtip .sw.y{background:#facc15} #wtip .sw.g{background:#4ade80} #wtip .sw.p{background:#f472b6} #wtip .sw.b{background:#60a5fa}
+  #wtip .sw.none{background:none;color:var(--wmut);border:1px solid var(--wline);font-size:12px;line-height:18px}
+  @media (max-width:760px){ #wtip{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:66vh} #wtip .wrow{grid-template-columns:92px 1fr} #wtip .wsub{display:block;white-space:normal} #wtip .wroot{white-space:nowrap} }
   /* your highlights and starred (vocabulary) words — shown wherever the word appears */
   .ar .w.hl-y{background:rgba(250,204,21,.45)} .ar .w.hl-g{background:rgba(74,222,128,.38)}
   .ar .w.hl-p{background:rgba(244,114,182,.40)} .ar .w.hl-b{background:rgba(96,165,250,.40)}
   .ar .w.star{box-shadow:inset 0 -2px 0 #d9a94a}
-  #wtip{position:fixed;z-index:70;width:min(330px,calc(100vw - 20px));background:#1b140a;color:#ece2cf;border:1px solid var(--gold);
-        border-radius:10px;padding:10px 12px;box-shadow:0 12px 30px #000b;display:none;pointer-events:none;font-size:13px;line-height:1.45}
-  #wtip.open{display:block}
-  #wtip.pinned{pointer-events:auto;max-height:min(72vh,620px);overflow:auto;overscroll-behavior:contain}
-  #wtip .wx{position:sticky;top:-10px;float:right;border:0;background:none;color:#a99a80;font-size:20px;line-height:1;cursor:pointer;margin:-4px -6px 0 0;padding:2px 4px}
-  #wtip .wact{display:none;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0 2px;padding-top:8px;border-top:1px solid #3a3125}
-  #wtip.pinned .wact{display:flex}
-  #wtip .wact .wb{border:1px solid #5a4a30;background:#2a2012;color:#f1cf7f;border-radius:8px;padding:5px 10px;font:500 12.5px Inter,sans-serif;cursor:pointer}
-  #wtip .wact .wb.on{background:#f1cf7f;color:#1b140a;border-color:#f1cf7f}
-  #wtip .wact .hl{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#a99a80;margin-left:auto}
-  #wtip .wact .sw{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
-  #wtip .wact .sw.on{border-color:#fff} #wtip .wact .sw.y{background:#facc15} #wtip .wact .sw.g{background:#4ade80} #wtip .wact .sw.p{background:#f472b6} #wtip .wact .sw.b{background:#60a5fa}
-  #wtip .wact .sw.none{background:none;color:#a99a80;font-size:13px;border:1px solid #5a4a30;line-height:18px}
-  #wtip .wbase{margin-top:6px;font-size:12.5px;color:#cbbfa8}
-  #wtip .wbase b{font-family:"UthmanicHafs","Amiri Quran",serif;font-size:20px;color:#f1cf7f;font-weight:400;margin:0 4px}
-  #wtip .wgram{margin:8px 0 0;padding:7px 9px;border-radius:7px;background:#221a10;font-size:12.5px;line-height:1.5}
-  #wtip .wgram h4,#wtip .wbal h4{margin:0 0 3px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#a99a80;font-weight:600}
-  #wtip .wgram ul{margin:0;padding-left:16px} #wtip .wgram li{margin:1px 0}
-  #wtip .wbal{margin-top:8px;padding:7px 9px;border-radius:7px;background:#2a2012;border-left:3px solid var(--gold);font-size:12.5px;line-height:1.45}
-  #wtip .wbal p{margin:0} #wtip .wbal small{display:block;color:#a99a80;font-size:11px;margin-top:3px}
-  @media (max-width:760px){ #wtip.pinned{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto!important;max-height:64vh} }
-  #wtip .wa{font-family:"UthmanicHafs","Amiri Quran",serif;direction:rtl;font-size:26px;color:var(--gold2);line-height:1.9;text-align:right}
-  #wtip .wg{font-size:15px;font-weight:600}
-  #wtip .wt{font-style:italic;color:#a99a80;font-size:12px}
-  #wtip .wr{margin-top:8px;padding-top:7px;border-top:1px solid #3a3125}
-  #wtip .wr b{font-family:"UthmanicHafs","Amiri Quran",serif;font-size:20px;color:var(--gold2);letter-spacing:4px;font-weight:400}
-  #wtip .wc{margin-top:3px}
-  #wtip .wl{margin-top:5px;font-size:11.5px;color:#a99a80}
-  #wtip .wn{margin-top:6px;font-size:11.5px;color:#e4c27a}
-  #wtip .why{margin-top:8px;padding:7px 9px;border-radius:7px;background:#2a2012;border-left:3px solid var(--gold)}
-  #wtip .why h4{margin:0 0 3px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
-  #wtip .why p{margin:0 0 4px;font-size:12.5px;line-height:1.45}
-  #wtip .why p.g{color:#cbbfa8;font-size:12px}
-  #wtip .why p.g b{color:#e4c27a;font-weight:600}
-  #wtip{width:min(360px,calc(100vw - 20px))}
   #pop .note{margin:12px 12px 0;padding:10px 12px;background:var(--pnote);border-left:3px solid var(--gold);font-size:13.5px;line-height:1.5;border-radius:8px;color:var(--pnotetx)}
   @media (max-width:760px){ #pop{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto!important;max-height:62vh} }
   /* verse card (quran.com style) */
@@ -774,44 +775,55 @@
     'CAUS=ف': 'fa- “so that” (cause)', 'SUP=ف': 'fa- (supplemental)', 'P=ب': 'bi- “with / by / in”', 'P=ل': 'li- “for / to”', 'EMPH=ل': 'la- “surely” (emphasis)',
     'PRP=ل': 'li- “so that” (purpose)', 'IMPV=ل': 'li- “let…” (command)', 'P=ك': 'ka- “like”', 'FUT=س': 'sa- “will” (near future)', 'INTG=أ': 'a- question marker',
     'EQ=أ': 'a- “whether”', 'VOC=ي': 'yā “O”', 'ATT=ه': 'hā- “behold” (attention)', 'P=ت': 'ta- “By…” (oath)', 'DET=ال': 'al- “the” (makes it definite)' };
+  const WHO = { '1S': 'I', '1P': 'we', '2MS': 'you', '2FS': 'you (f.)', '2D': 'you two', '2MD': 'you two', '2MP': 'you all', '2FP': 'you all (f.)',
+    '3MS': 'he', '3FS': 'she', '3D': 'they two', '3MD': 'they two', '3FD': 'they two', '3MP': 'they', '3FP': 'they (f.)' };
+  const FORMPAT = ['', 'faʿala — the basic verb', 'faʿʿala', 'fāʿala', 'afʿala', 'tafaʿʿala', 'tafāʿala', 'infaʿala', 'iftaʿala', 'ifʿalla', 'istafʿala', ''];
+  const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
+  const CASEPILL = { NOM: ['nominative', 'rafʿ — the case of a subject or predicate'], ACC: ['accusative', 'naṣb — the case of an object or adverb'], GEN: ['genitive', 'jarr — after a preposition or in a possessive (“of”)'] };
+  // split "conditional particle (“if”)" into a head ("Conditional particle") and a pill ("“if”")
+  const splitKind = x => { const m = x.match(/^(.*?)(?: — | \()(.*?)\)?$/); return m ? [m[1], m[2]] : [x, '']; };
+  const cap = x => x[0].toUpperCase() + x.slice(1);
   function grammar(m){
-    const out = [], pre = []; let stem = null, det = false;
+    const att = [], pre = []; let stem = null, det = false;
     for (const seg of (m || '').split('+').filter(Boolean)) {
       const [pos, ...f] = seg.split('.'), lem = (f.find(x => x[0] === '=') || '').slice(1), tags = f.filter(x => x[0] !== '=');
-      if (tags.includes('PREF')) { const k = tags.find(x => x !== 'PREF') + '=' + lem; if (k === 'DET=ال') det = true; pre.push(k); out.push('Prefix ' + (PREFIX[k] || lem)); continue; }
+      if (tags.includes('PREF')) { const k = tags.find(x => x !== 'PREF') + '=' + lem; if (k === 'DET=ال') { det = true; continue; } pre.push(k); att.push([PREFIX[k] || lem, 'prefix']); continue; }
       if (tags.includes('SUFF')) {
         const pgn = tags.find(x => PRONS[x]);
-        if (tags.includes('PRON') && pgn) out.push(`Attached pronoun: “${PRONS[pgn]}”`);
-        else if (tags.includes('EMPH')) out.push('Ending -nna: the nūn of emphasis');
-        else if (tags.includes('VOC')) out.push('Ending -mma of address (allāhumma)');
-        else if (tags.includes('ADDR')) out.push('Ending -ka / -kum addressing the listener');
+        if (tags.includes('PRON') && pgn) att.push([`+ “${PRONS[pgn]}”`, 'attached pronoun']);
+        else if (tags.includes('EMPH')) att.push(['-nna of emphasis', 'emphatic ending']);
+        else if (tags.includes('VOC')) att.push(['-mma (allāhumma)', 'ending of address']);
+        else if (tags.includes('ADDR')) att.push(['-ka / -kum', 'ending addressing the listener']);
         continue;
       }
       stem = [pos, tags];
     }
-    if (!stem) return { lines: out, pos: '', tags: [], pre };
+    if (!stem) return { head: '', pills: [], att, pos: '', tags: [], det, pre };
     const [pos, t] = stem, has = x => t.includes(x), vf = +((t.find(x => x.startsWith('VF:')) || '').slice(3)) || 0, pgn = t.find(x => PGN[x]);
-    let main = [];
+    let head = '', pills = [];
     if (pos === 'V') {
-      main = ['Verb', has('PERF') ? 'past (perfect)' : has('IMPV') ? 'command (imperative)' : 'present / future (imperfect)'];
-      if (vf) main.push(FORM[vf]);
-      if (has('PASS')) main.push('passive');
-      if (pgn) main.push(PGN[pgn]);
+      head = 'Verb';
+      if (vf) pills.push(['Form ' + ROMAN[vf], FORMPAT[vf]]);
+      pills.push(has('PERF') ? ['past tense', 'perfect'] : has('IMPV') ? ['command', 'imperative'] : ['present / future tense', 'imperfect']);
+      if (has('PASS')) pills.push(['passive', 'the doer is not named']);
       const mood = (t.find(x => x.startsWith('MOOD:')) || '').slice(5);
-      if (mood === 'SUBJ') main.push('subjunctive (after an, lan, li- “so that”…)');
-      if (mood === 'JUS') main.push('jussive (after lam, “do not”, or in a condition)');
+      if (mood === 'SUBJ') pills.push(['subjunctive', 'after an, lan, li- “so that”…']);
+      if (mood === 'JUS') pills.push(['jussive', 'after lam, “do not”, or in a condition']);
+      if (pgn) pills.push([WHO[pgn], PGN[pgn]]);
     } else if (pos === 'N') {
-      const kind = NKIND.find(([k]) => has(k)); main = [kind ? kind[1][0].toUpperCase() + kind[1].slice(1) : 'Noun'];
-      if (kind && kind[0] === 'ADJ') main[0] = 'Adjective';
-      if (vf && (has('ACT_PCPL') || has('PASS_PCPL') || has('VN'))) main.push('from a ' + FORM[vf].replace(', the basic verb', '') + ' verb');
-      const g = t.find(x => GNUM[x]); if (g) main.push(GNUM[g]);
-      if (pgn && has('PRON')) main.push(PGN[pgn]);
-      if (det) main.push('definite (with al-)'); else if (has('INDEF')) main.push('indefinite (with tanwīn)');
-      const c = t.find(x => CASE[x]); if (c) main.push(CASE[c]);
+      const kind = NKIND.find(([k]) => has(k)), [h, sub] = kind ? splitKind(kind[1]) : ['noun', ''];
+      head = kind && kind[0] === 'ADJ' ? 'Adjective' : cap(h);
+      if (sub && kind[0] !== 'ADJ') pills.push([sub, '']);
+      if (vf && (has('ACT_PCPL') || has('PASS_PCPL') || has('VN'))) pills.push(['from Form ' + ROMAN[vf], FORMPAT[vf]]);
+      const g = t.find(x => GNUM[x]); if (g) pills.push([GNUM[g], '']);
+      if (pgn && has('PRON')) pills.push([WHO[pgn], PGN[pgn]]);
+      if (det) pills.push(['definite', 'with al- “the”']); else if (has('INDEF')) pills.push(['indefinite', 'with tanwīn']);
+      const c = t.find(x => CASEPILL[x]); if (c) pills.push(CASEPILL[c]);
     } else {
-      const k = t.find(x => PKIND[x]); main = [k ? PKIND[k][0].toUpperCase() + PKIND[k].slice(1) : 'Particle'];
+      const k = t.find(x => PKIND[x]), [h, sub] = k ? splitKind(PKIND[k]) : ['particle', ''];
+      head = cap(h); if (sub) pills.push([sub, '']);
     }
-    return { lines: [main.join(' · '), ...out], pos, tags: t, det, pre };
+    return { head, pills, att, pos, tags: t, det, pre };
   }
   // A short, general balagha point from the word's form. Used only when no verse-specific note exists; it says how
   // the form usually works in Arabic rhetoric, not a ruling about this verse.
@@ -864,32 +876,42 @@
     faal: ['Intensive form (faʿʿāl)', 'the doubled middle letter and long ā describe doing something often and to a great degree (e.g. tawwāb “ever-returning”).'],
     faul: ['Intensive form (faʿūl)', 'this pattern describes a quality held strongly or habitually (e.g. ghafūr “all-forgiving”, kanūd “utterly ungrateful”).'],
   };
-  function wordTip(k, pin){
+  // words in this surah sharing a root (counted once per surah)
+  const rootCount = {};
+  function sharing(sid, r){
+    const c = rootCount[sid] || (rootCount[sid] = (() => { const m = {}; for (const n in WB[sid] || {}) for (const w of WB[sid][n]) if (w.r) m[w.r] = (m[w.r] || 0) + 1; return m; })());
+    return (c[r] || 1) - 1;
+  }
+  function wordTip(k){
     const [sid, n, i] = k.split(':'), w = WB[sid][n][i - 1], v = verseOf(+sid, +n), t = tokens(sid, n, v)[i - 1], note = WN[k] || {};
     const g = grammar(gramOf(w)), lem = lemOf(w), fnote = formNote(g, lem);
-    const lexSrc = note.lex || RL[w.r], lex = lexSrc ? (lexSrc.length > 230 ? lexSrc.slice(0, 230).replace(/\s+\S*$/, '') + '…' : lexSrc) : '';
+    const row = (lab, html) => `<div class="wrow"><div class="wlab">${lab}</div><div>${html}</div></div>`;
+    const pill = ([x, title], cls) => `<span class="wpill${cls ? ' ' + cls : ''}"${title ? ` title="${esc(title)}"` : ''}>${esc(x)}</span>`;
+    const others = w.r ? sharing(sid, w.r) : 0;
     const root = w.r
-      ? `<div class="wr">Root <b>${spaced(w.r)}</b>${note.alt ? ` <span class="wt">(also listed under</span> <b>${spaced(note.alt)}</b><span class="wt">)</span>` : ''}
-           ${RC[w.r] ? `<div class="wc"><b style="font-size:13px;letter-spacing:0;font-family:Inter">Original meaning:</b> ${esc(RC[w.r])}</div>` : ''}
-           ${note.alt && RC[note.alt] ? `<div class="wc">${spaced(note.alt)}: ${esc(RC[note.alt])}</div>` : ''}
-           ${lex ? `<div class="wl">Lexicon${note.lex ? ' (' + spaced(note.alt) + ')' : ''}: ${esc(lex)}</div>` : ''}</div>`
-      : `<div class="wr wt">A particle or pronoun — it has no three-letter root.</div>`;
-    const curated = (window.WHY || {})[k], gram = (w.b || []).map(c => GN[c]).filter(Boolean);
-    const why = curated || gram.length ? `<div class="why"><h4>Why this word?</h4>${curated ? `<p>${esc(curated)}</p>` : ''}${gram.map(([h, x]) => `<p class="g"><b>${h}:</b> ${x}</p>`).join('')}</div>`
-      : fnote ? `<div class="wbal"><h4>Word choice</h4><p>${esc(fnote)}</p><small>A general pattern of the form, not a ruling about this verse.</small></div>` : '';
-    const base = lem && lem !== t ? `<div class="wbase">Base form <b>${lem}</b>${g.pos === 'V' ? '(dictionary form: “he did”)' : g.pos === 'N' ? '(dictionary form)' : ''}</div>` : '';
-    const gl = g.lines.length ? `<div class="wgram"><h4>Grammar</h4><ul>${g.lines.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
+      ? row('Root', `<span class="wroot">${spaced(w.r)}</span><span class="wsub">${others ? `${others} other word${others === 1 ? '' : 's'} here share${others === 1 ? 's' : ''} it` : 'no other word here shares it'}</span>
+          ${note.alt ? `<span class="wrm">Also listed under ${spaced(note.alt)}</span>` : ''}${RC[w.r] ? `<span class="wrm">${esc(RC[w.r])}</span>` : ''}`)
+      : row('Root', `<span class="wsub">none — a particle or pronoun</span>`);
+    const base = lem ? row('Base form', `<span class="wlem">${lem}</span>`) : '';
+    const gram = g.head ? row('Grammar', `<div class="wmain">${esc(g.head)}</div>${g.pills.length || g.att.length ? `<div class="wpills">${g.pills.map(x => pill(x)).join('')}${g.att.map(x => pill(x, 'att')).join('')}</div>` : ''}`) : '';
+    const curated = (window.WHY || {})[k], gn = (w.b || []).map(c => GN[c]).filter(Boolean);
+    const why = curated || gn.length
+      ? row('Why this word', `<div class="wnote">${curated ? `<p>${esc(curated)}</p>` : ''}${gn.map(([h, x]) => `<p><b>${h}:</b> ${x}</p>`).join('')}</div>`)
+      : fnote ? row('Word choice', `<div class="wnote">${esc(fnote)}<small>A general pattern of the form, not a ruling about this verse.</small></div>`) : '';
+    const info = note.note ? row('Note', `<div class="wnote">${esc(note.note)}</div>`) : '';
     const hl = hlOf(k), on = starred(k);
     const act = `<div class="wact"><button class="wb${on ? ' on' : ''}" data-wa="star">${on ? '★ In vocabulary' : '☆ Add to vocabulary'}</button>
-      <span class="hl">Highlight ${['y', 'g', 'p', 'b'].map(c => `<button class="sw ${c}${hl === c ? ' on' : ''}" data-hl="${c}" aria-label="Highlight colour"></button>`).join('')}<button class="sw none" data-hl="" title="Remove highlight" aria-label="Remove highlight">✕</button></span></div>`;
-    return `${pin ? '<button class="wx" data-wa="close" aria-label="Close">×</button>' : ''}<div class="wa">${t}</div><div class="wg">${esc(w.g)}</div><div class="wt">${esc(w.t)} · ${sid}:${n}, word ${i}</div>${base}${gl}${root}${why}${note.note ? `<div class="wn">ⓘ ${esc(note.note)}</div>` : ''}${act}`;
+      <span class="hl">${['y', 'g', 'p', 'b'].map(c => `<button class="sw ${c}${hl === c ? ' on' : ''}" data-hl="${c}" aria-label="Highlight"></button>`).join('')}<button class="sw none" data-hl="" title="Remove highlight" aria-label="Remove highlight">✕</button></span></div>`;
+    return `<button class="wx" data-wa="close" aria-label="Close">×</button>
+      <div class="whead"><div class="wa">${t}</div><div><div class="wt">${esc(w.t)}</div><div class="wg">${esc(w.g)}</div><div class="wref">${sid}:${n} · word ${i}</div></div></div><hr>
+      ${root}${base}${gram}${why}${info}${act}`;
   }
   const wtip = document.getElementById('wtip');
   let wPinned = null;                                   // the word whose card was clicked open (it stays until closed)
   function showWord(el, pin){
     document.querySelectorAll('.w.on').forEach(x => x.classList.remove('on')); el.classList.add('on');
     wtip.dataset.k = el.dataset.k; wPinned = pin ? el : null;
-    wtip.innerHTML = wordTip(el.dataset.k, pin); wtip.classList.add('open'); wtip.classList.toggle('pinned', !!pin); wtip.scrollTop = 0;
+    wtip.innerHTML = wordTip(el.dataset.k); wtip.classList.add('open', 'pinned'); wtip.scrollTop = 0;
     const r = el.getBoundingClientRect(), tw = wtip.offsetWidth, th = wtip.offsetHeight, m = 8;
     let x = Math.min(Math.max(m, r.left + r.width / 2 - tw / 2), innerWidth - tw - m);
     let y = r.top - th - 10; if (y < m) y = r.bottom + 10;
@@ -902,11 +924,7 @@
     if (wPinned && !force) return;
     wPinned = null; wtip.classList.remove('open', 'pinned'); document.querySelectorAll('.w.on').forEach(x => x.classList.remove('on'));
   }
-  // hover (real mouse) previews a word anywhere: popup cards, the verse list, the vocabulary list
-  document.addEventListener('mouseover', e => { if (wPinned || ptrType !== 'mouse') return; const w = e.target.closest && e.target.closest('.ar .w'); if (w) showWord(w, false); });
-  document.addEventListener('mouseout', e => { if (wPinned || ptrType !== 'mouse') return; const w = e.target.closest && e.target.closest('.ar .w');
-    if (w && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.w') === w)) hideWord(); });
-  // a click or tap opens the full card and keeps it open (capture phase: the row or popup under the word does not react)
+  // a word's card opens only on a click or tap (hovering does nothing); it and keeps it open (capture phase: the row or popup under the word does not react)
   document.addEventListener('click', e => {
     const w = e.target.closest && e.target.closest('.ar .w');
     if (w) { e.stopPropagation(); if (w.closest('#pop')) { pinned = true; clearTimeout(hideT); } showWord(w, true); return; }
@@ -927,7 +945,7 @@
     }
     if ('hl' in b.dataset) { st.hl = st.hl || {}; if (b.dataset.hl && st.hl[k] !== b.dataset.hl) st.hl[k] = b.dataset.hl; else delete st.hl[k]; }
     save(); refreshWord(k); vocabCount();
-    const top = wtip.scrollTop; wtip.innerHTML = wordTip(k, true); wtip.scrollTop = top;
+    const top = wtip.scrollTop; wtip.innerHTML = wordTip(k); wtip.scrollTop = top;
     if ($('#drawer').dataset.tab === 'vocab' && b.dataset.wa === 'star') renderVocab();
   });
 
