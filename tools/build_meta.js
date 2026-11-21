@@ -120,6 +120,10 @@ const ADD = {
  "21-1": ["One message. Many messengers."],
  "21-2": ["One message. Many messengers.", "The gallery's secret rhythm"],
  "22-1": ["The six movements", "The nine memory stations", "Why the surah is named"],
+ "58-1": ["Allah hears every word"],
+ "59-1": ["A) How the topics connect", "E) Core message"],
+ "60-1": ["One sentence to keep"],
+ "61-1": ["2 Flow of the surah", "The whole universe is already"],
  "22-2": ["1 The surah of hearts", "2 Three levels of prostration", "3 Two declarations", "4 Knowledge versus argument", "5 Outer sacred signs", "6 Allah's help forms a chain", "7 The earthquake and the fly", "The four-letter 'HAJJ'", "The deepest message", "'Gather before Allah"],
  "16-1": [
   "An-Nahl — the bee (centre)",
