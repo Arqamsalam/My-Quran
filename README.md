@@ -15,7 +15,8 @@ explained down to its root.
 | **Pick a surah** | The home screen is a library of every surah, with search. Type a name, a verse such as `4:11`, an English word such as `patience`, or Arabic text. Clicking a verse opens the poster panel that shows it. |
 | **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. Summary panels (titles, essence, nazm, amūd, takeaways, lessons, memory aids) show their explanation instead, with the verses they mention one tap away. |
 | **Verse cards** | Each verse appears as a quran.com-style card: play the Arabic recitation (Mishary Alafasy), listen to the English translation, bookmark it, copy, share, add your own note, or open the tafsir. |
-| **Listen in English** | The 🔊 EN button plays Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the device's best natural voice reads it instead, highlighting each sentence. ⚙ Settings lets you choose Human or Device voice, the device voice and the speed. |
+| **Choose the English** | ⚙ Settings → English: **The Clear Quran** (Dr. Mustafa Khattab, the default when `clearquran.js` is present) or **Saheeh International**. The choice applies to every verse card, the verse list, search, copy and share. |
+| **Listen in English** | The 🔊 EN button reads the translation with sentence-by-sentence highlighting. With The Clear Quran your device's best natural voice reads it. With Saheeh International it plays Ibrahim Walk's recorded reading, falling back to the device voice if the recording can't load. ⚙ Settings sets the device voice and the speed. |
 | **Go word by word** | Click (tap) any Arabic word — in a popup, in the ☰ Verses list or in your vocabulary — to open its card; hovering does nothing. The card shows the word with its transliteration and meaning, then the **root** (with its original meaning and how many other words in the surah share it), the **base form** (dictionary form), the **grammar** as a head word plus short tags (Form I–X, tense, person, case, definite or indefinite, prefixes like wa- and bi-, attached pronouns), and a short **balagha** note on the word choice: a verse-specific "Why this word?" where one has been written, otherwise a general note on what that form usually signals. |
 | **Build your vocabulary** | On a word's card press **☆ Add to vocabulary**. The **Vocabulary** tab in the ☰ drawer lists the words you saved for that surah, with meaning, base form and root, in verse order or newest first. **Test me** blurs the meanings until you tap each word; the verse number takes you to the panel. |
 | **Highlight words** | The card's colour dots (yellow, green, pink, blue) highlight that word wherever its verse appears; ✕ removes it. Saved words get a gold underline. Vocabulary and highlights are saved in your browser. |
@@ -55,6 +56,7 @@ If you find a mistake, the hotspot data is plain text and easy to correct (see "
 | `index.html` | The whole app: plain HTML, CSS and JavaScript, no build step |
 | `parts*.js` | Hotspot maps: for each poster, a box per panel and the verses it shows, with notes |
 | `verses*.js` | Verse text: Arabic (Uthmani), English, Urdu, transliteration |
+| `clearquran.js` | The Clear Quran, verse by verse — **not in this repository** (see Sources). Build your own with `tools/build_clearquran.py` |
 | `words.js` | Word-by-word data for every verse: meaning, root, base form and grammar tags (built by `tools/build_words.py`) |
 | `roots_core.js` | One-line "original meaning" for each of the 1,448 roots, plus per-word notes and spelling alignments |
 | `why.js` | Curated "Why this word?" notes (built from `tools/why_src.js` by `tools/build_why.js`) |
@@ -95,7 +97,11 @@ To publish with GitHub Pages: in the repository's **Settings → Pages**, choose
 
 - **Arabic:** Uthmani text from QuranEnc, shown in the King Fahd Complex's Uthmanic Hafs font (from quran.com's open-source
   front end), so it renders exactly as in the printed Madinah Mushaf and on quran.com.
-- **English:** Saheeh International. **Urdu and transliteration:** Tanzil. All three as bundled in
-  [quran-json](https://github.com/risan/quran-json) v3.1.2.
+- **English (default):** *The Clear Quran: A Thematic English Translation* by Dr. Mustafa Khattab (© 2015, all rights
+  reserved; [theclearquran.com](https://theclearquran.com)). Because it is copyrighted, its text is **not** in this public
+  repository: `clearquran.js` is in `.gitignore`. To use it, run `python3 tools/build_clearquran.py "The_Clear_Quran.pdf"`
+  on your own copy of the e-book (it checks every surah's verse count). Without the file the page uses Saheeh International.
+- **English (alternative):** Saheeh International. **Urdu:** Abul Aʿla Maududi (Tafhim-ul-Quran). **Transliteration:** Tanzil.
+  All from [quran-json](https://github.com/risan/quran-json) v3.1.2.
 - **Word meanings:** quran.com word-by-word data. **Roots, base forms (lemmas) and grammar tags:** the Quranic Arabic Corpus.
   **Lexicon summaries:** Quran-Journey/roots, after classical lexicons such as Lane's.

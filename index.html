@@ -369,6 +369,8 @@
     <div class="seg" id="lookMode"><button data-v="day">☀ Day</button><button data-v="night">☾ Night</button><button data-v="auto">Auto</button></div></div>
   <div class="rowc"><span>Translation</span>
     <div class="seg" id="lang"><button data-v="en" class="on">English</button><button data-v="ur">اردو</button><button data-v="both">Both</button></div></div>
+  <div class="rowc" id="transRow"><span>English</span>
+    <div class="seg" id="transMode"><button data-v="clear">The Clear Quran</button><button data-v="saheeh">Saheeh Intl.</button></div></div>
   <div class="rowc"><label><input type="checkbox" id="optTr"> Transliteration</label></div>
   <div class="rowc"><label><input type="checkbox" id="optShow"> Show hotspot outlines</label></div>
   <div class="rowc"><span>Arabic size</span><input type="range" id="optSize" min="18" max="40" value="24"></div>
@@ -394,7 +396,7 @@
   <div id="list"></div>
   <div id="facts"></div>
   <div id="vocab"></div>
-  <footer>Arabic: Uthmani (QuranEnc). English: Saheeh International. Urdu &amp; transliteration (Tanzil) via
+  <footer>Arabic: Uthmani (QuranEnc). English: <span class="transName">Saheeh International</span>. Urdu (Maududi) &amp; transliteration (Tanzil) via
     <a href="https://github.com/risan/quran-json">quran-json</a>. Hotspots hand-mapped in <code>parts*.js</code>.
     Word-by-word: meanings from quran.com, roots from the Quranic Arabic Corpus, root meanings from classical lexicons (Lane's, via Quran-Journey/roots).</footer>
 </aside>
@@ -460,6 +462,7 @@
 <script src="parts62-67.js"></script>
 <script src="factcheck.js"></script>
 <script src="meta.js"></script>
+<script src="clearquran.js"></script>
 <script src="roots_core.js"></script>
 <script src="why.js"></script>
 <script src="words.js"></script>
@@ -472,6 +475,12 @@
     ...Object.keys(PB).map(Number).sort((a, b) => a - b).map(id => ({ ...PB[id].info, id, totalParts: PB[id].parts.length, V: VB[id], P: PB[id].parts,
       hash: n => PB[id].parts.length > 1 ? `s${id}-${n}` : `s${id}` })),
   ].filter(x => x.V && x.P);
+  // ---------- English translation: The Clear Quran (Dr. Mustafa Khattab) when clearquran.js is present, else Saheeh International
+  const CQ = window.CLEAR_QURAN || null;
+  let stT = {}; try { stT = JSON.parse(localStorage.getItem('baqarah-ui') || '{}'); } catch (e) {}
+  const transNow = () => CQ && stT.trans !== 'saheeh' ? 'clear' : 'saheeh';
+  const transName = () => transNow() === 'clear' ? 'The Clear Quran (Dr. Mustafa Khattab)' : 'Saheeh International';
+  if (transNow() === 'clear') SURAHS.forEach(x => { const c = CQ[x.id]; if (c) for (const n in x.V) if (c[n]) { x.V[n].enSaheeh = x.V[n].en; x.V[n].en = c[n]; } });
   const verseOf = (sid, n) => { const x = SURAHS.find(q => q.id === sid); return x && x.V[n]; };
   const nameOf = sid => (SURAHS.find(q => q.id === sid) || {}).name || 'Surah ' + sid;
   let S = SURAHS[0], V = S.V, P = S.P, cur = null;
@@ -568,7 +577,7 @@
   const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
   if (!st.bm || typeof st.bm !== 'object') st.bm = {};
   if (!st.notes || typeof st.notes !== 'object') st.notes = {};
-  // Saheeh International marks added words with [ ]; show them as ˹ ˺, as quran.com does
+  // Saheeh International marks added words with [ ]; show them as ˹ ˺, as quran.com does (The Clear Quran already uses ˹ ˺)
   const enText = t => esc(t).replace(/\[/g, '˹').replace(/\]/g, '˺');
   const verseHTML = (n, kind, sid = S.id) => {
     const v = verseOf(sid, n); if (!v) return '';
@@ -611,6 +620,7 @@
       () => note(card, `The recitation could not load here — <a href="https://quran.com/${sid}/${n}" target="_blank" rel="noopener">listen on quran.com ↗</a>`));
   }
   function readEnglish(card, b, sid, n, v){
+    if (transNow() === 'clear') { if (!speakDevice(card, b, v)) note(card, 'This browser has no built-in voice to read The Clear Quran aloud.'); return; }
     if ((st.voice || 'human') === 'human')
       playFile(card, b, 'en', `https://everyayah.com/data/English/Sahih_Intnl_Ibrahim_Walk_192kbps/${pad3(sid)}${pad3(n)}.mp3`, () => {
         if (!speakDevice(card, b, v)) note(card, 'The English recording could not load, and this browser has no built-in voice.');
@@ -638,16 +648,16 @@
   // read the translation aloud: brackets dropped, sentences queued one by one (long utterances get cut off in Chrome)
   function speakDevice(card, b, v){
     if (!('speechSynthesis' in window)) return false;
-    const text = v.en.replace(/[\[\]]/g, '').replace(/\s+/g, ' ').trim();
+    const text = v.en.replace(/\s+/g, ' ').trim();
     const parts = text.match(/[^.!?;:]+[.!?;:]*["”’']?\s*/g) || [text];
     const chunks = []; parts.forEach(pt => { while (pt.length > 220) { let k = pt.lastIndexOf(', ', 220); if (k < 60) k = pt.lastIndexOf(' ', 220); chunks.push(pt.slice(0, k + 1)); pt = pt.slice(k + 1); } if (pt.trim()) chunks.push(pt); });
     const en = card.querySelector('.en'); en.dataset.plain = en.innerHTML; en.classList.add('speaking');
     const vc = pickVoice(); playing = { card, b, kind: 'en' }; setBtn(b, true, 'en');
     let done = 0;
     chunks.forEach((c, i) => {
-      const u = new SpeechSynthesisUtterance(c); if (vc) { u.voice = vc; u.lang = vc.lang; } else u.lang = 'en-GB';
+      const u = new SpeechSynthesisUtterance(c.replace(/[\[\]˹˺]/g, '')); if (vc) { u.voice = vc; u.lang = vc.lang; } else u.lang = 'en-GB';
       u.rate = st.rate || 0.95; u.pitch = 1;
-      u.onstart = () => { if (playing && playing.card === card) { const before = chunks.slice(0, i).join(''); en.innerHTML = esc(before) + '<span class="said">' + esc(c) + '</span>' + esc(chunks.slice(i + 1).join('')); } };
+      u.onstart = () => { if (playing && playing.card === card) { const before = chunks.slice(0, i).join(''); en.innerHTML = enText(before) + '<span class="said">' + enText(c) + '</span>' + enText(chunks.slice(i + 1).join('')); } };
       u.onend = u.onerror = () => { if (++done === chunks.length && playing && playing.card === card && playing.kind === 'en') stopAll(); };
       speechSynthesis.speak(u);
     });
@@ -659,11 +669,19 @@
   }
   if ('speechSynthesis' in window) { speechSynthesis.onvoiceschanged = fillVoices; fillVoices(); }
   function applyVoiceUI(){
-    const mode = st.voice || 'human';
-    document.querySelectorAll('#voiceMode button').forEach(x => x.classList.toggle('on', x.dataset.v === mode));
-    $('#voiceSub').textContent = mode === 'human' ? 'Ibrahim Walk’s recorded reading of Saheeh International. If it can’t load, the best voice on this device is used.' : 'Reads the translation with your device’s built-in voice. “Natural”, “Premium” or “Enhanced” voices sound best.';
+    const mode = transNow() === 'clear' ? 'device' : st.voice || 'human';
+    document.querySelectorAll('#voiceMode button').forEach(x => { x.classList.toggle('on', x.dataset.v === mode); x.disabled = transNow() === 'clear' && x.dataset.v === 'human'; });
+    $('#voiceSub').textContent = transNow() === 'clear' ? 'The Clear Quran is read by your device’s best voice (the human recording is of Saheeh International). “Natural”, “Premium” or “Enhanced” voices sound best.' : mode === 'human' ? 'Ibrahim Walk’s recorded reading of Saheeh International. If it can’t load, the best voice on this device is used.' : 'Reads the translation with your device’s built-in voice. “Natural”, “Premium” or “Enhanced” voices sound best.';
     $('#optRate').value = st.rate || 0.95;
   }
+  // translation choice (reloads, so every verse, search and list uses the new text)
+  function applyTransUI(){
+    $('#transRow').style.display = CQ ? '' : 'none';
+    document.querySelectorAll('#transMode button').forEach(x => x.classList.toggle('on', x.dataset.v === transNow()));
+    document.querySelectorAll('.transName').forEach(x => x.textContent = transName());
+  }
+  $('#transMode').onclick = e => { const v = e.target.closest('button') && e.target.closest('button').dataset.v; if (v && v !== transNow()) { st.trans = v; save(); location.reload(); } };
+  applyTransUI();
   $('#voiceMode').onclick = e => { const v = e.target.dataset.v; if (v) { st.voice = v; save(); applyVoiceUI(); } };
   $('#optVoice').onchange = e => { st.vname = e.target.value; save(); };
   $('#optRate').oninput = e => { st.rate = +e.target.value; save(); if (audio && playing && playing.kind === 'en') audio.playbackRate = st.rate / 0.95; };
@@ -697,9 +715,9 @@
       if (st.bm[k]) delete st.bm[k]; else st.bm[k] = 1; save();
       b.classList.toggle('on', !!st.bm[k]); b.title = st.bm[k] ? 'Remove bookmark' : 'Bookmark this verse';
     } else if (a === 'copy') {
-      copyText(`${v.ar} ﴿${toArabicNum(n)}﴾\n\n${v.en}\n— ${nameOf(sid)} ${k}`).then(() => flash(b), () => flash(b, false));
+      copyText(`${v.ar} ﴿${toArabicNum(n)}﴾\n\n${v.en}\n— ${nameOf(sid)} ${k} · ${transName()}`).then(() => flash(b), () => flash(b, false));
     } else if (a === 'share') {
-      const url = `https://quran.com/${sid}/${n}`, text = `${v.en} — ${nameOf(sid)} ${k}`;
+      const url = `https://quran.com/${sid}/${n}`, text = `${v.en} — ${nameOf(sid)} ${k} (${transName()})`;
       if (navigator.share) navigator.share({ title: `${nameOf(sid)} ${k}`, text, url }).catch(() => {});
       else copyText(url).then(() => { flash(b); b.title = 'Link copied'; }, () => window.open(url, '_blank'));
     } else if (a === 'note') {
@@ -1289,7 +1307,7 @@
       <div id="results"></div>
       <div class="gsec"><span>Library</span><small id="gcount"></small></div>
       <div class="grid" id="grid">${SURAHS.map(card).join('')}</div>
-      <p class="hfoot">Arabic text: Uthmani script (QuranEnc). English: Saheeh International. Urdu and transliteration: Tanzil. Word meanings: quran.com; roots: Quranic Arabic Corpus; lexicon summaries after Lane.<br>
+      <p class="hfoot">Arabic text: Uthmani script (QuranEnc). English: <span class="transName">${esc(transName())}</span>. Urdu: Maududi (Tafhim-ul-Quran); transliteration: Tanzil. Word meanings: quran.com; roots: Quranic Arabic Corpus; lexicon summaries after Lane.<br>
         The posters are memory aids. Where one differs from the Qur'an's wording, the popup shows the verse itself and Fact-check says so.</p>`;
     const q = $('#q'), grid = $('#grid'), results = $('#results');
     const run = () => {
