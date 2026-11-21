@@ -160,7 +160,7 @@
   #wtip .sw.on{box-shadow:0 0 0 2px var(--wbg),0 0 0 4px var(--wink)}
   #wtip .sw.y{background:#facc15} #wtip .sw.g{background:#4ade80} #wtip .sw.p{background:#f472b6} #wtip .sw.b{background:#60a5fa}
   #wtip .sw.none{background:none;color:var(--wmut);border:1px solid var(--wline);font-size:12px;line-height:18px}
-  @media (max-width:760px){ #wtip{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:66vh} #wtip .wrow{grid-template-columns:92px 1fr} #wtip .wsub{display:block;white-space:normal} #wtip .wroot{white-space:nowrap} }
+  @media (max-width:760px){ #wtip.top{top:calc(var(--barh) + 8px)!important;bottom:auto} #wtip{left:8px!important;right:8px;top:auto!important;bottom:8px;width:auto;max-height:66vh} #wtip .wrow{grid-template-columns:92px 1fr} #wtip .wsub{display:block;white-space:normal} #wtip .wroot{white-space:nowrap} }
   /* your highlights and starred (vocabulary) words — shown wherever the word appears */
   .ar .w.hl-y{background:rgba(250,204,21,.45)} .ar .w.hl-g{background:rgba(74,222,128,.38)}
   .ar .w.hl-p{background:rgba(244,114,182,.40)} .ar .w.hl-b{background:rgba(96,165,250,.40)}
@@ -931,6 +931,14 @@
     wtip.dataset.k = el.dataset.k; wPinned = pin ? el : null;
     wtip.innerHTML = wordTip(el.dataset.k); wtip.classList.add('open', 'pinned'); wtip.scrollTop = 0;
     const r = el.getBoundingClientRect(), tw = wtip.offsetWidth, th = wtip.offsetHeight, m = 8;
+    // phones: a sheet on whichever side of the word has more room, never covering the word (so a second tap can close it)
+    if (innerWidth <= 760) {
+      const bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--barh')) || 52;
+      const above = r.top - bar - 16, below = innerHeight - r.bottom - 16, top = above > below;
+      wtip.classList.toggle('top', top); wtip.style.maxHeight = Math.max(180, top ? above : below) + 'px';
+      return;
+    }
+    wtip.classList.remove('top'); wtip.style.maxHeight = '';
     let x = Math.min(Math.max(m, r.left + r.width / 2 - tw / 2), innerWidth - tw - m);
     let y = r.top - th - 10; if (y < m) y = r.bottom + 10;
     // a word in the side drawer: open the card beside the drawer so the next words stay clickable
@@ -945,7 +953,9 @@
   // a word's card opens only on a click or tap (hovering does nothing); it and keeps it open (capture phase: the row or popup under the word does not react)
   document.addEventListener('click', e => {
     const w = e.target.closest && e.target.closest('.ar .w');
-    if (w) { e.stopPropagation(); if (w.closest('#pop')) { pinned = true; clearTimeout(hideT); } showWord(w, true); return; }
+    if (w) { e.stopPropagation();
+      if (w === wPinned) return hideWord(true);                          // clicking the same word again closes its card
+      if (w.closest('#pop')) { pinned = true; clearTimeout(hideT); } showWord(w, true); return; }
     if (wPinned && !(e.target.closest && e.target.closest('#wtip'))) hideWord(true);
   }, true);
   pop.addEventListener('scroll', () => hideWord(true), { passive: true });
@@ -1079,6 +1089,7 @@
   pop.addEventListener('mouseenter', () => { clearTimeout(hideT); clearTimeout(swapT); });
   pop.addEventListener('mouseleave', e => { if (realMouse() && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('#wtip'))) hidePop(); });
   document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && wPinned) { e.preventDefault(); return hideWord(true); }    // Esc closes an open word card first, everywhere
     const typing = e.target.closest && e.target.closest('input, select, textarea');
     if ((e.key === 'd' || e.key === 'D') && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) return toggleLook();
     if (document.body.classList.contains('home')) { if (e.key === '/' && !typing) { e.preventDefault(); $('#q') && $('#q').focus(); } return; }
