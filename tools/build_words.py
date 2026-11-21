@@ -91,13 +91,34 @@ def qad_note(key):
         if any(pos == 'V' and 'PERF' in t for pos, t in nxt): return ['qad']
     return []
 
+# 1c) base form (lemma) and compact grammar tags for the word card. One segment per '+':
+#     its part of speech, then the corpus features (ROOT/LEM/FAM dropped; a prefix keeps its LEM so the page can name it).
+DROP = ('ROOT:', 'LEM:', 'FAM:')
+def grammar(key):
+    sg = segs.get(key, [])
+    if not sg: return '', ''
+    parts, lem = [], ''
+    stem = next((t for pos, t in sg if 'ROOT:' in t), None) or next((t for pos, t in sg if 'PREF' not in t.split('|') and 'SUFF' not in t.split('|')), sg[-1][1])
+    m = re.search(r'LEM:([^|]+)', stem)
+    if m: lem = m.group(1)
+    for pos, t in sg:
+        f = t.split('|'); keep = [x for x in f if not x.startswith(DROP)]
+        if 'PREF' in f:
+            l = re.search(r'LEM:([^|]+)', t); keep.append('=' + (l.group(1) if l else ''))
+        parts.append('.'.join([pos] + keep))
+    return '+'.join(parts), lem
+
 out, missing, lex = {}, collections.Counter(), {}
+GI, LI = {}, {}
 for (s, v, w), r in sorted(set(roots.items()) | {(k, roots.get(k)) for k in gloss}):
     g, t = gloss.get((s, v, w), ('', ''))
     rm = RMN.get(norm(r)) if r else None
     if r and not rm:
         missing[r] += 1
     rec = {'g': g, 't': t, 'r': r or ''}
+    gm, lm = grammar((s, v, w))
+    if gm: rec['m'] = GI.setdefault(gm, len(GI))     # index into WORD_GRAM (each tag string stored once)
+    if lm: rec['l'] = LI.setdefault(lm, len(LI))     # index into WORD_LEM
     bn = notes_for((s, v, w)) + qad_note((s, v, w))
     if bn: rec['b'] = bn
     out.setdefault(str(s), {}).setdefault(str(v), []).append(rec)
@@ -107,8 +128,11 @@ for (s, v, w), r in sorted(set(roots.items()) | {(k, roots.get(k)) for k in glos
 
 js = ('// Word-by-word data. English meaning: quran.com word-by-word; root: Quranic Arabic Corpus morphology;\n'
       '// root meaning: Quran-Journey/roots (summaries from classical lexicons such as Lane\'s).\n'
+      '// l: base form (lemma) and m: grammar tags, also from the Quranic Arabic Corpus (see tools/build_words.py).\n'
       'window.WORDS_BY_SURAH = Object.assign(window.WORDS_BY_SURAH || {}, ' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ');\n'
-      'window.ROOT_LEX = Object.assign(window.ROOT_LEX || {}, ' + json.dumps(lex, ensure_ascii=False, separators=(',', ':')) + ');\n')
+      'window.ROOT_LEX = Object.assign(window.ROOT_LEX || {}, ' + json.dumps(lex, ensure_ascii=False, separators=(',', ':')) + ');\n'
+      'window.WORD_GRAM = ' + json.dumps(list(GI), ensure_ascii=False, separators=(',', ':')) + ';\n'
+      'window.WORD_LEM = ' + json.dumps(list(LI), ensure_ascii=False, separators=(',', ':')) + ';\n')
 open(a.out, 'w', encoding='utf-8').write(js)
 print('surahs', sorted(want), 'words', sum(len(x) for s in out.values() for x in s.values()),
       'roots without meaning:', dict(missing) or 'none')

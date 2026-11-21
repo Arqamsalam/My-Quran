@@ -16,7 +16,9 @@ explained down to its root.
 | **Read the picture** | Hover (or tap) any panel to see its verses. Click to pin the popup. Gold tags mark verses the panel shows; blue-grey tags mark neighbouring or recalled verses. Summary panels (titles, essence, nazm, amūd, takeaways, lessons, memory aids) show their explanation instead, with the verses they mention one tap away. |
 | **Verse cards** | Each verse appears as a quran.com-style card: play the Arabic recitation (Mishary Alafasy), listen to the English translation, bookmark it, copy, share, add your own note, or open the tafsir. |
 | **Listen in English** | The 🔊 EN button plays Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the device's best natural voice reads it instead, highlighting each sentence. ⚙ Settings lets you choose Human or Device voice, the device voice and the speed. |
-| **Go word by word** | Inside a popup, hover any Arabic word for its meaning, transliteration, root, the root's original meaning and a lexicon summary. Where a word choice carries a rhetorical point, a "Why this word?" note explains it. |
+| **Go word by word** | Hover any Arabic word for a preview, or click (tap) it to open its card — in a popup, in the ☰ Verses list or in your vocabulary. The card gives the meaning and transliteration, the **base form** (dictionary form), the **grammar** in plain words (verb or noun, tense, verb form I–X, person, case, definite or indefinite, prefixes like wa- and bi-, attached pronouns), the root with its original meaning and lexicon entry, and a short **balagha** note on the word choice: a verse-specific "Why this word?" where one has been written, otherwise a general note on what that form usually signals. |
+| **Build your vocabulary** | On a word's card press **☆ Add to vocabulary**. The **Vocabulary** tab in the ☰ drawer lists the words you saved for that surah, with meaning, base form and root, in verse order or newest first. **Test me** blurs the meanings until you tap each word; the verse number takes you to the panel. |
+| **Highlight words** | The card's colour dots (yellow, green, pink, blue) highlight that word wherever its verse appears; ✕ removes it. Saved words get a gold underline. Vocabulary and highlights are saved in your browser. |
 | **Take the tour** | **▶ Tour** (or the `T` key) walks through a poster panel by panel, spotlighting each one. Use `←` `→` to move. |
 | **Test yourself** | Switch on **Self-test** during a tour: the verses stay hidden until you ask for them, and you mark each panel "Knew it" or "Again later". |
 | **Track progress** | Finishing a tour marks the poster as studied (or use the **✓** button). The home screen shows your progress and a "Continue" button. Progress is saved in your browser only. |
@@ -25,7 +27,7 @@ explained down to its root.
 Other controls:
 
 - **Zoom:** the − / Fit / + buttons, the `+` `−` `0` keys, Ctrl/⌘ + scroll, or a two-finger pinch. Drag to move around when zoomed in.
-- **☰ Verses:** every verse of the poster in order; click one to light up where it appears.
+- **☰ Verses:** every verse of the poster in order; click a verse to light up where it appears, or click any Arabic word in it for its word card.
 - **⚙ Settings:** English, Urdu or both; transliteration; hotspot outlines; Arabic text size.
 - **Links:** `#home` is the library. `#s36` opens Ya-Sin; `#s4-3` opens An-Nisa' poster 3. Al-Baqarah uses `#part5` and Aal Imran `#aal-imran-2`.
 
@@ -53,7 +55,7 @@ If you find a mistake, the hotspot data is plain text and easy to correct (see "
 | `index.html` | The whole app: plain HTML, CSS and JavaScript, no build step |
 | `parts*.js` | Hotspot maps: for each poster, a box per panel and the verses it shows, with notes |
 | `verses*.js` | Verse text: Arabic (Uthmani), English, Urdu, transliteration |
-| `words.js` | Word-by-word data for every verse (built by `tools/build_words.py`) |
+| `words.js` | Word-by-word data for every verse: meaning, root, base form and grammar tags (built by `tools/build_words.py`) |
 | `roots_core.js` | One-line "original meaning" for each of the 1,448 roots, plus per-word notes and spelling alignments |
 | `why.js` | Curated "Why this word?" notes (built from `tools/why_src.js` by `tools/build_why.js`) |
 | `meta.js` | Which hotspots are summary panels rather than verse pictures (built by `tools/build_meta.js`: word rules, position inside a summary panel, and an explicit per-poster list) |
@@ -95,5 +97,5 @@ To publish with GitHub Pages: in the repository's **Settings → Pages**, choose
   front end), so it renders exactly as in the printed Madinah Mushaf and on quran.com.
 - **English:** Saheeh International. **Urdu and transliteration:** Tanzil. All three as bundled in
   [quran-json](https://github.com/risan/quran-json) v3.1.2.
-- **Word meanings:** quran.com word-by-word data. **Roots and grammar tags:** the Quranic Arabic Corpus.
+- **Word meanings:** quran.com word-by-word data. **Roots, base forms (lemmas) and grammar tags:** the Quranic Arabic Corpus.
   **Lexicon summaries:** Quran-Journey/roots, after classical lexicons such as Lane's.
