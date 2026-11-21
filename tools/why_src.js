@@ -2,6 +2,7 @@
 // tools/build_why.js finds the word in the verse (by its letters, ignoring vowel marks) and writes why.js.
 // Only well-established points are included; interpretations are attributed.
 module.exports = [
+  [81, 24, 'بضنين', "Ḍanīn — withholding something precious — targets the profit model of false prophecy, not just its claim: soothsayers rationed their 'unseen' for a fee (the Prophet ﷺ forbade the soothsayer's fee, ḥulwān al-kāhin — al-Bukhari), while he delivers it fully and freely. The other established reading, ẓanīn ('suspected'), defends him from another side."],
   [2, 2, 'ريب', "Lā rayba fīhi: this lā denies the whole category (lā nāfiya li-l-jins) — not a single trace of doubt. Rayb is doubt that unsettles the heart, stronger than plain uncertainty."],
   [2, 5, 'المفلحون', "Ulāʾika humu l-mufliḥūn: the extra pronoun hum between subject and predicate (ḍamīr al-faṣl) restricts the meaning — they, and they alone, are the successful."],
   [2, 186, 'قريب', "Elsewhere 'they ask you…' is answered with 'Say…' (qul). Here there is no 'Say': Allah answers directly — fa-innī qarīb. The missing go-between is itself the nearness."],

@@ -156,6 +156,9 @@
   #wtip .wb{border:1px solid var(--wline);background:var(--wpill);color:var(--wink);border-radius:999px;padding:3px 11px;font:600 12px Figtree,Inter,sans-serif;cursor:pointer;white-space:nowrap}
   #wtip .wb.on{background:#d9a94a;border-color:#d9a94a;color:#1b140a}
   #wtip .hl{display:inline-flex;align-items:center;gap:5px;margin-left:auto}
+  #wtip .wkey{font-size:10.5px;color:var(--wmut);border:1px solid var(--wline);border-radius:5px;padding:0 5px;line-height:16px}
+  @media (hover:none){ #wtip .wkey{display:none} }
+  #wtip .wb.flash{transform:scale(1.06);transition:transform .12s}
   #wtip .sw{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
   #wtip .sw.on{box-shadow:0 0 0 2px var(--wbg),0 0 0 3.5px var(--wink)}
   #wtip .sw.y{background:#facc15} #wtip .sw.g{background:#4ade80} #wtip .sw.p{background:#f472b6} #wtip .sw.b{background:#60a5fa}
@@ -843,6 +846,116 @@
     }
     return { head, pills, att, pos, tags: t, det, pre };
   }
+  // ---------- grammar bite: one sentence on what the word is doing in its sentence (rules that the tags make certain) ----------
+  function parseW(w){
+    const segs = (gramOf(w) || '').split('+').filter(Boolean).map(x => { const [pos, ...f] = x.split('.'); return { pos, lem: (f.find(t => t[0] === '=') || '').slice(1), t: f.filter(t => t[0] !== '=') }; });
+    const pre = segs.filter(x => x.t.includes('PREF')), suf = segs.filter(x => x.t.includes('SUFF'));
+    const stem = segs.find(x => !x.t.includes('PREF') && !x.t.includes('SUFF')) || { pos: '', t: [], lem: '' };
+    return { pre, suf, stem, w, lem: lemOf(w), has: x => stem.t.includes(x), preK: pre.map(q => q.t.find(x => x !== 'PREF') + '=' + q.lem) };
+  }
+  // the "extra" bā' (bāʾ zāʾidah) on the predicate after mā / laysa: "wa mā huwa ʿala l-ghaybi bi-ḍanīn"
+  function extraBa(ws){
+    const out = new Map();
+    ws.forEach((x, j) => {
+      const neg = (x.stem.pos === 'P' && x.has('NEG') && x.lem === 'ما') || (x.stem.pos === 'V' && x.lem === 'لَيْسَ'); if (!neg) return;
+      const cand = [];
+      for (let k = j + 1; k < ws.length; k++) { const y = ws[k];
+        if (y.preK.some(q => /^(CONJ|REM|RSLT|CAUS|SUP)=/.test(q))) break;
+        if (y.stem.pos === 'V') break;
+        if (y.stem.pos === 'P' && (y.has('EXP') || y.has('RES') || y.has('NEG'))) break;
+        if (y.preK.includes('P=ب') && y.stem.pos === 'N' && y.has('GEN')) cand.push(k);
+      }
+      const desc = k => ['INDEF', 'ACT_PCPL', 'PASS_PCPL', 'ADJ'].some(t => ws[k].has(t));
+      const pick = cand.length === 1 ? cand[0] : cand.find(desc);
+      // after mā a subject must come first ("mā huwa bi-…"); straight after laysa (subject inside the verb) only a describing word
+      if (pick == null || (pick === j + 1 && (x.lem === 'ما' || !desc(pick)))) return;
+      out.set(pick, j);
+    });
+    return out;
+  }
+  const baCache = {};
+  const baVerses = sid => baCache[sid] || (baCache[sid] = Object.keys(WB[sid] || {}).filter(n => extraBa(WB[sid][n].map(parseW)).size).map(Number));
+  const PREPNAME = { 'P=ب': 'bi- (“with / by / in”)', 'P=ل': 'li- (“for / to”)', 'P=ك': 'ka- (“like”)', 'P=و': 'wa- of oath (“By …”)', 'P=ت': 'ta- of oath (“By …”)' };
+  const TENSE = x => x.has('PERF') ? 'past' : x.has('IMPV') ? 'command' : 'present';
+  function bite(sid, n, i){
+    const ws = WB[sid][n].map(parseW), x = ws[i - 1], prev = ws[i - 2], pgn = x.stem.t.find(t => PGN[t]);
+    const prevT = prev ? prev.w.t : '';
+    const ba = extraBa(ws);
+    if (ba.has(i - 1)) {
+      const neg = ws[ba.get(i - 1)], also = baVerses(sid).filter(v => v !== +n);
+      const near = also.sort((a, b) => Math.abs(a - n) - Math.abs(b - n)).slice(0, 3).sort((a, b) => a - b);
+      return `bi- after the negative ${neg.lem === 'ما' ? 'mā' : 'laysa'} is the “extra” bāʾ (zāʾidah): it adds no new meaning but makes the denial emphatic — “not at all”.${near.length ? ` Same pattern in verse${near.length > 1 ? 's' : ''} ${near.length > 1 ? near.slice(0, -1).join(', ') + ' and ' + near.slice(-1) : near[0]}${also.length > near.length ? ' and others' : ''}.` : ''}`;
+    }
+    if (x.stem.pos === 'V') {
+      const mood = (x.stem.t.find(t => t.startsWith('MOOD:')) || '').slice(5), pl = prev ? prev.lem : '';
+      if (mood === 'JUS') {
+        if (pl === 'لَم') return 'lam + jussive denies the past: “did not …”.';
+        if (prev && prev.stem.pos === 'P' && prev.has('PRO')) return 'lā of prohibition + jussive: a direct “do not …”.';
+        if (x.preK.includes('IMPV=ل')) return 'li- + jussive: “let …” — a command aimed at someone not addressed directly.';
+        if (ws.slice(Math.max(0, i - 6), i - 1).some(y => y.has('COND'))) return 'Jussive because it belongs to a condition (“if … then …”).';
+        return 'Jussive: the mood used after lam, lā of prohibition, and in conditions.';
+      }
+      if (mood === 'SUBJ') {
+        if (pl === 'لَن') return 'lan + subjunctive denies the future firmly: “will never …”.';
+        if (x.preK.includes('PRP=ل')) return 'li- of purpose + subjunctive: “so that / in order to …”.';
+        if (pl === 'أَن') return 'an + subjunctive turns the verb into a clause: “to … / that …”.';
+        if (pl === 'حَتَّى') return 'ḥattā + subjunctive: “until / so that …”.';
+        return 'Subjunctive: governed by a particle before it such as an, lan, kay or li-.';
+      }
+      const obj = x.suf.find(q => q.t.includes('PRON')), op = obj && obj.t.find(t => PRONS[t]);
+      if (x.has('PASS')) return `Passive (majhūl): the doer is not named; the one acted on becomes the subject${pgn ? ` (“${WHO[pgn]}”)` : ''}.`;
+      if (x.has('IMPV')) return `Command (amr) addressed to “${WHO[pgn] || 'you'}”${op ? `; the ending is its object: “${PRONS[op]}”` : ''}.`;
+      const doer = pgn ? `“${WHO[pgn]}” (${PGN[pgn].replace(/ \(“.*”\)/, '')})` : '';
+      if (op) return `The ending is the verb’s object: “${PRONS[op]}”. The verb’s form marks its doer as ${doer} — a noun that follows, or understood from context.`;
+      return `A ${TENSE(x)}-tense verb whose form marks the doer as ${doer} — a noun that follows, or understood from context.`;
+    }
+    if (x.stem.pos === 'N') {
+      const own = x.preK.find(q => PREPNAME[q]);
+      if (x.has('GEN') && own) return `Genitive because of the preposition ${PREPNAME[own]} attached to it.`;
+      if (x.has('GEN') && prev && prev.stem.pos === 'P' && prev.has('P') && !prev.suf.length) return `Genitive after the preposition ${prevT} (“${prev.w.g.trim()}”).`;
+      if (x.has('ACC') && prev && prev.stem.pos === 'P' && prev.has('ACC') && !prev.suf.length) return `Accusative as the subject (ism) of ${prevT}: inna and its sisters put their subject in the accusative.`;
+      if (x.has('ADJ')) return 'Adjective: it matches the noun it describes in case, gender, number and definiteness.';
+      const poss = x.suf.find(q => q.t.includes('PRON')), pp = poss && poss.t.find(t => PRONS[t]);
+      if (x.has('GEN') && prev && prev.stem.pos === 'N' && !prev.preK.includes('DET=ال') && !prev.suf.length && !prev.has('ADJ') && !prev.has('PRON'))
+        return `Genitive as the second term of a possessive (iḍāfah) after ${prevT}: “… of …”.`;
+      if (pp) return `The ending is possessive: “${PRONS[pp]}” — and it makes the noun definite.`;
+      if (x.has('PRON')) return `A separate pronoun (“${WHO[pgn] || ''}”) standing on its own as a subject.`;
+      if (x.has('DEM')) return `Demonstrative pointing to ${x.suf.some(q => q.t.includes('ADDR')) ? 'something at a distance (“that”); the -ka ending addresses the listener, it is not “your”' : 'something near or known (“this / that”)'}.`;
+      if (x.has('REL')) return 'Relative pronoun: it opens a clause that describes the noun before it (“who / which / that”).';
+      if (x.has('INTG')) return 'Question word: it asks “who / what / how …?”.';
+      if (x.has('COND')) return 'Conditional word: “whoever / whatever / when …”; its verbs often take the jussive.';
+      if (x.has('T')) return 'Adverb of time: it tells when.';
+      if (x.has('LOC')) return 'Adverb of place: it tells where (or “with”, “before”, “after”).';
+      if (x.stem.t.some(t => /^(MD|FD|D)$/.test(t))) return 'Dual: it speaks of exactly two.';
+      if (x.has('NOM')) return 'Nominative: here the subject of its sentence or what is said about it.';
+      if (x.has('ACC')) return 'Accusative: an object, an adverb of time or place, or a description of state (ḥāl).';
+      if (x.has('GEN')) return 'Genitive: governed by the word before it.';
+      return '';
+    }
+    if (x.stem.pos === 'P') {
+      const k = x.stem.t.find(t => PKIND[t]); const pr = x.suf.find(q => q.t.includes('PRON')), pp = pr && pr.t.find(t => PRONS[t]);
+      if (x.has('P') && pp) return `Preposition with an attached pronoun: “${x.w.g.trim()}”.`;
+      if (x.has('INL')) return 'Separate letters read one by one; they open the surah and stand outside the sentence.';
+      if (x.has('ACC')) return pp ? `The attached pronoun (“${PRONS[pp]}”) is the subject (ism) of ${x.w.t}; the rest of the sentence is its predicate (khabar).`
+        : `${x.w.t} puts the noun after it in the accusative and stresses the whole statement.`;
+      const L = x.lem, PB = {
+        'لَم': 'lam + a jussive verb denies the past: “did not …”.', 'لَن': 'lan + a subjunctive verb denies the future firmly: “will never …”.',
+        'قَد': 'qad confirms a past verb as settled fact (“indeed has …”); with a present verb it means “sometimes” or “already”.',
+        'سَوْف': 'sawfa marks the future, often a more distant one than sa-.', 'إِلّا': 'illā: “except” — after a negative it restricts the statement (“none but …”).',
+        'إِنَّما': 'innamā restricts the statement (ḥaṣr): “only this”.', 'أَن': 'an + a subjunctive verb makes a clause: “to … / that …”.',
+        'لَو': 'law: an unreal condition — “if (it were so, but it is not) …”.', 'لَوْلا': 'lawlā: “if not for …” or “why not …?”.',
+        'بَل': 'bal: “rather” — it corrects or moves beyond what came before.', 'كَلّا': 'kallā: “No indeed!” — rejects what came before.' };
+      if (PB[L]) return PB[L];
+      const T = { P: 'Preposition: the noun after it takes the genitive.', CONJ: 'Joins what follows to what came before.', NEG: 'Negation: it denies what follows.',
+        PRO: 'lā of prohibition: the verb after it is a jussive “do not …”.', COND: 'Opens a condition (“if …”); its verbs often take the jussive.',
+        INTG: 'Turns the sentence into a question.', VOC: 'Calls on someone: “O …”.', FUT: 'Marks the future.', RES: 'Restricts the statement: “only …”.',
+        EXP: 'Exception: “except …”.', SUB: 'Introduces a clause: “that …”.', CERT: 'Confirms the statement as settled.', EMPH: 'Adds emphasis.',
+        REM: 'Starts a new sentence.', ANS: 'An answer to what came before.', EXH: 'Urges: “why not …?”.', AMD: 'Corrects what came before: “but …”.',
+        RET: 'Moves beyond what came before: “rather …”.', SUR: 'Marks a sudden turn: “and lo! …”.', EXL: 'Introduces an explanation.', INC: 'Begins a new statement.' };
+      return T[k] || (k ? cap(splitKind(PKIND[k])[0]) + '.' : '');
+    }
+    return '';
+  }
   // A short, general balagha point from the word's form. Used only when no verse-specific note exists; it says how
   // the form usually works in Arabic rhetoric, not a ruling about this verse.
   const LEMNOTE = {
@@ -905,24 +1018,25 @@
     const g = grammar(gramOf(w)), lem = lemOf(w), fnote = formNote(g, lem);
     const row = (lab, html) => `<div class="wrow"><div class="wlab">${lab}</div><div>${html}</div></div>`;
     const pill = ([x, title], cls) => `<span class="wpill${cls ? ' ' + cls : ''}"${title ? ` title="${esc(title)}"` : ''}>${esc(x)}</span>`;
-    const others = w.r ? sharing(sid, w.r) : 0;
     const root = w.r
-      ? row('Root', `<span class="wroot">${spaced(w.r)}</span><span class="wsub">${others ? `${others} other word${others === 1 ? '' : 's'} here share${others === 1 ? 's' : ''} it` : 'no other word here shares it'}</span>
-          ${note.alt ? `<span class="wrm">Also listed under ${spaced(note.alt)}</span>` : ''}${RC[w.r] ? `<span class="wrm">${esc(RC[w.r])}</span>` : ''}`)
+      ? row('Root', `<span class="wroot">${spaced(w.r)}</span> <span class="wnote">${RC[w.r] ? esc(RC[w.r]) : ''}${note.alt ? ` <small>(also listed under ${spaced(note.alt)}${RC[note.alt] ? ': ' + esc(RC[note.alt]) : ''})</small>` : ''}</span>`)
       : row('Root', `<span class="wsub">none — a particle or pronoun</span>`);
     const base = lem ? row('Base form', `<span class="wlem">${lem}</span>`) : '';
     const gram = g.head ? row('Grammar', `<div class="wgl"><span class="wmain">${esc(g.head)}</span>${g.pills.map(x => pill(x)).join('')}${g.att.map(x => pill(x, 'att')).join('')}</div>`) : '';
+    const bt = bite(sid, n, i), gbite = bt ? row('Grammar bite', `<div class="wnote">${esc(bt)}</div>`) : '';
+    // Why this word: the verse-specific note where one has been written, then the emphasis/oath/passive notes the
+    // grammar tags make certain, then what the word's form signals — always said of this word
     const curated = (window.WHY || {})[k], gn = (w.b || []).map(c => GN[c]).filter(Boolean);
-    const why = curated || gn.length
-      ? row('Why this word', `<div class="wnote">${curated ? `<p>${esc(curated)}</p>` : ''}${gn.map(([h, x]) => `<p><b>${h}:</b> ${x}</p>`).join('')}</div>`)
-      : fnote ? row('Word choice', `<div class="wnote">${esc(fnote)} <small>(general pattern of the form)</small></div>`) : '';
+    const formWhy = !curated && !gn.length && fnote ? `<i>${esc(w.t)}</i> — ${esc(fnote[0].toLowerCase() + fnote.slice(1))}` : '';
+    const why = curated || gn.length || formWhy
+      ? row('Why this word', `<div class="wnote">${curated ? `<p>${esc(curated)}</p>` : ''}${gn.map(([h, x]) => `<p><b>${h}:</b> ${x}</p>`).join('')}${formWhy}</div>`) : '';
     const info = note.note ? row('Note', `<div class="wnote">${esc(note.note)}</div>`) : '';
     const hl = hlOf(k), on = starred(k);
     const act = `<div class="wact"><button class="wb${on ? ' on' : ''}" data-wa="star">${on ? '★ In vocabulary' : '☆ Add to vocabulary'}</button>
-      <span class="hl">${['y', 'g', 'p', 'b'].map(c => `<button class="sw ${c}${hl === c ? ' on' : ''}" data-hl="${c}" aria-label="Highlight"></button>`).join('')}<button class="sw none" data-hl="" title="Remove highlight" aria-label="Remove highlight">✕</button></span></div>`;
+      <span class="wkey">Space</span><span class="hl">${['y', 'g', 'p', 'b'].map(c => `<button class="sw ${c}${hl === c ? ' on' : ''}" data-hl="${c}" aria-label="Highlight"></button>`).join('')}<button class="sw none" data-hl="" title="Remove highlight" aria-label="Remove highlight">✕</button></span></div>`;
     return `<button class="wx" data-wa="close" aria-label="Close">×</button>
       <div class="whead"><div class="wa" title="Close">${t}</div><div><div class="wt">${esc(w.t)}</div><div class="wg">${esc(w.g)}</div><div class="wref">${sid}:${n} · word ${i}</div></div></div><hr>
-      ${root}${base}${gram}${why}${info}${act}`;
+      ${root}${base}${gram}${gbite}${why}${info}${act}`;
   }
   const wtip = document.getElementById('wtip');
   let wPinned = null, quietScroll = 0;           // quietScroll: the card itself scrolled the list; do not close it                                   // the word whose card was clicked open (it stays until closed)
@@ -1097,6 +1211,9 @@
   pop.addEventListener('mouseleave', e => { if (realMouse() && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('#wtip'))) hidePop(); });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && wPinned) { e.preventDefault(); return hideWord(true); }    // Esc closes an open word card first, everywhere
+    if ((e.key === ' ' || e.code === 'Space') && wPinned && !(e.target.closest && e.target.closest('input, select, textarea'))) {   // Space: add to / remove from vocabulary
+      e.preventDefault(); const sb = wtip.querySelector('[data-wa="star"]'); if (sb) { sb.click(); const nb = wtip.querySelector('[data-wa="star"]'); nb.classList.add('flash'); setTimeout(() => nb.classList.remove('flash'), 160); } return;
+    }
     const typing = e.target.closest && e.target.closest('input, select, textarea');
     if ((e.key === 'd' || e.key === 'D') && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) return toggleLook();
     if (document.body.classList.contains('home')) { if (e.key === '/' && !typing) { e.preventDefault(); $('#q') && $('#q').focus(); } return; }
