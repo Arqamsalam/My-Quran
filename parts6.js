@@ -1,4 +1,4 @@
-// Hotspot maps for Al-An'am (6), posters 1–9 of 18 (verses 1–73).
+// Hotspot maps for Al-An'am (6), posters 1–9 and 11–18 of 18 (poster 10, verses 74–83, not added yet).
 // box: [x1, y1, x2, y2] in the image's own pixels.  key: verses the panel shows.  more: recalled verses.  xref: verses in other surahs.
 
 window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
@@ -6,7 +6,8 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
   "info": {
    "name": "Al-An'am",
    "arName": "الأنعام",
-   "total": 165
+   "total": 165,
+   "totalParts": 18
   },
   "parts": [
    {
@@ -1520,6 +1521,1423 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       "key": [
        70,
        73
+      ]
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "title": "Lanterns — first gray light on the ridge",
+    "range": [
+     84,
+     94
+    ],
+    "img": "images/s6-11.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 11/18 — Lanterns, verses 84–94 · first gray light, the ridge",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       84
+      ]
+     },
+     {
+      "label": "Eighteen lanterns cross the ridge: Ibrahim and the guided line",
+      "box": [
+       85,
+       250,
+       1010,
+       385
+      ],
+      "key": [
+       84,
+       85,
+       86,
+       87,
+       90
+      ],
+      "more": [
+       83
+      ],
+      "note": "Wa wahabnā lahū isḥāqa wa yaʿqūb, kullan hadaynā, wa nūḥan hadaynā min qabl, wa min dhurriyyatihī dāwūda wa sulaymāna wa ayyūba wa yūsufa wa mūsā wa hārūn… wa zakariyyā wa yaḥyā wa ʿīsā wa ilyās… wa ismāʿīla wa l-yasaʿa wa yūnusa wa lūṭā (84–86). Checked: with Ibrahim (83) that is eighteen prophets — the poster's eighteen lanterns. Ulāʾika lladhīna hada llāh, fa-bi-hudāhumu qtadih, qul lā asʾalukum ʿalayhi ajrā (90)."
+     },
+     {
+      "label": "A clansman tears pages from Musa's Book — showing some, hiding much",
+      "box": [
+       725,
+       410,
+       1015,
+       650
+      ],
+      "key": [
+       91
+      ],
+      "note": "Qul man anzala l-kitāba lladhī jāʾa bihī mūsā nūran wa hudan lin-nās, tajʿalūnahū qarāṭīsa tubdūnahā wa tukhfūna kathīrā — 'you make it into separate pages, showing some and hiding much' (91)."
+     },
+     {
+      "label": "Possessions abandoned below the ridge, idols left behind",
+      "box": [
+       615,
+       640,
+       1015,
+       905
+      ],
+      "key": [
+       94
+      ],
+      "note": "Wa la-qad jiʾtumūnā furādā kamā khalaqnākum awwala marratin wa taraktum mā khawwalnākum warāʾa ẓuhūrikum… la-qad taqaṭṭaʿa baynakum — 'you have come to Us alone, as We created you the first time, leaving behind all We gave you… the bonds between you are cut' (94)."
+     },
+     {
+      "label": "Lone footprints lead away: the soul arrives alone",
+      "box": [
+       440,
+       690,
+       720,
+       995
+      ],
+      "key": [
+       94
+      ],
+      "note": "Wa la-qad jiʾtumūnā furādā kamā khalaqnākum awwala marratin wa taraktum mā khawwalnākum warāʾa ẓuhūrikum… la-qad taqaṭṭaʿa baynakum — 'you have come to Us alone, as We created you the first time, leaving behind all We gave you… the bonds between you are cut' (94)."
+     },
+     {
+      "label": "The story, verse by verse (84–94)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1247
+      ],
+      "key": [
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94
+      ],
+      "note": "Wa hādhā kitābun anzalnāhu mubārakun muṣaddiqu lladhī bayna yadayhi wa li-tundhira umma l-qurā wa man ḥawlahā (92). Wa man aẓlamu mimmani ftarā ʿala llāhi kadhiban aw qāla ūḥiya ilayya wa lam yūḥa ilayhi shayʾ (93)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1258,
+       345,
+       1505
+      ],
+      "key": [
+       87,
+       90,
+       93
+      ],
+      "more": [
+       83,
+       39,
+       126,
+       153,
+       161,
+       21,
+       144,
+       157
+      ],
+      "note": "Checked: tilka ḥujjatunā (83) returns at 149 (fa-lillāhi l-ḥujjatu l-bālighah); the straight path at 39, 87, 126, 153 and 161; man aẓlamu mimmani ftarā at 21, 93, 144 and 157."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1258,
+       675,
+       1505
+      ],
+      "key": [
+       84,
+       90
+      ]
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1258,
+       1015,
+       1505
+      ],
+      "key": [
+       84,
+       85,
+       86,
+       88
+      ],
+      "note": "Wa law ashrakū la-ḥabiṭa ʿanhum mā kānū yaʿmalūn (88) — 'had they associated others, all they did would have come to nothing'."
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "title": "Seed — sunrise over the orchard valley",
+    "range": [
+     95,
+     103
+    ],
+    "img": "images/s6-12.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 12/18 — Seed, verses 95–103 · sunrise, the orchard valley",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       95
+      ]
+     },
+     {
+      "label": "The last guiding stars fade",
+      "box": [
+       300,
+       112,
+       760,
+       200
+      ],
+      "key": [
+       97
+      ],
+      "note": "Wa huwa lladhī jaʿala lakumu n-nujūma li-tahtadū bihā fī ẓulumāti l-barri wa l-baḥr (97)."
+     },
+     {
+      "label": "The sun breaks the horizon: He splits the daybreak",
+      "box": [
+       470,
+       200,
+       820,
+       420
+      ],
+      "key": [
+       96
+      ],
+      "note": "Inna llāha fāliqu l-ḥabbi wa n-nawā, yukhriju l-ḥayya mina l-mayyiti wa mukhriju l-mayyiti mina l-ḥayy (95). Fāliqu l-iṣbāḥ, wa jaʿala l-layla sakanan wa sh-shamsa wa l-qamara ḥusbānā (96)."
+     },
+     {
+      "label": "Rain fills the valley",
+      "box": [
+       480,
+       420,
+       1015,
+       600
+      ],
+      "key": [
+       99
+      ],
+      "note": "Wa huwa lladhī anzala mina s-samāʾi māʾan fa-akhrajnā bihī nabāta kulli shayʾ… wa mina n-nakhli min ṭalʿihā qinwānun dāniyah, wa jannātin min aʿnābin wa z-zaytūna wa r-rummāna mushtabihan wa ghayra mutashābih, unẓurū ilā thamarihī idhā athmara wa yanʿih (99)."
+     },
+     {
+      "label": "Dates hang in clusters",
+      "box": [
+       870,
+       120,
+       1015,
+       400
+      ],
+      "key": [
+       99
+      ],
+      "note": "Wa huwa lladhī anzala mina s-samāʾi māʾan fa-akhrajnā bihī nabāta kulli shayʾ… wa mina n-nakhli min ṭalʿihā qinwānun dāniyah, wa jannātin min aʿnābin wa z-zaytūna wa r-rummāna mushtabihan wa ghayra mutashābih, unẓurū ilā thamarihī idhā athmara wa yanʿih (99)."
+     },
+     {
+      "label": "Grain, grapes, olives and pomegranates",
+      "box": [
+       560,
+       690,
+       1015,
+       995
+      ],
+      "key": [
+       99
+      ],
+      "more": [
+       141
+      ],
+      "note": "Wa huwa lladhī anzala mina s-samāʾi māʾan fa-akhrajnā bihī nabāta kulli shayʾ… wa mina n-nakhli min ṭalʿihā qinwānun dāniyah, wa jannātin min aʿnābin wa z-zaytūna wa r-rummāna mushtabihan wa ghayra mutashābih, unẓurū ilā thamarihī idhā athmara wa yanʿih (99)."
+     },
+     {
+      "label": "The date-stone in his palm has split: a green shoot curls out",
+      "box": [
+       465,
+       550,
+       615,
+       700
+      ],
+      "key": [
+       95
+      ],
+      "note": "Inna llāha fāliqu l-ḥabbi wa n-nawā, yukhriju l-ḥayya mina l-mayyiti wa mukhriju l-mayyiti mina l-ḥayy (95). Fāliqu l-iṣbāḥ, wa jaʿala l-layla sakanan wa sh-shamsa wa l-qamara ḥusbānā (96)."
+     },
+     {
+      "label": "He shades his eyes: eyes cannot reach Him",
+      "box": [
+       60,
+       300,
+       470,
+       880
+      ],
+      "key": [
+       103
+      ],
+      "note": "Lā tudrikuhu l-abṣāru wa huwa yudriku l-abṣār, wa huwa l-laṭīfu l-khabīr (103) — 'eyes cannot reach Him, and He reaches every eye'."
+     },
+     {
+      "label": "The story, verse by verse (95–103)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1252
+      ],
+      "key": [
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103
+      ],
+      "note": "Wa huwa lladhī anshaʾakum min nafsin wāḥidah (98). Wa jaʿalū lillāhi shurakāʾa l-jinn… wa kharaqū lahū banīna wa banātin bi-ghayri ʿilm (100). Badīʿu s-samāwāti wa l-arḍ (101)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1262,
+       345,
+       1500
+      ],
+      "key": [
+       95,
+       96
+      ],
+      "more": [
+       14,
+       79,
+       136,
+       153
+      ],
+      "note": "Checked: fāṭir — 'Originator', from splitting open — at 14 and 79; fāliq — 'the One who splits' — at 95 and 96."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1262,
+       675,
+       1500
+      ],
+      "key": [
+       97,
+       99
+      ]
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1262,
+       1015,
+       1500
+      ],
+      "key": [
+       101,
+       102
+      ]
+     }
+    ]
+   },
+   {
+    "id": 13,
+    "title": "Hush — morning at the idol hill",
+    "range": [
+     104,
+     117
+    ],
+    "img": "images/s6-13.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 13/18 — Hush, verses 104–117 · morning, the idol hill",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       104
+      ]
+     },
+     {
+      "label": "The idol hill",
+      "box": [
+       580,
+       112,
+       1015,
+       310
+      ],
+      "key": [
+       108
+      ],
+      "note": "Wa lā tasubbu lladhīna yadʿūna min dūni llāhi fa-yasubbu llāha ʿadwan bi-ghayri ʿilm (108) — 'do not insult those they call on besides Allah, lest they insult Allah in hostility, without knowledge'."
+     },
+     {
+      "label": "Shadows drip gilded words",
+      "box": [
+       790,
+       290,
+       1015,
+       470
+      ],
+      "key": [
+       112
+      ],
+      "note": "Wa kadhālika jaʿalnā li-kulli nabiyyin ʿaduwwan shayāṭīna l-insi wa l-jinni yūḥī baʿḍuhum ilā baʿḍin zukhrufa l-qawli ghurūrā (112) — 'gilded speech, to deceive'."
+     },
+     {
+      "label": "'One miracle and we will believe!'",
+      "box": [
+       690,
+       440,
+       1015,
+       720
+      ],
+      "key": [
+       109,
+       111
+      ],
+      "note": "Wa aqsamū billāhi jahda aymānihim la-in jāʾathum āyatun la-yuʾminunna bihā (109). Wa law annanā nazzalnā ilayhimu l-malāʾikata wa kallamahumu l-mawtā… mā kānū li-yuʾminū illā an yashāʾa llāh (111)."
+     },
+     {
+      "label": "The shepherd covers an angry believer's mouth: do not insult their idols",
+      "box": [
+       460,
+       440,
+       820,
+       870
+      ],
+      "key": [
+       108
+      ],
+      "note": "Wa lā tasubbu lladhīna yadʿūna min dūni llāhi fa-yasubbu llāha ʿadwan bi-ghayri ʿilm (108) — 'do not insult those they call on besides Allah, lest they insult Allah in hostility, without knowledge'."
+     },
+     {
+      "label": "He lifts the scroll: MERCY — Allah, the Judge",
+      "box": [
+       415,
+       190,
+       585,
+       365
+      ],
+      "key": [
+       114,
+       115
+      ],
+      "more": [
+       12
+      ],
+      "note": "A-fa-ghayra llāhi abtaghī ḥakaman wa huwa lladhī anzala ilaykumu l-kitāba mufaṣṣalā (114). Wa tammat kalimatu rabbika ṣidqan wa ʿadlā (115). Wa in tuṭiʿ akthara man fi l-arḍi yuḍillūka ʿan sabīli llāh, in yattabiʿūna illa ẓ-ẓann (116)."
+     },
+     {
+      "label": "The story, verse by verse (104–117)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1247
+      ],
+      "key": [
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117
+      ],
+      "note": "Qad jāʾakum baṣāʾiru min rabbikum (104). Ittabiʿ mā ūḥiya ilayka min rabbik (106)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1258,
+       345,
+       1505
+      ],
+      "key": [
+       114,
+       115
+      ],
+      "more": [
+       1,
+       14,
+       152,
+       164
+      ],
+      "note": "Checked: a-ghayra llāh asks for a protector (14), a judge (114) and a lord (164); ṣidqan wa ʿadlā (115) answers yaʿdilūn (1), and faʿdilū (152) shares the root."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1258,
+       675,
+       1505
+      ],
+      "key": [
+       114
+      ]
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1258,
+       1015,
+       1505
+      ],
+      "key": [
+       108,
+       114,
+       116
+      ]
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "title": "Cave — noon on the cave-and-cliff path",
+    "range": [
+     118,
+     127
+    ],
+    "img": "images/s6-14.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 14/18 — Cave, verses 118–127 · noon, the cave-and-cliff path",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       118
+      ]
+     },
+     {
+      "label": "A believer prepares a sheep with Allah's name",
+      "box": [
+       10,
+       560,
+       380,
+       900
+      ],
+      "key": [
+       118,
+       119
+      ],
+      "note": "Fa-kulū mimmā dhukira smu llāhi ʿalayhi in kuntum bi-āyātihī muʾminīn (118). Wa dharū ẓāhira l-ithmi wa bāṭinah (120). Wa lā taʾkulū mimmā lam yudhkari smu llāhi ʿalayh… wa inna sh-shayāṭīna la-yūḥūna ilā awliyāʾihim li-yujādilūkum, wa in aṭaʿtumūhum innakum la-mushrikūn (121). The poster's 'Bismillāh, Allāhu akbar' is the customary words at slaughter; the verse asks only that Allah's name be mentioned."
+     },
+     {
+      "label": "A carcass across the path draws the whisperers' arguments",
+      "box": [
+       590,
+       615,
+       995,
+       845
+      ],
+      "key": [
+       121
+      ],
+      "note": "Fa-kulū mimmā dhukira smu llāhi ʿalayhi in kuntum bi-āyātihī muʾminīn (118). Wa dharū ẓāhira l-ithmi wa bāṭinah (120). Wa lā taʾkulū mimmā lam yudhkari smu llāhi ʿalayh… wa inna sh-shayāṭīna la-yūḥūna ilā awliyāʾihim li-yujādilūkum, wa in aṭaʿtumūhum innakum la-mushrikūn (121). The poster's 'Bismillāh, Allāhu akbar' is the customary words at slaughter; the verse asks only that Allah's name be mentioned."
+     },
+     {
+      "label": "At the cave one man emerges with a lantern; another remains in darkness",
+      "box": [
+       440,
+       370,
+       770,
+       650
+      ],
+      "key": [
+       122
+      ],
+      "note": "A-wa man kāna maytan fa-aḥyaynāhu wa jaʿalnā lahū nūran yamshī bihī fi n-nāsi ka-man mathaluhū fi ẓ-ẓulumāti laysa bi-khārijin minhā (122)."
+     },
+     {
+      "label": "The path climbs: one chest opens, another tightens like a gasping ascent",
+      "box": [
+       760,
+       230,
+       1015,
+       560
+      ],
+      "key": [
+       125,
+       126
+      ],
+      "note": "Fa-man yuridi llāhu an yahdiyahū yashraḥ ṣadrahū lil-islām, wa man yurid an yuḍillahū yajʿal ṣadrahū ḍayyiqan ḥarajan ka-annamā yaṣṣaʿʿadu fi s-samāʾ (125) — 'as if he were climbing up into the sky'. Wa hādhā ṣirāṭu rabbika mustaqīmā (126)."
+     },
+     {
+      "label": "At the summit waits the Home of Peace",
+      "box": [
+       840,
+       125,
+       985,
+       235
+      ],
+      "key": [
+       127
+      ],
+      "note": "Lahum dāru s-salāmi ʿinda rabbihim (127)."
+     },
+     {
+      "label": "The story, verse by verse (118–127)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1252
+      ],
+      "key": [
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127
+      ],
+      "note": "Wa kadhālika jaʿalnā fī kulli qaryatin akābira mujrimīhā li-yamkurū fīhā (123). Allāhu aʿlamu ḥaythu yajʿalu risālatah (124)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1265,
+       345,
+       1500
+      ],
+      "key": [
+       118,
+       122,
+       126
+      ],
+      "more": [
+       14
+      ]
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1265,
+       675,
+       1500
+      ],
+      "key": [
+       122,
+       126,
+       127
+      ]
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1265,
+       1015,
+       1500
+      ],
+      "key": [
+       118,
+       121
+      ]
+     }
+    ]
+   },
+   {
+    "id": 15,
+    "title": "Heaps — afternoon at the stone shrine",
+    "range": [
+     128,
+     140
+    ],
+    "img": "images/s6-15.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 15/18 — Heaps, verses 128–140 · afternoon, the stone shrine",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       128
+      ]
+     },
+     {
+      "label": "Smoky jinn and men share one rope: 'We used each other'",
+      "box": [
+       300,
+       135,
+       1015,
+       320
+      ],
+      "key": [
+       128
+      ],
+      "note": "Wa yawma yaḥshuruhum jamīʿā: yā maʿshara l-jinni qadi staktartum mina l-ins, wa qāla awliyāʾuhum mina l-insi rabbana stamtaʿa baʿḍunā bi-baʿḍ — 'our Lord, we made use of one another' — wa balaghnā ajalana lladhī ajjalta lanā (128)."
+     },
+     {
+      "label": "Two heaps: FOR ALLAH and FOR OUR PARTNERS",
+      "box": [
+       355,
+       300,
+       880,
+       545
+      ],
+      "key": [
+       136
+      ],
+      "note": "Wa jaʿalū lillāhi mimmā dharaʾa mina l-ḥarthi wa l-anʿāmi naṣīban fa-qālū hādhā lillāhi bi-zaʿmihim wa hādhā li-shurakāʾinā, fa-mā kāna li-shurakāʾihim fa-lā yaṣilu ila llāh, wa mā kāna lillāhi fa-huwa yaṣilu ilā shurakāʾihim (136) — what was 'for Allah' could pass to the partners, never the reverse."
+     },
+     {
+      "label": "Grain passes from Allah's share to the idols'",
+      "box": [
+       845,
+       400,
+       975,
+       600
+      ],
+      "key": [
+       136
+      ],
+      "note": "Wa jaʿalū lillāhi mimmā dharaʾa mina l-ḥarthi wa l-anʿāmi naṣīban fa-qālū hādhā lillāhi bi-zaʿmihim wa hādhā li-shurakāʾinā, fa-mā kāna li-shurakāʾihim fa-lā yaṣilu ila llāh, wa mā kāna lillāhi fa-huwa yaṣilu ilā shurakāʾihim (136) — what was 'for Allah' could pass to the partners, never the reverse."
+     },
+     {
+      "label": "Red-painted cow: NO RIDING",
+      "box": [
+       425,
+       520,
+       655,
+       665
+      ],
+      "key": [
+       138
+      ],
+      "note": "Wa qālū hādhihī anʿāmun wa ḥarthun ḥijr… wa anʿāmun ḥurrimat ẓuhūruhā wa anʿāmun lā yadhkurūna sma llāhi ʿalayha ftirāʾan ʿalayh (138) — cattle 'not to be ridden' and cattle over which Allah's name is not mentioned."
+     },
+     {
+      "label": "Red-painted cow: NO ALLAH'S NAME",
+      "box": [
+       650,
+       520,
+       870,
+       675
+      ],
+      "key": [
+       138
+      ],
+      "note": "Wa qālū hādhihī anʿāmun wa ḥarthun ḥijr… wa anʿāmun ḥurrimat ẓuhūruhā wa anʿāmun lā yadhkurūna sma llāhi ʿalayha ftirāʾan ʿalayh (138) — cattle 'not to be ridden' and cattle over which Allah's name is not mentioned."
+     },
+     {
+      "label": "The pregnant ewe marked 'for males only'",
+      "box": [
+       800,
+       595,
+       1015,
+       785
+      ],
+      "key": [
+       139
+      ],
+      "note": "Wa qālū mā fī buṭūni hādhihi l-anʿāmi khāliṣatun li-dhukūrinā wa muḥarramun ʿalā azwājinā (139)."
+     },
+     {
+      "label": "An empty cradle: children killed through deluded worship",
+      "box": [
+       725,
+       720,
+       905,
+       885
+      ],
+      "key": [
+       137,
+       140
+      ],
+      "note": "Wa kadhālika zayyana li-kathīrin mina l-mushrikīna qatla awlādihim shurakāʾuhum (137). Qad khasira lladhīna qatalū awlādahum safahan bi-ghayri ʿilm (140)."
+     },
+     {
+      "label": "The story, verse by verse (128–140)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1242
+      ],
+      "key": [
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140
+      ],
+      "note": "Yā maʿshara l-jinni wa l-insi a-lam yaʾtikum rusulun minkum… shahidnā ʿalā anfusinā (130). Wa li-kullin darajātun mimmā ʿamilū (132). Wa rabbuka l-ghaniyyu dhu r-raḥmah, in yashaʾ yudhhibkum wa yastakhlif min baʿdikum (133)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1255,
+       345,
+       1490
+      ],
+      "key": [
+       128,
+       133
+      ],
+      "more": [
+       165
+      ],
+      "note": "Balaghnā ajalana (128): the appointed term. Yastakhlif min baʿdikum (133) looks ahead to jaʿalakum khalāʾifa l-arḍ (165)."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1255,
+       675,
+       1490
+      ],
+      "key": [
+       136,
+       138,
+       139
+      ],
+      "xref": [
+       "5:1",
+       "5:103"
+      ],
+      "note": "Al-Māʾidah permits livestock (5:1) and rejects the pagan categories baḥīrah, sāʾibah, waṣīlah and ḥām (5:103)."
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1255,
+       1015,
+       1490
+      ],
+      "key": [
+       136,
+       140
+      ]
+     }
+    ]
+   },
+   {
+    "id": 16,
+    "title": "Pairs — afternoon in the harvest garden",
+    "range": [
+     141,
+     150
+    ],
+    "img": "images/s6-16.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 16/18 — Pairs, verses 141–150 · afternoon, the harvest garden",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       141
+      ]
+     },
+     {
+      "label": "The trellised vines: gardens trellised and untrellised",
+      "box": [
+       10,
+       112,
+       1015,
+       270
+      ],
+      "key": [
+       141
+      ],
+      "note": "Wa huwa lladhī anshaʾa jannātin maʿrūshātin wa ghayra maʿrūshāt (141)."
+     },
+     {
+      "label": "Sheep and goats in pairs",
+      "box": [
+       10,
+       430,
+       300,
+       720
+      ],
+      "key": [
+       143
+      ],
+      "note": "Thamāniyata azwāj: mina ḍ-ḍaʾni thnayni wa mina l-maʿzi thnayn, qul āʾdh-dhakarayni ḥarrama ami l-unthayayn, ammā shtamalat ʿalayhi arḥāmu l-unthayayn, nabbiʾūnī bi-ʿilmin in kuntum ṣādiqīn (143); wa mina l-ibili thnayni wa mina l-baqari thnayn (144) — eight in four pairs: sheep, goats, camels, cattle."
+     },
+     {
+      "label": "Camels and cattle in pairs",
+      "box": [
+       460,
+       290,
+       880,
+       700
+      ],
+      "key": [
+       144
+      ],
+      "more": [
+       142
+      ],
+      "note": "Thamāniyata azwāj: mina ḍ-ḍaʾni thnayni wa mina l-maʿzi thnayn, qul āʾdh-dhakarayni ḥarrama ami l-unthayayn, ammā shtamalat ʿalayhi arḥāmu l-unthayayn, nabbiʾūnī bi-ʿilmin in kuntum ṣādiqīn (143); wa mina l-ibili thnayni wa mina l-baqari thnayn (144) — eight in four pairs: sheep, goats, camels, cattle."
+     },
+     {
+      "label": "A basket set aside: HARVEST DUE",
+      "box": [
+       10,
+       700,
+       295,
+       945
+      ],
+      "key": [
+       141
+      ],
+      "note": "Kulū min thamarihī idhā athmara wa ātū ḥaqqahū yawma ḥaṣādih, wa lā tusrifū — 'give its due on the day of harvest, and do not waste' (141)."
+     },
+     {
+      "label": "The tablet of four food bans — NECESSITY: MERCY",
+      "box": [
+       300,
+       730,
+       905,
+       965
+      ],
+      "key": [
+       145
+      ],
+      "note": "Qul lā ajidu fī mā ūḥiya ilayya muḥarraman ʿalā ṭāʿimin yaṭʿamuhū illā an yakūna maytatan aw daman masfūḥan aw laḥma khinzīrin… aw fisqan uhilla li-ghayri llāhi bih, fa-mani ḍṭurra ghayra bāghin wa lā ʿādin fa-inna rabbaka ghafūrun raḥīm (145) — carrion, blood poured out, swine, and what is offered to other than Allah; mercy for whoever is forced by necessity."
+     },
+     {
+      "label": "'If Allah had willed…' at the idol shrine",
+      "box": [
+       725,
+       290,
+       1015,
+       800
+      ],
+      "key": [
+       148
+      ],
+      "note": "Sa-yaqūlu lladhīna ashrakū law shāʾa llāhu mā ashraknā… qul hal ʿindakum min ʿilmin fa-tukhrijūhu lanā (148). Qul fa-lillāhi l-ḥujjatu l-bālighah (149)."
+     },
+     {
+      "label": "The witness bench stays empty",
+      "box": [
+       545,
+       640,
+       815,
+       745
+      ],
+      "key": [
+       150
+      ],
+      "more": [
+       19
+      ],
+      "note": "Qul halumma shuhadāʾakumu lladhīna yashhadūna anna llāha ḥarrama hādhā, fa-in shahidū fa-lā tashhad maʿahum (150)."
+     },
+     {
+      "label": "The story, verse by verse (141–150)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1242
+      ],
+      "key": [
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150
+      ],
+      "note": "Wa ʿala lladhīna hādū ḥarramnā kulla dhī ẓufur… dhālika jazaynāhum bi-baghyihim (146)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1258,
+       345,
+       1500
+      ],
+      "key": [
+       149,
+       150,
+       143
+      ],
+      "more": [
+       83,
+       19,
+       1
+      ],
+      "note": "Checked: ḥujjah at 83 and 149; shahādah at 19 and 150; yaʿdilūn at 1 and 150. The 'three setting lights' are the star, moon and sun of 76–78 (poster 10)."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1258,
+       675,
+       1500
+      ],
+      "key": [
+       145,
+       146
+      ],
+      "xref": [
+       "16:115",
+       "16:118",
+       "16:120"
+      ],
+      "note": "An-Naḥl repeats the sequence: the food prohibitions (16:115), what was forbidden to the Jews (16:118), then Ibrahim the upright (16:120–123)."
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1258,
+       1015,
+       1500
+      ],
+      "key": [
+       142,
+       145
+      ],
+      "more": [
+       136,
+       138,
+       139
+      ],
+      "note": "Checked: al-anʿām appears at 136, 138, 139 and 142."
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "title": "Line — golden hour on the sand path",
+    "range": [
+     151,
+     153
+    ],
+    "img": "images/s6-17.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 17/18 — Line, verses 151–153 · golden hour, the sand path",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       151
+      ]
+     },
+     {
+      "label": "Scattering side-paths",
+      "box": [
+       180,
+       290,
+       1015,
+       820
+      ],
+      "key": [
+       153
+      ],
+      "more": [
+       159
+      ],
+      "note": "Wa anna hādhā ṣirāṭī mustaqīman fa-ttabiʿūh, wa lā tattabiʿu s-subula fa-tafarraqa bikum ʿan sabīlih (153). Musnad Ahmad (Ibn Masʿud): the Prophet ﷺ drew a straight line and said 'this is Allah's path', then lines to its right and left — 'these are paths, on each a devil calling to it' — and recited this verse."
+     },
+     {
+      "label": "Gold in an open chest: the orphan's wealth, full measure",
+      "box": [
+       835,
+       395,
+       965,
+       495
+      ],
+      "key": [
+       152
+      ],
+      "note": "Wa lā taqrabū māla l-yatīmi illā billatī hiya aḥsan… wa awfu l-kayla wa l-mīzāna bil-qisṭ, lā nukallifu nafsan illā wusʿahā, wa idhā qultum faʿdilū wa law kāna dhā qurbā, wa bi-ʿahdi llāhi awfū (152) — four commands."
+     },
+     {
+      "label": "Idols by the path — no shirk",
+      "box": [
+       865,
+       630,
+       1015,
+       770
+      ],
+      "key": [
+       151
+      ],
+      "note": "Allā tushrikū bihī shayʾā, wa bil-wālidayni iḥsānā, wa lā taqtulū awlādakum min imlāq, wa lā taqrabu l-fawāḥisha mā ẓahara minhā wa mā baṭan, wa lā taqtulu n-nafsa llatī ḥarrama llāhu illā bil-ḥaqq (151) — five commands."
+     },
+     {
+      "label": "Stones 1–5: verse 151",
+      "box": [
+       520,
+       510,
+       645,
+       905
+      ],
+      "key": [
+       151
+      ],
+      "note": "Allā tushrikū bihī shayʾā, wa bil-wālidayni iḥsānā, wa lā taqtulū awlādakum min imlāq, wa lā taqrabu l-fawāḥisha mā ẓahara minhā wa mā baṭan, wa lā taqtulu n-nafsa llatī ḥarrama llāhu illā bil-ḥaqq (151) — five commands."
+     },
+     {
+      "label": "Stones 6–9: verse 152",
+      "box": [
+       565,
+       300,
+       645,
+       505
+      ],
+      "key": [
+       152
+      ],
+      "note": "Wa lā taqrabū māla l-yatīmi illā billatī hiya aḥsan… wa awfu l-kayla wa l-mīzāna bil-qisṭ, lā nukallifu nafsan illā wusʿahā, wa idhā qultum faʿdilū wa law kāna dhā qurbā, wa bi-ʿahdi llāhi awfū (152) — four commands."
+     },
+     {
+      "label": "Stone 10: verse 153 — follow His straight path",
+      "box": [
+       585,
+       262,
+       645,
+       300
+      ],
+      "key": [
+       153
+      ],
+      "note": "Wa anna hādhā ṣirāṭī mustaqīman fa-ttabiʿūh, wa lā tattabiʿu s-subula fa-tafarraqa bikum ʿan sabīlih (153). Musnad Ahmad (Ibn Masʿud): the Prophet ﷺ drew a straight line and said 'this is Allah's path', then lines to its right and left — 'these are paths, on each a devil calling to it' — and recited this verse."
+     },
+     {
+      "label": "The story, verse by verse (151–153)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1247
+      ],
+      "key": [
+       151,
+       152,
+       153
+      ],
+      "note": "Qul taʿālaw atlu mā ḥarrama rabbukum ʿalaykum… (151). Checked: 151 ends laʿallakum taʿqilūn, 152 laʿallakum tadhakkarūn, 153 laʿallakum tattaqūn — reason, remembrance, God-consciousness."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1260,
+       345,
+       1505
+      ],
+      "key": [
+       151,
+       152,
+       153
+      ],
+      "more": [
+       1,
+       159
+      ],
+      "note": "Qul taʿālaw atlu mā ḥarrama rabbukum ʿalaykum… (151). Checked: 151 ends laʿallakum taʿqilūn, 152 laʿallakum tadhakkarūn, 153 laʿallakum tattaqūn — reason, remembrance, God-consciousness."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1260,
+       675,
+       1505
+      ],
+      "key": [
+       151,
+       152,
+       153
+      ],
+      "xref": [
+       "17:23",
+       "7:32"
+      ],
+      "note": "Al-Isrāʾ gives a parallel list of commands (17:22–39); Al-Aʿrāf continues against invented prohibitions (7:31–33)."
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1260,
+       1015,
+       1505
+      ],
+      "key": [
+       151,
+       152
+      ]
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "title": "Stone — sunset again at the same camp gate",
+    "range": [
+     154,
+     165
+    ],
+    "img": "images/s6-18.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Title: Al-An'am 18/18 — Stone, verses 154–165 · sunset again, the same camp gate",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       154
+      ]
+     },
+     {
+      "label": "Sunset returns: the final sign, when late faith will not help",
+      "box": [
+       500,
+       112,
+       1015,
+       330
+      ],
+      "key": [
+       158
+      ],
+      "note": "Yawma yaʾtī baʿḍu āyāti rabbika lā yanfaʿu nafsan īmānuhā lam takun āmanat min qabl (158). Sahih al-Bukhari and Muslim (Abu Hurairah): the Hour will not come until the sun rises from the west; when people see it they will all believe, and that is when 'faith will not benefit a soul' — the sunset at the camp gate recalls it."
+     },
+     {
+      "label": "The clan's herd scatters like sects",
+      "box": [
+       270,
+       330,
+       1015,
+       700
+      ],
+      "key": [
+       159
+      ],
+      "more": [
+       65
+      ],
+      "note": "Inna lladhīna farraqū dīnahum wa kānū shiyaʿan lasta minhum fī shayʾ (159). Checked: shiyaʿan at 65 and 159."
+     },
+     {
+      "label": "His hand rests on the white ram: my prayer, my sacrifice, my living and dying for Allah",
+      "box": [
+       185,
+       470,
+       665,
+       900
+      ],
+      "key": [
+       161,
+       162,
+       163
+      ],
+      "more": [
+       14,
+       79
+      ],
+      "note": "Qul innanī hadānī rabbī ilā ṣirāṭin mustaqīm, dīnan qiyaman millata ibrāhīma ḥanīfā (161). Qul inna ṣalātī wa nusukī wa maḥyāya wa mamātī lillāhi rabbi l-ʿālamīn, lā sharīka lah, wa bi-dhālika umirtu wa ana awwalu l-muslimīn (162–163) — nusuk includes the sacrifice, the poster's white ram."
+     },
+     {
+      "label": "The MERCY scroll: the Book of Musa, and this blessed Book",
+      "box": [
+       315,
+       865,
+       600,
+       965
+      ],
+      "key": [
+       154,
+       155
+      ],
+      "note": "Thumma ātaynā mūsa l-kitāba tamāman… wa hudan wa raḥmah (154). Wa hādhā kitābun anzalnāhu mubārakun fa-ttabiʿūh (155)."
+     },
+     {
+      "label": "He sets down his own pack and returns the rope: no one bears another's load",
+      "box": [
+       10,
+       770,
+       320,
+       995
+      ],
+      "key": [
+       164
+      ],
+      "more": [
+       31
+      ],
+      "note": "Wa lā taksibu kullu nafsin illā ʿalayhā, wa lā taziru wāziratun wizra ukhrā (164)."
+     },
+     {
+      "label": "The story, verse by verse (154–165)",
+      "box": [
+       10,
+       1007,
+       1015,
+       1257
+      ],
+      "key": [
+       154,
+       155,
+       156,
+       157,
+       158,
+       159,
+       160,
+       161,
+       162,
+       163,
+       164,
+       165
+      ],
+      "note": "Man jāʾa bil-ḥasanati fa-lahū ʿashru amthālihā, wa man jāʾa bis-sayyiʾati fa-lā yujzā illā mithlahā (160). Wa huwa lladhī jaʿalakum khalāʾifa l-arḍ… inna rabbaka sarīʿu l-ʿiqāb, wa innahū la-ghafūrun raḥīm (165)."
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1272,
+       345,
+       1510
+      ],
+      "key": [
+       162,
+       163,
+       164,
+       159
+      ],
+      "more": [
+       79,
+       14,
+       31,
+       65
+      ],
+      "note": "Checked: wajjahtu wajhiya (79) widens to 'my prayer, sacrifice, life and death' (162); awwala man aslama (14) returns as awwalu l-muslimīn (163); awzār (31) and wizr (164); shiyaʿan (65, 159)."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1272,
+       675,
+       1510
+      ],
+      "key": [
+       161,
+       165
+      ],
+      "xref": [
+       "2:135",
+       "7:11"
+      ],
+      "note": "Millata ibrāhīma ḥanīfā — the same words as 2:135; jaʿalakum khalāʾifa l-arḍ (165) leads into Al-Aʿrāf's story of Adam (7:10–25)."
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1272,
+       1015,
+       1510
+      ],
+      "key": [
+       161,
+       162
       ]
      }
     ]
