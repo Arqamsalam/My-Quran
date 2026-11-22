@@ -120,6 +120,8 @@ const ADD = {
  "21-1": ["One message. Many messengers."],
  "21-2": ["One message. Many messengers.", "The gallery's secret rhythm"],
  "22-1": ["The six movements", "The nine memory stations", "Why the surah is named"],
+ "23-1": ["Why is it called", "What this surah demands"],
+ "24-1": ["What this surah builds", "Even more simply", "The central question", "A luminous society is built"],
  "58-1": ["Allah hears every word"],
  "59-1": ["A) How the topics connect", "E) Core message"],
  "60-1": ["One sentence to keep"],
