@@ -30,7 +30,7 @@ const SCENE = /\((scene|signposts|sky|garden)\)$/i;
 // numbered story cards and verse cards are never summary sub-items
 const STORY = /^(\d+[).]?\s|[①-⑳]|card \d|scene \d|split \d|act \d|step \d|movement \d|verse \d|verses \d|v\.? ?\d)/i;
 // Labels that the words above catch but that picture verses (story cards), and summary labels they miss.
-const NOT_META = [/^\d+\)? .*\b(ring|frame|context)\b/i, /^Thamud\b./i, /Thamud (and|shows|as)\b/i, /^Title deed/i, /^Act \d/i, /^[ⒶⒷ]/, /^11 Final lesson/];
+const NOT_META = [/^9:\d+(\u2013\d+)? \u2014 /, /^\d+\)? .*\b(ring|frame|context)\b/i, /^Thamud\b./i, /Thamud (and|shows|as)\b/i, /^Title deed/i, /^Act \d/i, /^[ⒶⒷ]/, /^11 Final lesson/];
 // a sub-item that names its own verse range ("M — Messengers gallop (1–7)") still shows those verses
 // …and so does a numbered topic row that ends with its one verse ("3 The thesis verse (7)")
 const RANGE_END = /\(\d+\s*[–-]\s*\d+\)$|^\d+ .*\(\d+\)$/;
@@ -99,9 +99,6 @@ const ADD = {
  ],
  "8-1": [
   "Zooming all the way out"
- ],
- "9-1": [
-  "When God's house is fully built"
  ],
  "10-1": [
   "One surah, one journey, one question"
