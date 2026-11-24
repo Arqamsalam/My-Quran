@@ -1,4 +1,4 @@
-// Hotspot maps for Al-A'raf (7), posters 1–7 of 18 (verses 1–58).
+// Hotspot maps for Al-A'raf (7), posters 1–15 of 18 (verses 1–171).
 // box: [x1, y1, x2, y2] in the image's own pixels.  key: verses the panel shows.  more: recalled verses.  xref: verses in other surahs.
 
 window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
@@ -1138,6 +1138,1545 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
        54
       ],
       "note": "Inna rabbakumu llāhu lladhī khalaqa s-samāwāti wa l-arḍa fī sittati ayyāmin thumma stawā ʿala l-ʿarsh, yughshi l-layla n-nahāra yaṭlubuhū ḥathīthā, wa sh-shamsa wa l-qamara wa n-nujūma musakhkharātin bi-amrih, alā lahu l-khalqu wa l-amr (54) — 'the night covers the day, seeking it swiftly'."
+     }
+    ]
+   },
+   {
+    "id": 8,
+    "title": "Two Towns: Nuh and 'Ad",
+    "range": [
+     59,
+     72
+    ],
+    "img": "images/s7-8.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "An uprooted tree among the ruins",
+      "box": [
+       200,
+       1110,
+       1024,
+       1480
+      ],
+      "key": [
+       72
+      ],
+      "note": "Fa-anjaynāhu wa lladhīna maʿahū bi-raḥmatin minnā wa qaṭaʿnā dābira lladhīna kadhdhabū bi-āyātinā (72) — 'We cut off the root of those who denied'. The same words were used of the wrongdoers in Al-Anʿām (6:45)."
+     },
+     {
+      "label": "Hud before the proud, broad-shouldered men of 'Ad",
+      "box": [
+       380,
+       820,
+       1024,
+       1100
+      ],
+      "key": [
+       65,
+       66,
+       69,
+       70
+      ],
+      "note": "Wa ilā ʿādin akhāhum hūdā (65). Wa dhkurū idh jaʿalakum khulafāʾa min baʿdi qawmi nūḥin wa zādakum fi l-khalqi basṭah — 'and increased you in stature' (69). Qālū a-jiʾtanā li-naʿbuda llāha waḥdahū wa nadhara mā kāna yaʿbudu ābāʾunā (70)."
+     },
+     {
+      "label": "Nuh warns the crowd",
+      "box": [
+       400,
+       320,
+       1024,
+       560
+      ],
+      "key": [
+       59,
+       60,
+       61,
+       62,
+       63
+      ],
+      "note": "La-qad arsalnā nūḥan ilā qawmihī fa-qāla yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh (59). Qāla l-malaʾu min qawmihī innā la-narāka fī ḍalālin mubīn (60). Uballighukum risālāti rabbī wa anṣaḥu lakum (62). Checked: yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh — 'my people, worship Allah, you have no god but Him' — is the opening line of four prophets in a row: Nuh (59), Hud (65), Salih (73) and Shuʿayb (85). Checked: each also calls himself an adviser (nāṣiḥ) — 62, 68, 79, 93."
+     },
+     {
+      "label": "The flood over the town",
+      "box": [
+       420,
+       570,
+       1024,
+       790
+      ],
+      "key": [
+       64
+      ],
+      "note": "Fa-kadhdhabūhu fa-anjaynāhu wa lladhīna maʿahū fi l-fulki wa aghraqna lladhīna kadhdhabū bi-āyātinā, innahum kānū qawman ʿamīn (64)."
+     },
+     {
+      "label": "3 Hud and the strength of 'Ad — 7:65–71",
+      "box": [
+       40,
+       860,
+       600,
+       1030
+      ],
+      "key": [
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71
+      ],
+      "note": "Wa ilā ʿādin akhāhum hūdā (65). Wa dhkurū idh jaʿalakum khulafāʾa min baʿdi qawmi nūḥin wa zādakum fi l-khalqi basṭah — 'and increased you in stature' (69). Qālū a-jiʾtanā li-naʿbuda llāha waḥdahū wa nadhara mā kāna yaʿbudu ābāʾunā (70)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 8 of 18, two towns: Nuh and 'Ad (7:59–72)",
+      "box": [
+       190,
+       0,
+       850,
+       140
+      ],
+      "key": [
+       59
+      ],
+      "note": "Checked: yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh — 'my people, worship Allah, you have no god but Him' — is the opening line of four prophets in a row: Nuh (59), Hud (65), Salih (73) and Shuʿayb (85). Checked: each also calls himself an adviser (nāṣiḥ) — 62, 68, 79, 93."
+     },
+     {
+      "label": "4 Pride cut off at the root — 7:72",
+      "box": [
+       40,
+       1175,
+       590,
+       1330
+      ],
+      "key": [
+       72
+      ],
+      "xref": [
+       "6:45"
+      ],
+      "note": "Fa-anjaynāhu wa lladhīna maʿahū bi-raḥmatin minnā wa qaṭaʿnā dābira lladhīna kadhdhabū bi-āyātinā (72) — 'We cut off the root of those who denied'. The same words were used of the wrongdoers in Al-Anʿām (6:45)."
+     },
+     {
+      "label": "1 Nuh: the true adviser — 7:59–63",
+      "box": [
+       40,
+       330,
+       560,
+       470
+      ],
+      "key": [
+       59,
+       60,
+       61,
+       62,
+       63
+      ],
+      "note": "La-qad arsalnā nūḥan ilā qawmihī fa-qāla yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh (59). Qāla l-malaʾu min qawmihī innā la-narāka fī ḍalālin mubīn (60). Uballighukum risālāti rabbī wa anṣaḥu lakum (62). Checked: yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh — 'my people, worship Allah, you have no god but Him' — is the opening line of four prophets in a row: Nuh (59), Hud (65), Salih (73) and Shuʿayb (85). Checked: each also calls himself an adviser (nāṣiḥ) — 62, 68, 79, 93."
+     },
+     {
+      "label": "2 The flood takes them — 7:64",
+      "box": [
+       40,
+       590,
+       540,
+       725
+      ],
+      "key": [
+       64
+      ],
+      "note": "Fa-kadhdhabūhu fa-anjaynāhu wa lladhīna maʿahū fi l-fulki wa aghraqna lladhīna kadhdhabū bi-āyātinā, innahum kānū qawman ʿamīn (64)."
+     },
+     {
+      "label": "The people of Hud / 'Ad",
+      "box": [
+       310,
+       790,
+       700,
+       835
+      ],
+      "key": [
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72
+      ]
+     },
+     {
+      "label": "The people of Nuh",
+      "box": [
+       330,
+       270,
+       700,
+       315
+      ],
+      "key": [
+       59,
+       60,
+       61,
+       62,
+       63,
+       64
+      ]
+     }
+    ]
+   },
+   {
+    "id": 9,
+    "title": "Two Towns: Thamud and Lut",
+    "range": [
+     73,
+     84
+    ],
+    "img": "images/s7-9.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "A storm buries the town",
+      "box": [
+       400,
+       1040,
+       1024,
+       1480
+      ],
+      "key": [
+       84
+      ],
+      "note": "Wa lūṭan idh qāla li-qawmihī a-taʾtūna l-fāḥishata mā sabaqakum bihā min aḥadin mina l-ʿālamīn (80). Fa-anjaynāhu wa ahlahū illa mraʾatahū (83). Wa amṭarnā ʿalayhim maṭarā, fa-nẓur kayfa kāna ʿāqibatu l-mujrimīn (84)."
+     },
+     {
+      "label": "The she-camel, a sign, beneath the carved cliffs",
+      "box": [
+       180,
+       100,
+       1024,
+       420
+      ],
+      "key": [
+       73,
+       74
+      ],
+      "note": "Wa ilā thamūda akhāhum ṣāliḥā… hādhihī nāqatu llāhi lakum āyah, fa-dharūhā taʾkul fī arḍi llāh (73). Wa tanḥitūna l-jibāla buyūtā — 'you carve homes out of the mountains' (74). The carved façades are the poster's own image (they resemble Nabataean Petra and Hegra, which are much later)."
+     },
+     {
+      "label": "Cracked homes; bodies face down",
+      "box": [
+       0,
+       700,
+       620,
+       1040
+      ],
+      "key": [
+       78
+      ],
+      "note": "Fa-akhadhathumu r-rajfatu fa-aṣbaḥū fī dārihim jāthimīn (78) — 'the earthquake seized them and they lay face-down in their homes'. Checked: the same sentence closes Madyan's story at 91, and rajfah strikes once more at 155, on the mountain."
+     },
+     {
+      "label": "An empty saddle and footprints in the sand",
+      "box": [
+       400,
+       450,
+       1024,
+       720
+      ],
+      "key": [
+       77
+      ],
+      "note": "Fa-ʿaqaru n-nāqata wa ʿataw ʿan amri rabbihim wa qālū yā ṣāliḥu ʾtinā bimā taʿidunā (77)."
+     },
+     {
+      "label": "4 Lut: the destructive rain — 7:80–84",
+      "box": [
+       30,
+       1140,
+       440,
+       1395
+      ],
+      "key": [
+       80,
+       81,
+       82,
+       83,
+       84
+      ],
+      "note": "Wa lūṭan idh qāla li-qawmihī a-taʾtūna l-fāḥishata mā sabaqakum bihā min aḥadin mina l-ʿālamīn (80). Fa-anjaynāhu wa ahlahū illa mraʾatahū (83). Wa amṭarnā ʿalayhim maṭarā, fa-nẓur kayfa kāna ʿāqibatu l-mujrimīn (84)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 9 of 18, two towns: Thamud and Lut (7:73–84)",
+      "box": [
+       190,
+       0,
+       860,
+       145
+      ],
+      "key": [
+       73
+      ],
+      "note": "Checked: yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh — 'my people, worship Allah, you have no god but Him' — is the opening line of four prophets in a row: Nuh (59), Hud (65), Salih (73) and Shuʿayb (85). Checked: each also calls himself an adviser (nāṣiḥ) — 62, 68, 79, 93."
+     },
+     {
+      "label": "3 The earthquake — 7:78–79",
+      "box": [
+       610,
+       765,
+       1005,
+       980
+      ],
+      "key": [
+       78,
+       79
+      ],
+      "more": [
+       91,
+       155
+      ],
+      "note": "Fa-akhadhathumu r-rajfatu fa-aṣbaḥū fī dārihim jāthimīn (78) — 'the earthquake seized them and they lay face-down in their homes'. Checked: the same sentence closes Madyan's story at 91, and rajfah strikes once more at 155, on the mountain."
+     },
+     {
+      "label": "1 Thamud: homes in the rock — 7:73–74",
+      "box": [
+       565,
+       175,
+       1000,
+       355
+      ],
+      "key": [
+       73,
+       74
+      ],
+      "note": "Wa ilā thamūda akhāhum ṣāliḥā… hādhihī nāqatu llāhi lakum āyah, fa-dharūhā taʾkul fī arḍi llāh (73). Wa tanḥitūna l-jibāla buyūtā — 'you carve homes out of the mountains' (74). The carved façades are the poster's own image (they resemble Nabataean Petra and Hegra, which are much later)."
+     },
+     {
+      "label": "2 The sign is killed — 7:75–77",
+      "box": [
+       30,
+       500,
+       400,
+       670
+      ],
+      "key": [
+       75,
+       76,
+       77
+      ],
+      "note": "Fa-ʿaqaru n-nāqata wa ʿataw ʿan amri rabbihim wa qālū yā ṣāliḥu ʾtinā bimā taʿidunā (77)."
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "title": "Madyan and the Law of Towns",
+    "range": [
+     85,
+     102
+    ],
+    "img": "images/s7-10.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "A trader tips the market scale; Shu'ayb warns the crowd",
+      "box": [
+       0,
+       100,
+       1024,
+       360
+      ],
+      "key": [
+       85
+      ],
+      "note": "Wa ilā madyana akhāhum shuʿaybā… fa-awfu l-kayla wa l-mīzāna wa lā tabkhasu n-nāsa ashyāʾahum (85)."
+     },
+     {
+      "label": "Men sit on the road to block travellers; the town shaken by earthquake",
+      "box": [
+       0,
+       360,
+       1024,
+       600
+      ],
+      "key": [
+       86,
+       91,
+       92
+      ],
+      "note": "Wa lā taqʿudū bi-kulli ṣirāṭin tūʿidūna wa taṣuddūna ʿan sabīli llāh (86) — 'do not sit on every road, threatening'. Checked: the verb qaʿada appears only twice in the surah — Iblis's vow la-aqʿudanna lahum ṣirāṭaka (16) and here (86): Madyan's highwaymen do what Iblis promised. Fa-akhadhathumu r-rajfah (91), as with Thamud (78)."
+     },
+     {
+      "label": "Children at play in the morning sun",
+      "box": [
+       510,
+       1090,
+       1024,
+       1480
+      ],
+      "key": [
+       98
+      ],
+      "note": "Aw amina ahlu l-qurā an yaʾtiyahum baʾsunā ḍuḥan wa hum yalʿabūn (98). A-fa-aminū makra llāh, fa-lā yaʾmanu makra llāhi illa l-qawmu l-khāsirūn (99). Verses 100–102 close the passage ('We found most of them not true to their covenant', 102); the poster does not picture them."
+     },
+     {
+      "label": "A town asleep under the moon",
+      "box": [
+       0,
+       1090,
+       510,
+       1480
+      ],
+      "key": [
+       97
+      ],
+      "note": "A-fa-amina ahlu l-qurā an yaʾtiyahum baʾsunā bayātan wa hum nāʾimūn (97). Checked: bayātan — 'by night' — appears only here and at 4, the trailhead ruins."
+     },
+     {
+      "label": "Drought and plenty in the same town",
+      "box": [
+       0,
+       600,
+       830,
+       830
+      ],
+      "key": [
+       94,
+       95
+      ],
+      "note": "Wa mā arsalnā fī qaryatin min nabiyyin illā akhadhnā ahlahā bil-baʾsāʾi wa ḍ-ḍarrāʾi laʿallahum yaḍḍarraʿūn (94). Thumma baddalnā makāna s-sayyiʾati l-ḥasanata ḥattā ʿafaw wa qālū qad massa ābāʾana ḍ-ḍarrāʾu wa s-sarrāʾu fa-akhadhnāhum baghtatan (95)."
+     },
+     {
+      "label": "The path they could have taken: rain and green fields",
+      "box": [
+       400,
+       830,
+       900,
+       1050
+      ],
+      "key": [
+       96
+      ],
+      "note": "Wa law anna ahla l-qurā āmanū wa ttaqaw la-fataḥnā ʿalayhim barakātin mina s-samāʾi wa l-arḍ (96)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 10 of 18, Madyan and the law of towns (7:85–102)",
+      "box": [
+       190,
+       0,
+       840,
+       130
+      ],
+      "key": [
+       85
+      ],
+      "note": "Checked: yā qawmi ʿbudu llāha mā lakum min ilāhin ghayruh — 'my people, worship Allah, you have no god but Him' — is the opening line of four prophets in a row: Nuh (59), Hud (65), Salih (73) and Shuʿayb (85). Checked: each also calls himself an adviser (nāṣiḥ) — 62, 68, 79, 93."
+     },
+     {
+      "label": "The Law of Towns (stone)",
+      "box": [
+       835,
+       570,
+       1024,
+       900
+      ],
+      "key": [
+       94,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "note": "Checked: ahl al-qurā — 'the people of the towns' — is the refrain of 96, 97 and 98. Tilka l-qurā naquṣṣu ʿalayka min anbāʾihā (101)."
+     },
+     {
+      "label": "4 The blessings they could have received — 7:96",
+      "box": [
+       45,
+       855,
+       460,
+       1000
+      ],
+      "key": [
+       96
+      ],
+      "note": "Wa law anna ahla l-qurā āmanū wa ttaqaw la-fataḥnā ʿalayhim barakātin mina s-samāʾi wa l-arḍ (96)."
+     },
+     {
+      "label": "3 Hardship, then ease — 7:94–95",
+      "box": [
+       195,
+       605,
+       640,
+       730
+      ],
+      "key": [
+       94,
+       95
+      ],
+      "note": "Wa mā arsalnā fī qaryatin min nabiyyin illā akhadhnā ahlahā bil-baʾsāʾi wa ḍ-ḍarrāʾi laʿallahum yaḍḍarraʿūn (94). Thumma baddalnā makāna s-sayyiʾati l-ḥasanata ḥattā ʿafaw wa qālū qad massa ābāʾana ḍ-ḍarrāʾu wa s-sarrāʾu fa-akhadhnāhum baghtatan (95)."
+     },
+     {
+      "label": "6 Safe while playing? — 7:98–99",
+      "box": [
+       550,
+       1095,
+       1000,
+       1210
+      ],
+      "key": [
+       98,
+       99
+      ],
+      "more": [
+       100,
+       101,
+       102
+      ],
+      "note": "Aw amina ahlu l-qurā an yaʾtiyahum baʾsunā ḍuḥan wa hum yalʿabūn (98). A-fa-aminū makra llāh, fa-lā yaʾmanu makra llāhi illa l-qawmu l-khāsirūn (99). Verses 100–102 close the passage ('We found most of them not true to their covenant', 102); the poster does not picture them."
+     },
+     {
+      "label": "2 Blocking every road — 7:86–93",
+      "box": [
+       335,
+       380,
+       770,
+       495
+      ],
+      "key": [
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93
+      ],
+      "more": [
+       16
+      ],
+      "note": "Wa lā taqʿudū bi-kulli ṣirāṭin tūʿidūna wa taṣuddūna ʿan sabīli llāh (86) — 'do not sit on every road, threatening'. Checked: the verb qaʿada appears only twice in the surah — Iblis's vow la-aqʿudanna lahum ṣirāṭaka (16) and here (86): Madyan's highwaymen do what Iblis promised. Fa-akhadhathumu r-rajfah (91), as with Thamud (78)."
+     },
+     {
+      "label": "1 Madyan: the dishonest scale — 7:85",
+      "box": [
+       515,
+       140,
+       880,
+       265
+      ],
+      "key": [
+       85
+      ],
+      "note": "Wa ilā madyana akhāhum shuʿaybā… fa-awfu l-kayla wa l-mīzāna wa lā tabkhasu n-nāsa ashyāʾahum (85)."
+     },
+     {
+      "label": "5 Safe while sleeping? — 7:97",
+      "box": [
+       55,
+       1095,
+       465,
+       1200
+      ],
+      "key": [
+       97
+      ],
+      "more": [
+       4
+      ],
+      "note": "A-fa-amina ahlu l-qurā an yaʾtiyahum baʾsunā bayātan wa hum nāʾimūn (97). Checked: bayātan — 'by night' — appears only here and at 4, the trailhead ruins."
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "title": "Musa Faces Pharaoh",
+    "range": [
+     103,
+     126
+    ],
+    "img": "images/s7-11.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Pharaoh points to the crosses; the magicians pray",
+      "box": [
+       100,
+       1220,
+       1024,
+       1480
+      ],
+      "key": [
+       124,
+       126
+      ],
+      "note": "La-uqaṭṭiʿanna aydiyakum wa arjulakum min khilāfin thumma la-uṣallibannakum ajmaʿīn (124). Qālū innā ilā rabbinā munqalibūn (125). Rabbanā afrigh ʿalaynā ṣabran wa tawaffanā muslimīn — 'our Lord, pour patience upon us and take us as Muslims' (126)."
+     },
+     {
+      "label": "The magicians cast before the crowd",
+      "box": [
+       230,
+       420,
+       1024,
+       700
+      ],
+      "key": [
+       115,
+       116
+      ],
+      "xref": [
+       "20:66"
+      ],
+      "note": "Wa jāʾa s-saḥaratu firʿawna qālū inna lanā la-ajran in kunnā naḥnu l-ghālibīn, qāla naʿam wa innakum lamina l-muqarrabīn (113–114). Fa-lammā alqaw saḥarū aʿyuna n-nāsi wa starhabūhum wa jāʾū bi-siḥrin ʿaẓīm (116) — 'they bewitched the people's eyes'. The snakes are the poster's image; Taha says their ropes and staffs seemed to move (20:66)."
+     },
+     {
+      "label": "Musa's serpent swallows the magicians' snakes",
+      "box": [
+       270,
+       700,
+       1024,
+       960
+      ],
+      "key": [
+       117
+      ],
+      "note": "Wa awḥaynā ilā mūsā an alqi ʿaṣāka fa-idhā hiya talqafu mā yaʾfikūn — 'it swallowed what they had faked' (117). Fa-waqaʿa l-ḥaqqu wa baṭala mā kānū yaʿmalūn (118)."
+     },
+     {
+      "label": "The staff a serpent, the hand shining white",
+      "box": [
+       270,
+       160,
+       1024,
+       400
+      ],
+      "key": [
+       107,
+       108
+      ],
+      "note": "Thumma baʿathnā min baʿdihim mūsā bi-āyātinā ilā firʿawna wa malaʾih (103). Fa-alqā ʿaṣāhu fa-idhā hiya thuʿbānun mubīn, wa nazaʿa yadahū fa-idhā hiya bayḍāʾu lin-nāẓirīn (107–108)."
+     },
+     {
+      "label": "The magicians prostrate",
+      "box": [
+       330,
+       960,
+       1024,
+       1200
+      ],
+      "key": [
+       120
+      ],
+      "note": "Wa ulqiya s-saḥaratu sājidīn, qālū āmannā bi-rabbi l-ʿālamīn, rabbi mūsā wa hārūn (120–122) — the magicians, hired to win, become the first believers."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 11 of 18, Musa faces Pharaoh (7:103–126)",
+      "box": [
+       190,
+       0,
+       840,
+       155
+      ],
+      "key": [
+       103
+      ]
+     },
+     {
+      "label": "5 Threats answered with patience — 7:123–126",
+      "box": [
+       30,
+       1230,
+       670,
+       1380
+      ],
+      "key": [
+       123,
+       124,
+       125,
+       126
+      ],
+      "note": "La-uqaṭṭiʿanna aydiyakum wa arjulakum min khilāfin thumma la-uṣallibannakum ajmaʿīn (124). Qālū innā ilā rabbinā munqalibūn (125). Rabbanā afrigh ʿalaynā ṣabran wa tawaffanā muslimīn — 'our Lord, pour patience upon us and take us as Muslims' (126)."
+     },
+     {
+      "label": "4 The magicians fall in sajdah — 7:120–122",
+      "box": [
+       30,
+       970,
+       650,
+       1115
+      ],
+      "key": [
+       120,
+       121,
+       122
+      ],
+      "note": "Wa ulqiya s-saḥaratu sājidīn, qālū āmannā bi-rabbi l-ʿālamīn, rabbi mūsā wa hārūn (120–122) — the magicians, hired to win, become the first believers."
+     },
+     {
+      "label": "2 The magicians ask their fee — 7:113–116",
+      "box": [
+       30,
+       430,
+       600,
+       570
+      ],
+      "key": [
+       111,
+       112,
+       113,
+       114,
+       115,
+       116
+      ],
+      "note": "Wa jāʾa s-saḥaratu firʿawna qālū inna lanā la-ajran in kunnā naḥnu l-ghālibīn, qāla naʿam wa innakum lamina l-muqarrabīn (113–114). Fa-lammā alqaw saḥarū aʿyuna n-nāsi wa starhabūhum wa jāʾū bi-siḥrin ʿaẓīm (116) — 'they bewitched the people's eyes'. The snakes are the poster's image; Taha says their ropes and staffs seemed to move (20:66)."
+     },
+     {
+      "label": "3 The staff swallows the illusion — 7:117",
+      "box": [
+       30,
+       710,
+       650,
+       830
+      ],
+      "key": [
+       117,
+       118,
+       119
+      ],
+      "note": "Wa awḥaynā ilā mūsā an alqi ʿaṣāka fa-idhā hiya talqafu mā yaʾfikūn — 'it swallowed what they had faked' (117). Fa-waqaʿa l-ḥaqqu wa baṭala mā kānū yaʿmalūn (118)."
+     },
+     {
+      "label": "1 Two signs before Pharaoh — 7:103–108",
+      "box": [
+       30,
+       170,
+       570,
+       300
+      ],
+      "key": [
+       103,
+       104,
+       105,
+       106,
+       107,
+       108
+      ],
+      "note": "Thumma baʿathnā min baʿdihim mūsā bi-āyātinā ilā firʿawna wa malaʾih (103). Fa-alqā ʿaṣāhu fa-idhā hiya thuʿbānun mubīn, wa nazaʿa yadahū fa-idhā hiya bayḍāʾu lin-nāẓirīn (107–108)."
+     },
+     {
+      "label": "Pharaoh on his throne",
+      "box": [
+       770,
+       100,
+       1024,
+       300
+      ],
+      "key": [
+       103,
+       104,
+       109,
+       110
+      ],
+      "note": "Qāla l-malaʾu min qawmi firʿawna inna hādhā la-sāḥirun ʿalīm (109)."
+     }
+    ]
+   },
+   {
+    "id": 12,
+    "title": "From Oppression to Deliverance",
+    "range": [
+     127,
+     137
+    ],
+    "img": "images/s7-12.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "The sea closes over Pharaoh's army",
+      "box": [
+       0,
+       975,
+       1024,
+       1200
+      ],
+      "key": [
+       136
+      ],
+      "note": "Fa-ntaqamnā minhum fa-aghraqnāhum fi l-yammi bi-annahum kadhdhabū bi-āyātinā (136)."
+     },
+     {
+      "label": "They beg Musa, then walk away; broken ropes",
+      "box": [
+       0,
+       770,
+       1024,
+       975
+      ],
+      "key": [
+       134,
+       135
+      ],
+      "note": "Wa lammā waqaʿa ʿalayhimu r-rijzu qālū yā mūsa dʿu lanā rabbaka… la-in kashafta ʿanna r-rijza la-nuʾminanna laka (134). Fa-lammā kashafnā ʿanhumu r-rijza ilā ajalin hum bālighūhu idhā hum yankuthūn (135). The poster's 'five promises' is its own picture; the verse says 'whenever' the punishment fell."
+     },
+     {
+      "label": "The people walk into the green land",
+      "box": [
+       300,
+       1200,
+       1024,
+       1480
+      ],
+      "key": [
+       137
+      ],
+      "note": "Wa awrathna l-qawma lladhīna kānū yustaḍʿafūna mashāriqa l-arḍi wa maghāribaha llatī bāraknā fīhā, wa tammat kalimatu rabbika l-ḥusnā ʿalā banī isrāʾīla bimā ṣabarū (137). Checked: Musa's promise 'the earth belongs to Allah; He gives it as inheritance' (yūrithuhā, 128) is fulfilled with the same verb — awrathnā (137)."
+     },
+     {
+      "label": "Musa speaks to his crushed people",
+      "box": [
+       380,
+       140,
+       1024,
+       400
+      ],
+      "key": [
+       128,
+       129
+      ],
+      "note": "Qāla mūsā li-qawmihi staʿīnū billāhi wa ṣbirū, inna l-arḍa lillāhi yūrithuhā man yashāʾu min ʿibādih, wa l-ʿāqibatu lil-muttaqīn (128). Qālū ūdhīnā min qabli an taʾtiyanā wa min baʿdi mā jiʾtanā (129)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 12 of 18, from oppression to deliverance (7:127–137)",
+      "box": [
+       150,
+       0,
+       870,
+       140
+      ],
+      "key": [
+       127
+      ]
+     },
+     {
+      "label": "1 The earth belongs to God — 7:128",
+      "box": [
+       10,
+       155,
+       410,
+       320
+      ],
+      "key": [
+       127,
+       128,
+       129
+      ],
+      "more": [
+       137
+      ],
+      "note": "Qāla mūsā li-qawmihi staʿīnū billāhi wa ṣbirū, inna l-arḍa lillāhi yūrithuhā man yashāʾu min ʿibādih, wa l-ʿāqibatu lil-muttaqīn (128). Qālū ūdhīnā min qabli an taʾtiyanā wa min baʿdi mā jiʾtanā (129)."
+     },
+     {
+      "label": "5 The oppressed inherit the land — 7:137",
+      "box": [
+       30,
+       1230,
+       430,
+       1390
+      ],
+      "key": [
+       137
+      ],
+      "more": [
+       128
+      ],
+      "note": "Wa awrathna l-qawma lladhīna kānū yustaḍʿafūna mashāriqa l-arḍi wa maghāribaha llatī bāraknā fīhā, wa tammat kalimatu rabbika l-ḥusnā ʿalā banī isrāʾīla bimā ṣabarū (137). Checked: Musa's promise 'the earth belongs to Allah; He gives it as inheritance' (yūrithuhā, 128) is fulfilled with the same verb — awrathnā (137)."
+     },
+     {
+      "label": "3 Promises made, then broken — 7:134–135",
+      "box": [
+       60,
+       700,
+       900,
+       770
+      ],
+      "key": [
+       134,
+       135
+      ],
+      "note": "Wa lammā waqaʿa ʿalayhimu r-rijzu qālū yā mūsa dʿu lanā rabbaka… la-in kashafta ʿanna r-rijza la-nuʾminanna laka (134). Fa-lammā kashafnā ʿanhumu r-rijza ilā ajalin hum bālighūhu idhā hum yankuthūn (135). The poster's 'five promises' is its own picture; the verse says 'whenever' the punishment fell."
+     },
+     {
+      "label": "2 Five plagues — 7:130–133",
+      "box": [
+       10,
+       375,
+       690,
+       455
+      ],
+      "key": [
+       130,
+       131,
+       132,
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "Blood",
+      "box": [
+       810,
+       455,
+       1024,
+       680
+      ],
+      "key": [
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "Frogs",
+      "box": [
+       600,
+       455,
+       810,
+       680
+      ],
+      "key": [
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "Flood",
+      "box": [
+       0,
+       455,
+       205,
+       680
+      ],
+      "key": [
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "Lice",
+      "box": [
+       400,
+       455,
+       600,
+       680
+      ],
+      "key": [
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "Locusts",
+      "box": [
+       205,
+       455,
+       400,
+       680
+      ],
+      "key": [
+       133
+      ],
+      "note": "Wa la-qad akhadhnā āla firʿawna bis-sinīna wa naqṣin mina th-thamarāt (130). Fa-arsalnā ʿalayhimu ṭ-ṭūfāna wa l-jarāda wa l-qummala wa ḍ-ḍafādiʿa wa d-dama āyātin mufaṣṣalātin fa-stakbarū (133) — flood, locusts, lice, frogs and blood. The years of drought and failed crops (130) came before them."
+     },
+     {
+      "label": "4 The sea closes — 7:136",
+      "box": [
+       50,
+       985,
+       480,
+       1065
+      ],
+      "key": [
+       136
+      ],
+      "note": "Fa-ntaqamnā minhum fa-aghraqnāhum fi l-yammi bi-annahum kadhdhabū bi-āyātinā (136)."
+     }
+    ]
+   },
+   {
+    "id": 13,
+    "title": "Rescued, Then Tested",
+    "range": [
+     138,
+     154
+    ],
+    "img": "images/s7-13.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Musa seizes his brother by the head; the tablets on the ground",
+      "box": [
+       300,
+       1050,
+       1024,
+       1290
+      ],
+      "key": [
+       150
+      ],
+      "note": "Wa lammā rajaʿa mūsā ilā qawmihī ghaḍbāna asifā… wa alqa l-alwāḥa wa akhadha bi-raʾsi akhīhi yajurruhū ilayh, qāla bna umma inna l-qawma staḍʿafūnī wa kādū yaqtulūnanī (150). Qāla rabbi ghfir lī wa li-akhī (151). Unlike Exodus 32, the Qur'an never makes Harun the maker of the calf: it was the Sāmirī (20:85–95)."
+     },
+     {
+      "label": "Barely dry from the crossing; worshippers at a golden idol",
+      "box": [
+       400,
+       100,
+       1024,
+       320
+      ],
+      "key": [
+       138
+      ],
+      "note": "Wa jāwaznā bi-banī isrāʾīla l-baḥra fa-ataw ʿalā qawmin yaʿkufūna ʿalā aṣnāmin lahum, qālū yā mūsa jʿal lanā ilāhan kamā lahum ālihah, qāla innakum qawmun tajhalūn (138)."
+     },
+     {
+      "label": "The golden calf on a heap of jewelry",
+      "box": [
+       440,
+       830,
+       1024,
+       1050
+      ],
+      "key": [
+       148
+      ],
+      "note": "Wa ttakhadha qawmu mūsā min baʿdihī min ḥuliyyihim ʿijlan jasadan lahū khuwār — 'from their ornaments a calf, a body that lowed' (148)."
+     },
+     {
+      "label": "The mountain bursts with light; Musa falls unconscious",
+      "box": [
+       440,
+       500,
+       1024,
+       700
+      ],
+      "key": [
+       143
+      ],
+      "note": "Qāla rabbi arinī anẓur ilayk, qāla lan tarānī wa lākini nẓur ila l-jabali fa-ini staqarra makānahū fa-sawfa tarānī, fa-lammā tajallā rabbuhū lil-jabali jaʿalahū dakkan wa kharra mūsā ṣaʿiqā (143)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 13 of 18, rescued, then tested (7:138–154)",
+      "box": [
+       150,
+       0,
+       870,
+       135
+      ],
+      "key": [
+       138
+      ]
+     },
+     {
+      "label": "Musa picks up the tablets again",
+      "box": [
+       580,
+       1270,
+       1024,
+       1480
+      ],
+      "key": [
+       154
+      ],
+      "note": "Wa lammā sakata ʿan mūsa l-ghaḍabu akhadha l-alwāḥ, wa fī nuskhatihā hudan wa raḥmatun lilladhīna hum li-rabbihim yarhabūn (154) — 'when the anger fell silent', as if anger had been speaking."
+     },
+     {
+      "label": "Musa holds the tablets",
+      "box": [
+       470,
+       700,
+       1024,
+       860
+      ],
+      "key": [
+       145
+      ],
+      "note": "Wa katabnā lahū fi l-alwāḥi min kulli shayʾin mawʿiẓatan wa tafṣīlan li-kulli shayʾ (145)."
+     },
+     {
+      "label": "Musa climbs the mountain: 30 nights + 10 = 40",
+      "box": [
+       590,
+       310,
+       1000,
+       500
+      ],
+      "key": [
+       142
+      ],
+      "note": "Wa wāʿadnā mūsā thalāthīna laylatan wa atmamnāhā bi-ʿashrin fa-tamma mīqātu rabbihī arbaʿīna laylah, wa qāla mūsā li-akhīhi hārūna khlufnī fī qawmī wa aṣliḥ (142)."
+     },
+     {
+      "label": "2 Thirty nights become forty — 7:142",
+      "box": [
+       20,
+       340,
+       590,
+       455
+      ],
+      "key": [
+       142
+      ],
+      "note": "Wa wāʿadnā mūsā thalāthīna laylatan wa atmamnāhā bi-ʿashrin fa-tamma mīqātu rabbihī arbaʿīna laylah, wa qāla mūsā li-akhīhi hārūna khlufnī fī qawmī wa aṣliḥ (142)."
+     },
+     {
+      "label": "7 Anger cools; the tablets return — 7:154",
+      "box": [
+       20,
+       1295,
+       590,
+       1410
+      ],
+      "key": [
+       154
+      ],
+      "note": "Wa lammā sakata ʿan mūsa l-ghaḍabu akhadha l-alwāḥ, wa fī nuskhatihā hudan wa raḥmatun lilladhīna hum li-rabbihim yarhabūn (154) — 'when the anger fell silent', as if anger had been speaking."
+     },
+     {
+      "label": "1 An idol after rescue — 7:138",
+      "box": [
+       15,
+       160,
+       500,
+       290
+      ],
+      "key": [
+       138,
+       139,
+       140,
+       141
+      ],
+      "note": "Wa jāwaznā bi-banī isrāʾīla l-baḥra fa-ataw ʿalā qawmin yaʿkufūna ʿalā aṣnāmin lahum, qālū yā mūsa jʿal lanā ilāhan kamā lahum ālihah, qāla innakum qawmun tajhalūn (138)."
+     },
+     {
+      "label": "3 The mountain crumbles — 7:143",
+      "box": [
+       20,
+       535,
+       505,
+       660
+      ],
+      "key": [
+       143,
+       144
+      ],
+      "note": "Qāla rabbi arinī anẓur ilayk, qāla lan tarānī wa lākini nẓur ila l-jabali fa-ini staqarra makānahū fa-sawfa tarānī, fa-lammā tajallā rabbuhū lil-jabali jaʿalahū dakkan wa kharra mūsā ṣaʿiqā (143)."
+     },
+     {
+      "label": "5 Jewelry becomes a calf — 7:148",
+      "box": [
+       20,
+       880,
+       495,
+       990
+      ],
+      "key": [
+       148,
+       149
+      ],
+      "note": "Wa ttakhadha qawmu mūsā min baʿdihī min ḥuliyyihim ʿijlan jasadan lahū khuwār — 'from their ornaments a calf, a body that lowed' (148)."
+     },
+     {
+      "label": "6 Musa returns in anger — 7:150",
+      "box": [
+       20,
+       1070,
+       495,
+       1180
+      ],
+      "key": [
+       150,
+       151,
+       152,
+       153
+      ],
+      "xref": [
+       "20:85"
+      ],
+      "note": "Wa lammā rajaʿa mūsā ilā qawmihī ghaḍbāna asifā… wa alqa l-alwāḥa wa akhadha bi-raʾsi akhīhi yajurruhū ilayh, qāla bna umma inna l-qawma staḍʿafūnī wa kādū yaqtulūnanī (150). Qāla rabbi ghfir lī wa li-akhī (151). Unlike Exodus 32, the Qur'an never makes Harun the maker of the calf: it was the Sāmirī (20:85–95)."
+     },
+     {
+      "label": "4 The tablets are given — 7:145",
+      "box": [
+       20,
+       730,
+       490,
+       810
+      ],
+      "key": [
+       145,
+       146,
+       147
+      ],
+      "note": "Wa katabnā lahū fi l-alwāḥi min kulli shayʾin mawʿiẓatan wa tafṣīlan li-kulli shayʾ (145)."
+     }
+    ]
+   },
+   {
+    "id": 14,
+    "title": "Mercy, the Messenger and the Springs",
+    "range": [
+     155,
+     162
+    ],
+    "img": "images/s7-14.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "The town gate: one word replaced by another",
+      "box": [
+       0,
+       1200,
+       660,
+       1480
+      ],
+      "key": [
+       161,
+       162
+      ],
+      "note": "Wa qūlū ḥiṭṭatun wa dkhulu l-bāba sujjadā (161). Fa-baddala lladhīna ẓalamū minhum qawlan ghayra lladhī qīla lahum (162). Sahih al-Bukhari (Abu Hurairah): told to enter bowing and say ḥiṭṭah ('relieve us'), they went in shuffling on their backsides and said ḥabbah fī shaʿrah ('a grain in a hair'). Compare 2:58–59."
+     },
+     {
+      "label": "The mountain shakes; Musa pleads",
+      "box": [
+       0,
+       120,
+       640,
+       400
+      ],
+      "key": [
+       155
+      ],
+      "note": "Wa khtāra mūsā qawmahū sabʿīna rajulan li-mīqātinā, fa-lammā akhadhathumu r-rajfatu qāla rabbi law shiʾta ahlaktahum min qablu wa iyyāy, a-tuhlikunā bimā faʿala s-sufahāʾu minnā (155)."
+     },
+     {
+      "label": "Twelve springs gush from one rock",
+      "box": [
+       0,
+       960,
+       660,
+       1200
+      ],
+      "key": [
+       160
+      ],
+      "note": "Wa qaṭṭaʿnāhumu thnatay ʿashrata asbāṭan umamā… ani ḍrib bi-ʿaṣāka l-ḥajar, fa-nbajasat minhu thnatā ʿashrata ʿaynā, qad ʿalima kullu unāsin mashrabahum (160) — twelve tribes, twelve springs. Compare 2:60."
+     },
+     {
+      "label": "Burdens and broken chains left on the path",
+      "box": [
+       0,
+       570,
+       620,
+       800
+      ],
+      "key": [
+       157
+      ],
+      "note": "Alladhīna yattabiʿūna r-rasūla n-nabiyya l-ummiyya lladhī yajidūnahū maktūban ʿindahum fi t-tawrāti wa l-injīl… wa yaḍaʿu ʿanhum iṣrahum wa l-aghlāla llatī kānat ʿalayhim (157) — 'he removes their burdens and the shackles that were upon them'. Checked: al-ummī appears only at 157 and 158."
+     },
+     {
+      "label": "A green valley with its animals: mercy over everything",
+      "box": [
+       390,
+       390,
+       1024,
+       600
+      ],
+      "key": [
+       156
+      ],
+      "note": "Wa ktub lanā fī hādhihi d-dunyā ḥasanatan wa fi l-ākhirah, innā hudnā ilayk, qāla ʿadhābī uṣību bihī man ashāʾ, wa raḥmatī wasiʿat kulla shayʾ, fa-sa-aktubuhā lilladhīna yattaqūna wa yuʾtūna z-zakāta wa lladhīna hum bi-āyātinā yuʾminūn (156). Sahih al-Bukhari and Muslim (Abu Hurairah): Allah wrote in a book with Him above the Throne, 'My mercy prevails over My wrath'."
+     },
+     {
+      "label": "All humanity gathered on the road",
+      "box": [
+       0,
+       800,
+       660,
+       970
+      ],
+      "key": [
+       158
+      ],
+      "note": "Qul yā ayyuha n-nāsu innī rasūlu llāhi ilaykum jamīʿā (158)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 14 of 18, mercy, the Messenger and the springs (7:155–162)",
+      "box": [
+       130,
+       0,
+       890,
+       140
+      ],
+      "key": [
+       155
+      ]
+     },
+     {
+      "label": "3 Follow the unlettered Prophet — 7:157",
+      "box": [
+       630,
+       590,
+       1000,
+       760
+      ],
+      "key": [
+       157
+      ],
+      "more": [
+       158
+      ],
+      "note": "Alladhīna yattabiʿūna r-rasūla n-nabiyya l-ummiyya lladhī yajidūnahū maktūban ʿindahum fi t-tawrāti wa l-injīl… wa yaḍaʿu ʿanhum iṣrahum wa l-aghlāla llatī kānat ʿalayhim (157) — 'he removes their burdens and the shackles that were upon them'. Checked: al-ummī appears only at 157 and 158."
+     },
+     {
+      "label": "6 The changed word at the gate — 7:161–162",
+      "box": [
+       660,
+       1220,
+       1015,
+       1385
+      ],
+      "key": [
+       161,
+       162
+      ],
+      "xref": [
+       "2:58"
+      ],
+      "note": "Wa qūlū ḥiṭṭatun wa dkhulu l-bāba sujjadā (161). Fa-baddala lladhīna ẓalamū minhum qawlan ghayra lladhī qīla lahum (162). Sahih al-Bukhari (Abu Hurairah): told to enter bowing and say ḥiṭṭah ('relieve us'), they went in shuffling on their backsides and said ḥabbah fī shaʿrah ('a grain in a hair'). Compare 2:58–59."
+     },
+     {
+      "label": "1 Seventy men at the mountain — 7:155",
+      "box": [
+       640,
+       145,
+       1005,
+       300
+      ],
+      "key": [
+       155
+      ],
+      "more": [
+       78,
+       91
+      ],
+      "note": "Wa khtāra mūsā qawmahū sabʿīna rajulan li-mīqātinā, fa-lammā akhadhathumu r-rajfatu qāla rabbi law shiʾta ahlaktahum min qablu wa iyyāy, a-tuhlikunā bimā faʿala s-sufahāʾu minnā (155)."
+     },
+     {
+      "label": "5 Twelve springs from one rock — 7:160",
+      "box": [
+       665,
+       980,
+       1010,
+       1125
+      ],
+      "key": [
+       159,
+       160
+      ],
+      "xref": [
+       "2:60"
+      ],
+      "note": "Wa qaṭṭaʿnāhumu thnatay ʿashrata asbāṭan umamā… ani ḍrib bi-ʿaṣāka l-ḥajar, fa-nbajasat minhu thnatā ʿashrata ʿaynā, qad ʿalima kullu unāsin mashrabahum (160) — twelve tribes, twelve springs. Compare 2:60."
+     },
+     {
+      "label": "2 Mercy covers everything — 7:156",
+      "box": [
+       25,
+       395,
+       390,
+       530
+      ],
+      "key": [
+       156
+      ],
+      "note": "Wa ktub lanā fī hādhihi d-dunyā ḥasanatan wa fi l-ākhirah, innā hudnā ilayk, qāla ʿadhābī uṣību bihī man ashāʾ, wa raḥmatī wasiʿat kulla shayʾ, fa-sa-aktubuhā lilladhīna yattaqūna wa yuʾtūna z-zakāta wa lladhīna hum bi-āyātinā yuʾminūn (156). Sahih al-Bukhari and Muslim (Abu Hurairah): Allah wrote in a book with Him above the Throne, 'My mercy prevails over My wrath'."
+     },
+     {
+      "label": "4 A messenger to all humanity — 7:158",
+      "box": [
+       660,
+       795,
+       1000,
+       920
+      ],
+      "key": [
+       158
+      ],
+      "note": "Qul yā ayyuha n-nāsu innī rasūlu llāhi ilaykum jamīʿā (158)."
+     }
+    ]
+   },
+   {
+    "id": 15,
+    "title": "The Sabbath, the Book and the Mountain",
+    "range": [
+     163,
+     171
+    ],
+    "img": "images/s7-15.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "The mountain raised above the people",
+      "box": [
+       100,
+       1180,
+       1024,
+       1480
+      ],
+      "key": [
+       171
+      ],
+      "note": "Wa idh nataqna l-jabala fawqahum ka-annahū ẓullatun wa ẓannū annahū wāqiʿun bihim, khudhū mā ātaynākum bi-quwwah (171). Compare 2:63 and 2:93."
+     },
+     {
+      "label": "Fish crowd the shore; the market under the SABBATH banner",
+      "box": [
+       280,
+       140,
+       1024,
+       440
+      ],
+      "key": [
+       163
+      ],
+      "note": "Wa sʾalhum ʿani l-qaryati llatī kānat ḥāḍirata l-baḥr, idh yaʿdūna fi s-sabt, idh taʾtīhim ḥītānuhum yawma sabtihim shurraʿā, wa yawma lā yasbitūna lā taʾtīhim (163) — 'their fish came to them openly on their Sabbath'."
+     },
+     {
+      "label": "The Book traded for coins",
+      "box": [
+       260,
+       850,
+       1024,
+       1090
+      ],
+      "key": [
+       169
+      ],
+      "note": "Fa-khalafa min baʿdihim khalfun warithu l-kitāba yaʾkhudhūna ʿaraḍa hādha l-adnā wa yaqūlūna sa-yughfaru lanā (169) — 'they take the goods of this lower world and say: we will be forgiven'."
+     },
+     {
+      "label": "The cheaters become apes on the beach; the warners stand apart",
+      "box": [
+       100,
+       550,
+       1024,
+       740
+      ],
+      "key": [
+       166
+      ],
+      "more": [
+       164,
+       165
+      ],
+      "note": "Wa idh qālat ummatun minhum lima taʿiẓūna qawmani llāhu muhlikuhum (164). Anjayna lladhīna yanhawna ʿani s-sūʾ (165). Fa-lammā ʿataw ʿan mā nuhū ʿanhu qulnā lahum kūnū qiradatan khāsiʾīn (166). Three groups appear: the transgressors, those who warned them (saved), and those who asked 'why warn them?' (164), about whom the verses are silent — aṭ-Ṭabari reports (from ʿIkrimah) that Ibn ʿAbbas was at first unsure of their fate, then persuaded they were saved."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 15 of 18, the Sabbath, the Book and the mountain (7:163–171)",
+      "box": [
+       100,
+       0,
+       930,
+       150
+      ],
+      "key": [
+       163
+      ]
+     },
+     {
+      "label": "3 Later generations sell the Book — 7:169",
+      "box": [
+       210,
+       750,
+       920,
+       850
+      ],
+      "key": [
+       167,
+       168,
+       169,
+       170
+      ],
+      "note": "Fa-khalafa min baʿdihim khalfun warithu l-kitāba yaʾkhudhūna ʿaraḍa hādha l-adnā wa yaqūlūna sa-yughfaru lanā (169) — 'they take the goods of this lower world and say: we will be forgiven'."
+     },
+     {
+      "label": "4 The mountain like a canopy — 7:171",
+      "box": [
+       15,
+       1095,
+       660,
+       1205
+      ],
+      "key": [
+       171
+      ],
+      "xref": [
+       "2:63"
+      ],
+      "note": "Wa idh nataqna l-jabala fawqahum ka-annahū ẓullatun wa ẓannū annahū wāqiʿun bihim, khudhū mā ātaynākum bi-quwwah (171). Compare 2:63 and 2:93."
+     },
+     {
+      "label": "1 Fish on the Sabbath — 7:163",
+      "box": [
+       15,
+       170,
+       510,
+       300
+      ],
+      "key": [
+       163
+      ],
+      "note": "Wa sʾalhum ʿani l-qaryati llatī kānat ḥāḍirata l-baḥr, idh yaʿdūna fi s-sabt, idh taʾtīhim ḥītānuhum yawma sabtihim shurraʿā, wa yawma lā yasbitūna lā taʾtīhim (163) — 'their fish came to them openly on their Sabbath'."
+     },
+     {
+      "label": "2 The cheaters are warned — 7:164–166",
+      "box": [
+       330,
+       460,
+       965,
+       555
+      ],
+      "key": [
+       164,
+       165,
+       166
+      ],
+      "note": "Wa idh qālat ummatun minhum lima taʿiẓūna qawmani llāhu muhlikuhum (164). Anjayna lladhīna yanhawna ʿani s-sūʾ (165). Fa-lammā ʿataw ʿan mā nuhū ʿanhu qulnā lahum kūnū qiradatan khāsiʾīn (166). Three groups appear: the transgressors, those who warned them (saved), and those who asked 'why warn them?' (164), about whom the verses are silent — aṭ-Ṭabari reports (from ʿIkrimah) that Ibn ʿAbbas was at first unsure of their fate, then persuaded they were saved."
+     },
+     {
+      "label": "Later generations (separate time)",
+      "box": [
+       15,
+       810,
+       175,
+       910
+      ],
+      "key": [
+       169
+      ]
      }
     ]
    }

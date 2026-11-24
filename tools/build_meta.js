@@ -125,6 +125,7 @@ const ADD = {
  "73-1": ["Forged in the night"],
  "75-1": ["Chapter 75"],
  "76-1": ["The Human (emblem)", "Key facts"],
+ "7-9": ["Title: Surah Al-A'raf"],
  "23-1": ["Why is it called", "What this surah demands"],
  "24-1": ["What this surah builds", "Even more simply", "The central question", "A luminous society is built"],
  "58-1": ["Allah hears every word"],
