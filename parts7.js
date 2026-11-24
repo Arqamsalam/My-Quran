@@ -1,4 +1,4 @@
-// Hotspot maps for Al-A'raf (7), posters 1–15 of 18 (verses 1–171).
+// Hotspot maps for Al-A'raf (7): posters 1–18 (verses 1–206) and study posters 19–22.
 // box: [x1, y1, x2, y2] in the image's own pixels.  key: verses the panel shows.  more: recalled verses.  xref: verses in other surahs.
 
 window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
@@ -7,7 +7,7 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
    "name": "Al-A'raf",
    "arName": "الأعراف",
    "total": 206,
-   "totalParts": 18
+   "totalParts": 22
   },
   "parts": [
    {
@@ -2676,6 +2676,1236 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
       ],
       "key": [
        169
+      ]
+     }
+    ]
+   },
+   {
+    "id": 16,
+    "title": "The Oldest Testimony",
+    "range": [
+     172,
+     179
+    ],
+    "img": "images/s7-16.webp",
+    "w": 1054,
+    "h": 1492,
+    "spots": [
+     {
+      "label": "Heart, eyes and ears crossed out; cattle grazing",
+      "box": [
+       400,
+       1100,
+       1054,
+       1430
+      ],
+      "key": [
+       179
+      ],
+      "note": "Lahum qulūbun lā yafqahūna bihā wa lahum aʿyunun lā yubṣirūna bihā wa lahum ādhānun lā yasmaʿūna bihā, ulāʾika ka-l-anʿāmi bal hum aḍall, ulāʾika humu l-ghāfilūn (179). Checked: ghāfil (heedless) runs 172, 179 and 205 — the covenant excuse, the diagnosis and the final command."
+     },
+     {
+      "label": "3 Slipping out of the signs — 7:175–176",
+      "box": [
+       10,
+       745,
+       690,
+       970
+      ],
+      "key": [
+       175,
+       176,
+       177,
+       178
+      ],
+      "note": "Wa tlu ʿalayhim nabaʾa lladhī ātaynāhu āyātinā fa-nsalakha minhā — 'he slipped out of them' (as a snake slips its skin) (175). Fa-mathaluhū ka-mathali l-kalb, in taḥmil ʿalayhi yalhath aw tatruk-hu yalhath (176). Commentators (aṭ-Ṭabari, from Ibn Masʿud and Ibn ʿAbbas) name him Balʿam son of Baʿūrāʾ, a scholar among the Israelites; others, Umayyah ibn Abi ṣ-Ṣalt."
+     },
+     {
+      "label": "All the children of Adam, gathered to testify",
+      "box": [
+       440,
+       170,
+       1054,
+       400
+      ],
+      "key": [
+       172
+      ],
+      "note": "Wa idh akhadha rabbuka min banī ādama min ẓuhūrihim dhurriyyatahum wa ashhadahum ʿalā anfusihim a-lastu bi-rabbikum, qālū balā shahidnā (172). Musnad Ahmad (Ibn ʿAbbas): Allah took the covenant from the children of Adam at Naʿmān, near ʿArafah, drawing out from his loins all his descendants."
+     },
+     {
+      "label": "A shed skin beside the scroll; the panting dog",
+      "box": [
+       420,
+       850,
+       1054,
+       1060
+      ],
+      "key": [
+       175,
+       176
+      ],
+      "note": "Wa tlu ʿalayhim nabaʾa lladhī ātaynāhu āyātinā fa-nsalakha minhā — 'he slipped out of them' (as a snake slips its skin) (175). Fa-mathaluhū ka-mathali l-kalb, in taḥmil ʿalayhi yalhath aw tatruk-hu yalhath (176). Commentators (aṭ-Ṭabari, from Ibn Masʿud and Ibn ʿAbbas) name him Balʿam son of Baʿūrāʾ, a scholar among the Israelites; others, Umayyah ibn Abi ṣ-Ṣalt."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 16 of 18, the oldest testimony (7:172–179)",
+      "box": [
+       130,
+       0,
+       920,
+       150
+      ],
+      "key": [
+       172
+      ]
+     },
+     {
+      "label": "4 Senses left unused — 7:179",
+      "box": [
+       10,
+       1105,
+       550,
+       1300
+      ],
+      "key": [
+       179
+      ],
+      "more": [
+       172,
+       205
+      ],
+      "note": "Lahum qulūbun lā yafqahūna bihā wa lahum aʿyunun lā yubṣirūna bihā wa lahum ādhānun lā yasmaʿūna bihā, ulāʾika ka-l-anʿāmi bal hum aḍall, ulāʾika humu l-ghāfilūn (179). Checked: ghāfil (heedless) runs 172, 179 and 205 — the covenant excuse, the diagnosis and the final command."
+     },
+     {
+      "label": "1 Am I not your Lord? — 7:172",
+      "box": [
+       10,
+       165,
+       590,
+       345
+      ],
+      "key": [
+       172
+      ],
+      "note": "Wa idh akhadha rabbuka min banī ādama min ẓuhūrihim dhurriyyatahum wa ashhadahum ʿalā anfusihim a-lastu bi-rabbikum, qālū balā shahidnā (172). Musnad Ahmad (Ibn ʿAbbas): Allah took the covenant from the children of Adam at Naʿmān, near ʿArafah, drawing out from his loins all his descendants."
+     },
+     {
+      "label": "Signposts: 'We did not know' — 'Our fathers started it'",
+      "box": [
+       720,
+       400,
+       1054,
+       700
+      ],
+      "key": [
+       172,
+       173
+      ],
+      "note": "An taqūlū yawma l-qiyāmati innā kunnā ʿan hādhā ghāfilīn, aw taqūlū innamā ashraka ābāʾunā min qablu wa kunnā dhurriyyatan min baʿdihim (172–173) — the two excuses. Checked: the second echoes 'we found our fathers doing it' (28)."
+     },
+     {
+      "label": "2 The last excuses fall — 7:173",
+      "box": [
+       10,
+       460,
+       590,
+       610
+      ],
+      "key": [
+       173,
+       174
+      ],
+      "more": [
+       28
+      ],
+      "note": "An taqūlū yawma l-qiyāmati innā kunnā ʿan hādhā ghāfilīn, aw taqūlū innamā ashraka ābāʾunā min qablu wa kunnā dhurriyyatan min baʿdihim (172–173) — the two excuses. Checked: the second echoes 'we found our fathers doing it' (28)."
+     },
+     {
+      "label": "A comparison, not a transformation",
+      "box": [
+       50,
+       975,
+       340,
+       1045
+      ],
+      "key": [
+       176
+      ],
+      "note": "The dog is a simile (mathaluhū ka-mathali l-kalb, 176): the man is compared to a dog, not turned into one — unlike the Sabbath-breakers told 'be apes' (166)."
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "title": "The Final Warnings",
+    "range": [
+     180,
+     198
+    ],
+    "img": "images/s7-17.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "No feet, no hands, no eyes, no ears",
+      "box": [
+       0,
+       1200,
+       630,
+       1480
+      ],
+      "key": [
+       195
+      ],
+      "note": "A-lahum arjulun yamshūna bihā, am lahum aydin yabṭishūna bihā, am lahum aʿyunun yubṣirūna bihā, am lahum ādhānun yasmaʿūna bihā (195). Inna waliyyiya llāhu lladhī nazzala l-kitāb (196). Checked: the four organs of 195 answer the three of 179 — the deniers do not use theirs, the idols have none."
+     },
+     {
+      "label": "The couple pray, then thank the idols",
+      "box": [
+       330,
+       980,
+       1024,
+       1200
+      ],
+      "key": [
+       189,
+       190
+      ],
+      "note": "Huwa lladhī khalaqakum min nafsin wāḥidah… fa-lammā ātāhumā ṣāliḥan jaʿalā lahū shurakāʾa fī mā ātāhumā (189–190). Commentators differ: a narration in at-Tirmidhi says Adam and Hawwaʾ named a child ʿAbd al-Ḥārith; Ibn Kathir judges it weak and reads the verses as the pagan couples among their descendants — which fits the poster's 'a couple'."
+     },
+     {
+      "label": "The deniers walk on toward the town",
+      "box": [
+       390,
+       330,
+       1024,
+       560
+      ],
+      "key": [
+       182
+      ],
+      "note": "Wa lladhīna kadhdhabū bi-āyātinā sa-nastadrijuhum min ḥaythu lā yaʿlamūn, wa umlī lahum, inna kaydī matīn (182–183). Checked: the same words appear at 68:44–45."
+     },
+     {
+      "label": "Open, empty hands",
+      "box": [
+       400,
+       770,
+       1024,
+       980
+      ],
+      "key": [
+       188
+      ],
+      "note": "Qul lā amliku li-nafsī nafʿan wa lā ḍarran illā mā shāʾa llāh, wa law kuntu aʿlamu l-ghayba la-stakthartu mina l-khayr (188)."
+     },
+     {
+      "label": "Praying under the stars",
+      "box": [
+       0,
+       120,
+       500,
+       330
+      ],
+      "key": [
+       180
+      ],
+      "note": "Wa lillāhi l-asmāʾu l-ḥusnā fa-dʿūhu bihā wa dharu lladhīna yulḥidūna fī asmāʾih (180). Sahih al-Bukhari and Muslim (Abu Hurairah): Allah has ninety-nine names; whoever learns them enters Paradise."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 17 of 18, the final warnings (7:180–198)",
+      "box": [
+       130,
+       0,
+       900,
+       135
+      ],
+      "key": [
+       180
+      ]
+     },
+     {
+      "label": "The hourglass",
+      "box": [
+       100,
+       560,
+       600,
+       760
+      ],
+      "key": [
+       187
+      ],
+      "note": "Yasʾalūnaka ʿani s-sāʿati ayyāna mursāhā, qul innamā ʿilmuhā ʿinda rabbī… thaqulat fi s-samāwāti wa l-arḍ, lā taʾtīkum illā baghtah (187)."
+     },
+     {
+      "label": "3 The Hour comes suddenly — 7:187",
+      "box": [
+       595,
+       550,
+       1000,
+       730
+      ],
+      "key": [
+       187
+      ],
+      "note": "Yasʾalūnaka ʿani s-sāʿati ayyāna mursāhā, qul innamā ʿilmuhā ʿinda rabbī… thaqulat fi s-samāwāti wa l-arḍ, lā taʾtīkum illā baghtah (187)."
+     },
+     {
+      "label": "1 Call by the beautiful names — 7:180",
+      "box": [
+       550,
+       150,
+       1000,
+       300
+      ],
+      "key": [
+       180,
+       181
+      ],
+      "note": "Wa lillāhi l-asmāʾu l-ḥusnā fa-dʿūhu bihā wa dharu lladhīna yulḥidūna fī asmāʾih (180). Sahih al-Bukhari and Muslim (Abu Hurairah): Allah has ninety-nine names; whoever learns them enters Paradise."
+     },
+     {
+      "label": "5 A gift, then misdirected credit — 7:189–190",
+      "box": [
+       30,
+       970,
+       330,
+       1180
+      ],
+      "key": [
+       189,
+       190,
+       191,
+       192,
+       193,
+       194
+      ],
+      "note": "Huwa lladhī khalaqakum min nafsin wāḥidah… fa-lammā ātāhumā ṣāliḥan jaʿalā lahū shurakāʾa fī mā ātāhumā (189–190). Commentators differ: a narration in at-Tirmidhi says Adam and Hawwaʾ named a child ʿAbd al-Ḥārith; Ibn Kathir judges it weak and reads the verses as the pagan couples among their descendants — which fits the poster's 'a couple'."
+     },
+     {
+      "label": "2 Led on without noticing — 7:182",
+      "box": [
+       30,
+       355,
+       415,
+       515
+      ],
+      "key": [
+       182,
+       183,
+       184,
+       185,
+       186
+      ],
+      "xref": [
+       "68:44"
+      ],
+      "note": "Wa lladhīna kadhdhabū bi-āyātinā sa-nastadrijuhum min ḥaythu lā yaʿlamūn, wa umlī lahum, inna kaydī matīn (182–183). Checked: the same words appear at 68:44–45."
+     },
+     {
+      "label": "6 Idols that cannot act — 7:195",
+      "box": [
+       630,
+       1240,
+       1005,
+       1400
+      ],
+      "key": [
+       195,
+       196,
+       197,
+       198
+      ],
+      "more": [
+       179
+      ],
+      "note": "A-lahum arjulun yamshūna bihā, am lahum aydin yabṭishūna bihā, am lahum aʿyunun yubṣirūna bihā, am lahum ādhānun yasmaʿūna bihā (195). Inna waliyyiya llāhu lladhī nazzala l-kitāb (196). Checked: the four organs of 195 answer the three of 179 — the deniers do not use theirs, the idols have none."
+     },
+     {
+      "label": "4 No independent power — 7:188",
+      "box": [
+       30,
+       785,
+       400,
+       935
+      ],
+      "key": [
+       188
+      ],
+      "note": "Qul lā amliku li-nafsī nafʿan wa lā ḍarran illā mā shāʾa llāh, wa law kuntu aʿlamu l-ghayba la-stakthartu mina l-khayr (188)."
+     }
+    ]
+   },
+   {
+    "id": 18,
+    "title": "The Summit — end with a bow",
+    "range": [
+     199,
+     206
+    ],
+    "img": "images/s7-18.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "On the summit, forehead on the ground",
+      "box": [
+       0,
+       1160,
+       1024,
+       1420
+      ],
+      "key": [
+       206
+      ],
+      "note": "Inna lladhīna ʿinda rabbika lā yastakbirūna ʿan ʿibādatihī wa yusabbiḥūnahū wa lahū yasjudūn (206) — a verse of prostration. Checked: the surah's prostrations frame it — Iblis would not be among those who prostrate (11), and it ends 'and to Him they prostrate' (206)."
+     },
+     {
+      "label": "The traveller sets off on the path",
+      "box": [
+       330,
+       140,
+       1024,
+       400
+      ],
+      "key": [
+       199
+      ],
+      "note": "Khudhi l-ʿafwa wa ʾmur bil-ʿurfi wa aʿriḍ ʿani l-jāhilīn (199). Sahih al-Bukhari ('Abdullah ibn az-Zubayr): this verse was revealed only about people's character. Checked: ʿurf (the recognised good) shares the root ʿ-r-f with al-aʿrāf and yaʿrifūn (46, 48)."
+     },
+     {
+      "label": "Sitting at sunrise and at sunset",
+      "box": [
+       400,
+       800,
+       1024,
+       1000
+      ],
+      "key": [
+       205
+      ],
+      "note": "Wa dhkur rabbaka fī nafsika taḍarruʿan wa khīfatan wa dūna l-jahri mina l-qawli bil-ghuduwwi wa l-āṣāl, wa lā takun mina l-ghāfilīn (205). Checked: 'humbly and in private' answers 55 (taḍarruʿan wa khufyah)."
+     },
+     {
+      "label": "5 Never too proud to worship — 7:206",
+      "box": [
+       60,
+       1015,
+       910,
+       1160
+      ],
+      "key": [
+       206
+      ],
+      "more": [
+       11,
+       12
+      ],
+      "note": "Inna lladhīna ʿinda rabbika lā yastakbirūna ʿan ʿibādatihī wa yusabbiḥūnahū wa lahū yasjudūn (206) — a verse of prostration. Checked: the surah's prostrations frame it — Iblis would not be among those who prostrate (11), and it ends 'and to Him they prostrate' (206)."
+     },
+     {
+      "label": "A dark tendril; he raises his hands for refuge",
+      "box": [
+       440,
+       400,
+       1024,
+       600
+      ],
+      "key": [
+       200
+      ],
+      "note": "Wa immā yanzaghannaka mina sh-shayṭāni nazghun fa-staʿidh billāh (200). Inna lladhīna ttaqaw idhā massahum ṭāʾifun mina sh-shayṭāni tadhakkarū fa-idhā hum mubṣirūn (201)."
+     },
+     {
+      "label": "Gathered around the open Qur'an",
+      "box": [
+       410,
+       610,
+       1024,
+       800
+      ],
+      "key": [
+       204
+      ],
+      "note": "Wa idhā quriʾa l-qurʾānu fa-stamiʿū lahū wa anṣitū laʿallakum turḥamūn (204)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — part 18 of 18, the summit: end with a bow (7:199–206)",
+      "box": [
+       110,
+       0,
+       920,
+       140
+      ],
+      "key": [
+       199
+      ]
+     },
+     {
+      "label": "4 Remember, morning and evening — 7:205",
+      "box": [
+       30,
+       800,
+       450,
+       980
+      ],
+      "key": [
+       205
+      ],
+      "more": [
+       55
+      ],
+      "note": "Wa dhkur rabbaka fī nafsika taḍarruʿan wa khīfatan wa dūna l-jahri mina l-qawli bil-ghuduwwi wa l-āṣāl, wa lā takun mina l-ghāfilīn (205). Checked: 'humbly and in private' answers 55 (taḍarruʿan wa khufyah)."
+     },
+     {
+      "label": "1 Three instructions to carry — 7:199",
+      "box": [
+       10,
+       150,
+       400,
+       340
+      ],
+      "key": [
+       199
+      ],
+      "more": [
+       46,
+       48
+      ],
+      "note": "Khudhi l-ʿafwa wa ʾmur bil-ʿurfi wa aʿriḍ ʿani l-jāhilīn (199). Sahih al-Bukhari ('Abdullah ibn az-Zubayr): this verse was revealed only about people's character. Checked: ʿurf (the recognised good) shares the root ʿ-r-f with al-aʿrāf and yaʿrifūn (46, 48)."
+     },
+     {
+      "label": "2 When Satan prods, seek refuge — 7:200",
+      "box": [
+       10,
+       410,
+       440,
+       550
+      ],
+      "key": [
+       200,
+       201,
+       202,
+       203
+      ],
+      "note": "Wa immā yanzaghannaka mina sh-shayṭāni nazghun fa-staʿidh billāh (200). Inna lladhīna ttaqaw idhā massahum ṭāʾifun mina sh-shayṭāni tadhakkarū fa-idhā hum mubṣirūn (201)."
+     },
+     {
+      "label": "3 Listen in silence — 7:204",
+      "box": [
+       30,
+       605,
+       480,
+       730
+      ],
+      "key": [
+       204
+      ],
+      "note": "Wa idhā quriʾa l-qurʾānu fa-stamiʿū lahū wa anṣitū laʿallakum turḥamūn (204)."
+     },
+     {
+      "label": "The climb began with one who would not bow. It ends with you bowing.",
+      "box": [
+       100,
+       1425,
+       930,
+       1490
+      ],
+      "key": [
+       11,
+       206
+      ],
+      "note": "Inna lladhīna ʿinda rabbika lā yastakbirūna ʿan ʿibādatihī wa yusabbiḥūnahū wa lahū yasjudūn (206) — a verse of prostration. Checked: the surah's prostrations frame it — Iblis would not be among those who prostrate (11), and it ends 'and to Him they prostrate' (206)."
+     },
+     {
+      "label": "Signpost: 'urf — recognized good",
+      "box": [
+       830,
+       210,
+       990,
+       300
+      ],
+      "key": [
+       199
+      ],
+      "note": "Khudhi l-ʿafwa wa ʾmur bil-ʿurfi wa aʿriḍ ʿani l-jāhilīn (199). Sahih al-Bukhari ('Abdullah ibn az-Zubayr): this verse was revealed only about people's character. Checked: ʿurf (the recognised good) shares the root ʿ-r-f with al-aʿrāf and yaʿrifūn (46, 48)."
+     }
+    ]
+   },
+   {
+    "id": 19,
+    "title": "Amud — the central warning",
+    "range": [
+     1,
+     206
+    ],
+    "img": "images/s7-19.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "Amud: indhar — warning (the pillar)",
+      "box": [
+       395,
+       560,
+       620,
+       1180
+      ],
+      "key": [
+       2,
+       34,
+       94,
+       96
+      ]
+     },
+     {
+      "label": "5 The covenant — no last excuse",
+      "box": [
+       215,
+       1180,
+       810,
+       1390
+      ],
+      "key": [
+       172,
+       173
+      ]
+     },
+     {
+      "label": "Warned by your nature, your history and a Messenger: bow before your term runs out",
+      "box": [
+       40,
+       300,
+       1000,
+       410
+      ],
+      "key": [
+       34,
+       172,
+       158,
+       206
+      ]
+     },
+     {
+      "label": "4 Israel — no automatic exemption",
+      "box": [
+       620,
+       905,
+       1010,
+       1160
+      ],
+      "key": [
+       138,
+       148,
+       166
+      ]
+     },
+     {
+      "label": "3 Five towns — the law proved",
+      "box": [
+       10,
+       905,
+       390,
+       1160
+      ],
+      "key": [
+       59,
+       65,
+       73,
+       80,
+       85,
+       94
+      ]
+     },
+     {
+      "label": "2 The Heights — where rejection ends",
+      "box": [
+       620,
+       640,
+       1010,
+       880
+      ],
+      "key": [
+       44,
+       46,
+       47
+      ]
+     },
+     {
+      "label": "1 Adam — why people reject",
+      "box": [
+       10,
+       640,
+       390,
+       880
+      ],
+      "key": [
+       11,
+       12,
+       20
+      ]
+     },
+     {
+      "label": "The completed proof: itmam al-hujjah",
+      "box": [
+       10,
+       1400,
+       1010,
+       1490
+      ],
+      "key": [
+       172,
+       179
+      ]
+     },
+     {
+      "label": "Title: Surah Al-A'raf — study poster 19 of 22, amud: the central warning",
+      "box": [
+       80,
+       0,
+       950,
+       100
+      ],
+      "key": [
+       2
+      ]
+     },
+     {
+      "label": "The hook: a warning board at the trailhead",
+      "box": [
+       640,
+       110,
+       1010,
+       265
+      ],
+      "key": [
+       2,
+       4
+      ],
+      "note": "Li-tundhira bihī — 'that you may warn by it' (2); the ruined towns (4)."
+     },
+     {
+      "label": "Al-A'raf: the heights — the root 'arafa means to recognize",
+      "box": [
+       30,
+       415,
+       395,
+       535
+      ],
+      "key": [
+       46,
+       48
+      ],
+      "note": "Checked: the root ʿ-r-f gives al-aʿrāf and yaʿrifūna (46, 48) and ʿurf (199)."
+     }
+    ]
+   },
+   {
+    "id": 20,
+    "title": "How the topics connect",
+    "range": [
+     1,
+     206
+    ],
+    "img": "images/s7-20.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "9 What to do while waiting — 7:180–206",
+      "box": [
+       100,
+       1195,
+       900,
+       1440
+      ],
+      "key": [
+       180,
+       199,
+       204,
+       205,
+       206
+      ]
+     },
+     {
+      "label": "3 The warning reaches you — 7:26–36",
+      "box": [
+       20,
+       405,
+       520,
+       680
+      ],
+      "key": [
+       26,
+       27,
+       31,
+       35
+      ]
+     },
+     {
+      "label": "8 Every excuse closed — 7:172–179",
+      "box": [
+       520,
+       915,
+       1024,
+       1180
+      ],
+      "key": [
+       172,
+       173,
+       179
+      ]
+     },
+     {
+      "label": "7 The longest witness — 7:103–171",
+      "box": [
+       20,
+       915,
+       520,
+       1180
+      ],
+      "key": [
+       103,
+       117,
+       136,
+       138,
+       148,
+       166
+      ]
+     },
+     {
+      "label": "1 The summons — 7:1–9",
+      "box": [
+       20,
+       160,
+       560,
+       390
+      ],
+      "key": [
+       1,
+       2,
+       3,
+       4,
+       8,
+       9
+      ]
+     },
+     {
+      "label": "4 The verdict in advance — 7:37–53",
+      "box": [
+       520,
+       445,
+       1010,
+       690
+      ],
+      "key": [
+       40,
+       44,
+       46,
+       50
+      ]
+     },
+     {
+      "label": "5 The judge and the two soils — 7:54–58",
+      "box": [
+       20,
+       680,
+       520,
+       900
+      ],
+      "key": [
+       54,
+       57,
+       58
+      ]
+     },
+     {
+      "label": "6 Five historical witnesses — 7:59–102",
+      "box": [
+       520,
+       690,
+       1024,
+       900
+      ],
+      "key": [
+       59,
+       65,
+       73,
+       80,
+       85,
+       96
+      ]
+     },
+     {
+      "label": "2 The root cause — 7:10–25",
+      "box": [
+       560,
+       180,
+       1010,
+       400
+      ],
+      "key": [
+       11,
+       12,
+       16,
+       20,
+       23
+      ]
+     },
+     {
+      "label": "Title: Surah Al-A'raf — study poster 20 of 22, how the topics connect",
+      "box": [
+       140,
+       0,
+       880,
+       105
+      ],
+      "key": [
+       1
+      ]
+     },
+     {
+      "label": "The warning becomes a personal response.",
+      "box": [
+       120,
+       1445,
+       900,
+       1500
+      ],
+      "key": [
+       206
+      ]
+     },
+     {
+      "label": "Like a court case: summons, cause, verdict, witnesses, and your response",
+      "box": [
+       80,
+       110,
+       940,
+       155
+      ],
+      "key": [
+       1,
+       206
+      ]
+     }
+    ]
+   },
+   {
+    "id": 21,
+    "title": "Micro nazm — the small connections",
+    "range": [
+     1,
+     206
+    ],
+    "img": "images/s7-21.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "9 The heedlessness thread (7:172 ↔ 7:179 ↔ 7:205)",
+      "box": [
+       5,
+       1235,
+       1020,
+       1495
+      ],
+      "key": [
+       172,
+       179,
+       205
+      ],
+      "note": "Lahum qulūbun lā yafqahūna bihā wa lahum aʿyunun lā yubṣirūna bihā wa lahum ādhānun lā yasmaʿūna bihā, ulāʾika ka-l-anʿāmi bal hum aḍall, ulāʾika humu l-ghāfilūn (179). Checked: ghāfil (heedless) runs 172, 179 and 205 — the covenant excuse, the diagnosis and the final command."
+     },
+     {
+      "label": "3 Night and midday return (7:4 ↔ 7:97–98)",
+      "box": [
+       5,
+       460,
+       510,
+       720
+      ],
+      "key": [
+       4,
+       97,
+       98
+      ],
+      "note": "Checked: bayātan aw hum qāʾilūn (4) returns as bayātan wa hum nāʾimūn (97) and ḍuḥan wa hum yalʿabūn (98)."
+     },
+     {
+      "label": "4 The great scale → the market scale (7:8 ↔ 7:85)",
+      "box": [
+       515,
+       460,
+       1020,
+       720
+      ],
+      "key": [
+       8,
+       9,
+       85
+      ],
+      "note": "Al-wazn (8–9) and fa-awfu l-kayla wa l-mīzān (85)."
+     },
+     {
+      "label": "1 Refusal to bow → prostration (7:11–12 ↔ 7:206)",
+      "box": [
+       5,
+       200,
+       510,
+       455
+      ],
+      "key": [
+       11,
+       12,
+       206
+      ],
+      "note": "Inna lladhīna ʿinda rabbika lā yastakbirūna ʿan ʿibādatihī wa yusabbiḥūnahū wa lahū yasjudūn (206) — a verse of prostration. Checked: the surah's prostrations frame it — Iblis would not be among those who prostrate (11), and it ends 'and to Him they prostrate' (206)."
+     },
+     {
+      "label": "2 Other patrons → God as patron (7:3 ↔ 7:196)",
+      "box": [
+       515,
+       200,
+       1020,
+       455
+      ],
+      "key": [
+       3,
+       196
+      ],
+      "note": "Wa lā tattabiʿū min dūnihī awliyāʾ (3) … inna waliyyiya llāhu lladhī nazzala l-kitāb (196)."
+     },
+     {
+      "label": "5 Ambush on the path (7:16 ↔ 7:86)",
+      "box": [
+       5,
+       730,
+       510,
+       975
+      ],
+      "key": [
+       16,
+       86
+      ],
+      "note": "Wa lā taqʿudū bi-kulli ṣirāṭin tūʿidūna wa taṣuddūna ʿan sabīli llāh (86) — 'do not sit on every road, threatening'. Checked: the verb qaʿada appears only twice in the surah — Iblis's vow la-aqʿudanna lahum ṣirāṭaka (16) and here (86): Madyan's highwaymen do what Iblis promised. Fa-akhadhathumu r-rajfah (91), as with Thamud (78)."
+     },
+     {
+      "label": "6 The clothing thread (7:22–27 ↔ 7:31)",
+      "box": [
+       515,
+       730,
+       1020,
+       975
+      ],
+      "key": [
+       22,
+       26,
+       27,
+       31
+      ],
+      "note": "Checked: sawʾāt at 20, 22, 26, 27; libās at 26, 27. The link to the Quraysh's naked circumambulation is attributed to Islahi on the poster; Sahih Muslim (Ibn ʿAbbas) reports that women circled the Kaʿbah naked in pre-Islamic times and 31 came down about it."
+     },
+     {
+      "label": "7 Who is the true adviser? (7:21 ↔ the prophet stories)",
+      "box": [
+       5,
+       985,
+       510,
+       1225
+      ],
+      "key": [
+       21,
+       62,
+       68,
+       79,
+       93
+      ],
+      "note": "Innī lakumā la-mina n-nāṣiḥīn (21) — Iblis. Checked: Nuh (62), Hud (68), Salih (79) and Shuʿayb (93) each use the same word."
+     },
+     {
+      "label": "8 Recognize → recognized good (7:46, 48 ↔ 7:199)",
+      "box": [
+       515,
+       985,
+       1020,
+       1225
+      ],
+      "key": [
+       46,
+       48,
+       199
+      ],
+      "note": "Khudhi l-ʿafwa wa ʾmur bil-ʿurfi wa aʿriḍ ʿani l-jāhilīn (199). Sahih al-Bukhari ('Abdullah ibn az-Zubayr): this verse was revealed only about people's character. Checked: ʿurf (the recognised good) shares the root ʿ-r-f with al-aʿrāf and yaʿrifūn (46, 48)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — study poster 21 of 22, micro nazm",
+      "box": [
+       200,
+       0,
+       830,
+       145
+      ],
+      "key": [
+       1
+      ]
+     },
+     {
+      "label": "The small connections: repeated words, images and contrasts",
+      "box": [
+       160,
+       150,
+       870,
+       195
+      ],
+      "key": [
+       1
+      ]
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "title": "Macro nazm — Al-A'raf within the Qur'an",
+    "range": [
+     1,
+     206
+    ],
+    "img": "images/s7-22.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "1 Islahi's group two: surahs 6–9",
+      "box": [
+       5,
+       160,
+       1020,
+       385
+      ],
+      "key": [
+       1
+      ],
+      "note": "In Islahi's scheme, group two runs Al-Anʿām to At-Tawbah: two Makkan surahs (6, 7) and two Madinan (8, 9)."
+     },
+     {
+      "label": "7 The first recitation sajdah (7:206)",
+      "box": [
+       5,
+       1285,
+       1020,
+       1495
+      ],
+      "key": [
+       206
+      ],
+      "note": "Inna lladhīna ʿinda rabbika lā yastakbirūna ʿan ʿibādatihī wa yusabbiḥūnahū wa lahū yasjudūn (206) — a verse of prostration. Checked: the surah's prostrations frame it — Iblis would not be among those who prostrate (11), and it ends 'and to Him they prostrate' (206). Checked: in Mushaf order 7:206 is the first of the verses of prostration."
+     },
+     {
+      "label": "3 The backward seam (6:165 → 7:10)",
+      "box": [
+       5,
+       575,
+       1020,
+       765
+      ],
+      "key": [
+       10
+      ],
+      "xref": [
+       "6:165"
+      ],
+      "note": "Wa huwa lladhī jaʿalakum khalāʾifa l-arḍ… li-yabluwakum (6:165) → wa la-qad makkannākum fi l-arḍ (7:10)."
+     },
+     {
+      "label": "2 Argument → consequence",
+      "box": [
+       5,
+       390,
+       1020,
+       570
+      ],
+      "key": [
+       4,
+       59,
+       101
+      ],
+      "note": "In Islahi's pairing, Al-Anʿām argues the case and Al-Aʿrāf shows the consequence through the history of nations."
+     },
+     {
+      "label": "4 The forward seam (7:204–205 → 8:2)",
+      "box": [
+       5,
+       770,
+       1020,
+       940
+      ],
+      "key": [
+       204,
+       205
+      ],
+      "xref": [
+       "8:2"
+      ],
+      "note": "Listen and remember (7:204–205) → innama l-muʾminūna lladhīna idhā dhukira llāhu wajilat qulūbuhum wa idhā tuliyat ʿalayhim āyātuhū zādathum īmānā (8:2)."
+     },
+     {
+      "label": "6 Connections farther out: Al-Baqarah, Hud, Ash-Shu'ara",
+      "box": [
+       5,
+       1110,
+       1020,
+       1280
+      ],
+      "key": [
+       11,
+       59
+      ],
+      "xref": [
+       "2:34",
+       "11:25"
+      ],
+      "note": "Adam: 2:30–39 and 7:11–25. The same sequence of prophets returns in Hud (11:25–95) and Ash-Shuʿarāʾ (26:105–191)."
+     },
+     {
+      "label": "5 The promise begins at Badr (7:128 → Al-Anfal)",
+      "box": [
+       5,
+       945,
+       1020,
+       1105
+      ],
+      "key": [
+       128,
+       137
+      ],
+      "xref": [
+       "8:7"
+      ],
+      "note": "Wa l-ʿāqibatu lil-muttaqīn (128) — Al-Anfāl opens with Badr, the first victory (8:5–19)."
+     },
+     {
+      "label": "Title: Surah Al-A'raf — study poster 22 of 22, macro nazm",
+      "box": [
+       180,
+       0,
+       840,
+       105
+      ],
+      "key": [
+       1
+      ]
+     },
+     {
+      "label": "The big connections: Al-A'raf within the Qur'an",
+      "box": [
+       220,
+       110,
+       800,
+       150
+      ],
+      "key": [
+       1
       ]
      }
     ]
