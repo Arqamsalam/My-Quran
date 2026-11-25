@@ -221,6 +221,17 @@
   .tile{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:5px 9px;font-size:11px;color:var(--muted)}
   .tile b{color:var(--gold2);font-size:13px;margin-right:4px}
   #list{overflow:auto;flex:1}
+  #lbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  #lbar .seg button{padding:4px 9px;font-size:12px}
+  #drawer[data-tab="facts"] #lbar,#drawer[data-tab="vocab"] #lbar{display:none}
+  /* verse list rows: number and audio on one line, full translation, no tag chips */
+  .row .rbar{display:flex;align-items:center;gap:2px;min-height:34px}
+  .row .rbar .vnum{margin-right:auto}
+  .row .vb{width:32px;height:32px}
+  .row .vb.on{color:var(--gold2)}
+  .row .vaudio{font-size:12.5px;margin:2px 0 4px;color:var(--muted)}
+  .row .en.speaking{background:rgba(217,169,74,.12);border-radius:8px}
+  .row .en .said{background:rgba(217,169,74,.3);border-radius:4px}
   .row{padding:10px 14px;border-bottom:1px solid var(--rowline);cursor:pointer}
   .row:hover,.row.sel{background:var(--panel2)}
   .row .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -233,7 +244,6 @@
   .row .tr{color:var(--muted)}
   .row .full{display:none}
   .row.sel .full{display:block}
-  .row:not(.sel) .en{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   #drawer footer{font-size:11px;color:var(--muted);padding:8px 14px;border-top:1px solid var(--line)}
   .hide-en .en,.hide-ur .ur,.hide-tr .tr{display:none!important}
 
@@ -381,7 +391,7 @@
     <div class="seg" id="voiceMode"><button data-v="human" class="on">Human</button><button data-v="device">Device</button></div></div>
   <div class="sub" id="voiceSub">Ibrahim Walk's recorded reading of Saheeh International. If it can't load, the best voice on this device is used.</div>
   <div class="rowc" id="voiceRow"><span>Device voice</span><select id="optVoice" aria-label="Device voice"></select></div>
-  <div class="rowc"><span>Reading speed</span><input type="range" id="optRate" min="0.75" max="1.25" step="0.05" value="0.95"></div>
+  <div class="rowc"><span>Reading speed</span><div class="seg speedSeg"><button data-s="1">1×</button><button data-s="1.25">1.25×</button><button data-s="1.5">1.5×</button></div></div>
   <div class="legend">
     <div><i style="background:var(--gold)"></i>Verse the panel cites or shows</div>
     <div><i style="background:var(--more)"></i>Neighbouring or recalled verse</div>
@@ -396,6 +406,7 @@
 <aside id="drawer">
   <div class="ah"><h2 id="ptitle"></h2><p id="pmeta"></p><div class="tiles" id="tiles"></div></div>
   <div class="dtabs"><button data-d="list" class="on">Verses</button><button data-d="vocab">Vocabulary</button><button data-d="facts">Fact-check</button></div>
+  <div id="lbar"><span>🔊 English reading speed</span><div class="seg speedSeg"><button data-s="1">1×</button><button data-s="1.25">1.25×</button><button data-s="1.5">1.5×</button></div></div>
   <div id="list"></div>
   <div id="facts"></div>
   <div id="vocab"></div>
@@ -618,11 +629,11 @@
     if (playing) { setBtn(playing.b, false, playing.kind); const en = playing.card.querySelector('.en'); if (en) { en.classList.remove('speaking'); if (en.dataset.plain) { en.innerHTML = en.dataset.plain; delete en.dataset.plain; } } }
     playing = null;
   }
-  const note = (card, html) => { const old = card.querySelector('.vaudio'); if (old) old.remove(); card.querySelector('.vbar').insertAdjacentHTML('afterend', `<div class="vaudio">${html}</div>`); };
+  const note = (card, html) => { const old = card.querySelector('.vaudio'); if (old) old.remove(); card.querySelector('.vbar, .rbar').insertAdjacentHTML('afterend', `<div class="vaudio">${html}</div>`); };
   function playFile(card, b, kind, url, onFail){
     const a = new Audio(url); audio = a; playing = { card, b, kind }; setBtn(b, true, kind);
     if (kind === 'en') card.querySelector('.en').classList.add('speaking');
-    a.playbackRate = kind === 'en' ? (st.rate || 0.95) / 0.95 : 1;
+    a.playbackRate = kind === 'en' ? speed() : 1;
     a.onended = a.onpause = () => { if (audio === a) stopAll(); };
     let failed = false; const fail = () => { if (failed || audio !== a) return; failed = true; stopAll(); onFail(); };
     a.onerror = fail; a.play().catch(fail);
@@ -668,7 +679,7 @@
     let done = 0;
     chunks.forEach((c, i) => {
       const u = new SpeechSynthesisUtterance(c.replace(/[\[\]˹˺]/g, '')); if (vc) { u.voice = vc; u.lang = vc.lang; } else u.lang = 'en-GB';
-      u.rate = st.rate || 0.95; u.pitch = 1;
+      u.rate = 0.95 * speed(); u.pitch = 1;
       u.onstart = () => { if (playing && playing.card === card) { const before = chunks.slice(0, i).join(''); en.innerHTML = enText(before) + '<span class="said">' + enText(c) + '</span>' + enText(chunks.slice(i + 1).join('')); } };
       u.onend = u.onerror = () => { if (++done === chunks.length && playing && playing.card === card && playing.kind === 'en') stopAll(); };
       speechSynthesis.speak(u);
@@ -684,7 +695,7 @@
     const mode = transNow() === 'clear' ? 'device' : st.voice || 'human';
     document.querySelectorAll('#voiceMode button').forEach(x => { x.classList.toggle('on', x.dataset.v === mode); x.disabled = transNow() === 'clear' && x.dataset.v === 'human'; });
     $('#voiceSub').textContent = transNow() === 'clear' ? 'The Clear Quran is read by your device’s best voice (the human recording is of Saheeh International). “Natural”, “Premium” or “Enhanced” voices sound best.' : mode === 'human' ? 'Ibrahim Walk’s recorded reading of Saheeh International. If it can’t load, the best voice on this device is used.' : 'Reads the translation with your device’s built-in voice. “Natural”, “Premium” or “Enhanced” voices sound best.';
-    $('#optRate').value = st.rate || 0.95;
+    applySpeedUI();
   }
   // translation choice (reloads, so every verse, search and list uses the new text)
   function applyTransUI(){
@@ -696,7 +707,12 @@
   applyTransUI();
   $('#voiceMode').onclick = e => { const v = e.target.dataset.v; if (v) { st.voice = v; save(); applyVoiceUI(); } };
   $('#optVoice').onchange = e => { st.vname = e.target.value; save(); };
-  $('#optRate').oninput = e => { st.rate = +e.target.value; save(); if (audio && playing && playing.kind === 'en') audio.playbackRate = st.rate / 0.95; };
+  // reading speed: the same choice in Settings and above the verse list
+  const speed = () => [1, 1.25, 1.5].includes(+st.speed) ? +st.speed : 1;
+  function applySpeedUI(){ document.querySelectorAll('.speedSeg button').forEach(x => x.classList.toggle('on', +x.dataset.s === speed())); }
+  document.addEventListener('click', e => { const b = e.target.closest('.speedSeg button'); if (!b) return; e.stopPropagation();
+    st.speed = +b.dataset.s; save(); applySpeedUI(); if (audio && playing && playing.kind === 'en') audio.playbackRate = speed(); });
+  applySpeedUI();
   applyVoiceUI();
 
   // summary panels: a chip opens (or closes) the verses it names, right below the chips
@@ -715,6 +731,15 @@
   // card actions
   const flash = (b, ok = true) => { const old = b.innerHTML; b.innerHTML = svg(ok ? 'check' : 'more'); b.classList.add('ok'); setTimeout(() => { b.innerHTML = old; b.classList.remove('ok'); }, 1200); };
   const copyText = t => navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject();
+  // the Arabic and English audio buttons of the ☰ Verses list
+  $('#list').addEventListener('click', e => {
+    const b = e.target.closest('.vb'); if (!b) return;
+    e.stopPropagation();
+    const card = b.closest('.row'), [sid, n] = card.dataset.k.split(':').map(Number), v = verseOf(sid, n), a = b.dataset.a;
+    if (playing && playing.card === card && playing.kind === a) { stopAll(); return; }
+    stopAll();
+    if (a === 'play') playArabic(card, b, sid, n); else readEnglish(card, b, sid, n, v);
+  });
   pop.addEventListener('click', e => {
     const b = e.target.closest('.vb'); if (!b) { if (!e.target.closest('.vmenu')) pop.querySelectorAll('.vmenu.open').forEach(m => m.classList.remove('open')); return; }
     e.stopPropagation();
@@ -1524,9 +1549,13 @@
       const chip = names.length ? names.map(t => `<span class="chip">${esc(t)}</span>`).join('')
         : `<span class="chip none">${elsewhere.length ? 'shown in part ' + elsewhere.join(', ') : n > p.range[1] ? 'between posters ' + p.id + ' and ' + nxt.id : also.length ? 'recalled or summarised' : 'not pictured'}</span>`;
       const row = document.createElement('div'); row.className = 'row';
-      row.innerHTML = `<div class="top"><span class="vnum ${where.length ? '' : 'more'}">${S.id}:${n}</span><div class="chips">${chip}</div></div>
-        <div class="ar">${arWords(S.id, n, V[n])}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${esc(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
-      row.onclick = () => {
+      row.dataset.k = `${S.id}:${n}`;
+      row.innerHTML = `<div class="rbar"><span class="vnum ${where.length ? '' : 'more'}">${S.id}:${n}</span>
+          <button class="vb" data-a="play" title="Play the Arabic recitation (Mishary Alafasy)" aria-label="Play the Arabic recitation">${svg('play')}</button>
+          <button class="vb" data-a="en" title="Listen to the English translation" aria-label="Listen to the English translation">${svg('speak')}<span class="lbl">EN</span></button></div>
+        <div class="ar">${arWords(S.id, n, V[n])}</div><div class="tr full">${esc(V[n].tr)}</div><div class="en">${enText(V[n].en)}</div><div class="ur full">${esc(V[n].ur)}</div>`;
+      row.onclick = e => {
+        if (e && e.target.closest && e.target.closest('.vb')) return;      // the audio buttons do not open the row
         const was = row.classList.contains('sel');
         list.querySelectorAll('.row.sel').forEach(r => r.classList.remove('sel'));
         stage.querySelectorAll('.spot.lit').forEach(s => s.classList.remove('lit'));
