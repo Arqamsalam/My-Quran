@@ -94,12 +94,15 @@
   main.zoomed{display:block;overflow:auto;overscroll-behavior:contain;cursor:grab}
   main.zoomed .stage{margin:0 auto;max-width:none}
   main.panning{cursor:grabbing} main.panning .spot{pointer-events:none}
-  #zoom{position:fixed;right:12px;bottom:14px;z-index:24;display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--floatbg);box-shadow:0 6px 18px var(--shadow)}
+  #zoom{position:fixed;left:12px;top:calc(var(--barh) + 10px);z-index:24;display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--floatbg);box-shadow:0 6px 18px var(--shadow)}
   #zoom button{border:0;background:none;color:var(--gold2);font-size:20px;line-height:1;width:40px;height:38px;cursor:pointer}
   #zoom button:hover{background:var(--panel2)}
   #zoom button:disabled{opacity:.3;cursor:default}
   #zoom #zLvl{font-size:12.5px;width:56px;color:var(--text);border-left:1px solid var(--line);border-right:1px solid var(--line);font-variant-numeric:tabular-nums}
-  @media (max-width:760px){ #zoom{right:8px;bottom:8px} body:has(#pop.open) #zoom{display:none} #hint{bottom:60px} }
+  @media (max-width:760px){ #zoom{left:8px;top:calc(var(--barh) + 8px)} body:has(#pop.open) #zoom{display:none} #hint{bottom:16px} }
+  /* the verse drawer takes the right side; the poster (and its arrows) move into the space that is left */
+  main{transition:right .2s}
+  @media (min-width:761px){ body:has(#drawer.open) main{right:min(460px,100vw)} body:has(#drawer.open) #next{right:calc(min(460px,100vw) + 8px)} #next{transition:right .2s} }
   .spot{position:absolute;border-radius:6px;cursor:pointer;transition:background .12s,box-shadow .12s;outline:none}
   .spot:hover,.spot:focus-visible,.spot.active{background:rgba(241,207,127,.16);box-shadow:inset 0 0 0 2px var(--hl)}
   .stage.show .spot{box-shadow:inset 0 0 0 1.5px rgba(241,207,127,.75);background:rgba(241,207,127,.05)}
