@@ -4,9 +4,9 @@ An interactive study page for illustrated "Memory Story" posters of the Qur'an. 
 point at any part of a poster and the exact verses appear in Arabic, English and Urdu, with every Arabic word
 explained down to its root.
 
-**In numbers:** 106 surahs · 233 posters · 5,879 verse hotspots · 5,863 verses · about 72,000 words explained · 1,629 roots.
+**In numbers:** 109 surahs · 238 posters · 6,004 verse hotspots · 6,080 verses · about 75,000 words explained · 1,641 roots.
 
-**Surahs included:** 2–27, 34–65 and 67–114 (66 is still to come).
+**Surahs included:** 2–30, 34–65 and 67–114 (66 is still to come).
 
 ## How to study with it
 
