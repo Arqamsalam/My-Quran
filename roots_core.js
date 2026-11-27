@@ -1469,4 +1469,5 @@ window.WORD_MERGE = Object.assign(window.WORD_MERGE || {}, {
   '36:22': [1, 2],
   '37:164': [1, 2],
   '41:47': [25, 26],
+  '27:20': [3, 4], // مَالِيَ — mā liya, 'what is wrong with me', written as one word
 });
