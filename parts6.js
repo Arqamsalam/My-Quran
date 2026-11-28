@@ -1,4 +1,4 @@
-// Hotspot maps for Al-An'am (6), posters 1–9 and 11–18 of 18 (poster 10, verses 74–83, not added yet).
+// Hotspot maps for Al-An'am (6), all 18 posters.
 // box: [x1, y1, x2, y2] in the image's own pixels.  key: verses the panel shows.  more: recalled verses.  xref: verses in other surahs.
 
 window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
@@ -1522,6 +1522,240 @@ window.PARTS_BY_SURAH = Object.assign(window.PARTS_BY_SURAH || {}, {
        70,
        73
       ]
+     }
+    ]
+   },
+   {
+    "id": 10,
+    "title": "Lights — deepest night on the boulder",
+    "range": [
+     74,
+     83
+    ],
+    "img": "images/s6-10.webp",
+    "w": 1024,
+    "h": 1536,
+    "spots": [
+     {
+      "label": "The smoke vision: star, moon and sun, each false lord failing",
+      "box": [
+       350,
+       120,
+       930,
+       600
+      ],
+      "key": [
+       76,
+       77,
+       78
+      ],
+      "note": "Fa-lammā janna ʿalayhi l-laylu raʾā kawkaban, qāla hādhā rabbī; fa-lammā afala qāla lā uḥibbu l-āfilīn (76) — 'when the night covered him he saw a star; he said: this is my lord; but when it set he said: I do not love those that set'. Checked: the poster's quotation 'I love not the ones that set' is 6:76; the same words are carved on the boulder (lā uḥibbu l-āfilīn)."
+     },
+     {
+      "label": "The story, verse by verse (74–83)",
+      "box": [
+       10,
+       1005,
+       1015,
+       1230
+      ],
+      "key": [
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83
+      ],
+      "note": "Ibrahim's search runs 6:74–83: idols (74) → the dominion shown to him (75) → the star (76) → the moon (77) → the sun (78) → turning to the Originator (79) → refusing to fear partners (80–81) → the security of unmixed faith (82) → Allah's argument (83). Checked: every beat of the poster's memory-story paragraph is in these ten verses, in this order."
+     },
+     {
+      "label": "The idols and the tents under the banner IBRAHIM",
+      "box": [
+       8,
+       270,
+       345,
+       640
+      ],
+      "key": [
+       74,
+       75
+      ],
+      "note": "Wa idh qāla Ibrāhīmu li-abīhi Āzara a-tattakhidhu aṣnāman ālihah, innī arāka wa qawmaka fī ḍalālin mubīn (74) — 'when Ibrahim said to his father Āzar: do you take idols as gods? I see you and your people in clear error'; wa kadhālika nurī Ibrāhīma malakūta s-samāwāti wa l-arḍi wa li-yakūna mina l-mūqinīn (75) — 'thus We showed Ibrahim the dominion of the heavens and earth, that he might be among the certain'. Checked: the poster's 'Ibrahim's challenge to idols' is 6:74; the tents and the banner 'IBRAHIM' are the poster's setting."
+     },
+     {
+      "label": "The shepherd's flock of sheep, goats, camels and cattle — the four animal pairs",
+      "box": [
+       560,
+       560,
+       1020,
+       830
+      ],
+      "key": [
+       76,
+       77,
+       78
+      ],
+      "more": [
+       143,
+       144
+      ],
+      "note": "The flock — camels, cattle, sheep — is the poster's picture for the 'four animal pairs' of 6:143–144: min aḍ-ḍaʾni thnayni wa mina l-maʿzi thnayn… wa mina l-ibili thnayni wa mina l-baqari thnayn — sheep, goats, camels, cattle, two of each. Checked: the poster's 'three false lords anticipate four animal pairs' is its link between the three that set (star, moon, sun; 76–78) and the four pairs the idolaters forbade for themselves (143–144)."
+     },
+     {
+      "label": "Ibrahim seated on the boulder — turns to the Originator, hanif, free of shirk",
+      "box": [
+       230,
+       440,
+       570,
+       790
+      ],
+      "key": [
+       79,
+       80,
+       81
+      ],
+      "note": "Innī wajjahtu wajhiya lilladhī faṭara s-samāwāti wa l-arḍa ḥanīfan wa mā anā mina l-mushrikīn (79) — 'I have turned my face to the One who originated the heavens and earth, inclining to truth, and I am not of the polytheists'; wa ḥājjahū qawmuh… wa lā akhāfu mā tushrikūna bihī illā an yashāʾa rabbī shayʾā (80) — 'I do not fear what you associate with Him, unless my Lord wills something'; (81) wa kayfa akhāfu mā ashraktum wa lā takhāfūna annakum ashraktum billāhi… fa-ayyu l-farīqayni aḥaqqu bil-amn — 'which of the two groups has more right to security?'. Checked: 'turns to the Originator, hanif and free of shirk; he does not fear their partners' is 6:79–81 line by line."
+     },
+     {
+      "label": "Title: Al-An'am 10/18 — Lights, verses 74–83 · deepest night, the boulder",
+      "box": [
+       0,
+       0,
+       1024,
+       112
+      ],
+      "key": [
+       74
+      ]
+     },
+     {
+      "label": "Micro nazm",
+      "box": [
+       10,
+       1245,
+       345,
+       1500
+      ],
+      "key": [
+       83
+      ],
+      "more": [
+       149
+      ],
+      "note": "Checked: 6:83 is the middle verse of the surah (it has 165; 82 verses come before it and 82 after). Tilka ḥujjatunā (83) returns at 149 as fa-lillāhi l-ḥujjatu l-bālighah — 'to Allah belongs the conclusive argument'. The three lords that set (76–78) are echoed by the four kinds of animals (143–144)."
+     },
+     {
+      "label": "Amud — central pillar",
+      "box": [
+       680,
+       1245,
+       1015,
+       1500
+      ],
+      "key": [
+       76,
+       79,
+       83
+      ],
+      "note": "The central pillar: the true heir follows Ibrahim's argument and turns to the unfailing Creator; whatever sets cannot own your life. Checked: 'whatever sets cannot own your life' is the sense of lā uḥibbu l-āfilīn (76); 'next: Lanterns' is poster 11, 6:84–94."
+     },
+     {
+      "label": "Macro nazm",
+      "box": [
+       350,
+       1245,
+       675,
+       1500
+      ],
+      "key": [
+       83
+      ],
+      "xref": [
+       "2:135"
+      ],
+      "note": "Checked: Al-Baqarah 2:135 and Al-An'am 6:161 both end with millata Ibrāhīma ḥanīfan wa mā kāna mina l-mushrikīn — 'the religion of Ibrahim, inclining to truth, and he was not of the polytheists'. In 2:135 the verse answers those who said 'be Jews or Christians'; in 6:161 the Prophet is told to say it. 'Both branches of Ibrahim's claimed family' is the poster's phrase."
+     },
+     {
+      "label": "The ram at the boulder's foot",
+      "box": [
+       8,
+       630,
+       255,
+       840
+      ],
+      "key": [
+       75
+      ]
+     },
+     {
+      "label": "The boulder: \"la uhibbu al-afilin\"",
+      "box": [
+       590,
+       770,
+       820,
+       940
+      ],
+      "key": [
+       76
+      ],
+      "note": "Fa-lammā janna ʿalayhi l-laylu raʾā kawkaban, qāla hādhā rabbī; fa-lammā afala qāla lā uḥibbu l-āfilīn (76) — 'when the night covered him he saw a star; he said: this is my lord; but when it set he said: I do not love those that set'. Checked: the poster's quotation 'I love not the ones that set' is 6:76; the same words are carved on the boulder (lā uḥibbu l-āfilīn)."
+     },
+     {
+      "label": "The stone: \"Faith without shirk: security\"",
+      "box": [
+       815,
+       830,
+       990,
+       950
+      ],
+      "key": [
+       82
+      ],
+      "note": "Alladhīna āmanū wa lam yalbisū īmānahum bi-ẓulmin ulāʾika lahumu l-amnu wa hum muhtadūn (82) — 'those who believed and did not mix their faith with injustice (ẓulm) — theirs is security, and they are guided'; and (83) wa tilka ḥujjatunā ātaynāhā Ibrāhīma ʿalā qawmih — 'that was Our argument, which We gave Ibrahim against his people'. Checked: the poster's 'security belongs to faith unmixed with ẓulm — here, shirk' follows the Prophet's own explanation of 6:82, in which he cites Luqman's words 'shirk is a great ẓulm' (31:13, reported in Sahih al-Bukhari and Muslim); 'Allah's hujjah given to Ibrahim' is 6:83."
+     },
+     {
+      "label": "The star sets in the smoke: \"I love not the ones that set\"",
+      "box": [
+       380,
+       150,
+       520,
+       270
+      ],
+      "key": [
+       76
+      ],
+      "note": "Fa-lammā janna ʿalayhi l-laylu raʾā kawkaban, qāla hādhā rabbī; fa-lammā afala qāla lā uḥibbu l-āfilīn (76) — 'when the night covered him he saw a star; he said: this is my lord; but when it set he said: I do not love those that set'. Checked: the poster's quotation 'I love not the ones that set' is 6:76; the same words are carved on the boulder (lā uḥibbu l-āfilīn)."
+     },
+     {
+      "label": "The great sun sets",
+      "box": [
+       730,
+       290,
+       870,
+       380
+      ],
+      "key": [
+       78
+      ],
+      "note": "Fa-lammā raʾā sh-shamsa bāzighatan qāla hādhā rabbī hādhā akbar; fa-lammā afalat qāla yā qawmi innī barīʾun mimmā tushrikūn (78) — 'when he saw the sun rising he said: this is my lord, this is greater; but when it set he said: O my people, I am free of what you associate'. Checked: the poster's 'the moon sets; then the great sun sets' is 6:77–78; 'each false lord fails' is the common word afala."
+     },
+     {
+      "label": "The moon sets",
+      "box": [
+       560,
+       190,
+       680,
+       290
+      ],
+      "key": [
+       77
+      ],
+      "note": "Fa-lammā raʾā l-qamara bāzighan qāla hādhā rabbī; fa-lammā afala qāla la-in lam yahdinī rabbī la-akūnanna mina l-qawmi ḍ-ḍāllīn (77) — 'when he saw the moon rising he said: this is my lord; when it set he said: if my Lord does not guide me, I will surely be among the astray'. Checked: the moon scene is 6:77."
      }
     ]
    },
