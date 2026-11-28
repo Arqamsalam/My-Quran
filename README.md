@@ -65,8 +65,9 @@ If you find a mistake, the hotspot data is plain text and easy to correct (see "
 | `images/` | The posters (`.webp`); `images/thumbs/` holds the small library thumbnails |
 | `fonts/UthmanicHafs1Ver18.woff2` | KFGQPC Uthmanic Script Hafs (King Fahd Complex), the Qur'an font quran.com uses; it matches the Uthmani text exactly |
 
-`parts.js` / `verses.js` hold Al-Baqarah and `parts3.js` / `verses3.js` Aal Imran; the other files are named by
-surah number, for example `parts34-35.js`.
+`parts-all.js` / `verses-all.js` bundle every earlier batch (the published page may hold at most 512 files, so older
+per-batch files are merged into these two). New batches are added as `partsNN-MM.js` / `versesNN-MM.js` named by
+surah number, with two `<script>` tags, and can be merged into the bundles again when files run short.
 
 ## Editing
 
