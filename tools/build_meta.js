@@ -128,6 +128,8 @@ const ADD = {
  "7-21": ["The small connections"],
  "7-22": ["The big connections", "1 Islahi", "2 Argument", "3 The backward", "4 The forward", "5 The promise", "6 Connections", "7 The first"],
  "7-9": ["Title: Surah Al-A'raf"],
+ "33-1": ["The central contrast"],
+ "33-2": ["The deepest meaning"],
  "29-2": ["The surah shift", "Key contrast"],
  "26-2": ["B) The deepest lesson", "5) Why Moses first"],
  "23-1": ["Why is it called", "What this surah demands"],
