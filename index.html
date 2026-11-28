@@ -178,6 +178,9 @@
   .verse.more{background:var(--pcard)}
   .vbar{display:flex;justify-content:space-between;align-items:center;margin:0 -6px 2px}
   .vbar>div{display:flex;align-items:center;gap:2px}
+  .vbar{flex-wrap:wrap}
+  .vbar .speedSeg.mini{margin:0 4px;border-radius:7px}
+  .vbar .speedSeg.mini button{padding:3px 6px;font-size:11px;line-height:1.2}
   .vb{width:36px;height:36px;border:0;background:none;border-radius:9px;color:var(--picon);cursor:pointer;display:grid;place-items:center;padding:0}
   .vb:hover{background:var(--phov);color:var(--pink)}
   .vb svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -548,6 +551,7 @@
     return `<div class="verse ${kind === 'more' ? 'more' : ''}" data-k="${k}">
       <div class="vbar"><div><button class="vb" data-a="play" title="Play the Arabic recitation (Mishary Alafasy)" aria-label="Play the Arabic recitation">${svg('play')}</button>
           <button class="vb" data-a="en" title="Listen to the English translation" aria-label="Listen to the English translation">${svg('speak')}<span class="lbl">EN</span></button>
+          <span class="seg speedSeg mini" title="English reading speed">${[1, 1.25, 1.5].map(x => `<button data-s="${x}" class="${x === speed() ? 'on' : ''}">${x}×</button>`).join('')}</span>
           <button class="vb ${bm ? 'on' : ''}" data-a="bm" title="${bm ? 'Remove bookmark' : 'Bookmark this verse'}" aria-label="Bookmark">${svg('bm')}</button>
 </div>
         <div><button class="vb" data-a="copy" title="Copy verse and translation" aria-label="Copy">${svg('copy')}</button>
